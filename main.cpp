@@ -1,44 +1,64 @@
-#include <iostream>
-using namespace std;
-
-#include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
-
-#include "src/Product.hpp"
 
 int main()
 {
-    Product processador = Product("Ryzem7", 1100.99);
+    sf::RenderWindow window(sf::VideoMode(800, 800), "Mario x Luigi");
+    sf::RectangleShape shape(sf::Vector2f(100.f,100.f));
+    sf::RectangleShape shape2(sf::Vector2f(100.f,100.f));
+    sf::Texture texturaPersonagem;
+    sf::Texture texturaPersonagem2;
+    texturaPersonagem.loadFromFile("imagem/mario.png");
+    texturaPersonagem2.loadFromFile("imagem/luigiDireita.png");
+    shape.setTexture(&texturaPersonagem);
+    shape2.setTexture(&texturaPersonagem2);
 
-    processador.printDetails();
-    
-    sf::RenderWindow window(sf::VideoMode(800, 600), "Janela SFML");
-    window.setFramerateLimit(60);
-    window.setVerticalSyncEnabled(true);
-
-
-    bool gameLoop = true;
-    while (gameLoop)
+    while (window.isOpen())
     {
         sf::Event event;
-
         while (window.pollEvent(event))
         {
             if (event.type == sf::Event::Closed)
-            {
-                gameLoop = false;
-            }
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) // Tecla esc encerra o programa
-            {
-                gameLoop = false;
                 window.close();
-            }
-
         }
-        window.clear(sf::Color::Cyan);
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+        {
+            shape.move(sf::Vector2f(0.5,0));
+        }
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+        {
+            shape.move(sf::Vector2f(-0.5,0));
+        }
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+        {
+            shape.move(sf::Vector2f(0,-0.5));
+        }
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+        {
+            shape.move(sf::Vector2f(0,0.5));
+        }
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+        {
+            shape2.move(sf::Vector2f(0.5,0));
+        }
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+        {
+            shape2.move(sf::Vector2f(-0.5,0));
+        }
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+        {
+            shape2.move(sf::Vector2f(0,-0.5));
+        }
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+        {
+            shape2.move(sf::Vector2f(0,0.5));
+        }
+        
 
+        window.clear();
+        window.draw(shape);
+        window.draw(shape2);
         window.display();
     }
 
-    return EXIT_SUCCESS;
+    return 0;
 }
