@@ -1,4 +1,6 @@
 #include <SFML/Graphics.hpp>
+#include <iostream>
+using namespace std;
 
 int main()
 {
@@ -22,35 +24,35 @@ int main()
         }
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
         {
-            shape.move(sf::Vector2f(0.5,0));
+            shape.move(sf::Vector2f(0.15,0));
         }
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
         {
-            shape.move(sf::Vector2f(-0.5,0));
+            shape.move(sf::Vector2f(-0.15,0));
         }
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
         {
-            shape.move(sf::Vector2f(0,-0.5));
+            shape.move(sf::Vector2f(0,-0.15));
         }
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
         {
-            shape.move(sf::Vector2f(0,0.5));
+            shape.move(sf::Vector2f(0,0.15));
         }
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
         {
-            shape2.move(sf::Vector2f(0.5,0));
+            shape2.move(sf::Vector2f(0.15,0));
         }
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
         {
-            shape2.move(sf::Vector2f(-0.5,0));
+            shape2.move(sf::Vector2f(-0.15,0));
         }
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
         {
-            shape2.move(sf::Vector2f(0,-0.5));
+            shape2.move(sf::Vector2f(0,-0.15));
         }
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
         {
-            shape2.move(sf::Vector2f(0,0.5));
+            shape2.move(sf::Vector2f(0,0.15));
         }
         
 
@@ -59,6 +61,8 @@ int main()
         window.draw(shape2);
         window.display();
     }
+
+    cout << "eu sou lindo";
 
     return 0;
 }
