@@ -1,6 +1,4 @@
 #include <SFML/Graphics.hpp>
-#include <iostream>
-using namespace std;
 
 int main()
 {
@@ -13,56 +11,6 @@ int main()
     texturaPersonagem2.loadFromFile("imagem/luigiDireita.png");
     shape.setTexture(&texturaPersonagem);
     shape2.setTexture(&texturaPersonagem2);
-
-    while (window.isOpen())
-    {
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-        {
-            shape.move(sf::Vector2f(0.15,0));
-        }
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-        {
-            shape.move(sf::Vector2f(-0.15,0));
-        }
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-        {
-            shape.move(sf::Vector2f(0,-0.15));
-        }
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-        {
-            shape.move(sf::Vector2f(0,0.15));
-        }
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-        {
-            shape2.move(sf::Vector2f(0.15,0));
-        }
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-        {
-            shape2.move(sf::Vector2f(-0.15,0));
-        }
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-        {
-            shape2.move(sf::Vector2f(0,-0.15));
-        }
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-        {
-            shape2.move(sf::Vector2f(0,0.15));
-        }
-        
-
-        window.clear();
-        window.draw(shape);
-        window.draw(shape2);
-        window.display();
-    }
-
-    cout << "eu sou lindo";
 
     return 0;
 }
