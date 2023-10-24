@@ -7,6 +7,8 @@ Jogo::Jogo(): window(sf::VideoMode(800, 800), "Mario x Luigi"),
     texturaPersonagem2.loadFromFile("imagem/luigiDireita.png");
     shape.setTexture(&texturaPersonagem);
     shape2.setTexture(&texturaPersonagem2);
+
+    Executar();
 }
 
 void Jogo::Executar()
