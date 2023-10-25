@@ -8,7 +8,7 @@ class Jogador:
 {
 
 private:
-    int j;
+   // sf::Texture texturaPersonagem;
 public:
     Jogador();
     ~Jogador();

@@ -1,15 +1,16 @@
 #include <SFML/Graphics.hpp>
 #pragma once
+#include "jogador.hpp"
 
 class Jogo
 {
     private:
         sf::RenderWindow window;
-        sf::RectangleShape shape;
-        sf::RectangleShape shape2;
-        sf::Texture texturaPersonagem;
-        sf::Texture texturaPersonagem2;
+        Jogador jogador1;
+        
     public:
         Jogo();
+        ~Jogo();
+
         void Executar();
 };

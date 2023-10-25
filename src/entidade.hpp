@@ -11,4 +11,7 @@ class Entidade
         Entidade();
         ~Entidade();
 
+        void setWindow( sf::RenderWindow* window){this->window = window;} 
+        void draw(){window->draw(corpo);}
+
 };
