@@ -1,5 +1,6 @@
 #include "jogo.hpp"
-
+#include <iostream>
+using namespace std;
 Jogo::Jogo():
     window(sf::VideoMode(800, 800), "Mario x Luigi")
 {
@@ -10,6 +11,7 @@ Jogo::Jogo():
     fase1 = new Fase(jogador1, &window);
     lista = fase1->getlistaEntidades();
 
+    cout << "sou lindo";
     
 
     Executar();
