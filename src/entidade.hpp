@@ -12,7 +12,7 @@ class Entidade
         Entidade();
         ~Entidade();
 
-        void setWindow( sf::RenderWindow* window){this->window = window;} 
+        void setWindow( sf::RenderWindow* window)   {this->window = window;} 
         void setSkin(const std::string filename);
         void draw(){window->draw(corpo);}
 

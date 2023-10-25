@@ -4,7 +4,11 @@ Jogo::Jogo():
     window(sf::VideoMode(800, 800), "Mario x Luigi")
 {
     jogador1.setWindow(&window);
-    jogador1.setSkin("imagem/mario.png");
+    jogador1.setSkin("src/imagem/mario.png");
+
+    inimigo1.setWindow(&window);
+    inimigo1.setSkin("src/imagem/luigiDireita.png");
+
     Executar();
 }
 Jogo::~Jogo()
@@ -26,6 +30,7 @@ void Jogo::Executar()
         jogador1.mover();
         window.clear();
         jogador1.draw();
+        inimigo1.draw();
         window.display();
     }
 }
