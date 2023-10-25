@@ -3,11 +3,14 @@
 Jogo::Jogo():
     window(sf::VideoMode(800, 800), "Mario x Luigi")
 {
-    jogador1.setWindow(&window);
-    jogador1.setSkin("src/imagem/mario.png");
+    jogador1 = new Jogador();
+    jogador1->setWindow(&window);
+    jogador1->setSkin("src/imagem/mario.png");
 
-    inimigo1.setWindow(&window);
-    inimigo1.setSkin("src/imagem/luigiDireita.png");
+    fase1 = new Fase(jogador1, &window);
+    lista = fase1->getlistaEntidades();
+
+    
 
     Executar();
 }
@@ -27,10 +30,15 @@ void Jogo::Executar()
                 window.close();
         }
         
-        jogador1.mover();
+        jogador1->mover();
         window.clear();
-        jogador1.draw();
-        inimigo1.draw();
+
+        for(int i = 0; i < lista->lista.geTamanho(); i++)
+        {
+            Entidade* auxiliar = lista->lista.getItem(i);
+            auxiliar->draw();
+        }
+        //inimigo1.draw();
         window.display();
     }
 }

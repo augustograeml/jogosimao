@@ -38,7 +38,7 @@ template <class TL> class Lista
             }
             else
             {
-                Elemento<TL>* auxiliar = new Elemento;
+                Elemento<TL>* auxiliar = new Elemento<TL>;
                 auxiliar->setItem(elemento);
                 pUltimo->setpProximo(auxiliar);
                 pUltimo =  auxiliar;
@@ -81,7 +81,7 @@ template<class TL>
 inline Lista <TL>::Lista()
 {
     pPrimero = nullptr;
-    pUltimo - nullptr;
+    pUltimo = nullptr;
     tamanho = 0;
 }
 

@@ -4,7 +4,6 @@
 class Inimigo : public Entidade
 {
     private:
-
     public:
         Inimigo();
         ~Inimigo();
