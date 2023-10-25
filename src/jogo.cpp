@@ -1,4 +1,5 @@
 #include "jogo.hpp"
+#include <SFML/Graphics.hpp>
 
 Jogo::Jogo(): window(sf::VideoMode(800, 800), "Mario x Luigi"),
     shape(sf::Vector2f(100.f,100.f)), shape2(sf::Vector2f(100.f,100.f))

@@ -3,8 +3,9 @@
 
 class Entidade
 {
-    private:
+    protected:
         sf::RectangleShape corpo;
+        sf::RenderWindow *window;
 
     public:
         Entidade();
