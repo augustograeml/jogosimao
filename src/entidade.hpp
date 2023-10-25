@@ -5,6 +5,7 @@ class Entidade
 {
     protected:
         sf::RectangleShape corpo;
+        sf::Texture Textura;
         sf::RenderWindow *window;
 
     public:
@@ -12,6 +13,7 @@ class Entidade
         ~Entidade();
 
         void setWindow( sf::RenderWindow* window){this->window = window;} 
+        void setSkin(const std::string filename);
         void draw(){window->draw(corpo);}
 
 };

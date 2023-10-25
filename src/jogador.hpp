@@ -8,12 +8,12 @@ class Jogador:
 {
 
 private:
-   // sf::Texture texturaPersonagem;
+    sf::Texture texturaPersonagem;
 public:
     Jogador();
     ~Jogador();
 
     void mover();
-
+    
 
 };

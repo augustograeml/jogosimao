@@ -27,3 +27,4 @@ void Jogador::mover()
             corpo.move(sf::Vector2f(0,0.15));
         }
 }
+

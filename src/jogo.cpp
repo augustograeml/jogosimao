@@ -4,6 +4,7 @@ Jogo::Jogo():
     window(sf::VideoMode(800, 800), "Mario x Luigi")
 {
     jogador1.setWindow(&window);
+    jogador1.setSkin("imagem/mario.png");
     Executar();
 }
 Jogo::~Jogo()

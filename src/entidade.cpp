@@ -9,3 +9,8 @@ Entidade::~Entidade()
 {
 
 }
+void Entidade::setSkin(const std::string filename)
+{
+    Textura.loadFromFile(filename);
+    corpo.setTexture(&Textura);
+}
