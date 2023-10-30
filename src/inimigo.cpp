@@ -39,3 +39,8 @@ void Inimigo::executar()
 
 }
 
+void Inimigo::executar()
+{
+    
+}
+
