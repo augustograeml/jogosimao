@@ -4,13 +4,14 @@
 
 class Inimigo : public Entidade
 {
-    private:
+    protected:
         sf::Vector2f posicao;
-        bool maldade;
         int vida;
         Jogador* pjogador;
         
-
+    private:
+        bool maldade;
+        
     public:
         Inimigo();
         ~Inimigo();
