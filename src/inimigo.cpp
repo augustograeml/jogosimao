@@ -26,7 +26,7 @@ void Inimigo::executar()
 
 sf::Vector2f Inimigo::getPosicao()
 {
-    return corpo.getPosition();
+    return (corpo.getPosition());
 }
 
 void Inimigo::setPosicao(sf::Vector2f& p)
