@@ -4,11 +4,12 @@
 #include "inimigo.hpp"
 #include "listaEntidadas.hpp"
 #include "fase.hpp"
+#include "gerenciador_grafico.hpp"
 
 class Jogo
 {
     private:
-        sf::RenderWindow window;
+        Gerenciador_Grafico* pG;
         Jogador* jogador1;
         ListaEntidade* lista;
         Fase* fase1;
