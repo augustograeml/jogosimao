@@ -22,6 +22,11 @@ Inimigo::~Inimigo()
 
 }
 
+void Inimigo::executar()
+{
+
+}
+
 sf::Vector2f Inimigo::getPosicao()
 {
     return corpo.getPosition();

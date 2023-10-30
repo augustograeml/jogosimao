@@ -34,6 +34,7 @@ void Jogo::Executar()
         }
         
         jogador1->mover();
+        
         window.clear();
 
         for(int i = 0; i < lista->lista.geTamanho(); i++)
