@@ -2,24 +2,19 @@
 #include <stdlib.h>
 #include <math.h>
 
-Inimigo::Inimigo() : maldade(false)
+Inimigo::Inimigo() : maldade(false), pjogador(nullptr)
 {
     int m = rand() % 6;
     if(m == 1)
         maldade = true;
-    if(maldade)
-        vida = 5;
-    else
-        vida = 10;
 
-    pjogador = nullptr;
     corpo.setFillColor(sf::Color::Green);
     corpo.setPosition(sf::Vector2f(800.f, 800.f));
 }
 
 Inimigo::~Inimigo()
 {
-
+    pjogador = nullptr;
 }
 
 sf::Vector2f Inimigo::getPosicao()
