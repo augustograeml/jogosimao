@@ -15,6 +15,7 @@ class Entidade
         void setWindow( sf::RenderWindow* window)   {this->window = window;} 
         void setSkin(const std::string filename);
         sf::RectangleShape getCorpo() {return corpo;}
+        sf::Vector2f getPosicao();
         void draw(){window->draw(corpo);}
 
 };

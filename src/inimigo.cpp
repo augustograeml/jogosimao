@@ -9,7 +9,7 @@ Inimigo::Inimigo() : maldade(false), pjogador(nullptr)
         maldade = true;
 
     corpo.setFillColor(sf::Color::Green);
-    corpo.setPosition(sf::Vector2f(800.f, 800.f));
+    corpo.setPosition(sf::Vector2f(400.f, 300.f));
 }
 
 Inimigo::~Inimigo()
