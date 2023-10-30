@@ -34,4 +34,8 @@ void Inimigo::update(sf::Vector2f& posicao_jogador)
     direcao /= comprimento;
 
 }
+void Inimigo::executar()
+{
+
+}
 

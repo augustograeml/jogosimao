@@ -16,6 +16,5 @@ class Entidade
         void setSkin(const std::string filename);
         sf::RectangleShape getCorpo() {return corpo;}
         void draw(){window->draw(corpo);}
-        sf::RectangleShape getCorpo() {return corpo;}
 
 };
