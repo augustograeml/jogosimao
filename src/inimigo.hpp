@@ -9,6 +9,7 @@ class Inimigo : public Entidade
         bool maldade;
         int vida;
         Jogador* pjogador;
+        
 
     public:
         Inimigo();

@@ -24,7 +24,7 @@ Inimigo::~Inimigo()
 
 sf::Vector2f Inimigo::getPosicao()
 {
-    return posicao;
+    return corpo.getPosition();
 }
 
 void Inimigo::setPosicao(sf::Vector2f& p)
@@ -34,10 +34,9 @@ void Inimigo::setPosicao(sf::Vector2f& p)
 
 void Inimigo::update(sf::Vector2f& posicao_jogador)
 {
-    sf::Vector2f direcao = posicao_jogador - corpo.getPosition();
+    sf::Vector2f direcao = posicao_jogador - getPosicao();
     float comprimento = sqrt(direcao.x * direcao.x + direcao.y * direcao.y);
     direcao /= comprimento;
-
 
 }
 
