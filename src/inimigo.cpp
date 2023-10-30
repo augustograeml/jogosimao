@@ -22,15 +22,14 @@ Inimigo::~Inimigo()
 
 }
 
-sf::Vector2f getPosicao()
+sf::Vector2f Inimigo::getPosicao()
 {
-    //corpo
+    return posicao;
 }
 
-void setPosicao(sf::Vector2f& p)
+void Inimigo::setPosicao(sf::Vector2f& p)
 {
     this->posicao = p;
-
 }
 
 void Inimigo::update(sf::Vector2f& posicao_jogador)
