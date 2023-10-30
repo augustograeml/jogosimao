@@ -9,11 +9,14 @@ class Jogador:
 
 private:
     sf::Texture texturaPersonagem;
+    sf::Vector2f posicao
+    int vida;
+    float poder;
+
 public:
     Jogador();
     ~Jogador();
 
     void mover();
-    
-
+    //void getPosition();
 };

@@ -2,7 +2,7 @@
 
 Jogador::Jogador()
 {
-
+    
 }
 Jogador::~Jogador()
 {
@@ -27,4 +27,9 @@ void Jogador::mover()
             corpo.move(sf::Vector2f(0,0.15));
         }
 }
-
+/*
+void Jogador::getPosition()
+{
+    return corpo.getPosition()
+}
+*/

@@ -12,7 +12,6 @@ class Jogo
         Jogador* jogador1;
         ListaEntidade* lista;
         Fase* fase1;
-
         
     public:
         Jogo();

@@ -1,8 +1,7 @@
 #include "jogo.hpp"
-#include <iostream>
-using namespace std;
+
 Jogo::Jogo():
-    window(sf::VideoMode(800, 800), "Mario x Luigi")
+    window(sf::VideoMode(1000, 1000), "Zombies++")
 {
     jogador1 = new Jogador();
     jogador1->setWindow(&window);
@@ -10,9 +9,6 @@ Jogo::Jogo():
 
     fase1 = new Fase(jogador1, &window);
     lista = fase1->getlistaEntidades();
-
-    cout << "sou lindo";
-    
 
     Executar();
 }
@@ -30,6 +26,11 @@ void Jogo::Executar()
         {
             if (event.type == sf::Event::Closed)
                 window.close();
+            else if(event.type == sf::Event::KeyPressed)
+            {
+                if(event.key.code == sf::Keyboard::Escape)
+                    window.close();
+            }
         }
         
         jogador1->mover();
