@@ -10,7 +10,16 @@ Inimigo_Facil::~Inimigo_Facil()
     
 }
 
+void Inimigo_Facil::atacar()
+{
+
+}
+
 void Inimigo_Facil::executar()
 {
+    while(vidas)
+    {
+        atacar();
+    }
 
 }
