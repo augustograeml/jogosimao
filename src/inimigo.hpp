@@ -6,7 +6,6 @@ class Inimigo : public Entidade
 {
     protected:
         sf::Vector2f posicao;
-        int vida;
         Jogador* pjogador;
         
     private:
