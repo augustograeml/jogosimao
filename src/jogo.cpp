@@ -5,7 +5,7 @@ Jogo::Jogo():
 {
     jogador1 = new Jogador();
     jogador1->setWindow(&window);
-    jogador1->setSkin("src/imagem/mario.png");
+    jogador1->setSkin("imagem/mario.png");
 
     fase1 = new Fase(jogador1, &window);
     lista = fase1->getlistaEntidades();
