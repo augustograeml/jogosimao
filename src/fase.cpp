@@ -8,7 +8,7 @@ Fase::Fase(Jogador* j1, sf::RenderWindow* w)
 
     inimigo1 = new Inimigo();
     inimigo1->setWindow(w);
-    inimigo1->setSkin("imagem/luigiDireita.png");
+    inimigo1->setSkin("src/imagem/luigiDireita.png");
 
     inicializaELementos();
 }

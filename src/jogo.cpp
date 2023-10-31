@@ -5,7 +5,7 @@ Jogo::Jogo():
 {
     jogador1 = new Jogador();
     jogador1->setWindow(pG->get_Janela());
-    jogador1->setSkin("imagem/mario.png");
+    jogador1->setSkin("src/imagem/parado.png");
 
     fase1 = new Fase(jogador1, pG->get_Janela());
     lista = fase1->getlistaEntidades();
