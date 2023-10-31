@@ -76,12 +76,14 @@ template <class TL> class Lista
             tamanho--;
         }
 
+        Elemento<TL>* getPrimeiro() {return pPrimero;}
+
         class Iterador
         {
             private:
                 Elemento<TL>* atual;
             public:
-                Iterador() : atual(nullptr) {}
+                Iterador(Elemento<TL>* a = nullptr) : atual(a) {}
                 ~Iterador() {atual = nullptr;}
 
                 Iterador& operator++() {atual = atual->getpProximo();   return *this;}
@@ -92,10 +94,11 @@ template <class TL> class Lista
                 {
                     return atual->getItem();
                 }
-
                 Elemento<TL>* get_atual() {return atual;}
 
         };
+
+       // Iterador getPrimeiro()  {return Iterador(pPrimero);}
 };
 
 template<class TL>

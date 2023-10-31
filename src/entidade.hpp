@@ -12,6 +12,9 @@ class Entidade
         Entidade();
         ~Entidade();
 
+        virtual void executar() {}
+        virtual void colidir() {}
+
         void setWindow( sf::RenderWindow* window)   {this->window = window;} 
         void setSkin(const std::string filename);
         sf::RectangleShape getCorpo() {return corpo;}

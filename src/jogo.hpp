@@ -13,6 +13,7 @@ class Jogo
         Jogador* jogador1;
         ListaEntidade* lista;
         Fase* fase1;
+        sf::Texture t[27];
         
     public:
         Jogo();
