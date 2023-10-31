@@ -75,6 +75,27 @@ template <class TL> class Lista
             delete auxiliar;
             tamanho--;
         }
+
+        class Iterador
+        {
+            private:
+                Elemento<TL>* atual;
+            public:
+                Iterador() : atual(nullptr) {}
+                ~Iterador() {atual = nullptr;}
+
+                Iterador& operator++() {atual = atual->getpProximo();   return *this;}
+                bool operator==(Elemento<TL>* outro) {return atual == outro;}
+                bool operator!=(Elemento<TL>* outro) {return !(atual == outro);}
+                void operator=(Elemento<TL>* outro) {atual = outro;}
+                TL* operator*()
+                {
+                    return atual->getItem();
+                }
+
+                Elemento<TL>* get_atual() {return atual;}
+
+        };
 };
 
 template<class TL>
