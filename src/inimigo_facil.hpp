@@ -12,4 +12,5 @@ class Inimigo_Facil : public Inimigo
         Inimigo_Facil();
         ~Inimigo_Facil();
         void executar();
+        void atacar();
 };
