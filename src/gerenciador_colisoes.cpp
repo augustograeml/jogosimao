@@ -20,5 +20,5 @@ void Gerenciador_Colisoes::colisao_simples()
 
 int Gerenciador_Colisoes::colidiu(Entidade* e1, Entidade* e2)
 {
-
+    return 0;
 }
