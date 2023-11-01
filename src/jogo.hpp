@@ -5,6 +5,7 @@
 #include "listaEntidadas.hpp"
 #include "fase.hpp"
 #include "gerenciador_grafico.hpp"
+#include "gerenciador_colisoes.hpp"
 
 class Jogo
 {
