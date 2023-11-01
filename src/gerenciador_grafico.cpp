@@ -18,7 +18,6 @@ Gerenciador_Grafico* Gerenciador_Grafico::instancia(nullptr);
         if (pE)
             janela->draw(pE->getCorpo());
     }
-    // Propaganda:
     void Gerenciador_Grafico::desenharTextura(sf::Texture* pT)
     {
         if (pT)

@@ -9,7 +9,7 @@ class Entidade
         sf::RenderWindow *window;
 
     public:
-        Entidade();
+        Entidade(sf::Vector2f pos = sf::Vector2f(100.f,100.f));
         ~Entidade();
 
         virtual void executar() {}
