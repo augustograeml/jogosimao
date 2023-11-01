@@ -7,14 +7,18 @@
 #include "gerenciador_grafico.hpp"
 #include "gerenciador_colisoes.hpp"
 
+using namespace sf;
+
 class Jogo
 {
     private:
         Gerenciador_Grafico* pG;
         Jogador* jogador1;
+        Jogador* jogador2;
         ListaEntidade* lista;
         Fase* fase1;
-        sf::Texture t[27];
+        Texture t[27];
+        Texture imagem_de_fundo;
         
     public:
         Jogo();

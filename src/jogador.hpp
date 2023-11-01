@@ -18,5 +18,4 @@ public:
     ~Jogador();
 
     void mover();
-    //void getPosition();
 };
