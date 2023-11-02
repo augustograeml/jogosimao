@@ -1,6 +1,6 @@
 #include "fase.hpp"
 
-Fase::Fase(Jogador* j1, sf::RenderWindow* w)
+Fase::Fase(Jogador* j1, Jogador* j2, sf::RenderWindow* w)
 {
     this->window = w;
     this->jogador1 = j1;

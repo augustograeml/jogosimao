@@ -13,7 +13,7 @@ class Fase
         sf::RenderWindow* window;
 
     public:
-        Fase(Jogador* j1, sf::RenderWindow* w);
+        Fase(Jogador* j1, Jogador* j2, sf::RenderWindow* w);
         ~Fase();
 
         void inicializaELementos(); 

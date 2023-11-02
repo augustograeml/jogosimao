@@ -11,10 +11,10 @@ Jogo::Jogo():
     jogador2->setWindow(pG->get_Janela());
     jogador2->setSkin("src/imagem/mario.png");
 
-    fase1 = new Fase(jogador1, pG->get_Janela());
+    fase1 = new Fase(jogador1, jogador2, pG->get_Janela());
     lista = fase1->getlistaEntidades();
 
-    imagem_de_fundo.loadFromFile("src/imagem/palmeiras.png");
+    imagem_de_fundo.loadFromFile("src/imagem/palmeiras.png");   
 
     Executar();
 }
@@ -39,17 +39,20 @@ void Jogo::Executar()
             }
         }
         
-        pG->desenharTextura(&imagem_de_fundo);
+        
 
         jogador1->mover();
         pG->centralizarCamera(jogador1->getPosicao());
         pG->limpar();
+
+        pG->desenharTextura(&imagem_de_fundo);
 
         for(int i = 0; i < lista->lista.geTamanho(); i++)
         {
             Entidade* auxiliar = lista->lista.getItem(i);
             auxiliar->draw();
         }
+        
         pG->mostrar();
     }
 }
