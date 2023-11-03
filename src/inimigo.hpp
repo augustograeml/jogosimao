@@ -2,13 +2,11 @@
 #include "entidade.hpp"
 #include "jogador.hpp"
 
-class Inimigo : public Entidade
+class Inimigo : public Personagem
 {
     protected:
         sf::Vector2f posicao;
         Jogador* pjogador;
-        
-    private:
         bool maldade;
         
     public:
