@@ -1,7 +1,7 @@
 #include "jogo.hpp"
 
 Jogo::Jogo():
-    pG(Gerenciador_Grafico::get_instancia()), pE(Gerenciador_Estados::get_instancia())
+    pG(Gerenciador_Grafico::get_instancia()), pE(Gerenciador_Estados::get_instancia()), pEv(Gerenciador_Eventos::get_instancia())
 {   
     
     Fase1* fase1 = new Fase1();
@@ -25,6 +25,7 @@ Jogo::~Jogo()
 {
     delete pG;
     delete pE;
+    delete pEv;
 }
 
 void Jogo::Executar()
@@ -32,7 +33,7 @@ void Jogo::Executar()
     while (pG->get_JanelaAberta())
     {
         pG->limpar();
-        //pEv->executar();
+        pEv->executar();
         pE->executar();
         pG->mostrar();
         

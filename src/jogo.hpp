@@ -1,12 +1,9 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "jogador.hpp"
-#include "inimigo.hpp"
-#include "listaEntidadas.hpp"
-#include "fase.hpp"
 #include "fase1.hpp"
 #include "gerenciador_grafico.hpp"
 #include "gerenciador_colisoes.hpp"
+#include "gerenciador_eventos.hpp"
 
 using namespace sf;
 
@@ -14,7 +11,8 @@ class Jogo
 {
     private:
         Gerenciador_Grafico* pG;
-        Gerenciador_Estados* pE; 
+        Gerenciador_Estados* pE;
+        Gerenciador_Eventos* pEv;
 
         /*Jogador* jogador1;
         Jogador* jogador2;

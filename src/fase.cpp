@@ -12,13 +12,6 @@ Fase::Fase(int pos) : jogadores(), obstaculos(), inimigos(), Estado(pos)
     gC.set_obstaculos(&obstaculos);
     
     criar_jogadores();
-    
-    lista_entidades = new ListaEntidade();
-
-    inimigo1 = new Inimigo();
-    inimigo1->setSkin("src/imagem/luigiDireita.png");
-
-    inicializaELementos();
 }
 
 Fase::~Fase()
@@ -76,12 +69,4 @@ void Fase::criar_cenario(string caminho)
         }
     }
     arquivo.close();
-}
-
-
-
-void Fase::inicializaELementos()
-{
-    lista_entidades->incluir(jogador1);
-    lista_entidades->incluir(inimigo1);
 }
