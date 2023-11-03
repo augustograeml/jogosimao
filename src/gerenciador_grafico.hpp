@@ -1,6 +1,5 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "ente.hpp"
 class Ente;
 
 #define LARGURA_TELA 800.0  

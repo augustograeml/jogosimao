@@ -21,7 +21,6 @@ class Fase : public Entidade, public Estado
 
     public:
         Fase(int i = -1);
-        //Fase(Jogador* j1, Jogador* j2, sf::RenderWindow* w);
         ~Fase();
 
         virtual void executar() = 0;

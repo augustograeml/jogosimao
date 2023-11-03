@@ -13,13 +13,9 @@ Fase::Fase(int pos) : jogadores(), obstaculos(), inimigos(), Estado(pos)
     
     criar_jogadores();
     
-    
-    //this->window = w;
-    //this->jogador1 = j1;
     lista_entidades = new ListaEntidade();
 
     inimigo1 = new Inimigo();
-    //inimigo1->setWindow(w);
     inimigo1->setSkin("src/imagem/luigiDireita.png");
 
     inicializaELementos();
@@ -37,7 +33,7 @@ void Fase::gerenciar_colisoes()
 
 void Fase::criar_jogadores()
 {
-    //jogadores.incluir(static_cast<Entidade*>(Jogador()));
+    jogadores.incluir(static_cast<Entidade*>(new Jogador()));
 }
 
 void Fase::criar_inimigos()

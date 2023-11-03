@@ -1,4 +1,5 @@
 #include "gerenciador_grafico.hpp"
+#include "ente.hpp"
 
 Gerenciador_Grafico* Gerenciador_Grafico::instancia(nullptr);
 
