@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "entidade.hpp"
+#include "ente.hpp"
+class Ente;
 
 #define LARGURA_TELA 800.0  
 #define ALTURA_TELA 600.0
@@ -10,13 +11,13 @@ class Gerenciador_Grafico
     private:
         sf::RenderWindow* janela;
         sf::View camera;
+        //singleton
         Gerenciador_Grafico();
         static Gerenciador_Grafico* instancia;
     public:
         ~Gerenciador_Grafico();
 
-        void desenharEntidade(Entidade* pE);
-        // Propaganda:
+        void desenharEnte(Ente* pE);
         void desenharTextura(sf::Texture* pT);
         const bool get_JanelaAberta() const;
         static Gerenciador_Grafico* get_instancia();

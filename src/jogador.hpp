@@ -1,10 +1,9 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "entidade.hpp"
+#include "personagem.hpp"
 
 
-class Jogador: 
-    public Entidade
+class Jogador : public Personagem
 {
 
 private:
@@ -13,9 +12,13 @@ private:
     int vida;
     float poder;
 
+    //contador pro tempo
+    double tempo;
+
 public:
     Jogador();
     ~Jogador();
 
+    void executar();
     void mover();
 };

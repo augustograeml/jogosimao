@@ -1,9 +1,12 @@
 #include "jogo.hpp"
 
 Jogo::Jogo():
-    pG(Gerenciador_Grafico::get_instancia())
+    pG(Gerenciador_Grafico::get_instancia()), pE(Gerenciador_Estados::get_instancia())
 {   
-    jogador1 = new Jogador();
+    
+    Fase1* fase1 = new Fase1();
+
+    /*jogador1 = new Jogador();
     jogador1->setWindow(pG->get_Janela());
     jogador1->setSkin("src/imagem/parado.png");
 
@@ -11,23 +14,31 @@ Jogo::Jogo():
     jogador2->setWindow(pG->get_Janela());
     jogador2->setSkin("src/imagem/mario.png");
 
-    fase1 = new Fase(jogador1, jogador2, pG->get_Janela());
+    //fase1 = new Fase(jogador1, jogador2, pG->get_Janela());
     lista = fase1->getlistaEntidades();
 
-    imagem_de_fundo.loadFromFile("src/imagem/palmeiras.png");   
+    imagem_de_fundo.loadFromFile("src/imagem/palmeiras.png");   */
 
     Executar();
 }
 Jogo::~Jogo()
 {
-
+    delete pG;
+    delete pE;
 }
 
 void Jogo::Executar()
 {    
     while (pG->get_JanelaAberta())
     {
-        Event event;
+        pG->limpar();
+        //pEv->executar();
+        pE->executar();
+        pG->mostrar();
+        
+        
+        
+        /*Event event;
         while (pG->get_Janela()->pollEvent(event))
         {
             if (event.type == sf::Event::Closed)
@@ -53,6 +64,6 @@ void Jogo::Executar()
             auxiliar->draw();
         }
         
-        pG->mostrar();
+        pG->mostrar();*/
     }
 }

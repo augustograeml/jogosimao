@@ -4,6 +4,7 @@
 #include "inimigo.hpp"
 #include "listaEntidadas.hpp"
 #include "fase.hpp"
+#include "fase1.hpp"
 #include "gerenciador_grafico.hpp"
 #include "gerenciador_colisoes.hpp"
 
@@ -13,12 +14,14 @@ class Jogo
 {
     private:
         Gerenciador_Grafico* pG;
-        Jogador* jogador1;
+        Gerenciador_Estados* pE; 
+
+        /*Jogador* jogador1;
         Jogador* jogador2;
         ListaEntidade* lista;
         Fase* fase1;
         Texture t[27];
-        Texture imagem_de_fundo;
+        Texture imagem_de_fundo;*/
         
     public:
         Jogo();

@@ -1,13 +1,19 @@
 #include "jogador.hpp"
 
-Jogador::Jogador()
+Jogador::Jogador() : Personagem(), tempo(0.0)
 {
-    
+    corpo.setFillColor(Color::Yellow);
 }
 Jogador::~Jogador()
 {
 
 }
+
+void Jogador::executar()
+{
+    mover();
+}
+
 void Jogador::mover()
 {
         //valor normal = 0.3

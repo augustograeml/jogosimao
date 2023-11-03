@@ -13,10 +13,10 @@ Gerenciador_Grafico* Gerenciador_Grafico::instancia(nullptr);
     {
         delete janela;
     }
-    void Gerenciador_Grafico::desenharEntidade(Entidade *pE)
+    void Gerenciador_Grafico::desenharEnte(Ente *pE)
     {
         if (pE)
-            janela->draw(pE->getCorpo());
+            janela->draw(*pE->get_corpo());
     }
     void Gerenciador_Grafico::desenharTextura(sf::Texture* pT)
     {

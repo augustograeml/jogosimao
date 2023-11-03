@@ -15,10 +15,10 @@ Gerenciador_Colisoes::~Gerenciador_Colisoes()
 void Gerenciador_Colisoes::colisao_simples()
 {
     Lista<Entidade>::Iterador obst;
-    Lista<Entidade>::Iterador jog = jogadores->lista.getPrimeiro();
+    Lista<Entidade>::Iterador jog = jogadores->getPrimeiro();
     while(jog != nullptr)
     {
-        obst = obstaculos->lista.getPrimeiro();
+        obst = obstaculos->getPrimeiro();
         while (obst != nullptr)
         {
             if(colidiu(*jog, *obst))

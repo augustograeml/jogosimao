@@ -5,7 +5,14 @@
 class ListaEntidade
 {
     private:
-        
+        Lista<Entidade> LEs;
     public:
-        Lista<Entidade> lista;
+        ListaEntidade();
+        ~ListaEntidade();
+        void incluir(Entidade* pE);
+        int getTamanho();
+        void desenhar();
+        void executar();
+        Lista<Entidade>::Iterador getPrimeiro();
+
 };
