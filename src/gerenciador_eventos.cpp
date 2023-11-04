@@ -36,4 +36,5 @@ void Gerenciador_Eventos::executar()
                 break;   
         }
     }
+    
 }
