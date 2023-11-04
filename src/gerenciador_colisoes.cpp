@@ -2,6 +2,8 @@
 #include <math.h>
 #include <iostream>
 
+using namespace std;
+
 #define ACL 0.2
 
 Gerenciador_Colisoes::Gerenciador_Colisoes() : jogadores(nullptr), obstaculos(nullptr), inimigos(nullptr)
@@ -30,8 +32,9 @@ void Gerenciador_Colisoes::colisao_simples()
                 (*jog)->colidir();
                 (*obst)->colidir();
             }
+            obst.operator++();
         }
-        
+        jog.operator++();
     }
 }
 

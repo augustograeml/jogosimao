@@ -28,15 +28,11 @@ Gerenciador_Grafico* Gerenciador_Grafico::instancia(nullptr);
             janela->draw(sprite);
         }
     }
-    void Gerenciador_Grafico::desenharFundo(sf::Texture* pF)
+    void Gerenciador_Grafico::desenharFundo(sf::Sprite* pS)
     {
-        if (pF)
+        if (pS)
         {
-            sf::Sprite sprite;
-            sprite.setTexture(*pF);
-            sprite.setPosition(sf::Vector2f(0,0));
-            sprite.setScale(2,2);
-            janela->draw(sprite);
+            janela->draw(*pS);
         }
 
     }

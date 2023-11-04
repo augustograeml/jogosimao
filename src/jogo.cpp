@@ -1,4 +1,7 @@
 #include "jogo.hpp"
+#include <iostream>
+
+using namespace std;
 
 Jogo::Jogo():
     pG(Gerenciador_Grafico::get_instancia()), pE(Gerenciador_Estados::get_instancia()), pEv(Gerenciador_Eventos::get_instancia())
@@ -31,19 +34,26 @@ Jogo::~Jogo()
 
 void Jogo::Executar()
 {    
+    cout << "iuash" << endl;
+    Fase1* fase1 = new Fase1();
+    cout << "asas" << endl;
+    fase1->setWindow(pG->get_Janela());
+    cout << "pfv" << endl;
+
     while (pG->get_JanelaAberta())
     {
+        cout << "asdasd" << endl;
         pG->limpar();
         //maracutaia do indio juca
-        Fase1* fase1 = new Fase1();
-        fase1->setWindow(pG->get_Janela());
+        cout << "dsadsa" << endl;
         fase1->executar();
+        cout <<"a";
         pEv->executar();
+        cout <<"b";
         pE->executar();
+        cout <<"c";
         pG->mostrar();
-        
-        
-    
+             
         
         /*Event event;
         while (pG->get_Janela()->pollEvent(event))

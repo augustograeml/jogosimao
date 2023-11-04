@@ -1,22 +1,28 @@
 #include "fase1.hpp"
+#include <iostream>
+
+using namespace std;
 
 Fase1::Fase1() : Fase(1)
 {
     criar_cenario(ARQUIVO_CENARIO_1);
-    imagem_fundo->loadFromFile("src/imagem/fundo1.jpg");
+    //imagem_fundo->loadFromFile("src/imagem/fundo1.jpg");
+    //sprite.setTexture(*imagem_fundo);
+   // sprite.setPosition(sf::Vector2f(0,0));
+    //sprite.setScale(2,2);
 }
 
 Fase1::~Fase1()
 {
 
-}
+} 
 
 void Fase1::executar()
 {
     jogadores.executar();
     gerenciar_colisoes();
     pGG->centralizarCamera((*(jogadores.getPrimeiro()))->getPosicao());
-    pGG->desenharFundo(imagem_fundo);
+    //pGG->desenharFundo(&sprite);
     jogadores.desenhar();
     obstaculos.desenhar();
 }
