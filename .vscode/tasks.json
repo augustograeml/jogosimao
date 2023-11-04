@@ -4,13 +4,13 @@
 		{
 			"type": "cppbuild",
 			"label": "C/C++: g++.exe build active file",
-			"command": "E:\\MSYS2\\mingw64\\bin\\g++.exe",
+			"command": "C:\\MSYS2\\mingw64\\bin\\g++.exe",
 			"args": [
 				"-g",
 				"-std=c++20",
 				"${workspaceFolder}\\src\\*.cpp",
 				"-o",
-				"${workspaceFolder}\\src\\main.exe",
+				"${workspaceFolder}\\main.exe",
 				"-lsfml-system",
 				"-lsfml-window",
 				"-lsfml-graphics"
@@ -25,7 +25,7 @@
 				"kind": "build",
 				"isDefault": true
 			},
-			"detail": "compiler: E:\\MSYS2\\mingw64\\bin\\g++.exe"
+			"detail": "compiler: C:\\MSYS2\\mingw64\\bin\\g++.exe"
 		}
 	]
 }

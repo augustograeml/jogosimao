@@ -12,6 +12,7 @@ Fase::Fase(int pos) : jogadores(), obstaculos(), inimigos(), Estado(pos)
     gC.set_obstaculos(&obstaculos);
     
     criar_jogadores();
+    criar_cenario("src/cenario1.txt");
 }
 
 Fase::~Fase()
@@ -26,7 +27,9 @@ void Fase::gerenciar_colisoes()
 
 void Fase::criar_jogadores()
 {
-    jogadores.incluir(static_cast<Entidade*>(new Jogador()));
+    Entidade* temp = static_cast<Entidade*>(new Jogador());
+    temp->setWindow(pGG->get_Janela());
+    jogadores.incluir(temp);
 }
 
 void Fase::criar_inimigos()
@@ -58,7 +61,12 @@ void Fase::criar_cenario(string caminho)
                 case '0':
                     aux = static_cast<Entidade*> (new Obstaculo_Facil(Vector2f(j * TAM, i * TAM)));
                     if(aux)
+                    {
+                        aux->setWindow(pGG->get_Janela());
                         obstaculos.incluir(aux);
+                    }
+
+                        
                     break;
 
                 //colocar depois um case pra setar a posicao dos jogadores e um pra setar a posicao dos inimigos
@@ -69,4 +77,4 @@ void Fase::criar_cenario(string caminho)
         }
     }
     arquivo.close();
-}
+}

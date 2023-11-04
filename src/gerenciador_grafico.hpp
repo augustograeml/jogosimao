@@ -18,6 +18,7 @@ class Gerenciador_Grafico
 
         void desenharEnte(Ente* pE);
         void desenharTextura(sf::Texture* pT);
+        void desenharFundo(sf::Texture* pF);
         const bool get_JanelaAberta() const;
         static Gerenciador_Grafico* get_instancia();
         void mostrar();
