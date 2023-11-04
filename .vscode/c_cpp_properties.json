@@ -10,7 +10,7 @@
           "_DEBUG",
           "UNICODE"
         ],
-        "compilerPath": "E:\\MSYS2\\mingw64\\bin\\g++.exe",
+        "compilerPath": "C:\\MSYS2\\mingw64\\bin\\g++.exe",
         "cStandard": "c17",
         "cppStandard": "c++20"
       }

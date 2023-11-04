@@ -28,6 +28,18 @@ Gerenciador_Grafico* Gerenciador_Grafico::instancia(nullptr);
             janela->draw(sprite);
         }
     }
+    void Gerenciador_Grafico::desenharFundo(sf::Texture* pF)
+    {
+        if (pF)
+        {
+            sf::Sprite sprite;
+            sprite.setTexture(*pF);
+            sprite.setPosition(sf::Vector2f(0,0));
+            sprite.setScale(2,2);
+            janela->draw(sprite);
+        }
+
+    }
     const bool Gerenciador_Grafico::get_JanelaAberta() const
     {
         return janela->isOpen();
@@ -46,7 +58,7 @@ Gerenciador_Grafico* Gerenciador_Grafico::instancia(nullptr);
     void Gerenciador_Grafico::limpar()
     {
         if (get_JanelaAberta())
-            janela->clear();
+            janela->clear(sf::Color::Blue);
     }
     void Gerenciador_Grafico::fecharJanela()
     {

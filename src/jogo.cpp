@@ -4,7 +4,8 @@ Jogo::Jogo():
     pG(Gerenciador_Grafico::get_instancia()), pE(Gerenciador_Estados::get_instancia()), pEv(Gerenciador_Eventos::get_instancia())
 {   
     
-    Fase1* fase1 = new Fase1();
+   
+   
 
     /*jogador1 = new Jogador();
     jogador1->setWindow(pG->get_Janela());
@@ -33,6 +34,10 @@ void Jogo::Executar()
     while (pG->get_JanelaAberta())
     {
         pG->limpar();
+        //maracutaia do indio juca
+        Fase1* fase1 = new Fase1();
+        fase1->setWindow(pG->get_Janela());
+        fase1->executar();
         pEv->executar();
         pE->executar();
         pG->mostrar();
