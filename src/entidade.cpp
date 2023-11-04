@@ -1,7 +1,7 @@
 #include "entidade.hpp"
 
 Entidade::Entidade(Vector2f pos):
-    Ente(Vector2f(TAM, TAM)), corpo(pos), nochao(false), velocidade(0.f, 0.f)
+    Ente(Vector2f(TAM, TAM)), posicao(pos), nochao(false), velocidade(0.f, 0.f)
 {
     corpo.setPosition(posicao);
 }

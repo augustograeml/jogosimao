@@ -6,9 +6,9 @@
 class Jogador : public Personagem
 {
 
-private:
-    sf::Texture texturaPersonagem;
-    sf::Vector2f posicao;
+protected:
+    Texture texturaPersonagem;
+    Vector2f posicao;
     int vida;
     float poder;
 

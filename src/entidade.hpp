@@ -1,12 +1,11 @@
 #pragma once
 #include "ente.hpp"
 #include <SFML/Graphics.hpp>
-#define TAM 5.f
+#define TAM 25.f
 
 class Entidade : public Ente
 {
     protected:  
-        sf::RectangleShape corpo;
         sf::Texture Textura;
         sf::RenderWindow *window;
 
@@ -28,9 +27,7 @@ class Entidade : public Ente
         Vector2f getVelocidade() {return velocidade;}
         void setVelocidade(Vector2f v) {velocidade = v;}
 
-
         void setWindow( sf::RenderWindow* window)   {this->window = window;} 
         void setSkin(const std::string filename);
-        sf::RectangleShape getCorpo() {return corpo;}
-        void draw(){window->draw(corpo);}
+        //void draw(){window->draw(corpo);}
 };

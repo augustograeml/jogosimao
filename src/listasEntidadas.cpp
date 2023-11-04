@@ -26,7 +26,7 @@ void ListaEntidade::desenhar()
     Lista<Entidade>::Iterador aux = LEs.getPrimeiro();
     while(aux != nullptr)
     {
-        (*aux)->draw();
+        (*aux)->desenhar();
         aux.operator++();
     }
 }
