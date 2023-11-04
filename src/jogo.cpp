@@ -39,6 +39,7 @@ void Jogo::Executar()
         
         
         
+        
         /*Event event;
         while (pG->get_Janela()->pollEvent(event))
         {
