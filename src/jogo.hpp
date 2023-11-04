@@ -2,7 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "fase1.hpp"
 #include "gerenciador_grafico.hpp"
-#include "gerenciador_colisoes.hpp"
+#include "gerenciador_estados.hpp"
 #include "gerenciador_eventos.hpp"
 
 using namespace sf;

@@ -46,5 +46,4 @@ void Gerenciador_Estados::adicionar_estado(Estado* pE)
 void Gerenciador_Estados::executar()
 {
     estados[estadoAtual]->executar();
-
 }

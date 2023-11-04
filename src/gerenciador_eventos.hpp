@@ -14,4 +14,6 @@ class Gerenciador_Eventos
         ~Gerenciador_Eventos();
         void executar();
         static Gerenciador_Eventos* get_instancia();
+        
+
 };
