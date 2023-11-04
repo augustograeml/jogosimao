@@ -34,6 +34,7 @@ void Jogo::Executar()
     while (pG->get_JanelaAberta())
     {
         pG->limpar();
+        //maracutaia do indio juca
         Fase1* fase1 = new Fase1();
         fase1->setWindow(pG->get_Janela());
         fase1->executar();
