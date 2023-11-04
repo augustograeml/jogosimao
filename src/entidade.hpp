@@ -1,7 +1,7 @@
 #pragma once
 #include "ente.hpp"
 #include <SFML/Graphics.hpp>
-#define TAM 50.f
+#define TAM 5.f
 
 class Entidade : public Ente
 {
