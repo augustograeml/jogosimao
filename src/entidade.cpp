@@ -21,6 +21,7 @@ void Entidade::setPosicao(Vector2f p)
     corpo.setPosition(p);
 }
 
+
 void Entidade::setSkin(const std::string filename)
 {
     Textura.loadFromFile(filename);
