@@ -20,5 +20,5 @@ public:
     ~Jogador();
 
     void executar();
-    void mover();
+    void mover(); 
 };
