@@ -20,7 +20,7 @@ Fase1::~Fase1()
 void Fase1::executar()
 {
     jogadores.executar();
-    gerenciar_colisoes();
+    //gerenciar_colisoes();
     pGG->centralizarCamera((*(jogadores.getPrimeiro()))->getPosicao());
     //pGG->desenharFundo(&sprite);
     jogadores.desenhar();

@@ -13,7 +13,7 @@ Entidade::~Entidade()
 
 void Entidade::colidir()
 {
-    
+
 }
 
 void Entidade::setPosicao(Vector2f p)

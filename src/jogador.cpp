@@ -41,17 +41,17 @@ void Jogador::mover()
             corpo.move(sf::Vector2f(0,2.3));
         }*/
         if (!nochao)
-                velocidade += sf::Vector2f(0, 0.1);  
+                velocidade = velocidade + sf::Vector2f(0, 0.1);  
             else
                 velocidade = sf::Vector2f(velocidade.x, 0.f);
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-                velocidade += sf::Vector2f(0.1, 0);
+                velocidade = velocidade + Vector2f(0.1, 0);
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-                velocidade += sf::Vector2f(-0.1, 0);   
+                velocidade = velocidade + sf::Vector2f(-0.1, 0);   
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && nochao)
-                velocidade += sf::Vector2f(0, -5.f);    
+                velocidade = velocidade + sf::Vector2f(0, -5.f);    
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-                velocidade += sf::Vector2f(0, 0.1);  
+                velocidade = velocidade + sf::Vector2f(0, 0.1);  
             corpo.setPosition(corpo.getPosition() + velocidade);
             nochao = false;
 
