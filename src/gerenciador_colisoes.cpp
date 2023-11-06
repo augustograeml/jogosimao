@@ -20,18 +20,16 @@ Gerenciador_Colisoes::~Gerenciador_Colisoes()
 
 void Gerenciador_Colisoes::colisao_simples()
 {
-    cout << "Colisao simples \n";
-    Lista<Entidade>::Iterador obst;
     Lista<Entidade>::Iterador jog = jogadores->getPrimeiro();
     while(jog != nullptr)
     {
-        obst = obstaculos->getPrimeiro();
+        Lista<Entidade>::Iterador obst = obstaculos->getPrimeiro();
         while (obst != nullptr)
         {
             if(colidiu(*jog, *obst))
             {
-                (*jog)->colidir();
-                (*obst)->colidir();
+                //(*jog)->colidir();
+                //(*obst)->colidir();
             }
             obst.operator++();
         }
@@ -53,7 +51,6 @@ int Gerenciador_Colisoes::colidiu(Entidade* e1, Entidade* e2)
             e1->setPosicao(Vector2f(e1->getPosicao().x, e2->getPosicao().y - (tam1.y + tam2.y) / 2));
             e1->set_nochao(true);
             e1->setVelocidade(Vector2f(e1->getVelocidade().x, -e1->getVelocidade().y * ACL));
-            std::cout << " colidiu por baixo \n";
             return 4;
         }
         else
@@ -69,14 +66,12 @@ int Gerenciador_Colisoes::colidiu(Entidade* e1, Entidade* e2)
         {
             e1->setPosicao(Vector2f(e2->getPosicao().x + (tam1.x + tam2.x) / 2, e1->getPosicao().y));
             e1->setVelocidade(Vector2f(-e1->getVelocidade().x * ACL, e1->getVelocidade().y));
-            std::cout << " colidiu pela direita\n";
             return 1;
         }
         else
         {
             e1->setPosicao(Vector2f(e2->getPosicao().x - (tam1.x + tam2.x) / 2, e1->getPosicao().y));
             e1->setVelocidade(Vector2f(-e1->getVelocidade().x * ACL, e1->getVelocidade().y));
-            std::cout << " colidiu pela esquerda\n";
             return 3;
         }
     }

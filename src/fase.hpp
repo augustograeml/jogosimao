@@ -23,6 +23,4 @@ class Fase : public Entidade, public Estado
         void criar_jogadores();
         void criar_inimigos();
         void criar_cenario(string caminho);
-
-        void inicializaELementos();
 };

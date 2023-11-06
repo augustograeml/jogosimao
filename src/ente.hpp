@@ -12,7 +12,7 @@ class Ente
         static Gerenciador_Grafico* pGG;
         RectangleShape corpo;
     public:
-        Ente(Vector2f tamanho = Vector2f(50.f, 50.f));
+        Ente(Vector2f tamanho = Vector2f(20.f, 20.f));
         ~Ente();
         virtual void executar() = 0;
         RectangleShape* get_corpo();

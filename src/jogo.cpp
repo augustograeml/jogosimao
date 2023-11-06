@@ -5,10 +5,8 @@ using namespace std;
 
 Jogo::Jogo():
     pG(Gerenciador_Grafico::get_instancia()), pE(Gerenciador_Estados::get_instancia()), pEv(Gerenciador_Eventos::get_instancia())
-{   
-    
-   
-   Fase1* fase1 = new Fase1();
+{      
+   fase1 = new Fase1();
    fase1->setWindow(pG->get_Janela());
 
     /*jogador1 = new Jogador();
@@ -35,14 +33,10 @@ Jogo::~Jogo()
 
 void Jogo::Executar()
 {    
-    
-
     while (pG->get_JanelaAberta())
     {
-       
-        //maracutaia do indio juca
-        //fase1->executar();
         pG->limpar();
+        //fase1->executar();
         pEv->executar();
         pE->executar();     //desenha a fase e o jogador 
         pG->mostrar();

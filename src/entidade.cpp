@@ -1,4 +1,7 @@
 #include "entidade.hpp"
+#include <iostream>
+
+using namespace std;
 
 Entidade::Entidade(Vector2f pos):
     Ente(Vector2f(TAM, TAM)), posicao(pos), nochao(false), velocidade(0.f, 0.f)
@@ -13,7 +16,6 @@ Entidade::~Entidade()
 
 void Entidade::colidir()
 {
-
 }
 
 void Entidade::setPosicao(Vector2f p)

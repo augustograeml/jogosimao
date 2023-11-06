@@ -13,6 +13,7 @@ class Jogo
         Gerenciador_Grafico* pG;
         Gerenciador_Estados* pE;
         Gerenciador_Eventos* pEv;
+        Fase1* fase1;
 
         /*Jogador* jogador1;
         Jogador* jogador2;
