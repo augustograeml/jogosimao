@@ -25,10 +25,13 @@ void Gerenciador_Colisoes::colisao_simples()
     while(jog != nullptr)
     {
         obst = obstaculos->getPrimeiro();
+        cout << "tudo certo ate aqui" << endl;
         while (obst != nullptr)
         {
+            cout << "antes do if" << endl;
             if(colidiu(*jog, *obst))
             {
+                cout << "depois do if" << endl;
                 (*jog)->colidir();
                 (*obst)->colidir();
             }

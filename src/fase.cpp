@@ -77,4 +77,4 @@ void Fase::criar_cenario(string caminho)
         }
     }
     arquivo.close();
-}
+}
