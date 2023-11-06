@@ -1,48 +1,42 @@
 #include "listaEntidadas.hpp"
-#include <iostream>
+ 
+    ListaEntidade::ListaEntidade():
+    LEs()
+    {
 
-ListaEntidade::ListaEntidade() : LEs()
-{
+    }
+    ListaEntidade::~ListaEntidade()
+    {
 
-}
-
-ListaEntidade::~ListaEntidade()
-{
-
-}
-
-void ListaEntidade::incluir(Entidade* pE)
-{
-    if(pE)
+    }
+    void ListaEntidade::incluir(Entidade* pE)
+    {
         LEs.incluir(pE);
-}
-
-int ListaEntidade::getTamanho()
-{
-    return LEs.geTamanho();
-}
-
-void ListaEntidade::desenhar()
-{
-    Lista<Entidade>::Iterador aux = LEs.getPrimeiro();
-    while(aux != nullptr)
-    {
-        (*aux)->desenhar();
-        aux.operator++();
     }
-}
-
-void ListaEntidade::executar()
-{
-    Lista<Entidade>::Iterador aux = LEs.getPrimeiro();
-    while(aux != nullptr)
+    const int ListaEntidade::get_tamanho() const
     {
-        (*aux)->executar();
-        aux.operator++();
+        return LEs.get_tamanho();
     }
-}
+    void ListaEntidade::desenhar()
+    {
+        Lista<Entidade>::Iterador aux = LEs.get_primeiro();
+        while (aux != nullptr)
+        {
+            (*aux)->desenhar();
+            aux++;
+        }
+    }
+    void ListaEntidade::executar()
+    {
+        Lista<Entidade>::Iterador aux = LEs.get_primeiro();
+        while (aux != nullptr)
+        {
+            (*aux)->executar();
+            aux++;
+        }        
+    }
+    Lista<Entidade>::Iterador ListaEntidade::get_primeiro()
+    {
+        return LEs.get_primeiro();
+    }
 
-Lista<Entidade>::Iterador ListaEntidade::getPrimeiro()
-{
-    return LEs.getPrimeiro();
-}

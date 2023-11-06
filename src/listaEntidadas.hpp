@@ -1,18 +1,20 @@
 #pragma once
+
 #include "lista.hpp"
 #include "entidade.hpp"
 
-class ListaEntidade
-{
+ // Coleção
+    class ListaEntidade
+    {
     private:
         Lista<Entidade> LEs;
     public:
         ListaEntidade();
         ~ListaEntidade();
         void incluir(Entidade* pE);
-        int getTamanho();
+        const int get_tamanho() const;
+        // void percorrer();
         void desenhar();
         void executar();
-        Lista<Entidade>::Iterador getPrimeiro();
-
-};
+        Lista<Entidade>::Iterador get_primeiro();
+    };

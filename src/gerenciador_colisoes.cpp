@@ -20,16 +20,16 @@ Gerenciador_Colisoes::~Gerenciador_Colisoes()
 
 void Gerenciador_Colisoes::colisao_simples()
 {
-    Lista<Entidade>::Iterador jog = jogadores->getPrimeiro();
+    Lista<Entidade>::Iterador jog = jogadores->get_primeiro();
     while(jog != nullptr)
     {
-        Lista<Entidade>::Iterador obst = obstaculos->getPrimeiro();
+        Lista<Entidade>::Iterador obst = obstaculos->get_primeiro();
         while (obst != nullptr)
         {
             if(colidiu(*jog, *obst))
             {
-                //(*jog)->colidir();
-                //(*obst)->colidir();
+                (*jog)->colidir();
+                (*obst)->colidir();
             }
             obst.operator++();
         }
