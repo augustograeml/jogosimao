@@ -20,19 +20,16 @@ Gerenciador_Colisoes::~Gerenciador_Colisoes()
 
 void Gerenciador_Colisoes::colisao_simples()
 {
-    std::cout << "Colisao simples \n";
+    cout << "Colisao simples \n";
     Lista<Entidade>::Iterador obst;
     Lista<Entidade>::Iterador jog = jogadores->getPrimeiro();
     while(jog != nullptr)
     {
         obst = obstaculos->getPrimeiro();
-        cout << "tudo certo ate aqui" << endl;
         while (obst != nullptr)
         {
-            cout << "antes do if" << endl;
             if(colidiu(*jog, *obst))
             {
-                cout << "depois do if" << endl;
                 (*jog)->colidir();
                 (*obst)->colidir();
             }
@@ -44,8 +41,6 @@ void Gerenciador_Colisoes::colisao_simples()
 
 int Gerenciador_Colisoes::colidiu(Entidade* e1, Entidade* e2)
 {
-    
-
     Vector2f pos1 = e1->getPosicao(), pos2 = e2->getPosicao(), tam1 = e1->getTamanho(), tam2 = e2->getTamanho(),
     d(  fabs(pos1.x - pos2.x) - ((tam1.x + tam2.x)/2.f),
         fabs(pos1.y - pos2.y) - ((tam1.y + tam2.y)/2.f)

@@ -68,16 +68,15 @@ void Fase::criar_cenario(string caminho)
 
                         
                     break;
-                /*case '1':
+                case '1':
                     aux = static_cast<Entidade*> (new Jogador());
                     if(aux)
                     {
                         aux->setWindow(pGG->get_Janela());
                         aux->setPosicao(sf::Vector2f(j * TAM, i * TAM));
                         jogadores.incluir(aux);
-
                     }
-                    break;*/
+                    break;
                 //colocar depois um case pra setar a posicao dos jogadores e um pra setar a posicao dos inimigos
                 default:
                     break;

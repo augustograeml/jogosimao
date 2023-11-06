@@ -1,6 +1,9 @@
 #pragma once
 #include "ente.hpp"
 #include <SFML/Graphics.hpp>
+
+using namespace sf;
+
 #define TAM 25.f
 
 class Entidade : public Ente
