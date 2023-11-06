@@ -31,7 +31,6 @@ void Gerenciador_Eventos::executar()
                 break;
             case Event::KeyPressed:
                 //implementar padrao observer aqui depois
-                break;
                break;
             default:
                 break;   

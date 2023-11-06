@@ -8,7 +8,8 @@ Jogo::Jogo():
 {   
     
    
-   
+   Fase1* fase1 = new Fase1();
+   fase1->setWindow(pG->get_Janela());
 
     /*jogador1 = new Jogador();
     jogador1->setWindow(pG->get_Janela());
@@ -34,16 +35,16 @@ Jogo::~Jogo()
 
 void Jogo::Executar()
 {    
-    Fase1* fase1 = new Fase1();
-    fase1->setWindow(pG->get_Janela());
+    
 
     while (pG->get_JanelaAberta())
     {
-        pG->limpar();
+       
         //maracutaia do indio juca
-        fase1->executar();
+        //fase1->executar();
+        pG->limpar();
         pEv->executar();
-        pE->executar();
+        pE->executar();     //desenha a fase e o jogador 
         pG->mostrar();
              
         

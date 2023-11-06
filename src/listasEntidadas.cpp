@@ -1,4 +1,5 @@
 #include "listaEntidadas.hpp"
+#include <iostream>
 
 ListaEntidade::ListaEntidade() : LEs()
 {

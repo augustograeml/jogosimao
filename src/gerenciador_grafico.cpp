@@ -54,7 +54,7 @@ Gerenciador_Grafico* Gerenciador_Grafico::instancia(nullptr);
     void Gerenciador_Grafico::limpar()
     {
         if (get_JanelaAberta())
-            janela->clear(sf::Color::Blue);
+            janela->clear();
     }
     void Gerenciador_Grafico::fecharJanela()
     {
