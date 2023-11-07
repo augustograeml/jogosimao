@@ -1,6 +1,7 @@
 #pragma once
 #include "entidade.hpp"
 #include "jogador.hpp"
+#include "jogador2.hpp"
 #include "inimigo.hpp"
 #include "inimigo_facil.hpp"
 #include "inimigo_dificil.hpp"
