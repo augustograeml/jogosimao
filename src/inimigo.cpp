@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 
-Inimigo::Inimigo() : maldade(false), pjogador(nullptr)
+Inimigo::Inimigo(Vector2f pos, Vector2f vel) : Personagem(pos, vel), maldade(false), pjogador(nullptr)
 {
     int m = rand() % 6;
     if(m == 1)
@@ -32,9 +32,5 @@ void Inimigo::update(sf::Vector2f& posicao_jogador)
     sf::Vector2f direcao = posicao_jogador - getPosicao();
     float comprimento = sqrt(direcao.x * direcao.x + direcao.y * direcao.y);
     direcao /= comprimento;
-
-}
-void Inimigo::executar()
-{
 
 }

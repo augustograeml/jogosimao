@@ -1,11 +1,10 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "jogador.hpp"
-#include "inimigo.hpp"
-#include "listaEntidadas.hpp"
-#include "fase.hpp"
+#include "fase1.hpp"
 #include "gerenciador_grafico.hpp"
-#include "gerenciador_colisoes.hpp"
+#include "gerenciador_estados.hpp"
+#include "gerenciador_eventos.hpp"
+#include "observer_tecla.hpp"
 
 using namespace sf;
 
@@ -13,12 +12,18 @@ class Jogo
 {
     private:
         Gerenciador_Grafico* pG;
-        Jogador* jogador1;
+        Gerenciador_Estados* pE;
+        Gerenciador_Eventos* pEv;
+
+        Observer_Tecla obs1;
+        Observer_Tecla obs2;
+
+        /*Jogador* jogador1;
         Jogador* jogador2;
         ListaEntidade* lista;
         Fase* fase1;
         Texture t[27];
-        Texture imagem_de_fundo;
+        Texture imagem_de_fundo;*/
         
     public:
         Jogo();

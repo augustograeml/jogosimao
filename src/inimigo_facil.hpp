@@ -5,12 +5,12 @@ class Inimigo_Facil : public Inimigo
 {
     private:
         int vidas;
-        float velocidade;
         int forca;
 
     public:
-        Inimigo_Facil();
+        Inimigo_Facil(Vector2f pos = Vector2f(0.f, 0.f), Vector2f vel = Vector2f(0.f, 0.f));
         ~Inimigo_Facil();
-        void executar();
-        void atacar();
+
+        void mover();
+        void atualizar();
 };

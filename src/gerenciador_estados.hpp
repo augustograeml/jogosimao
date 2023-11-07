@@ -4,6 +4,13 @@ using namespace std;
 
 class Estado;
 
+/*
+Estados:
+0 - Menu
+1 - Fase 1
+2 - Fase 2
+*/
+
 class Gerenciador_Estados
 {
     private:

@@ -1,20 +1,31 @@
 #include "entidade.hpp"
+#include <iostream>
 
-Entidade::Entidade(sf::Vector2f pos):
-    corpo(pos)
+using namespace std;
+
+Entidade::Entidade(Vector2f pos):
+    Ente(Vector2f(TAM, TAM)), posicao(pos), nochao(false), velocidade(0.f, 0.f)
 {
-    
+    corpo.setPosition(posicao);
 }
+
 Entidade::~Entidade()
 {
 
 }
+
+void Entidade::colidir()
+{
+}
+
+void Entidade::setPosicao(Vector2f p)
+{
+    corpo.setPosition(p);
+}
+
+
 void Entidade::setSkin(const std::string filename)
 {
     Textura.loadFromFile(filename);
     corpo.setTexture(&Textura);
-}
-sf::Vector2f Entidade::getPosicao()
-{
-    return getCorpo().getPosition();
 }

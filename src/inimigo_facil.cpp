@@ -1,7 +1,7 @@
 #include "inimigo_facil.hpp"
 #include "inimigo.hpp"
 
-Inimigo_Facil::Inimigo_Facil() : Inimigo(), vidas(1), velocidade(0.05), forca(10)
+Inimigo_Facil::Inimigo_Facil(Vector2f pos, Vector2f vel) : Inimigo(pos, vel), vidas(1), forca(10)
 {
 
 }
@@ -11,16 +11,18 @@ Inimigo_Facil::~Inimigo_Facil()
     pjogador = nullptr;
 }
 
-void Inimigo_Facil::atacar()
+void Inimigo_Facil::atualizar()
 {
-
+    //corpo.setPosition(corpo.getPosition() + velocidade);
 }
 
-void Inimigo_Facil::executar()
+void Inimigo_Facil::mover()
 {
-    while(vidas)
-    {
-        atacar();
-    }
+    velocidade += Vector2f(rand() % 10 - 5, (float) (nochao ? - (rand() % 5) : 0));
 
+    if(!nochao)
+        velocidade += Vector2f(0, 0.1);
+    else
+        velocidade = Vector2f(velocidade.x, 0.f);
+    nochao = false;
 }
