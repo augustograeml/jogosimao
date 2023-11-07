@@ -11,7 +11,6 @@ Fase::Fase(int pos) : jogadores(), obstaculos(), inimigos(), Estado(pos)
     gC.set_jogadores(&jogadores);
     gC.set_obstaculos(&obstaculos);
     
-    //criar_jogadores();
     criar_cenario("src/cenario1.txt");
 }
 
@@ -23,16 +22,6 @@ Fase::~Fase()
 void Fase::gerenciar_colisoes()
 {
     gC.colisao_simples();
-}
-
-void Fase::criar_jogadores()
-{
-    Entidade* temp1 = static_cast<Entidade*>(new Jogador(Vector2f(0.f, 0.f), Vector2f(0.f, 0.1)));
-    Entidade* temp2 = static_cast<Entidade*>(new Jogador2(Vector2f(0.f, 0.f), Vector2f(0.f, 0.1)));
-    temp1->setWindow(pGG->get_Janela());
-    temp2->setWindow(pGG->get_Janela());
-    jogadores.incluir(temp1);
-    jogadores.incluir(temp2);
 }
 
 void Fase::criar_inimigos()
