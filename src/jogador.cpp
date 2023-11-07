@@ -1,5 +1,6 @@
 #include "jogador.hpp"
 #include <iostream>
+using namespace std;
 
 Jogador::Jogador(Vector2f pos, Vector2f vel) : Personagem(pos, vel), tempo(0.0)
 {
@@ -40,23 +41,26 @@ void Jogador::mover()
         {
             corpo.move(sf::Vector2f(0,2.3));
         }*/
-
         if (!nochao)
-                velocidade = velocidade + sf::Vector2f(0, 0.1);  
+                {
+                    velocidade.y += 0.1f;
+                //velocidade.y = 0;
+                }
         else
         {   
-            velocidade = sf::Vector2f(velocidade.x, 0.f);
+            velocidade.y = 0.0f;
             
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-                velocidade = velocidade + Vector2f(0.1, 0);
+                velocidade.x += 0.1f;
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-                velocidade = velocidade + sf::Vector2f(-0.1, 0);   
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && nochao)
-                velocidade = velocidade + sf::Vector2f(0, -5.f);    
+                velocidade.x += -0.1f;   
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+                velocidade.y += -0.1f;    
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-                velocidade = velocidade + sf::Vector2f(0, 0.1);  
-            corpo.setPosition(corpo.getPosition() + velocidade);
+                velocidade.y += 0.1f;  
             nochao = false;
         }
+
+        corpo.setPosition(corpo.getPosition() + velocidade);
 
 }

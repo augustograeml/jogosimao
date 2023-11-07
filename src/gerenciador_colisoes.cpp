@@ -20,16 +20,19 @@ Gerenciador_Colisoes::~Gerenciador_Colisoes()
 
 void Gerenciador_Colisoes::colisao_simples()
 {
+    int i;
     Lista<Entidade>::Iterador jog = jogadores->get_primeiro();
     while(jog != nullptr)
     {
         Lista<Entidade>::Iterador obst = obstaculos->get_primeiro();
         while (obst != nullptr)
         {
-            if(colidiu(*jog, *obst))
+            i = colidiu(*jog, *obst);
+            if(i == 4)
             {
-                (*jog)->colidir();
-                (*obst)->colidir();
+                (*jog)->set_nochao(true);
+                //(*jog)->colidir();
+                //(*obst)->colidir();
             }
             obst++;
         }
@@ -48,15 +51,15 @@ int Gerenciador_Colisoes::colidiu(Entidade* e1, Entidade* e2)
     {
         if(pos1.y <= pos2.y)
         {
-            e1->setPosicao(Vector2f(e1->getPosicao().x, e2->getPosicao().y - (tam1.y + tam2.y) / 2));
+            //e1->setPosicao(Vector2f(e1->getPosicao().x, e2->getPosicao().y - (tam1.y + tam2.y) / 2));
             e1->set_nochao(true);
-            e1->setVelocidade(Vector2f(e1->getVelocidade().x, -e1->getVelocidade().y * ACL));
+            //e1->setVelocidade(Vector2f(e1->getVelocidade().x, -e1->getVelocidade().y * ACL));
             return 4;
         }
         else
         {
-            e1->setPosicao(Vector2f(e1->getPosicao().x, e2->getPosicao().y + (tam1.y + tam2.y) / 2));
-            e1->setPosicao(Vector2f(e1->getVelocidade().x, -e1->getVelocidade().y * ACL));
+            //e1->setPosicao(Vector2f(e1->getPosicao().x, e2->getPosicao().y + (tam1.y + tam2.y) / 2));
+            //e1->setPosicao(Vector2f(e1->getVelocidade().x, -e1->getVelocidade().y * ACL));
             return 2;
         }
     }
@@ -64,14 +67,14 @@ int Gerenciador_Colisoes::colidiu(Entidade* e1, Entidade* e2)
     {
         if(pos1.x >= pos2.x)
         {
-            e1->setPosicao(Vector2f(e2->getPosicao().x + (tam1.x + tam2.x) / 2, e1->getPosicao().y));
-            e1->setVelocidade(Vector2f(-e1->getVelocidade().x * ACL, e1->getVelocidade().y));
+            //e1->setPosicao(Vector2f(e2->getPosicao().x + (tam1.x + tam2.x) / 2, e1->getPosicao().y));
+            //e1->setVelocidade(Vector2f(-e1->getVelocidade().x * ACL, e1->getVelocidade().y));
             return 1;
         }
         else
         {
-            e1->setPosicao(Vector2f(e2->getPosicao().x - (tam1.x + tam2.x) / 2, e1->getPosicao().y));
-            e1->setVelocidade(Vector2f(-e1->getVelocidade().x * ACL, e1->getVelocidade().y));
+            //e1->setPosicao(Vector2f(e2->getPosicao().x - (tam1.x + tam2.x) / 2, e1->getPosicao().y));
+            //e1->setVelocidade(Vector2f(-e1->getVelocidade().x * ACL, e1->getVelocidade().y));
             return 3;
         }
     }
