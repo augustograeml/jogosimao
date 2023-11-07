@@ -9,7 +9,6 @@ class Inimigo_Dificil : public Inimigo
         int forca;
 
     public:
-        Inimigo_Dificil();
+        Inimigo_Dificil(Vector2f pos, Vector2f vel);
         ~Inimigo_Dificil();
-        void executar();
 };

@@ -16,9 +16,10 @@ protected:
     double tempo;
 
 public:
-    Jogador();
+    Jogador(Vector2f pos, Vector2f vel);
     ~Jogador();
 
+    void atualizar();
     void executar();
     void mover(); 
 };

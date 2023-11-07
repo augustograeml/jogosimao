@@ -1,13 +1,18 @@
 #include "jogador.hpp"
 #include <iostream>
 
-Jogador::Jogador() : Personagem(), tempo(0.0)
+Jogador::Jogador(Vector2f pos, Vector2f vel) : Personagem(pos, vel), tempo(0.0)
 {
     corpo.setFillColor(Color::Red);
 }
 Jogador::~Jogador()
 {
 
+}
+
+void Jogador::atualizar()
+{
+    corpo.setPosition(corpo.getPosition() + velocidade);
 }
 
 void Jogador::executar()

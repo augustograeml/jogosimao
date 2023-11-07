@@ -6,7 +6,7 @@ class Personagem : public Entidade
     protected:
         int vidas;
     public:
-        Personagem();
+        Personagem(Vector2f pos, Vector2f vel);
         ~Personagem();
         virtual void executar() = 0;
 };

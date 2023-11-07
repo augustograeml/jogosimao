@@ -27,7 +27,7 @@ void Fase::gerenciar_colisoes()
 
 void Fase::criar_jogadores()
 {
-    Entidade* temp = static_cast<Entidade*>(new Jogador());
+    Entidade* temp = static_cast<Entidade*>(new Jogador(Vector2f(0.f, 0.f), Vector2f(0.f, 0.1)));
     temp->setWindow(pGG->get_Janela());
     jogadores.incluir(temp);
 }
@@ -69,23 +69,25 @@ void Fase::criar_cenario(string caminho)
                         
                     break;
                 case '1':
-                    aux = static_cast<Entidade*> (new Jogador());
+                    //dados do arquivo json serao importante nesse caso aqui
+                    /*aux = static_cast<Entidade*> (new Jogador());
                     if(aux)
                     {
                         aux->setWindow(pGG->get_Janela());
                         aux->setPosicao(sf::Vector2f(j * TAM, i * TAM));
                         jogadores.incluir(aux);
-                    }
+                    }*/
                     break;
                     
                 case '2':
-                    aux = static_cast<Entidade*> (new Inimigo());
+                //dados do arquivo json serao importante nesse caso aqui
+                    /*aux = static_cast<Entidade*> (new Inimigo());
                     if(aux)
                     {
                         aux->setWindow(pGG->get_Janela());
                         aux->setPosicao(sf::Vector2f(j * TAM, i * TAM));
                         inimigos.incluir(aux);
-                    }
+                    }*/
                     break;
                 //colocar depois um case pra setar a posicao dos jogadores e um pra setar a posicao dos inimigos
                 default:

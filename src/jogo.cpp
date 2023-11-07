@@ -4,10 +4,11 @@
 using namespace std;
 
 Jogo::Jogo():
-    pG(Gerenciador_Grafico::get_instancia()), pE(Gerenciador_Estados::get_instancia()), pEv(Gerenciador_Eventos::get_instancia())
+    pG(Gerenciador_Grafico::get_instancia()), pE(Gerenciador_Estados::get_instancia()), pEv(Gerenciador_Eventos::get_instancia()),
+    obs1(1), obs2(2)
 {      
-   fase1 = new Fase1();
-   fase1->setWindow(pG->get_Janela());
+   Fase1* fase1 = new Fase1();
+   Executar();  
 
     /*jogador1 = new Jogador();
     jogador1->setWindow(pG->get_Janela());
@@ -21,8 +22,6 @@ Jogo::Jogo():
     lista = fase1->getlistaEntidades();
 
     imagem_de_fundo.loadFromFile("src/imagem/palmeiras.png");   */
-
-    Executar();
 }
 Jogo::~Jogo()
 {
@@ -36,7 +35,6 @@ void Jogo::Executar()
     while (pG->get_JanelaAberta())
     {
         pG->limpar();
-        //fase1->executar();
         pEv->executar();
         pE->executar();     //desenha a fase e o jogador 
         pG->mostrar();

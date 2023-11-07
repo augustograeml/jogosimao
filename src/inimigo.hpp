@@ -10,10 +10,12 @@ class Inimigo : public Personagem
         bool maldade;
         
     public:
-        Inimigo();
+        Inimigo(Vector2f pos, Vector2f vel);
         ~Inimigo();
         sf::Vector2f getPosicao();
         void setPosicao(sf::Vector2f& p);
         void update(sf::Vector2f& posicao_jogador);
-        virtual void executar();
+
+        virtual void atualizar() = 0;
+        virtual void mover() = 0;
 };
