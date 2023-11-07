@@ -1,9 +1,10 @@
 #pragma once
+#include "jogador.hpp"
 #include <SFML/Graphics.hpp>
 #include "personagem.hpp"
 
 
-class Jogador : public Personagem
+class Jogador2 : public Personagem
 {
 
 protected:
@@ -14,8 +15,8 @@ protected:
     double tempo;
 
 public:
-    Jogador(Vector2f pos, Vector2f vel);
-    ~Jogador();
+    Jogador2(Vector2f pos, Vector2f vel);
+    ~Jogador2();
 
     void atualizar();
     void executar();
