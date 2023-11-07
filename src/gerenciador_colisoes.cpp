@@ -20,19 +20,16 @@ Gerenciador_Colisoes::~Gerenciador_Colisoes()
 
 void Gerenciador_Colisoes::colisao_simples()
 {
-    int i;
     Lista<Entidade>::Iterador jog = jogadores->get_primeiro();
     while(jog != nullptr)
     {
         Lista<Entidade>::Iterador obst = obstaculos->get_primeiro();
         while (obst != nullptr)
         {
-            i = colidiu(*jog, *obst);
-            if(i == 4)
+            if(colidiu(*jog, *obst))
             {
-                (*jog)->set_nochao(true);
-                //(*jog)->colidir();
-                //(*obst)->colidir();
+                (*jog)->colidir();
+                (*obst)->colidir();
             }
             obst++;
         }
@@ -81,8 +78,6 @@ if(d.x < 0 && d.y < 0)
         }
     }
 
-}
-    
-    
+}    
     return 0;
 }
