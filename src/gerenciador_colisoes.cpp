@@ -22,20 +22,43 @@ void Gerenciador_Colisoes::colisao_simples()
 {
     int i;
     Lista<Entidade>::Iterador jog = jogadores->get_primeiro();
+    Lista<Entidade>::Iterador inim = inimigos->get_primeiro();
     while(jog != nullptr)
     {
-        Lista<Entidade>::Iterador obst = obstaculos->get_primeiro();
-        while (obst != nullptr)
+        while(inim != nullptr)
         {
-            i = colidiu(*jog, *obst);
-            if(i == 4)
+            int j = colidiu(*jog,*inim);
+
+            if(j == 4)
             {
-                (*jog)->set_nochao(true);
-                //(*jog)->colidir();
-                //(*obst)->colidir();
+                
             }
-            obst++;
+            else
+            {
+                (*jog)->colidir();
+                (*inim)->colidir();
+            }
+       
+            Lista<Entidade>::Iterador obst = obstaculos->get_primeiro();
+            while (obst != nullptr)
+            {
+                
+                if(colidiu(*jog, *obst) )
+                {
+                    (*jog)->colidir();
+                    (*obst)->colidir();
+                }
+                if(colidiu(*inim, *obst))
+                {
+                    (*inim)->colidir();
+                    (*obst)->colidir();
+                }
+                obst++;
+            }
+
+        inim++;
         }
+
         jog++;
     }
 }

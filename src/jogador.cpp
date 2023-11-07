@@ -4,7 +4,8 @@ using namespace std;
 
 Jogador::Jogador(Vector2f pos, Vector2f vel) : Personagem(pos, vel), tempo(0.0)
 {
-    corpo.setFillColor(Color::Red);
+    corpo.setFillColor(Color::Green);
+    this->setSkin("src/imagem/op1.png");
 }
 Jogador::~Jogador()
 {

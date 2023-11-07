@@ -13,4 +13,5 @@ class Inimigo_Facil : public Inimigo
 
         void mover();
         void atualizar();
+        void executar();
 };

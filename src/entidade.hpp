@@ -4,7 +4,7 @@
 
 using namespace sf;
 
-#define TAM 25.f
+#define TAM 50.f
 
 class Entidade : public Ente
 {

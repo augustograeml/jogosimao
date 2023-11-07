@@ -1,2 +1,2 @@
 all:
-	g++ -o prog src/*.cpp -LC:\Users\netin\Downloads\SFML-2.6.0-windows-gcc-13.1.0-mingw-64-bit\SFML-2.6.0\lib -lsfml-graphics-s -lsfml-window-s -lsfml-system-s -lwinmm -lopengl32 -lfreetype -lgdi32 -DSFML_STATIC
+	g++ -o prog src/*.cpp -LC:\Users\augus\Downloads\SFML-2.6.0-windows-gcc-13.1.0-mingw-64-bit\SFML-2.6.0\lib -lsfml-graphics-s -lsfml-window-s -lsfml-system-s -lwinmm -lopengl32 -lfreetype -lgdi32 -DSFML_STATIC

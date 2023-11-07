@@ -3,7 +3,7 @@
 
 Inimigo_Facil::Inimigo_Facil(Vector2f pos, Vector2f vel) : Inimigo(pos, vel), vidas(1), forca(10)
 {
-
+    this->setSkin("src/imagem/andando.png");
 }
 
 Inimigo_Facil::~Inimigo_Facil()
@@ -13,7 +13,7 @@ Inimigo_Facil::~Inimigo_Facil()
 
 void Inimigo_Facil::atualizar()
 {
-    //corpo.setPosition(corpo.getPosition() + velocidade);
+    corpo.setPosition(corpo.getPosition() + velocidade);
 }
 
 void Inimigo_Facil::mover()
@@ -25,4 +25,13 @@ void Inimigo_Facil::mover()
     else
         velocidade = Vector2f(velocidade.x, 0.f);
     nochao = false;
+    
+
+    atualizar();
+}
+
+void Inimigo_Facil::executar()
+{
+    //update();
+    mover();
 }

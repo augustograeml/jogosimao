@@ -8,8 +8,8 @@ Inimigo::Inimigo(Vector2f pos, Vector2f vel) : Personagem(pos, vel), maldade(fal
     if(m == 1)
         maldade = true;
 
-    corpo.setFillColor(sf::Color::Green);
-    corpo.setPosition(sf::Vector2f(400.f, 300.f));
+    corpo.setFillColor(sf::Color::Red);
+    //corpo.setPosition(sf::Vector2f(400.f, 300.f));
 }
 
 Inimigo::~Inimigo()
