@@ -31,9 +31,9 @@ void Gerenciador_Colisoes::colisao_simples()
                 (*jog)->colidir();
                 (*obst)->colidir();
             }
-            obst.operator++();
+            obst++;
         }
-        jog.operator++();
+        jog++;
     }
 }
 
