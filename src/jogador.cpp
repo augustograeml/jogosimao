@@ -47,20 +47,17 @@ void Jogador::mover()
                 //velocidade.y = 0;
                 }
         else
-        {   
             velocidade.y = 0.0f;
             
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
                 velocidade.x += 0.1f;
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
                 velocidade.x += -0.1f;   
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-                velocidade.y += -0.1f;    
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && nochao)
+                velocidade.y += -5.0f;    
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
                 velocidade.y += 0.1f;  
             nochao = false;
-        }
 
-        corpo.setPosition(corpo.getPosition() + velocidade);
-
+            atualizar();
 }
