@@ -6,7 +6,7 @@ using namespace std;
 Fase1::Fase1() : Fase(1)
 {
     criar_cenario(ARQUIVO_CENARIO_1);
-    //imagem_fundo->loadFromFile("src/imagem/fundo1.jpg");
+    //imagem_fundo->loadFromFile("src/imagem/cenario_op3.jpg");
     //sprite.setTexture(*imagem_fundo);
     //sprite.setPosition(sf::Vector2f(0,0));
     //sprite.setScale(2,2);
