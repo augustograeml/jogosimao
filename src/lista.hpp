@@ -73,6 +73,16 @@
                     tamanho++;
                 }
             }
+            /*void remover(TL *elem)
+            {
+                if(elem)
+                {
+                    
+
+                }
+                
+
+            }*/
             // Classe aninhada pública:
             class Iterador
             {

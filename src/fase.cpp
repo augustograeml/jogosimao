@@ -11,6 +11,8 @@ Fase::Fase(int pos) : jogadores(), obstaculos(), inimigos(), Estado(pos)
     gC.set_jogadores(&jogadores);
     gC.set_obstaculos(&obstaculos);
     
+    //criar_jogadores();
+    //criar_inimigos();
     criar_cenario("src/cenario1.txt");
 }
 
@@ -24,9 +26,18 @@ void Fase::gerenciar_colisoes()
     gC.colisao_simples();
 }
 
+void Fase::criar_jogadores()
+{
+    Entidade* temp = static_cast<Entidade*>(new Jogador(Vector2f(0.f, 0.f), Vector2f(0.f, 0.f)));
+    temp->setWindow(pGG->get_Janela());
+    jogadores.incluir(temp);
+}
+
 void Fase::criar_inimigos()
 {
-
+    Entidade* temp = static_cast<Entidade*>(new Inimigo_Facil(Vector2f(0.f, 0.f), Vector2f(0.f, 0.f)));
+    temp->setWindow(pGG->get_Janela());
+    inimigos.incluir(temp);
 }
 
 void Fase::criar_cenario(string caminho)
@@ -85,10 +96,10 @@ void Fase::criar_cenario(string caminho)
                     /*aux = static_cast<Entidade*> (new Inimigo(Vector2f(0.f, 0.f), Vector2f(0.f, 0.f)));
                     if(aux)
                     {
-                        aux->setWindow(pGG->get_Janela());
+                        //aux->setWindow(pGG->get_Janela());
                         aux->setPosicao(sf::Vector2f(j * TAM, i * TAM));
                         inimigos.incluir(aux);
-                    }*/
+                    }
                     break;
                 //colocar depois um case pra setar a posicao dos jogadores e um pra setar a posicao dos inimigos
                 default:

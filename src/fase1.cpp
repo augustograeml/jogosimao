@@ -21,8 +21,10 @@ void Fase1::executar()
 {
     gerenciar_colisoes();
     jogadores.executar();
+    inimigos.executar()ç
     pGG->centralizarCamera(((*(jogadores.get_primeiro()))->getPosicao() + (*(jogadores.get_primeiro()++))->getPosicao())/2.f);
     //pGG->desenharFundo(&sprite);
     obstaculos.desenhar();
+    inimigos.desenhar();
     jogadores.desenhar();
 }
