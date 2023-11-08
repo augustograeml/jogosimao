@@ -2,8 +2,8 @@
 #include <SFML/Graphics.hpp>
 class Ente;
 
-#define LARGURA_TELA 800.0  
-#define ALTURA_TELA 600.0
+#define LARGURA_TELA 950.0  
+#define ALTURA_TELA 950.0
 
 class Gerenciador_Grafico
 {
@@ -18,7 +18,7 @@ class Gerenciador_Grafico
 
         void desenharEnte(Ente* pE);
         void desenharTextura(sf::Texture* pT);
-        void desenharFundo(sf::Sprite* pS);
+        void desenharFundo(sf::RectangleShape* pR);
         const bool get_JanelaAberta() const;
         static Gerenciador_Grafico* get_instancia();
         void mostrar();

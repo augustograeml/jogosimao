@@ -11,7 +11,7 @@ class Entidade : public Ente
 {
     protected:  
         Texture Textura;
-        Sprite Sprite;
+        RectangleShape RS;
         RenderWindow *window;
 
         Vector2f posicao;
