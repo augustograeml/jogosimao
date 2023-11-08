@@ -1,6 +1,6 @@
 #include "personagem.hpp"
 
-Personagem::Personagem(Vector2f pos, Vector2f vel) : Entidade(), vidas(1)
+Personagem::Personagem(Vector2f pos, Vector2f vel) : Entidade()
 {
     corpo.setPosition(pos);
     velocidade = vel;
@@ -8,5 +8,5 @@ Personagem::Personagem(Vector2f pos, Vector2f vel) : Entidade(), vidas(1)
 
 Personagem::~Personagem()
 {
-    vidas = 0;
+    //vida = 0;
 }

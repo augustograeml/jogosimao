@@ -16,6 +16,7 @@ class Entidade : public Ente
 
         Vector2f posicao;
         Vector2f velocidade;
+        int vida;
         bool nochao;
 
     public:
@@ -28,8 +29,10 @@ class Entidade : public Ente
         virtual void colidir();
 
         Vector2f getPosicao() {return corpo.getPosition();}
-        Vector2f getTamanho()   {return corpo.getSize();}
         void setPosicao(Vector2f p);
+        Vector2f getTamanho()   {return corpo.getSize();}
+        void set_vida(int v) {vida = v;}
+        int get_vida() const {return vida;}
         void set_nochao(bool n) {nochao = n;}
         Vector2f getVelocidade() {return velocidade;}
         void setVelocidade(Vector2f v) {velocidade = v;}

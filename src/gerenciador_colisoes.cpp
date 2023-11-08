@@ -31,7 +31,7 @@ void Gerenciador_Colisoes::colisao_simples()
 
             if(j == 4)
             {
-                //matar inimigo
+                inimigos->remover((*inim));
             }
             else if (j)
             {

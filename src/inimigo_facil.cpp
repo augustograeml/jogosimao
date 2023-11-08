@@ -36,7 +36,7 @@ void Inimigo_Facil::executar()
     mover();
 }
 
-void Inimigo_Facil::atacar()
+void Inimigo_Facil::atacar(Entidade* jg)
 {
-    
+    jg->set_vida(jg->get_vida() - forca);
 }

@@ -2,7 +2,7 @@
 
 
 Inimigo_Dificil::Inimigo_Dificil(Vector2f pos, Vector2f vel):
-    Inimigo(pos, vel), vidas(3), forca(25)
+    Inimigo(pos, vel), forca(25)
 {
     this->setSkin("src/imagem/zumbi_atirador.png");
 }
@@ -36,7 +36,8 @@ void Inimigo_Dificil::executar()
     mover();
 }
 
-void Inimigo_Dificil::atacar()
+void Inimigo_Dificil::atacar(Entidade* jg)
 {
+    
 }
 

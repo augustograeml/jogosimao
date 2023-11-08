@@ -4,7 +4,6 @@
 class Inimigo_Dificil : public Inimigo
 {
     private:
-        int vidas;
         int forca;
 
     public:
@@ -14,5 +13,5 @@ class Inimigo_Dificil : public Inimigo
         void executar();
         void mover();
         void atualizar();
-        void atacar();
+        void atacar(Entidade* jg);
 };

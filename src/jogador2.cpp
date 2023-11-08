@@ -22,7 +22,7 @@ void Jogador2::executar()
     mover();
 }
 
-void Jogador2::atacar()
+void Jogador2::atacar(Entidade* jg)
 {
 }
 

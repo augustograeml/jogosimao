@@ -13,6 +13,11 @@
     {
         LEs.incluir(pE);
     }
+    void ListaEntidade::remover(Entidade* pE)
+    {
+        LEs.remover(pE);
+    }
+
     const int ListaEntidade::get_tamanho() const
     {
         return LEs.get_tamanho();

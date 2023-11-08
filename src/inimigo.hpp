@@ -19,5 +19,6 @@ class Inimigo : public Personagem
         virtual void atualizar() = 0;
         virtual void mover() = 0;
         virtual void executar() = 0;
-        virtual void atacar() = 0;
+        virtual void atacar(Entidade* jg) = 0;
+        
 };

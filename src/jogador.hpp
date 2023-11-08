@@ -7,10 +7,7 @@ class Jogador : public Personagem
 {
 
 protected:
-    int vida;
     float poder;
-
-    //contador pro tempo
     double tempo;
 
 public:
@@ -20,5 +17,5 @@ public:
     void atualizar();
     void executar();
     void mover(); 
-    void atacar(); 
+    void atacar(Entidade* jg); 
 };
