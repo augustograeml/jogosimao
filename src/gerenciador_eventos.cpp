@@ -40,6 +40,7 @@ void Gerenciador_Eventos::executar()
                 notificar(evento.key.code);
                break;
             default:
+            
                 break;   
         }
     }

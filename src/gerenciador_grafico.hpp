@@ -2,8 +2,8 @@
 #include <SFML/Graphics.hpp>
 class Ente;
 
-#define LARGURA_TELA 950.0  
-#define ALTURA_TELA 950.0
+#define LARGURA_TELA 1000.0  
+#define ALTURA_TELA 1000.0
 
 class Gerenciador_Grafico
 {
