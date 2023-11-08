@@ -3,7 +3,7 @@
 
 Inimigo_Facil::Inimigo_Facil(Vector2f pos, Vector2f vel) : Inimigo(pos, vel), vidas(1), forca(10)
 {
-    this->setSkin("src/imagem/andando.png");
+    this->setSkin("src/imagem/zumbi_bateu_morreu.png");
 }
 
 Inimigo_Facil::~Inimigo_Facil()
