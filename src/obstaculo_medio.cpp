@@ -14,3 +14,14 @@ void Obstaculo_Medio::executar()
 {
 
 }
+
+void Obstaculo_Medio::mover()
+{
+
+}
+
+void Obstaculo_Medio::atualizar()
+{
+
+}
+

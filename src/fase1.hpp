@@ -11,4 +11,6 @@ class Fase1 : public Fase
         Fase1();
         ~Fase1();
         void executar();
+        void mover();
+        void atualizar();
 };

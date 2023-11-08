@@ -18,6 +18,12 @@ void Entidade::colidir()
 {
 }
 
+void Entidade::executar()
+{
+    this->mover();
+    this->atualizar();
+}
+
 void Entidade::setPosicao(Vector2f p)
 {
     corpo.setPosition(p);

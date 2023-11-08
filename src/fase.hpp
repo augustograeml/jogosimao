@@ -2,13 +2,13 @@
 #include "entidade.hpp"
 #include "jogador.hpp"
 #include "jogador2.hpp"
-#include "inimigo.hpp"
 #include "inimigo_facil.hpp"
 #include "inimigo_dificil.hpp"
 #include "listaEntidadas.hpp"
 #include "obstaculo_facil.hpp"
 #include "gerenciador_colisoes.hpp"
 #include "estado.hpp"
+
 
 class Fase : public Entidade, public Estado
 {
@@ -23,6 +23,7 @@ class Fase : public Entidade, public Estado
         ~Fase();
 
         virtual void executar() = 0;
+
         void gerenciar_colisoes();
         void criar_inimigos();
         void criar_jogadores();

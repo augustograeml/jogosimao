@@ -9,4 +9,6 @@ class Obstaculo_Medio : public Obstaculo
         Obstaculo_Medio(Vector2f pos = Vector2(0.f, 0.f));
         ~Obstaculo_Medio();
         void executar();
+        void mover();
+        void atualizar();
 };
