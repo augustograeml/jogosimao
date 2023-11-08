@@ -4,7 +4,7 @@
 Inimigo_Dificil::Inimigo_Dificil(Vector2f pos, Vector2f vel):
     Inimigo(pos, vel), vidas(3), forca(25)
 {
-    corpo.setFillColor(Color::Magenta);
+    this->setSkin("src/imagem/zumbi_atirador.png");
 }
 
 Inimigo_Dificil::~Inimigo_Dificil()

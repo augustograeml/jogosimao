@@ -7,8 +7,6 @@ Inimigo::Inimigo(Vector2f pos, Vector2f vel) : Personagem(pos, vel), maldade(fal
     int m = rand() % 6;
     if(m == 1)
         maldade = true;
-
-    corpo.setFillColor(sf::Color::Red);
 }
 
 Inimigo::~Inimigo()
