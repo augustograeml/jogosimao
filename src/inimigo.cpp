@@ -9,7 +9,6 @@ Inimigo::Inimigo(Vector2f pos, Vector2f vel) : Personagem(pos, vel), maldade(fal
         maldade = true;
 
     corpo.setFillColor(sf::Color::Red);
-    //corpo.setPosition(sf::Vector2f(400.f, 300.f));
 }
 
 Inimigo::~Inimigo()
@@ -32,5 +31,4 @@ void Inimigo::update(sf::Vector2f& posicao_jogador)
     sf::Vector2f direcao = posicao_jogador - getPosicao();
     float comprimento = sqrt(direcao.x * direcao.x + direcao.y * direcao.y);
     direcao /= comprimento;
-
 }

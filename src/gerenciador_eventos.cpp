@@ -37,14 +37,12 @@ void Gerenciador_Eventos::executar()
                 pGrafico->fecharJanela();
                 break;
             case Event::KeyPressed:
-                //implementar padrao observer aqui depois
                 notificar(evento.key.code);
                break;
             default:
                 break;   
         }
     }
-    
 }
 
 void Gerenciador_Eventos::anexar(Observer* obs)

@@ -5,6 +5,7 @@
 using namespace sf;
 
 #define TAM 50.f
+#define TAM_CHEFAO 100.f
 
 class Entidade : public Ente
 {

@@ -8,5 +8,7 @@ class Personagem : public Entidade
     public:
         Personagem(Vector2f pos, Vector2f vel);
         ~Personagem();
-        virtual void executar() = 0;
+        
+        virtual void mover() = 0;
+        virtual void atualizar() = 0;
 };
