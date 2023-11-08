@@ -22,6 +22,10 @@ void Jogador2::executar()
     mover();
 }
 
+void Jogador2::atacar()
+{
+}
+
 void Jogador2::mover()
 {
     if (!nochao)            

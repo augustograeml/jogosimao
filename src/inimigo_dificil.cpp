@@ -36,3 +36,7 @@ void Inimigo_Dificil::executar()
     mover();
 }
 
+void Inimigo_Dificil::atacar()
+{
+}
+

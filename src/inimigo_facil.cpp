@@ -35,3 +35,8 @@ void Inimigo_Facil::executar()
     //update();
     mover();
 }
+
+void Inimigo_Facil::atacar()
+{
+    
+}

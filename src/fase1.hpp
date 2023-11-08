@@ -5,8 +5,6 @@
 class Fase1 : public Fase
 {
     private:
-        sf::Texture* imagem_fundo;
-        Sprite sprite;
     public:
         Fase1();
         ~Fase1();

@@ -20,4 +20,5 @@ public:
     void atualizar();
     void executar();
     void mover(); 
+    void atacar(); 
 };
