@@ -21,18 +21,19 @@ Gerenciador_Colisoes::~Gerenciador_Colisoes()
 void Gerenciador_Colisoes::colisao_simples()
 {
     Lista<Entidade>::Iterador jog = jogadores->get_primeiro();
-    Lista<Entidade>::Iterador inim = inimigos->get_primeiro();
+   
     while(jog != nullptr)
     {
+        Lista<Entidade>::Iterador inim = inimigos->get_primeiro();
         while(inim != nullptr)
         {
             int j = colidiu(*jog,*inim);
 
             if(j == 4)
             {
-                
+                //matar inimigo
             }
-            else
+            else if (j)
             {
                 (*jog)->colidir();
                 (*inim)->colidir();
@@ -58,7 +59,7 @@ void Gerenciador_Colisoes::colisao_simples()
         inim++;
         }
 
-        jog++;
+    jog++;
     }
 }
 
@@ -69,40 +70,40 @@ int Gerenciador_Colisoes::colidiu(Entidade* e1, Entidade* e2)
         fabs(pos1.y - pos2.y) - ((tam1.y + tam2.y)/2.f)
     );
 
-if(d.x < 0 && d.y < 0)
-{
-    if(d.x < d.y)
+    if(d.x < 0 && d.y < 0)
     {
-        if(pos1.y <= pos2.y)
+        if(d.x < d.y)
         {
-            e1->setPosicao(Vector2f(e1->getPosicao().x, e2->getPosicao().y - (tam1.y + tam2.y) / 2));
-            e1->set_nochao(true);
-            e1->setVelocidade(Vector2f(e1->getVelocidade().x, -e1->getVelocidade().y * ACL));
-            return 4;
+            if(pos1.y <= pos2.y)
+            {
+                e1->setPosicao(Vector2f(e1->getPosicao().x, e2->getPosicao().y - (tam1.y + tam2.y) / 2));
+                e1->set_nochao(true);
+                e1->setVelocidade(Vector2f(e1->getVelocidade().x, -e1->getVelocidade().y * ACL));
+                return 4;
+            }
+            else
+            {
+                e1->setPosicao(Vector2f(e1->getPosicao().x, e2->getPosicao().y + (tam1.y + tam2.y) / 2));
+                e1->setPosicao(Vector2f(e1->getVelocidade().x, -e1->getVelocidade().y * ACL));
+                return 2;
+            }
         }
         else
         {
-            e1->setPosicao(Vector2f(e1->getPosicao().x, e2->getPosicao().y + (tam1.y + tam2.y) / 2));
-            e1->setPosicao(Vector2f(e1->getVelocidade().x, -e1->getVelocidade().y * ACL));
-            return 2;
+            if(pos1.x >= pos2.x)
+            {
+                e1->setPosicao(Vector2f(e2->getPosicao().x + (tam1.x + tam2.x) / 2, e1->getPosicao().y));
+                e1->setVelocidade(Vector2f(-e1->getVelocidade().x * ACL, e1->getVelocidade().y));
+                return 1;
+            }
+            else
+            {
+                e1->setPosicao(Vector2f(e2->getPosicao().x - (tam1.x + tam2.x) / 2, e1->getPosicao().y));
+                e1->setVelocidade(Vector2f(-e1->getVelocidade().x * ACL, e1->getVelocidade().y));
+                return 3;
+            }
         }
-    }
-    else
-    {
-        if(pos1.x >= pos2.x)
-        {
-            e1->setPosicao(Vector2f(e2->getPosicao().x + (tam1.x + tam2.x) / 2, e1->getPosicao().y));
-            e1->setVelocidade(Vector2f(-e1->getVelocidade().x * ACL, e1->getVelocidade().y));
-            return 1;
-        }
-        else
-        {
-            e1->setPosicao(Vector2f(e2->getPosicao().x - (tam1.x + tam2.x) / 2, e1->getPosicao().y));
-            e1->setVelocidade(Vector2f(-e1->getVelocidade().x * ACL, e1->getVelocidade().y));
-            return 3;
-        }
-    }
 
-}    
+    }    
     return 0;
 }

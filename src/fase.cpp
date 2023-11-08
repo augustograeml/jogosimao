@@ -13,7 +13,7 @@ Fase::Fase(int pos) : jogadores(), obstaculos(), inimigos(), Estado(pos)
     
     //criar_jogadores();
     //criar_inimigos();
-    criar_cenario("src/cenario1.txt");
+    //criar_cenario("src/cenario1.txt");
 }
 
 Fase::~Fase()
@@ -28,16 +28,13 @@ void Fase::gerenciar_colisoes()
 
 void Fase::criar_jogadores()
 {
-    Entidade* temp = static_cast<Entidade*>(new Jogador(Vector2f(0.f, 0.f), Vector2f(0.f, 0.f)));
-    temp->setWindow(pGG->get_Janela());
-    jogadores.incluir(temp);
+
+    jogadores.incluir(static_cast<Entidade*>(new Jogador(Vector2f(0.f, 0.f), Vector2f(0.f, 0.f))));
 }
 
 void Fase::criar_inimigos()
-{
-    Entidade* temp = static_cast<Entidade*>(new Inimigo_Facil(Vector2f(0.f, 0.f), Vector2f(0.f, 0.f)));
-    temp->setWindow(pGG->get_Janela());
-    inimigos.incluir(temp);
+{   
+    inimigos.incluir(static_cast<Entidade*>(new Inimigo_Facil(Vector2f(0.f, 0.f), Vector2f(0.f, 0.f))));
 }
 
 void Fase::criar_cenario(string caminho)
@@ -93,10 +90,10 @@ void Fase::criar_cenario(string caminho)
                     break;
                 case '3':
                 //dados do arquivo json serao importante nesse caso aqui
-                    /*aux = static_cast<Entidade*> (new Inimigo(Vector2f(0.f, 0.f), Vector2f(0.f, 0.f)));
+                    aux = static_cast<Entidade*> (new Inimigo_Facil(Vector2f(0.f, 0.f), Vector2f(0.f, 0.f)));
                     if(aux)
                     {
-                        //aux->setWindow(pGG->get_Janela());
+                        aux->setWindow(pGG->get_Janela());
                         aux->setPosicao(sf::Vector2f(j * TAM, i * TAM));
                         inimigos.incluir(aux);
                     }

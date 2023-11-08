@@ -5,6 +5,7 @@ using namespace std;
 Jogador2::Jogador2(Vector2f pos, Vector2f vel) : Personagem(pos, vel), tempo(0.0)
 {
     corpo.setFillColor(Color::Yellow);
+    this->setSkin("src/imagem/luigiDireita.png");
 }
 Jogador2::~Jogador2()
 {

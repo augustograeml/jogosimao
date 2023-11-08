@@ -25,5 +25,6 @@ class Fase : public Entidade, public Estado
         virtual void executar() = 0;
         void gerenciar_colisoes();
         void criar_inimigos();
+        void criar_jogadores();
         void criar_cenario(string caminho);
 };
