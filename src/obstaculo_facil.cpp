@@ -2,7 +2,7 @@
 
 Obstaculo_Facil::Obstaculo_Facil(Vector2f pos): Obstaculo(pos, false)
 {
-
+    corpo.setFillColor(Color::Transparent);
 }
 
 Obstaculo_Facil::~Obstaculo_Facil()

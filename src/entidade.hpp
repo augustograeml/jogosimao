@@ -10,8 +10,9 @@ using namespace sf;
 class Entidade : public Ente
 {
     protected:  
-        sf::Texture Textura;
-        sf::RenderWindow *window;
+        Texture Textura;
+        Sprite Sprite;
+        RenderWindow *window;
 
         Vector2f posicao;
         Vector2f velocidade;

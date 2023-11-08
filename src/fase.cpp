@@ -68,8 +68,6 @@ void Fase::criar_cenario(string caminho)
                     {
                         obstaculos.incluir(aux);
                     }
-
-                        
                     break;
                 case '1':
                     //dados do arquivo json serao importante nesse caso aqui

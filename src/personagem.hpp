@@ -11,4 +11,5 @@ class Personagem : public Entidade
         
         virtual void mover() = 0;
         virtual void atualizar() = 0;
+        virtual void atacar() = 0;
 };
