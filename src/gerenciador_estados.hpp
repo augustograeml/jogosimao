@@ -16,7 +16,6 @@ class Gerenciador_Estados
     private:
         int estadoAtual;
         vector<Estado*> estados;
-        //singleton
         static Gerenciador_Estados* instancia;
         Gerenciador_Estados();
     public:

@@ -42,6 +42,8 @@ void Jogador2::mover()
             velocidade.y += -5.0f;    
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
             velocidade.y += 0.1f;  
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::RShift))
+            atacar();  
         nochao = false;
 
         atualizar();
