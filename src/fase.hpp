@@ -4,7 +4,7 @@
 #include "jogador2.hpp"
 #include "inimigo_facil.hpp"
 #include "inimigo_dificil.hpp"
-#include "listaEntidadas.hpp"
+#include "listaEntidades.hpp"
 #include "obstaculo_facil.hpp"
 #include "gerenciador_colisoes.hpp"
 #include "estado.hpp"

@@ -1,5 +1,5 @@
 #pragma once
-#include "listaEntidadas.hpp"
+#include "listaEntidades.hpp"
 #include "lista.hpp"
 #include "entidade.hpp"
 
