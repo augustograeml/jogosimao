@@ -4,7 +4,7 @@
 using namespace std;
 
 Entidade::Entidade(Vector2f pos):
-    Ente(Vector2f(TAM, TAM)), posicao(pos), nochao(false), velocidade(0.f, 0.f), vida(100)
+    Ente(Vector2f(TAM, TAM)), posicao(pos), nochao(false), velocidade(0.f, 0.f), vida(5)
 {
     corpo.setPosition(posicao);
 }

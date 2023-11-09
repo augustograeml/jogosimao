@@ -29,12 +29,18 @@ void Gerenciador_Colisoes::colisao_simples()
         {
             int j = colidiu(*jog,*inim);
 
-            if(j == 4)
+            if(j == 4 )
             {
-                inimigos->remover((*inim));
+                    (*inim)->set_vida(0);
+                    inimigos->remover((*inim));
+            }
+            else if(j  == 2)
+            {
+                (*jog)->set_vida((*jog)->get_vida() - 1);
             }
             else if (j)
             {
+                (*jog)->set_vida((*jog)->get_vida() - 1);
                 (*jog)->colidir();
                 (*inim)->colidir();
             }
@@ -84,7 +90,7 @@ int Gerenciador_Colisoes::colidiu(Entidade* e1, Entidade* e2)
             else
             {
                 e1->setPosicao(Vector2f(e1->getPosicao().x, e2->getPosicao().y + (tam1.y + tam2.y) / 2));
-                e1->setPosicao(Vector2f(e1->getVelocidade().x, -e1->getVelocidade().y * ACL));
+                e1->setVelocidade(Vector2f(e1->getVelocidade().x, -e1->getVelocidade().y * ACL));
                 return 2;
             }
         }

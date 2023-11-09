@@ -2,7 +2,7 @@
 
 
 Inimigo_Dificil::Inimigo_Dificil(Vector2f pos, Vector2f vel):
-    Inimigo(pos, vel), forca(25)
+    Inimigo(pos, vel), forca(2)
 {
     this->setSkin("src/imagem/zumbi_atirador.png");
 }
@@ -19,12 +19,12 @@ void Inimigo_Dificil::atualizar()
 
 void Inimigo_Dificil::mover()
 {
-    velocidade += Vector2f(rand() % 10 - 5, (float) (nochao ? - (rand() % 5) : 0));
+    //velocidade += Vector2f(rand() % 10 - 5, (float) (nochao ? - (rand() % 5) : 0));
 
     if(!nochao)
         velocidade += Vector2f(0, 0.1);
     else
-        velocidade = Vector2f(velocidade.x, 0.f);
+        velocidade = Vector2f(-0.1f, 0.f);
     nochao = false;
     
 
@@ -38,6 +38,6 @@ void Inimigo_Dificil::executar()
 
 void Inimigo_Dificil::atacar(Entidade* jg)
 {
-    
+    jg->set_vida(jg->get_vida() - forca);
 }
 

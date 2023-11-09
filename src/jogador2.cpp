@@ -6,6 +6,7 @@ Jogador2::Jogador2(Vector2f pos, Vector2f vel) : Personagem(pos, vel), tempo(0.0
 {
     corpo.setFillColor(Color::Yellow);
     this->setSkin("src/imagem/luigiDireita.png");
+    poder = 1;
 }
 Jogador2::~Jogador2()
 {
@@ -19,7 +20,15 @@ void Jogador2::atualizar()
 
 void Jogador2::executar()
 {
-    mover();
+    if(vida != 0)
+    {
+        mover();
+    }
+    else
+    {
+
+    }
+    
 }
 
 void Jogador2::atacar(Entidade* jg)

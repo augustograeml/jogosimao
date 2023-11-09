@@ -1,6 +1,7 @@
 #pragma once
 
 #include "gerenciador_grafico.hpp"
+
 #include <SFML/Graphics.hpp>
 
 using namespace sf;
