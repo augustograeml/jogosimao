@@ -20,11 +20,47 @@ Gerenciador_Colisoes::~Gerenciador_Colisoes()
 
 void Gerenciador_Colisoes::colisao_simples()
 {
+    Lista<Entidade>::Iterador obst;
     Lista<Entidade>::Iterador jog = jogadores->get_primeiro();
    
     while(jog != nullptr)
     {
-        Lista<Entidade>::Iterador inim = inimigos->get_primeiro();
+         obst = obstaculos->get_primeiro();
+         while (obst != nullptr)
+            {
+                
+                if(colidiu(*jog, *obst) )
+                {
+                    (*jog)->colidir();
+                    (*obst)->colidir();
+                }
+                obst++;
+            }
+            jog++;
+    }
+    Lista<Entidade>::Iterador inim = inimigos->get_primeiro();
+    while(inim != nullptr)
+    {
+            Lista<Entidade>::Iterador obst = obstaculos->get_primeiro();
+            while (obst != nullptr)
+            {
+                
+                if(colidiu(*inim, *obst))
+                {
+                    (*inim)->colidir();
+                    (*obst)->colidir();
+                }
+                obst++;
+            }
+
+        inim++;    
+    }
+
+    jog = jogadores->get_primeiro();
+   
+    while(jog != nullptr)
+    {
+        inim = inimigos->get_primeiro();
         while(inim != nullptr)
         {
             int j = colidiu(*jog,*inim);
@@ -44,29 +80,12 @@ void Gerenciador_Colisoes::colisao_simples()
                 (*jog)->colidir();
                 (*inim)->colidir();
             }
-       
-            Lista<Entidade>::Iterador obst = obstaculos->get_primeiro();
-            while (obst != nullptr)
-            {
-                
-                if(colidiu(*jog, *obst) )
-                {
-                    (*jog)->colidir();
-                    (*obst)->colidir();
-                }
-                if(colidiu(*inim, *obst))
-                {
-                    (*inim)->colidir();
-                    (*obst)->colidir();
-                }
-                obst++;
-            }
+            inim++;
 
-        inim++;
         }
-
     jog++;
     }
+        
 }
 
 int Gerenciador_Colisoes::colidiu(Entidade* e1, Entidade* e2)
