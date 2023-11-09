@@ -1,6 +1,9 @@
 #pragma once
 #include "observer.hpp"
 
+namespace Observers
+{
+    
 class Observer_Tecla : public Observer
 {
     private:
@@ -11,3 +14,5 @@ class Observer_Tecla : public Observer
 
         void atualizar(Keyboard::Key k);
 };
+
+}

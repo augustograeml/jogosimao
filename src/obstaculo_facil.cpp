@@ -1,4 +1,4 @@
-#include "obstaculo_facil.hpp"
+#include "../Entidades/Obstaculos/obstaculo_facil.hpp"
 
 Obstaculo_Facil::Obstaculo_Facil(Vector2f pos): Obstaculo(pos, false)
 {

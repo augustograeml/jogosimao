@@ -1,4 +1,4 @@
-#include "entidade.hpp"
+#include "../Entidades/entidade.hpp"
 #include <iostream>
 
 using namespace std;

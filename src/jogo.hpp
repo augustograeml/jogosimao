@@ -1,12 +1,13 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "fase1.hpp"
-#include "gerenciador_grafico.hpp"
-#include "gerenciador_estados.hpp"
-#include "gerenciador_eventos.hpp"
-#include "observer_tecla.hpp"
+#include "../Estados/Fases/fase1.hpp"
+#include "../Gerenciadores/gerenciador_grafico.hpp"
+#include "../Gerenciadores/gerenciador_estados.hpp"
+#include "../Gerenciadores/gerenciador_eventos.hpp"
+#include "../Observers/observer_tecla.hpp"
 
 using namespace sf;
+using namespace Observers;
 
 class Jogo
 {

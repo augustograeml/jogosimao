@@ -1,7 +1,8 @@
-#include "fase1.hpp"
+#include "../Estados/Fases/fase1.hpp"
 #include <iostream>
 
 using namespace std;
+using namespace Estados;
 
 Fase1::Fase1() : Fase(1)
 {

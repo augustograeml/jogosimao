@@ -1,10 +1,13 @@
 #pragma once
 
-#include "gerenciador_grafico.hpp"
+#include "../Gerenciadores/gerenciador_grafico.hpp"
+#include "../Listas/lista.hpp"
+#include "../Listas/listaEntidades.hpp"
 
 #include <SFML/Graphics.hpp>
 
-using namespace sf;
+using namespace Listas;
+using namespace Gerenciadores;
 
 class Ente
 {

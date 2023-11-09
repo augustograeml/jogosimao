@@ -1,9 +1,10 @@
-#include "fase.hpp"
+#include "../Estados/Fases/fase.hpp"
 #include <fstream>
 #include <string>
 #include <iostream>
 
 using namespace std;
+using namespace Estados;
 
 Fase::Fase(int pos) : jogadores(), obstaculos(), inimigos(), Estado(pos),
 gC()

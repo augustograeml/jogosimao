@@ -1,4 +1,6 @@
-#include "estado.hpp"
+#include "../Estados/estado.hpp"
+
+using namespace Estados;
 
 Gerenciador_Estados* Estado::pGE(Gerenciador_Estados::get_instancia());
 

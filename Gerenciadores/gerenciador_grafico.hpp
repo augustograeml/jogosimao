@@ -5,6 +5,9 @@ class Ente;
 #define LARGURA_TELA 1000.0  
 #define ALTURA_TELA 1000.0
 
+namespace Gerenciadores
+{
+
 class Gerenciador_Grafico
 {
     private:
@@ -28,3 +31,5 @@ class Gerenciador_Grafico
         void centralizarCamera(sf::Vector2f p);
         sf::RenderWindow* get_Janela() const;
 };
+
+}

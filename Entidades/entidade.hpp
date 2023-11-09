@@ -1,11 +1,14 @@
 #pragma once
-#include "ente.hpp"
+#include "../src/ente.hpp"
 #include <SFML/Graphics.hpp>
 
 using namespace sf;
 
 #define TAM 50.f
 #define TAM_CHEFAO 100.f
+
+namespace Entidades
+{
 
 class Entidade : public Ente
 {
@@ -40,3 +43,5 @@ class Entidade : public Ente
         void setWindow( sf::RenderWindow* window)   {this->window = window;} 
         void setSkin(const std::string filename);
 };
+
+}

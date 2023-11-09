@@ -1,5 +1,5 @@
-#include "gerenciador_estados.hpp"
-#include "estado.hpp"
+#include "../Gerenciadores/gerenciador_estados.hpp"
+#include "../Estados/estado.hpp"
 
 Gerenciador_Estados* Gerenciador_Estados::instancia = nullptr;
 

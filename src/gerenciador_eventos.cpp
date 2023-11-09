@@ -1,5 +1,7 @@
-#include "gerenciador_eventos.hpp"
-#include "observer.hpp"
+#include "../Gerenciadores/gerenciador_eventos.hpp"
+#include "../Observers/observer.hpp"
+
+using namespace Observers;
 
 Gerenciador_Eventos* Gerenciador_Eventos::instancia(nullptr);
 

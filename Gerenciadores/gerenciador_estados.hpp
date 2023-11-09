@@ -1,8 +1,9 @@
 #pragma once
 #include <vector>
+
 using namespace std;
 
-class Estado;
+//class Estado;
 
 /*
 Estados:
@@ -10,6 +11,9 @@ Estados:
 1 - Fase 1
 2 - Fase 2
 */
+
+namespace Gerenciadores
+{
 
 class Gerenciador_Estados
 {
@@ -27,3 +31,5 @@ class Gerenciador_Estados
         void executar();
 
 };
+
+}

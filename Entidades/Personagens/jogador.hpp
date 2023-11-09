@@ -1,25 +1,25 @@
 #pragma once
-#include "jogador.hpp"
 #include <SFML/Graphics.hpp>
 #include "personagem.hpp"
 
+namespace Entidades
+{
 
-class Jogador2 : public Personagem
+class Jogador : public Personagem
 {
 
 protected:
-    int vida;
     float poder;
-
-    //contador pro tempo
     double tempo;
 
 public:
-    Jogador2(Vector2f pos, Vector2f vel);
-    ~Jogador2();
+    Jogador(Vector2f pos, Vector2f vel);
+    ~Jogador();
 
     void atualizar();
     void executar();
     void mover(); 
     void atacar(Entidade* jg); 
 };
+
+}

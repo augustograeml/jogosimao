@@ -1,4 +1,6 @@
-#include "menu.hpp"
+#include "../Estados/Menu/menu.hpp"
+
+using namespace Estados;
 
 Menu::Menu()
 {

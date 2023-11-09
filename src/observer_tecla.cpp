@@ -1,4 +1,4 @@
-#include "observer_tecla.hpp"
+#include "../Observers/observer_tecla.hpp"
 
 Observer_Tecla::Observer_Tecla(int n) : Observer(), numero(n)
 {

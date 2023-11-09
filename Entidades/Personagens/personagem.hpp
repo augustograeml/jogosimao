@@ -1,6 +1,9 @@
 #pragma once
 #include "entidade.hpp"
 
+namespace Entidades
+{
+
 class Personagem : public Entidade
 {
     protected:
@@ -13,3 +16,5 @@ class Personagem : public Entidade
         virtual void atualizar() = 0;
         virtual void atacar(Entidade* jg) = 0;
 };
+
+}

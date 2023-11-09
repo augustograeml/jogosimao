@@ -2,6 +2,9 @@
 #include "fase.hpp"
 #define ARQUIVO_CENARIO_1 "src/cenario1.txt"
 
+namespace Estados
+{
+
 class Fase1 : public Fase
 {
     private:
@@ -13,3 +16,5 @@ class Fase1 : public Fase
         void mover();
         void atualizar();
 };
+
+}

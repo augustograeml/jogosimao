@@ -1,4 +1,4 @@
-#include "personagem.hpp"
+#include "../Entidades/Personagens/personagem.hpp"
 
 Personagem::Personagem(Vector2f pos, Vector2f vel) : Entidade()
 {

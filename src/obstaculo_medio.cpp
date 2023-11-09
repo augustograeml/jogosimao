@@ -1,4 +1,4 @@
-#include "obstaculo_medio.hpp"
+#include "../Entidades/Obstaculos/obstaculo_medio.hpp"
 
 Obstaculo_Medio::Obstaculo_Medio(Vector2f pos) : Obstaculo(pos, true), dano(2.0)
 {

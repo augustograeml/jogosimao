@@ -1,4 +1,4 @@
-#include "gerenciador_colisoes.hpp"
+#include "../Gerenciadores/gerenciador_colisoes.hpp"
 #include <math.h>
 #include <iostream>
 

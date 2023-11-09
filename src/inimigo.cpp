@@ -1,6 +1,8 @@
-#include "inimigo.hpp"
+#include "../Entidades/Personagens/inimigo.hpp"
 #include <stdlib.h>
 #include <math.h>
+
+using namespace Entidades;
 
 Inimigo::Inimigo(Vector2f pos, Vector2f vel) : Personagem(pos, vel), maldade(false), pjogador(nullptr)
 {

@@ -1,21 +1,25 @@
 #pragma once
 
 #include "lista.hpp"
-#include "entidade.hpp"
+#include "../Entidades/entidade.hpp"
 
  // Coleção
+namespace Listas
+{
+
     class ListaEntidade
     {
     private:
-        Lista<Entidade> LEs;
+        Lista<Entidades::Entidade> LEs;
     public:
         ListaEntidade();
         ~ListaEntidade();
-        void incluir(Entidade* pE);
-        void remover(Entidade *pE);
+        void incluir(Entidades::Entidade* pE);
+        void remover(Entidades::Entidade *pE);
         const int get_tamanho() const;
         // void percorrer();
         void desenhar();
         void executar();
-        Lista<Entidade>::Iterador get_primeiro();
+        Lista<Entidades::Entidade>::Iterador get_primeiro();
     };
+}

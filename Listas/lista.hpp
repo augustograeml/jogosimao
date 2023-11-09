@@ -1,5 +1,8 @@
 #pragma once
 
+namespace Listas
+{
+
     template<class TL>
     class Lista
     {
@@ -149,3 +152,5 @@
                 return Iterador(pPrimeiro);
             }
     };
+    
+}

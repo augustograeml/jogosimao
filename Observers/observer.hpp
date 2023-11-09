@@ -1,7 +1,12 @@
 #pragma once
 
 #include "SFML/Graphics.hpp"
-#include "gerenciador_eventos.hpp"
+#include "../Gerenciadores/gerenciador_eventos.hpp"
+
+using namespace Gerenciadores;
+
+namespace Observers
+{
 
 class Observer
 {
@@ -13,3 +18,5 @@ class Observer
 
         virtual void atualizar(Keyboard::Key k) = 0;
 };
+
+}

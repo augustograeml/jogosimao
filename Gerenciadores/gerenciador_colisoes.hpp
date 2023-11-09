@@ -1,7 +1,10 @@
 #pragma once
-#include "listaEntidades.hpp"
-#include "lista.hpp"
-#include "entidade.hpp"
+#include "../Listas/listaEntidades.hpp"
+#include "../Listas/lista.hpp"
+#include "../Entidades/entidade.hpp"
+
+namespace Gerenciadores
+{
 
 class Gerenciador_Colisoes
 {
@@ -19,5 +22,7 @@ class Gerenciador_Colisoes
 
         void colisao_simples();
 
-        int colidiu(Entidade* e1, Entidade* e2);
+        int colidiu(Entidades::Entidade* e1, Entidades::Entidade* e2);
 };
+
+}

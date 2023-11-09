@@ -1,4 +1,5 @@
-#include "inimigo_dificil.hpp"
+#include "../Entidades/Personagens/inimigo_dificil.hpp"
+
 
 
 Inimigo_Dificil::Inimigo_Dificil(Vector2f pos, Vector2f vel):

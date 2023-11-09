@@ -1,6 +1,10 @@
 #pragma once
-#include "gerenciador_estados.hpp"
+#include "../Gerenciadores/gerenciador_estados.hpp"
 
+using namespace Gerenciadores;
+
+namespace Estados
+{
 
 class Estado
 {
@@ -15,3 +19,5 @@ class Estado
         virtual void executar() = 0;
 
 };
+
+}

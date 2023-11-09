@@ -1,6 +1,9 @@
 #pragma once
 #include "estado.hpp"
 
+namespace Estados
+{
+
 class Menu : public Estado
 {
     protected:
@@ -9,3 +12,5 @@ class Menu : public Estado
         ~Menu();
         virtual void executar();
 };
+
+}

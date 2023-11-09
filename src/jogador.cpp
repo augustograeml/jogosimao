@@ -1,6 +1,7 @@
-#include "jogador.hpp"
+#include "../Entidades/Personagens/jogador.hpp"
 #include <iostream>
 using namespace std;
+using namespace Entidades;
 
 Jogador::Jogador(Vector2f pos, Vector2f vel) : Personagem(pos, vel), tempo(0.0)
 {
