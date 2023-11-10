@@ -31,8 +31,20 @@ void Gerenciador_Colisoes::colisao_simples()
                 
                 if(colidiu(*jog, *obst) )
                 {
-                    (*jog)->colidir();
-                    (*obst)->colidir();
+                    if((*obst)->get_vida() == 55)
+                    {
+                        (*jog)->set_vida((*jog)->get_vida() -1);
+                        (*jog)->colidir();
+                        (*obst)->colidir();  
+                    }
+                    if((*obst)->get_vida() == 40)
+                    {
+                        (*jog)->set_vida(5);
+                        obstaculos->remover((*obst)); 
+                        (*jog)->colidir();
+                        (*obst)->colidir();  
+                    }
+                    
                 }
                 obst++;
             }
@@ -41,7 +53,7 @@ void Gerenciador_Colisoes::colisao_simples()
     Lista<Entidade>::Iterador inim = inimigos->get_primeiro();
     while(inim != nullptr)
     {
-            Lista<Entidade>::Iterador obst = obstaculos->get_primeiro();
+            obst = obstaculos->get_primeiro();
             while (obst != nullptr)
             {
                 
@@ -70,13 +82,9 @@ void Gerenciador_Colisoes::colisao_simples()
                     (*inim)->set_vida(0);
                     inimigos->remover((*inim));
             }
-            else if(j  == 2)
-            {
-                (*jog)->set_vida((*jog)->get_vida() - 1);
-            }
             else if (j)
             {
-                (*jog)->set_vida((*jog)->get_vida() - 1);
+                (*jog)->set_vida((*jog)->get_vida() -1);
                 (*jog)->colidir();
                 (*inim)->colidir();
             }

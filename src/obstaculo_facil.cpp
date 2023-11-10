@@ -2,7 +2,8 @@
 
 Obstaculo_Facil::Obstaculo_Facil(Vector2f pos): Obstaculo(pos, false)
 {
-    corpo.setFillColor(Color::Transparent);
+    this->setSkin("src/imagem/plataforma.png");
+    this->set_vida(1);
 }
 
 Obstaculo_Facil::~Obstaculo_Facil()

@@ -6,6 +6,8 @@
 #include "inimigo_dificil.hpp"
 #include "listaEntidadas.hpp"
 #include "obstaculo_facil.hpp"
+#include "obstaculo_medio.hpp"
+#include "obstaculo_dificil.hpp"
 #include "gerenciador_colisoes.hpp"
 #include "estado.hpp"
 

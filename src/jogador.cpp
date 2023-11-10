@@ -22,6 +22,7 @@ void Jogador::executar()
 {
     if(vida != 0)
     {
+        corpo.setFillColor(Color::Green);
         if (vida < 2)
         {
         corpo.setFillColor(Color::Yellow);
