@@ -4,17 +4,18 @@
 
 namespace Estados
 {
-
-class Fase1 : public Fase
-{
-    private:
-    public:
-        Fase1();
-        ~Fase1();
-        
-        void executar();
-        void mover();
-        void atualizar();
-};
-
+    namespace Fases
+    {
+        class Fase1 : public Fase
+        {
+            private:
+            public:
+                Fase1();
+                ~Fase1();
+                
+                void executar();
+                void mover();
+                void atualizar();
+        };
+    }
 }

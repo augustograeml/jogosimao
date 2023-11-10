@@ -3,10 +3,8 @@
 
 namespace Entidades
 {
-
     namespace Obstaculos
     {
-
         class Obstaculo_Dificil : public Obstaculo
         {
             private:

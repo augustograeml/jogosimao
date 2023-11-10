@@ -3,6 +3,7 @@
 #include <iostream>
 
 using namespace std;
+using namespace Entidades;
 
 #define ACL 0.2
 

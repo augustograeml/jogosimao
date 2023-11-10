@@ -1,6 +1,7 @@
 #include "../Entidades/Personagens/inimigo_dificil.hpp"
 
-
+using namespace Entidades;
+using namespace Personagens;
 
 Inimigo_Dificil::Inimigo_Dificil(Vector2f pos, Vector2f vel):
     Inimigo(pos, vel), forca(2)

@@ -2,7 +2,7 @@
 #include "inimigo.hpp"
 
 using namespace Entidades;
-using namespace Entidades;
+using namespace Personagens;
 
 namespace Entidade
 {

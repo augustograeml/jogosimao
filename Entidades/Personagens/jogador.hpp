@@ -4,22 +4,25 @@
 
 namespace Entidades
 {
+    namespace Personagens
+    {
+        class Jogador : public Personagem
+        {
 
-class Jogador : public Personagem
-{
+        protected:
+            float poder;
+            double tempo;
 
-protected:
-    float poder;
-    double tempo;
+        public:
+            Jogador(Vector2f pos, Vector2f vel);
+            ~Jogador();
 
-public:
-    Jogador(Vector2f pos, Vector2f vel);
-    ~Jogador();
+            void atualizar();
+            void executar();
+            void mover(); 
+            void atacar(Entidade* jg); 
+        };
 
-    void atualizar();
-    void executar();
-    void mover(); 
-    void atacar(Entidade* jg); 
-};
+    }
 
 }

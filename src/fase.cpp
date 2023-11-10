@@ -4,7 +4,10 @@
 #include <iostream>
 
 using namespace std;
+using namespace Obstaculos;
+using namespace Personagens;
 using namespace Estados;
+using namespace Fases;
 
 Fase::Fase(int pos) : jogadores(), obstaculos(), inimigos(), Estado(pos),
 gC()

@@ -3,7 +3,6 @@
 
 namespace Entidades
 {
-
     class Projetil : public Entidade
     {
         private:

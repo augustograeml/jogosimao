@@ -3,6 +3,7 @@
 
 using namespace std;
 using namespace Estados;
+using namespace Fases;
 
 Fase1::Fase1() : Fase(1)
 {

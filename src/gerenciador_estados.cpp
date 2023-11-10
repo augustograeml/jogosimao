@@ -1,6 +1,8 @@
 #include "../Gerenciadores/gerenciador_estados.hpp"
 #include "../Estados/estado.hpp"
 
+using namespace Estados;
+
 Gerenciador_Estados* Gerenciador_Estados::instancia = nullptr;
 
 Gerenciador_Estados::Gerenciador_Estados() : estadoAtual(1)

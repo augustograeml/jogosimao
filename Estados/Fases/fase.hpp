@@ -15,25 +15,26 @@ using namespace Gerenciadores;
 
 namespace Estados
 {
+    namespace Fases
+    {
+        class Fase : public Entidade, public Estado
+        {
+            protected:
+                ListaEntidade jogadores;
+                ListaEntidade obstaculos;
+                ListaEntidade inimigos;
+                Gerenciador_Colisoes gC;
 
-class Fase : public Entidade, public Estado
-{
-    protected:
-        ListaEntidade jogadores;
-        ListaEntidade obstaculos;
-        ListaEntidade inimigos;
-        Gerenciador_Colisoes gC;
+            public:
+                Fase(int i = -1);
+                ~Fase();
 
-    public:
-        Fase(int i = -1);
-        ~Fase();
+                virtual void executar() = 0;
 
-        virtual void executar() = 0;
-
-        void gerenciar_colisoes();
-        void criar_inimigos();
-        void criar_jogadores();
-        void criar_cenario(string caminho);
-};
-
+                void gerenciar_colisoes();
+                void criar_inimigos();
+                void criar_jogadores();
+                void criar_cenario(string caminho);
+        };
+    }
 }

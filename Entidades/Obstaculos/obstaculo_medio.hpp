@@ -5,7 +5,6 @@ namespace Entidades
 {
     namespace Obstaculos
     {
-
         class Obstaculo_Medio : public Obstaculo
         {
             private:
@@ -17,7 +16,5 @@ namespace Entidades
                 void mover();
                 void atualizar();
         };
-
     }
-
 }

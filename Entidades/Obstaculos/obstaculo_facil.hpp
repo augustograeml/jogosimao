@@ -5,7 +5,6 @@ namespace Entidades
 {
     namespace Obstaculos
     {
-
         class Obstaculo_Facil : public Obstaculo
         {
             private:
@@ -18,5 +17,4 @@ namespace Entidades
                 void atualizar();
         };
     }
-
 }
