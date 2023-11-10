@@ -2,10 +2,10 @@
 #include "../src/ente.hpp"
 #include <SFML/Graphics.hpp>
 
-using namespace sf;
-
 #define TAM 50.f
 #define TAM_CHEFAO 100.f
+
+using namespace sf;
 
 namespace Entidades
 {

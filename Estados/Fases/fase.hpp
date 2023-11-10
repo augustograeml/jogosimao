@@ -7,7 +7,7 @@
 #include "../Listas/listaEntidades.hpp"
 #include "../Entidades/Obstaculos/obstaculo_facil.hpp"
 #include "../Gerenciadores/gerenciador_colisoes.hpp"
-#include "estado.hpp"
+#include "../Estados/estado.hpp"
 
 using namespace Listas;
 using namespace Entidades;

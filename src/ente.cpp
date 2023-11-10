@@ -1,4 +1,4 @@
-#include "ente.hpp"
+#include "../src/ente.hpp"
 
 Gerenciador_Grafico* Ente::pGG(Gerenciador_Grafico::get_instancia());
 

@@ -5,8 +5,7 @@
 
 using namespace sf;
 using namespace std;
-
-//class Observer;
+using namespace Observers;
 
 namespace Gerenciadores
 {

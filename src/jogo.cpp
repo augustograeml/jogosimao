@@ -1,4 +1,4 @@
-#include "jogo.hpp"
+#include "../src/jogo.hpp"
 #include <iostream>
 
 using namespace std;

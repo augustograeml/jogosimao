@@ -3,23 +3,24 @@
 #include "lista.hpp"
 #include "../Entidades/entidade.hpp"
 
+using namespace Entidades;
+
  // Coleção
 namespace Listas
 {
-
     class ListaEntidade
     {
     private:
-        Lista<Entidades::Entidade> LEs;
+        Lista<Entidade> LEs;
     public:
         ListaEntidade();
         ~ListaEntidade();
-        void incluir(Entidades::Entidade* pE);
-        void remover(Entidades::Entidade *pE);
+        void incluir(Entidade* pE);
+        void remover(Entidade *pE);
         const int get_tamanho() const;
         // void percorrer();
         void desenhar();
         void executar();
-        Lista<Entidades::Entidade>::Iterador get_primeiro();
+        Lista<Entidade>::Iterador get_primeiro();
     };
 }

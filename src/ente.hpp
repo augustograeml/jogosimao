@@ -8,6 +8,7 @@
 
 using namespace Listas;
 using namespace Gerenciadores;
+using namespace sf;
 
 class Ente
 {

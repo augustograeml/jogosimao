@@ -1,5 +1,5 @@
 #pragma once
-#include "entidade.hpp"
+#include "../Entidades/entidade.hpp"
 
 namespace Entidades
 {
