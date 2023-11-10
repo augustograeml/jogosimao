@@ -1,5 +1,5 @@
 #pragma once
-#include "entidade.hpp"
+#include "../entidade.hpp"
 #include "jogador.hpp"
 
 namespace Entidades

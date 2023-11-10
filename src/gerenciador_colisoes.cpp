@@ -3,7 +3,6 @@
 #include <iostream>
 
 using namespace std;
-using namespace Entidades;
 
 #define ACL 0.2
 
@@ -23,8 +22,8 @@ namespace Gerenciadores
 
     void Gerenciador_Colisoes::colisao_simples()
     {
-        Lista<Entidade>::Iterador obst;
-        Lista<Entidade>::Iterador jog = jogadores->get_primeiro();
+        Listas::Lista<Entidades::Entidade>::Iterador obst;
+        Listas::Lista<Entidades::Entidade>::Iterador jog = jogadores->get_primeiro();
     
         while(jog != nullptr)
         {
@@ -41,10 +40,11 @@ namespace Gerenciadores
                 }
                 jog++;
         }
-        Lista<Entidade>::Iterador inim = inimigos->get_primeiro();
+
+        Listas::Lista<Entidades::Entidade>::Iterador inim = inimigos->get_primeiro();
         while(inim != nullptr)
         {
-                Lista<Entidade>::Iterador obst = obstaculos->get_primeiro();
+                Listas::Lista<Entidades::Entidade>::Iterador obst = obstaculos->get_primeiro();
                 while (obst != nullptr)
                 {
                     
@@ -91,7 +91,7 @@ namespace Gerenciadores
             
     }
 
-    int Gerenciador_Colisoes::colidiu(Entidade* e1, Entidade* e2)
+    int Gerenciador_Colisoes::colidiu(Entidades::Entidade* e1, Entidades::Entidade* e2)
     {
         Vector2f pos1 = e1->getPosicao(), pos2 = e2->getPosicao(), tam1 = e1->getTamanho(), tam2 = e2->getTamanho(),
         d(  fabs(pos1.x - pos2.x) - ((tam1.x + tam2.x)/2.f),

@@ -1,8 +1,6 @@
 #include "../Gerenciadores/gerenciador_estados.hpp"
 #include "../Estados/estado.hpp"
 
-using namespace Estados;
-
 namespace Gerenciadores
 {
     Gerenciador_Estados* Gerenciador_Estados::instancia = nullptr;
@@ -33,7 +31,7 @@ namespace Gerenciadores
         estadoAtual = eA;
     }
 
-    void Gerenciador_Estados::adicionar_estado(Estado* pE)
+    void Gerenciador_Estados::adicionar_estado(Estados::Estado* pE)
     {
         if(pE)
         {

@@ -1,5 +1,5 @@
 #pragma once
-#include "../Estados/estado.hpp"
+#include "../estado.hpp"
 
 namespace Estados
 {

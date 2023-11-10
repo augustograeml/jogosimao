@@ -1,8 +1,6 @@
 #include "../Gerenciadores/gerenciador_eventos.hpp"
 #include "../Observers/observer.hpp"
 
-using namespace Observers;
-
 namespace Gerenciadores
 {
     Gerenciador_Eventos* Gerenciador_Eventos::instancia(nullptr);
@@ -37,10 +35,10 @@ namespace Gerenciadores
         {
             switch(evento.type)
             {
-                case Event::Closed:
+                case sf::Event::Closed:
                     pGrafico->fecharJanela();
                     break;
-                case Event::KeyPressed:
+                case sf::Event::KeyPressed:
                     notificar(evento.key.code);
                 break;
                 default:
@@ -50,23 +48,22 @@ namespace Gerenciadores
         }
     }
 
-    void Gerenciador_Eventos::anexar(Observer* obs)
+    void Gerenciador_Eventos::anexar(Observers::Observer* obs)
     {
         if(obs)
             lista_observers.push_back(obs);
     }
 
-    void Gerenciador_Eventos::remover(Observer* obs)
+    void Gerenciador_Eventos::remover(Observers::Observer* obs)
     {
         lista_observers.remove(obs);
     }
 
-    void Gerenciador_Eventos::notificar(Keyboard::Key k)
+    void Gerenciador_Eventos::notificar(sf::Keyboard::Key k)
     {
         for(it = lista_observers.begin(); it != lista_observers.end(); it++)
         {
             (*it)->atualizar(k);
         }
     }
-
 }

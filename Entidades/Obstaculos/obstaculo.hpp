@@ -1,6 +1,5 @@
 #pragma once
-#include "../Entidades/entidade.hpp"
-using namespace sf;
+#include "../entidade.hpp"
 
 namespace Entidades
 {

@@ -1,5 +1,5 @@
 #include "../Gerenciadores/gerenciador_grafico.hpp"
-#include "../src/ente.hpp"
+#include "../ente.hpp"
 
 namespace Gerenciadores
 {

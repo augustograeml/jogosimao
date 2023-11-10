@@ -2,9 +2,11 @@
 #include <vector>
 
 using namespace std;
-using namespace Estados;
 
-//class Estado;
+namespace Estados
+{
+    class Estado;
+}
 
 /*
 Estados:
@@ -15,22 +17,21 @@ Estados:
 
 namespace Gerenciadores
 {
+    class Gerenciador_Estados
+    {
+        private:
+            int estadoAtual;
+            vector<Estados::Estado*> estados;
+            static Gerenciador_Estados* instancia;
+            Gerenciador_Estados();
+        public:
+            ~Gerenciador_Estados();
 
-class Gerenciador_Estados
-{
-    private:
-        int estadoAtual;
-        vector<Estado*> estados;
-        static Gerenciador_Estados* instancia;
-        Gerenciador_Estados();
-    public:
-        ~Gerenciador_Estados();
+            static Gerenciador_Estados* get_instancia();
+            void set_estado_atual(int eA);
+            void adicionar_estado(Estados::Estado* pE);
+            void executar();
 
-        static Gerenciador_Estados* get_instancia();
-        void set_estado_atual(int eA);
-        void adicionar_estado(Estado* pE);
-        void executar();
-
-};
+    };
 
 }

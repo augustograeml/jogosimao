@@ -1,5 +1,5 @@
 #pragma once
-#include "../src/ente.hpp"
+#include "../ente.hpp"
 #include <SFML/Graphics.hpp>
 
 #define TAM 50.f
@@ -12,12 +12,12 @@ namespace Entidades
     class Entidade : public Ente
     {
         protected:  
-            Texture Textura;
-            RectangleShape RS;
-            RenderWindow *window;
+            sf::Texture Textura;
+            sf::RectangleShape RS;
+            sf::RenderWindow *window;
 
-            Vector2f posicao;
-            Vector2f velocidade;
+            sf::Vector2f posicao;
+            sf::Vector2f velocidade;
             int vida;
             bool nochao;
 

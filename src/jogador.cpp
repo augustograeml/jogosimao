@@ -6,9 +6,9 @@ namespace Entidades
 {
     namespace Personagens
     {
-        Jogador::Jogador(Vector2f pos, Vector2f vel) : Personagem(pos, vel), tempo(0.0)
+        Jogador::Jogador(sf::Vector2f pos, sf::Vector2f vel) : Personagem(pos, vel), tempo(0.0)
         {
-            corpo.setFillColor(Color::Green);
+            corpo.setFillColor(sf::Color::Green);
             this->setSkin("src/imagem/op1.png");
             poder  = 1;
         }
@@ -28,13 +28,13 @@ namespace Entidades
             {
                 if (vida < 2)
                 {
-                corpo.setFillColor(Color::Yellow);
+                    corpo.setFillColor(sf::Color::Yellow);
                 }
                 mover();
             }
         else
         {
-            corpo.setFillColor(Color::Red);
+            corpo.setFillColor(sf::Color::Red);
             //morreu = true;
         }
 

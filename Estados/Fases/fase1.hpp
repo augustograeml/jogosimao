@@ -1,6 +1,6 @@
 #pragma once
 #include "fase.hpp"
-#define ARQUIVO_CENARIO_1 "src/cenario1.txt"
+#define ARQUIVO_CENARIO_1 "Design/Fase1/Cenario/cenario1.txt"
 
 namespace Estados
 {

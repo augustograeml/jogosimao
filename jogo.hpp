@@ -6,18 +6,15 @@
 #include "../Gerenciadores/gerenciador_eventos.hpp"
 #include "../Observers/observer_tecla.hpp"
 
-using namespace sf;
-using namespace Observers;
-
 class Jogo
 {
     private:
-        Gerenciador_Grafico* pG;
-        Gerenciador_Estados* pE;
-        Gerenciador_Eventos* pEv;
+        Gerenciadores::Gerenciador_Grafico* pG;
+        Gerenciadores::Gerenciador_Estados* pE;
+        Gerenciadores::Gerenciador_Eventos* pEv;
 
-        Observer_Tecla obs1;
-        Observer_Tecla obs2;
+        Observers::Observer_Tecla obs1;
+        Observers::Observer_Tecla obs2;
     public:
         Jogo();
         ~Jogo();

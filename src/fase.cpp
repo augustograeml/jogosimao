@@ -4,9 +4,6 @@
 #include <iostream>
 
 using namespace std;
-using namespace Obstaculos;
-using namespace Entidades;
-using namespace Personagens;
 
 namespace Estados
 {
@@ -35,13 +32,13 @@ namespace Estados
         void Fase::criar_jogadores()
         {
             //vai rolar uma parada muito louca nesse arquivo aqui quando voce for implementar o json slk
-            jogadores.incluir(static_cast<Entidade*>(new Jogador(Vector2f(0.f, 0.f), Vector2f(0.f, 0.f))));
+            jogadores.incluir(static_cast<Entidade*>(new Entidades::Personagens::Jogador(Vector2f(0.f, 0.f), Vector2f(0.f, 0.f))));
         }
 
         void Fase::criar_inimigos()
         {   
             //vai rolar uma parada muito louca aqui tbm
-            inimigos.incluir(static_cast<Entidade*>(new Inimigo_Facil(Vector2f(0.f, 0.f), Vector2f(0.f, 0.f))));
+            inimigos.incluir(static_cast<Entidade*>(new Entidades::Personagens::Inimigo_Facil(Vector2f(0.f, 0.f), Vector2f(0.f, 0.f))));
         }
 
         void Fase::criar_cenario(string caminho)
@@ -53,9 +50,9 @@ namespace Estados
                 exit(1);
             }
 
-            string linha;
+            std::string linha;
 
-            Entidade* aux = nullptr;
+            Entidades::Entidade* aux = nullptr;
 
             int j = 0, i;
             for(i = 0; getline(arquivo, linha); i++)
@@ -66,7 +63,7 @@ namespace Estados
                     switch(tipo)
                     {
                         case '0':
-                            aux = static_cast<Entidade*> (new Obstaculo_Facil(Vector2f(j * TAM, i * TAM)));
+                            aux = static_cast<Entidades::Entidade*> (new Entidades::Obstaculos::Obstaculo_Facil(sf::Vector2f(j * TAM, i * TAM)));
                             if(aux)
                             {
                                 obstaculos.incluir(aux);
@@ -74,7 +71,7 @@ namespace Estados
                             break;
                         case '1':
                             //dados do arquivo json serao importante nesse caso aqui
-                            aux = static_cast<Entidade*> (new Jogador(Vector2f(0.f, 0.f), Vector2f(0.f, 0.f)));
+                            aux = static_cast<Entidades::Entidade*> (new Entidades::Personagens::Jogador(sf::Vector2f(0.f, 0.f), sf::Vector2f(0.f, 0.f)));
                             if(aux)
                             {
                                 aux->setWindow(pGG->get_Janela());
@@ -85,7 +82,7 @@ namespace Estados
                             
                         case '2':
                         //dados do arquivo json serao importante nesse caso aqui
-                            aux = static_cast<Entidade*> (new Jogador2(Vector2f(0.f, 0.f), Vector2f(0.f, 0.f)));
+                            aux = static_cast<Entidades::Entidade*> (new Entidades::Personagens::Jogador2(sf::Vector2f(0.f, 0.f), sf::Vector2f(0.f, 0.f)));
                             if(aux)
                             {
                                 aux->setWindow(pGG->get_Janela());
@@ -95,7 +92,7 @@ namespace Estados
                             break;
                         case '3':
                         //dados do arquivo json serao importante nesse caso aqui
-                            aux = static_cast<Entidade*> (new Inimigo_Facil(Vector2f(0.f, 0.f), Vector2f(0.f, 0.f)));
+                            aux = static_cast<Entidades::Entidade*> (new Entidades::Personagens::Inimigo_Facil(sf::Vector2f(0.f, 0.f), sf::Vector2f(0.f, 0.f)));
                             if(aux)
                             {
                                 aux->setWindow(pGG->get_Janela());
@@ -105,7 +102,7 @@ namespace Estados
                             break;
                         case '4':
                         //dados do arquivo json serao importante nesse caso aqui
-                            aux = static_cast<Entidade*> (new Inimigo_Dificil(Vector2f(0.f, 0.f), Vector2f(0.f, 0.f)));
+                            aux = static_cast<Entidades::Entidade*> (new Entidades::Personagens::Inimigo_Dificil(sf::Vector2f(0.f, 0.f), sf::Vector2f(0.f, 0.f)));
                             if(aux)
                             {
                                 aux->setWindow(pGG->get_Janela());

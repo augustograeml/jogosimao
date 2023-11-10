@@ -2,7 +2,6 @@
 
 namespace Listas
 {
-
     template<class TL>
     class Lista
     {

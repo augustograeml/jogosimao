@@ -6,11 +6,10 @@ namespace Entidades
 {
     namespace Personagens
     {
-        Jogador2::Jogador2(Vector2f pos, Vector2f vel) : Personagem(pos, vel), tempo(0.0)
+        Jogador2::Jogador2(sf::Vector2f pos, sf::Vector2f vel) : Personagem(pos, vel), tempo(0.0), poder(1)
         {
             corpo.setFillColor(Color::Yellow);
             this->setSkin("src/imagem/luigiDireita.png");
-            poder = 1;
         }
         Jogador2::~Jogador2()
         {

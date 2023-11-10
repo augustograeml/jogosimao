@@ -7,23 +7,19 @@
 #include "../Listas/listaEntidades.hpp"
 #include "../Entidades/Obstaculos/obstaculo_facil.hpp"
 #include "../Gerenciadores/gerenciador_colisoes.hpp"
-#include "../Estados/estado.hpp"
-
-using namespace Listas;
-using namespace Entidades;
-using namespace Gerenciadores;
+#include "../estado.hpp"
 
 namespace Estados
 {
     namespace Fases
     {
-        class Fase : public Entidade, public Estado
+        class Fase : public Entidades::Entidade, public Estado
         {
             protected:
-                ListaEntidade jogadores;
-                ListaEntidade obstaculos;
-                ListaEntidade inimigos;
-                Gerenciador_Colisoes gC;
+                Listas::ListaEntidade jogadores;
+                Listas::ListaEntidade obstaculos;
+                Listas::ListaEntidade inimigos;
+                Gerenciadores::Gerenciador_Colisoes gC;
 
             public:
                 Fase(int i = -1);

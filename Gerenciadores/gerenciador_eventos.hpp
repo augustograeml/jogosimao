@@ -5,29 +5,32 @@
 
 using namespace sf;
 using namespace std;
-using namespace Observers;
+
+namespace Observers
+{
+    class Observer;
+}
 
 namespace Gerenciadores
 {
+    class Gerenciador_Eventos
+    {
+        private:
+            Gerenciador_Grafico* pGrafico;
+            static Gerenciador_Eventos* instancia;
+            Gerenciador_Eventos();
+            Event evento;
 
-class Gerenciador_Eventos
-{
-    private:
-        Gerenciador_Grafico* pGrafico;
-        static Gerenciador_Eventos* instancia;
-        Gerenciador_Eventos();
-        Event evento;
+            list<Observers::Observer*> lista_observers;
+            list<Observers::Observer*>::iterator it;
+        public:
+            ~Gerenciador_Eventos();
+            void executar();
+            static Gerenciador_Eventos* get_instancia();
 
-        list<Observer*> lista_observers;
-        list<Observer*>::iterator it;
-    public:
-        ~Gerenciador_Eventos();
-        void executar();
-        static Gerenciador_Eventos* get_instancia();
-
-        void anexar(Observer* obs);
-        void remover(Observer* obs);
-        void notificar(Keyboard::Key k);
-};
+            void anexar(Observers::Observer* obs);
+            void remover(Observers::Observer* obs);
+            void notificar(sf::Keyboard::Key k);
+    };
 
 }

@@ -4,7 +4,7 @@ namespace Entidades
 {
     namespace Personagens
     {
-        Personagem::Personagem(Vector2f pos, Vector2f vel) : Entidade()
+        Personagem::Personagem(sf::Vector2f pos, sf::Vector2f vel) : Entidade()
         {
             corpo.setPosition(pos);
             velocidade = vel;

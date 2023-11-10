@@ -4,7 +4,7 @@ namespace Entidades
 {
     namespace Obstaculos
     {
-        Obstaculo::Obstaculo(Vector2f pos, bool dano) :
+        Obstaculo::Obstaculo(sf::Vector2f pos, bool dano) :
         Entidade(pos), danoso(dano)
         {
 

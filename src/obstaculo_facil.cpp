@@ -6,7 +6,7 @@ namespace Entidades
     {
         Obstaculo_Facil::Obstaculo_Facil(Vector2f pos): Obstaculo(pos, false)
         {
-            corpo.setFillColor(Color::Transparent);
+            corpo.setFillColor(sf::Color::Transparent);
         }
 
         Obstaculo_Facil::~Obstaculo_Facil()
