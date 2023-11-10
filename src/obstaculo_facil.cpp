@@ -1,5 +1,8 @@
 #include "../Entidades/Obstaculos/obstaculo_facil.hpp"
 
+using namespace Entidades;
+using namespace Obstaculos;
+
 Obstaculo_Facil::Obstaculo_Facil(Vector2f pos): Obstaculo(pos, false)
 {
     corpo.setFillColor(Color::Transparent);

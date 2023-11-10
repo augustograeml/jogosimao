@@ -1,5 +1,8 @@
 #include "../Entidades/Obstaculos/obstaculo_medio.hpp"
 
+using namespace Entidades;
+using namespace Obstaculos;
+
 Obstaculo_Medio::Obstaculo_Medio(Vector2f pos) : Obstaculo(pos, true), dano(2.0)
 {
 

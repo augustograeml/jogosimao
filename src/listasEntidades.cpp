@@ -1,4 +1,6 @@
 #include "../Listas/listaEntidades.hpp"
+
+using namespace Entidades;
  
     ListaEntidade::ListaEntidade():
     LEs()

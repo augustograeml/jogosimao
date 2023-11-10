@@ -3,6 +3,7 @@
 #include <math.h>
 
 using namespace Entidades;
+using namespace Personagens;
 
 Inimigo::Inimigo(Vector2f pos, Vector2f vel) : Personagem(pos, vel), maldade(false), pjogador(nullptr)
 {

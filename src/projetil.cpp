@@ -1,5 +1,7 @@
 #include  "../Entidades/projetil.hpp"
 
+using namespace Entidades;
+
 Projetil::Projetil()
 {
 

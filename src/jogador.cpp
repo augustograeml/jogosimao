@@ -2,6 +2,7 @@
 #include <iostream>
 using namespace std;
 using namespace Entidades;
+using namespace Personagens;
 
 Jogador::Jogador(Vector2f pos, Vector2f vel) : Personagem(pos, vel), tempo(0.0)
 {

@@ -2,6 +2,7 @@
 #include <vector>
 
 using namespace std;
+using namespace Estados;
 
 //class Estado;
 
