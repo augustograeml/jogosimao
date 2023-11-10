@@ -8,7 +8,7 @@ Fase1::Fase1() : Fase(1)
     Textura.loadFromFile("src/imagem/cenario_op1.jpg");
     RS.setSize(Vector2f(950.f, 950.f));
     RS.setTexture(&Textura);
-    RS.setPosition(sf::Vector2f(50.f,0));
+    RS.setPosition(sf::Vector2f(76.f,-10.f));
     criar_cenario(ARQUIVO_CENARIO_1);
 }
 

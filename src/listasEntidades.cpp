@@ -1,4 +1,4 @@
-#include "listaEntidadas.hpp"
+#include "listaEntidades.hpp"
  
     ListaEntidade::ListaEntidade():
     LEs()
