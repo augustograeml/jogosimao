@@ -9,7 +9,6 @@ using namespace sf;
 
 namespace Entidades
 {
-
     class Entidade : public Ente
     {
         protected:  

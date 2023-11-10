@@ -1,20 +1,22 @@
 #include "../Estados/estado.hpp"
 
-using namespace Estados;
-
-Gerenciador_Estados* Estado::pGE(Gerenciador_Estados::get_instancia());
-
-Estado::Estado(int i) :  id(i)
+namespace Estados
 {
-    pGE->adicionar_estado(this);
-}
+    Gerenciador_Estados* Estado::pGE(Gerenciador_Estados::get_instancia());
 
-Estado::~Estado()
-{
+    Estado::Estado(int i) :  id(i)
+    {
+        pGE->adicionar_estado(this);
+    }
 
-}
+    Estado::~Estado()
+    {
 
-int Estado::getID()
-{
-    return id;
+    }
+
+    int Estado::getID()
+    {
+        return id;
+    }
+
 }

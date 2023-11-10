@@ -2,6 +2,8 @@
 
 using namespace Entidades;
  
+ namespace Listas
+ {
     ListaEntidade::ListaEntidade():
     LEs()
     {
@@ -46,4 +48,4 @@ using namespace Entidades;
     {
         return LEs.get_primeiro();
     }
-
+}

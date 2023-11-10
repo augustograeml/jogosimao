@@ -1,10 +1,7 @@
 #pragma once
 #include "inimigo.hpp"
 
-using namespace Entidades;
-using namespace Personagens;
-
-namespace Entidade
+namespace Entidades
 {
     namespace Personagens
     {
@@ -12,9 +9,8 @@ namespace Entidade
         {
             private:
                 int forca;
-
             public:
-                Inimigo_Dificil(Vector2f pos, Vector2f vel);
+                Inimigo_Dificil(Vector2f pos = Vector2f(0.f, 0.f), Vector2f vel = Vector2f(0.f, 0.f));
                 ~Inimigo_Dificil();
 
                 void executar();

@@ -1,18 +1,19 @@
 #include  "../Entidades/projetil.hpp"
 
-using namespace Entidades;
-
-Projetil::Projetil()
+namespace Entidades
 {
+    Projetil::Projetil()
+    {
 
-}
+    }
 
-Projetil::~Projetil()
-{
+    Projetil::~Projetil()
+    {
 
-}
+    }
 
-void Projetil::executar()
-{
-    
+    void Projetil::executar()
+    {
+        
+    }
 }
