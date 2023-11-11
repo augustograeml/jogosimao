@@ -32,13 +32,13 @@ namespace Estados
         void Fase::criar_jogadores()
         {
             //vai rolar uma parada muito louca nesse arquivo aqui quando voce for implementar o json slk
-            jogadores.incluir(static_cast<Entidade*>(new Entidades::Personagens::Jogador(Vector2f(0.f, 0.f), Vector2f(0.f, 0.f))));
+            jogadores.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Jogador(sf::Vector2f(0.f, 0.f), sf::Vector2f(0.f, 0.f))));
         }
 
         void Fase::criar_inimigos()
         {   
             //vai rolar uma parada muito louca aqui tbm
-            inimigos.incluir(static_cast<Entidade*>(new Entidades::Personagens::Inimigo_Facil(Vector2f(0.f, 0.f), Vector2f(0.f, 0.f))));
+            inimigos.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Inimigo_Facil(sf::Vector2f(0.f, 0.f), sf::Vector2f(0.f, 0.f))));
         }
 
         void Fase::criar_cenario(string caminho)

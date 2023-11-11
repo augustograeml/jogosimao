@@ -1,12 +1,12 @@
 #pragma once
-#include "../Entidades/entidade.hpp"
-#include "../Entidades/Personagens/jogador.hpp"
-#include "../Entidades/Personagens/jogador2.hpp"
-#include "../Entidades/Personagens/inimigo_facil.hpp"
-#include "../Entidades/Personagens/inimigo_dificil.hpp"
-#include "../Listas/listaEntidades.hpp"
-#include "../Entidades/Obstaculos/obstaculo_facil.hpp"
-#include "../Gerenciadores/gerenciador_colisoes.hpp"
+#include "../../Entidades/entidade.hpp"
+#include "../../Entidades/Personagens/jogador.hpp"
+#include "../../Entidades/Personagens/jogador2.hpp"
+#include "../../Entidades/Personagens/inimigo_facil.hpp"
+#include "../../Entidades/Personagens/inimigo_dificil.hpp"
+#include "../../Listas/listaEntidades.hpp"
+#include "../../Entidades/Obstaculos/obstaculo_facil.hpp"
+#include "../../Gerenciadores/gerenciador_colisoes.hpp"
 #include "../estado.hpp"
 
 namespace Estados

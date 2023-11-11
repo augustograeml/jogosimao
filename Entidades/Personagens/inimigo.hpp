@@ -14,7 +14,7 @@ namespace Entidades
                 bool maldade;
                     
             public:
-                Inimigo(Vector2f pos, Vector2f vel);
+                Inimigo(sf::Vector2f pos, sf::Vector2f vel);
                 ~Inimigo();
                 sf::Vector2f getPosicao();
                 void setPosicao(sf::Vector2f& p);

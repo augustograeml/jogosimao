@@ -1,8 +1,8 @@
 #pragma once
 
-#include "../Gerenciadores/gerenciador_grafico.hpp"
-#include "../Listas/lista.hpp"
-#include "../Listas/listaEntidades.hpp"
+#include "Gerenciadores/gerenciador_grafico.hpp"
+#include "Listas/lista.hpp"
+#include "Listas/listaEntidades.hpp"
 
 #include <SFML/Graphics.hpp>
 

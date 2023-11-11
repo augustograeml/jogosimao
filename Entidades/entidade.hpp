@@ -26,6 +26,7 @@ namespace Entidades
             ~Entidade();
 
             void executar();
+
             virtual void mover() = 0;
             virtual void atualizar() = 0;
             virtual void colidir();

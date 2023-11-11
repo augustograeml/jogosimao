@@ -10,7 +10,7 @@ namespace Entidades
             protected:
                 int poder;
             public:
-                Personagem(Vector2f pos, Vector2f vel);
+                Personagem(sf::Vector2f pos, sf::Vector2f vel);
                 ~Personagem();
                 
                 virtual void mover() = 0;

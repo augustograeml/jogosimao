@@ -14,7 +14,7 @@ namespace Entidades
             double tempo;
 
         public:
-            Jogador(Vector2f pos, Vector2f vel);
+            Jogador(sf::Vector2f pos, sf::Vector2f vel);
             ~Jogador();
 
             void atualizar();
