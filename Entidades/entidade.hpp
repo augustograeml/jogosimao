@@ -1,6 +1,6 @@
 #pragma once
+
 #include "../ente.hpp"
-#include <SFML/Graphics.hpp>
 
 #define TAM 50.f
 #define TAM_CHEFAO 100.f
@@ -31,14 +31,15 @@ namespace Entidades
             virtual void atualizar() = 0;
             virtual void colidir();
 
-            Vector2f getPosicao() {return corpo.getPosition();}
-            void setPosicao(Vector2f p);
-            Vector2f getTamanho()   {return corpo.getSize();}
+
+            const sf::Vector2f getPosicao() {return corpo.getPosition();}
+            void setPosicao(sf::Vector2f p);
+            const sf::Vector2f getTamanho()   {return corpo.getSize();}
             void set_vida(int v) {vida = v;}
             int get_vida() const {return vida;}
             void set_nochao(bool n) {nochao = n;}
             Vector2f getVelocidade() {return velocidade;}
-            void setVelocidade(Vector2f v) {velocidade = v;}
+            void setVelocidade(sf::Vector2f v) {velocidade = v;}
 
             void setWindow( sf::RenderWindow* window)   {this->window = window;} 
             void setSkin(const std::string filename);
