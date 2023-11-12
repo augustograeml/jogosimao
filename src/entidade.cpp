@@ -30,8 +30,7 @@ namespace Entidades
     {
         corpo.setPosition(p);
     }
-
-
+    
     void Entidade::setSkin(const std::string filename)
     {
         Textura.loadFromFile(filename);
