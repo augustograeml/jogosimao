@@ -13,6 +13,8 @@ namespace Entidades
                 Obstaculo(Vector2f pos = Vector2f(0.f, 0.f), bool dano = false);
                 ~Obstaculo();
                 
+                bool get_danoso()  {return danoso;}
+
                 virtual void executar() = 0;
                 virtual void mover() = 0;
                 virtual void atualizar() = 0;

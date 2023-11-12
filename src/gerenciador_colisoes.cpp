@@ -25,89 +25,49 @@ namespace Gerenciadores
         Listas::Lista<Entidades::Entidade>::Iterador obst;
         Listas::Lista<Entidades::Entidade>::Iterador jog = jogadores->get_primeiro();
     
-}
-
-Gerenciador_Colisoes::~Gerenciador_Colisoes()
-{
-    jogadores = nullptr;
-    obstaculos = nullptr;
-    inimigos = nullptr;
-}
-
-void Gerenciador_Colisoes::colisao_simples()
-{
-    Listas::Lista<Entidades::Entidade>::Iterador obst;
-    Listas::Lista<Entidades::Entidade>::Iterador jog = jogadores->get_primeiro();
-   
-    while(jog != nullptr)
-    {
-         obst = obstaculos->get_primeiro();
-         while (obst != nullptr)
-            {
-                
-                if(colidiu(*jog, *obst) )
-                {
-                    if((*obst)->get_vida() == 55)
-                    {
-                        (*jog)->set_vida((*jog)->get_vida() -1);
-                        (*jog)->colidir();
-                        (*obst)->colidir();  
-                    }
-                    if((*obst)->get_vida() == 40)
-                    {
-                        (*jog)->set_vida(5);
-                        obstaculos->remover((*obst)); 
-                        (*jog)->colidir();
-                        (*obst)->colidir();  
-                    }
-                    
-                }
-                obst++;
-            }
-            jog++;
-    }
-    Listas::Lista<Entidades::Entidade>::Iterador inim = inimigos->get_primeiro();
-    while(inim != nullptr)
-    {
+        while(jog != nullptr)
+        {
             obst = obstaculos->get_primeiro();
             while (obst != nullptr)
                 {
                     
                     if(colidiu(*jog, *obst) )
                     {
-                        (*jog)->colidir();
-                        (*obst)->colidir();
+                        if((*obst)->get_vida() == 55)
+                        {
+                            (*jog)->set_vida((*jog)->get_vida() -1);
+                            (*jog)->colidir();
+                            (*obst)->colidir();  
+                        }
+                        if((*obst)->get_vida() == 40)
+                        {
+                            (*jog)->set_vida(5);
+                            obstaculos->remover((*obst)); 
+                            (*jog)->colidir();
+                            (*obst)->colidir();  
+                        }
+                        
                     }
                     obst++;
                 }
                 jog++;
         }
-
         Listas::Lista<Entidades::Entidade>::Iterador inim = inimigos->get_primeiro();
         while(inim != nullptr)
         {
-            int j = colidiu(*jog,*inim);
-
-            if(j == 4 )
-            {
-                (*inim)->set_vida(0);
-                inimigos->remover((*inim));
+                obst = obstaculos->get_primeiro();
+                while (obst != nullptr)
+                    {
+                        if(colidiu(*jog, *obst) )
+                        {
+                            (*jog)->colidir();
+                            (*obst)->colidir();
+                        }
+                        obst++;
+                    }
+                    jog++;
             }
-            else if (j)
-            {
-                (*jog)->set_vida((*jog)->get_vida() -1);
-                (*jog)->colidir();
-                (*inim)->colidir();
-            }
 
-            inim++;    
-        }
-
-        jog = jogadores->get_primeiro();
-    
-        while(jog != nullptr)
-        {
-            inim = inimigos->get_primeiro();
             while(inim != nullptr)
             {
                 int j = colidiu(*jog,*inim);
@@ -117,22 +77,46 @@ void Gerenciador_Colisoes::colisao_simples()
                     (*inim)->set_vida(0);
                     inimigos->remover((*inim));
                 }
-                else if(j  == 2)
-                {
-                    (*jog)->set_vida((*jog)->get_vida() - 1);
-                }
                 else if (j)
                 {
-                    (*jog)->set_vida((*jog)->get_vida() - 1);
+                    (*jog)->set_vida((*jog)->get_vida() -1);
                     (*jog)->colidir();
                     (*inim)->colidir();
                 }
-                inim++;
 
+                inim++;    
             }
-        jog++;
-        }
-            
+
+            jog = jogadores->get_primeiro();
+        
+            while(jog != nullptr)
+            {
+                inim = inimigos->get_primeiro();
+                while(inim != nullptr)
+                {
+                    int j = colidiu(*jog,*inim);
+
+                    if(j == 4 )
+                    {
+                        (*inim)->set_vida(0);
+                        inimigos->remover((*inim));
+                    }
+                    else if(j  == 2)
+                    {
+                        (*jog)->set_vida((*jog)->get_vida() - 1);
+                    }
+                    else if (j)
+                    {
+                        (*jog)->set_vida((*jog)->get_vida() - 1);
+                        (*jog)->colidir();
+                        (*inim)->colidir();
+                    }
+                    inim++;
+
+                }
+                jog++;
+            }
+                
     }
 
     int Gerenciador_Colisoes::colidiu(Entidades::Entidade* e1, Entidades::Entidade* e2)
@@ -181,3 +165,5 @@ void Gerenciador_Colisoes::colisao_simples()
     }
 
 }
+
+
