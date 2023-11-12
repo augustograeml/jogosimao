@@ -25,8 +25,50 @@ namespace Gerenciadores
         Listas::Lista<Entidades::Entidade>::Iterador obst;
         Listas::Lista<Entidades::Entidade>::Iterador jog = jogadores->get_primeiro();
     
-        while(jog != nullptr)
-        {
+}
+
+Gerenciador_Colisoes::~Gerenciador_Colisoes()
+{
+    jogadores = nullptr;
+    obstaculos = nullptr;
+    inimigos = nullptr;
+}
+
+void Gerenciador_Colisoes::colisao_simples()
+{
+    Listas::Lista<Entidades::Entidade>::Iterador obst;
+    Listas::Lista<Entidades::Entidade>::Iterador jog = jogadores->get_primeiro();
+   
+    while(jog != nullptr)
+    {
+         obst = obstaculos->get_primeiro();
+         while (obst != nullptr)
+            {
+                
+                if(colidiu(*jog, *obst) )
+                {
+                    if((*obst)->get_vida() == 55)
+                    {
+                        (*jog)->set_vida((*jog)->get_vida() -1);
+                        (*jog)->colidir();
+                        (*obst)->colidir();  
+                    }
+                    if((*obst)->get_vida() == 40)
+                    {
+                        (*jog)->set_vida(5);
+                        obstaculos->remover((*obst)); 
+                        (*jog)->colidir();
+                        (*obst)->colidir();  
+                    }
+                    
+                }
+                obst++;
+            }
+            jog++;
+    }
+    Listas::Lista<Entidades::Entidade>::Iterador inim = inimigos->get_primeiro();
+    while(inim != nullptr)
+    {
             obst = obstaculos->get_primeiro();
             while (obst != nullptr)
                 {
@@ -44,17 +86,19 @@ namespace Gerenciadores
         Listas::Lista<Entidades::Entidade>::Iterador inim = inimigos->get_primeiro();
         while(inim != nullptr)
         {
-                Listas::Lista<Entidades::Entidade>::Iterador obst = obstaculos->get_primeiro();
-                while (obst != nullptr)
-                {
-                    
-                    if(colidiu(*inim, *obst))
-                    {
-                        (*inim)->colidir();
-                        (*obst)->colidir();
-                    }
-                    obst++;
-                }
+            int j = colidiu(*jog,*inim);
+
+            if(j == 4 )
+            {
+                (*inim)->set_vida(0);
+                inimigos->remover((*inim));
+            }
+            else if (j)
+            {
+                (*jog)->set_vida((*jog)->get_vida() -1);
+                (*jog)->colidir();
+                (*inim)->colidir();
+            }
 
             inim++;    
         }
@@ -70,8 +114,8 @@ namespace Gerenciadores
 
                 if(j == 4 )
                 {
-                        (*inim)->set_vida(0);
-                        inimigos->remover((*inim));
+                    (*inim)->set_vida(0);
+                    inimigos->remover((*inim));
                 }
                 else if(j  == 2)
                 {

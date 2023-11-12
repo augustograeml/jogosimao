@@ -6,7 +6,8 @@ namespace Entidades
     {
         Obstaculo_Dificil::Obstaculo_Dificil(sf::Vector2f pos): Obstaculo(pos, true), dano(5.0)
         {
-
+            this->setSkin("src/imagem/saude.png");
+            this->set_vida(40);
         }
 
         Obstaculo_Dificil::~Obstaculo_Dificil()
