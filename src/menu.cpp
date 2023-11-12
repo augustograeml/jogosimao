@@ -1,16 +1,22 @@
-#include "menu.hpp"
+#include "../Estados/Menu/menu.hpp"
 
-Menu::Menu()
+namespace Estados
 {
+    namespace Menu
+    {
+        Menu::Menu()
+        {
 
-}
+        }
 
-Menu::~Menu()
-{
+        Menu::~Menu()
+        {
 
-}
+        }
 
-void Menu::executar()
-{
+        void Menu::executar()
+        {
 
+        }
+    }
 }

@@ -1,14 +1,16 @@
-#include "observer.hpp"
+#include "../Observers/observer.hpp"
 
-Gerenciador_Eventos* Observer::pGer_Eventos(Gerenciador_Eventos::get_instancia());
-
-
-Observer::Observer()
+namespace Observers
 {
-    pGer_Eventos->anexar(this);
-}
+    Gerenciadores::Gerenciador_Eventos* Observers::Observer::pGer_Eventos(Gerenciadores::Gerenciador_Eventos::get_instancia());
 
-Observer::~Observer()
-{
-    pGer_Eventos->remover(this);
+    Observers::Observer::Observer()
+    {
+        pGer_Eventos->anexar(this);
+    }
+
+    Observers::Observer::~Observer()
+    {
+        pGer_Eventos->remover(this);
+    }
 }

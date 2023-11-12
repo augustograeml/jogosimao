@@ -1,5 +1,7 @@
-#include "listaEntidades.hpp"
+#include "../Listas/listaEntidades.hpp"
  
+ namespace Listas
+ {
     ListaEntidade::ListaEntidade():
     LEs()
     {
@@ -9,11 +11,11 @@
     {
 
     }
-    void ListaEntidade::incluir(Entidade* pE)
+    void ListaEntidade::incluir(Entidades::Entidade* pE)
     {
         LEs.incluir(pE);
     }
-    void ListaEntidade::remover(Entidade* pE)
+    void ListaEntidade::remover(Entidades::Entidade* pE)
     {
         LEs.remover(pE);
     }
@@ -24,7 +26,7 @@
     }
     void ListaEntidade::desenhar()
     {
-        Lista<Entidade>::Iterador aux = LEs.get_primeiro();
+        Lista<Entidades::Entidade>::Iterador aux = LEs.get_primeiro();
         while (aux != nullptr)
         {
             (*aux)->desenhar();
@@ -33,15 +35,15 @@
     }
     void ListaEntidade::executar()
     {
-        Lista<Entidade>::Iterador aux = LEs.get_primeiro();
+        Lista<Entidades::Entidade>::Iterador aux = LEs.get_primeiro();
         while (aux != nullptr)
         {
             (*aux)->executar();
             aux++;
         }        
     }
-    Lista<Entidade>::Iterador ListaEntidade::get_primeiro()
+    Lista<Entidades::Entidade>::Iterador ListaEntidade::get_primeiro()
     {
         return LEs.get_primeiro();
     }
-
+}

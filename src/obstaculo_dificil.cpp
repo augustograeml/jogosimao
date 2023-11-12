@@ -1,28 +1,32 @@
-#include "obstaculo_dificil.hpp"
+#include "../Entidades/Obstaculos/obstaculo_dificil.hpp"
 
-Obstaculo_Dificil::Obstaculo_Dificil(Vector2f pos): Obstaculo(pos, true), cura(5)
+namespace Entidades
 {
-    this->setSkin("src/imagem/saude.png");
-    this->set_vida(40);
+    namespace Obstaculos
+    {
+        Obstaculo_Dificil::Obstaculo_Dificil(sf::Vector2f pos): Obstaculo(pos, true), dano(5.0)
+        {
+
+        }
+
+        Obstaculo_Dificil::~Obstaculo_Dificil()
+        {
+
+        }
+
+        void Obstaculo_Dificil::executar()
+        {
+            
+        }
+
+        void Obstaculo_Dificil::mover()
+        {
+            
+        }
+
+        void Obstaculo_Dificil::atualizar()
+        {
+            
+        }
+    }
 }
-
-Obstaculo_Dificil::~Obstaculo_Dificil()
-{
-
-}
-
-void Obstaculo_Dificil::executar()
-{
-    
-}
-
-void Obstaculo_Dificil::mover()
-{
-    
-}
-
-void Obstaculo_Dificil::atualizar()
-{
-    
-}
-

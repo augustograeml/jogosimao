@@ -1,7 +1,9 @@
-#include "gerenciador_grafico.hpp"
-#include "ente.hpp"
+#include "../Gerenciadores/gerenciador_grafico.hpp"
+#include "../ente.hpp"
 
-Gerenciador_Grafico* Gerenciador_Grafico::instancia(nullptr);
+namespace Gerenciadores
+{
+    Gerenciador_Grafico* Gerenciador_Grafico::instancia(nullptr);
 
     Gerenciador_Grafico::Gerenciador_Grafico():
     janela(new sf::RenderWindow(sf::VideoMode(LARGURA_TELA, ALTURA_TELA), "zombies++")),
@@ -76,3 +78,4 @@ Gerenciador_Grafico* Gerenciador_Grafico::instancia(nullptr);
         camera.setCenter(p);
         janela->setView(camera);        
     }
+}
