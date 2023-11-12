@@ -1,4 +1,5 @@
 #pragma once
+
 #include <SFML/Graphics.hpp>
 #include "Estados/Fases/fase1.hpp"
 #include "Gerenciadores/gerenciador_grafico.hpp"
