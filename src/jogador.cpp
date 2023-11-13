@@ -67,5 +67,11 @@ namespace Entidades
 
                 atualizar();
         }
+
+        void Jogador::salvar(std::ostringstream* entrada)
+        {
+            (*entrada) << "{ \"posicao\": [" << corpo.getPosition().x<<","<<corpo.getPosition().y<<"], \"velocidade\": ["<<velocidade.x<<","<<velocidade.y<<"] }" << std::endl;
+        }
+        
     }
 }

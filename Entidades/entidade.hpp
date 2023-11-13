@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../ente.hpp"
+#include <sstream>
 
 #define TAM 50.f
 #define TAM_CHEFAO 100.f
@@ -26,6 +27,8 @@ namespace Entidades
             ~Entidade();
 
             void executar();
+
+            virtual void salvar(std::ostringstream* entrada){}
 
             virtual void mover() = 0;
             virtual void atualizar() = 0;

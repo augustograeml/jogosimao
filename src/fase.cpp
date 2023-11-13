@@ -1,7 +1,11 @@
 #include "../Estados/Fases/fase.hpp"
+
 #include <fstream>
 #include <string>
 #include <iostream>
+
+#define ARQUIVO_JOGADOR "jogador.json"
+#define ARQUIVO_INIMIGO "inimigo.json"
 
 using namespace std;
 
@@ -20,7 +24,7 @@ namespace Estados
         Fase::~Fase()
         {
             //aqui pelo que eu entendi vai chamar o metodo salvar pra quando for rolar aquele teste do simao da gente sair do jogo e entrar denovo quando um projetil tiver vindo em direcao da gente tlg?
-            //salvar();
+            salvar();
 
         }
 
@@ -118,6 +122,65 @@ namespace Estados
                 }
             }
             arquivo.close();
+        }
+
+        void Fase::salvar()
+        {
+            // Salvando Jogadores:
+            std::ofstream arquivo(ARQUIVO_JOGADOR);  
+            if (!arquivo)
+            {
+                std::cout << "Problema em salvar o arquivo" << std::endl;
+                exit(1);
+            }
+
+            Listas::Lista<Entidades::Entidade>::Iterador j = jogadores.get_primeiro();
+            buffer.str("");
+            buffer << "[";
+            if (j != nullptr)
+            {
+                (*j)->salvar(&buffer);
+                j++;
+            }
+            while (j != nullptr)
+            {
+                buffer << ",";
+                (*j)->salvar(&buffer);
+                j++;
+            }
+            buffer << "]";
+
+            arquivo << buffer.str();
+
+            arquivo.close();
+            // Salvando inimigos: 
+
+            std::ofstream arquivo_inimigo(ARQUIVO_INIMIGO);  
+            if (!arquivo_inimigo)
+            {
+                std::cout << "Problema em salvar o arquivo" << std::endl;
+                exit(1);
+            }
+
+            Listas::Lista<Entidades::Entidade>::Iterador i = inimigos.get_primeiro();
+            buffer.str("");
+            buffer << "[";
+            if (i != nullptr)
+            {
+                (*i)->salvar(&buffer);
+                i++;
+            }
+            while (i != nullptr)
+            {
+                buffer << ",";
+                (*i)->salvar(&buffer);
+                i++;
+            }
+            buffer << "]";
+
+            arquivo_inimigo << buffer.str();
+
+            arquivo_inimigo.close();
         }
     }
 }
