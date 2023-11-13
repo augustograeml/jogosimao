@@ -34,9 +34,9 @@ namespace Estados
                 virtual void executar() = 0;
 
                 void gerenciar_colisoes();
-                void criar_inimigos();
                 void criar_jogadores();
-                void criar_cenario(string caminho);
+                void criar_inimigos();
+                void criar_cenario(std::string caminho);
 
                 void salvar();
         };
