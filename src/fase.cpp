@@ -19,9 +19,6 @@ namespace Estados
             gC.set_inimigos(&inimigos);
             gC.set_jogadores(&jogadores);
             gC.set_obstaculos(&obstaculos);
-
-            /*criar_jogadores();
-            criar_inimigos();*/
         }
 
         Fase::~Fase()
@@ -45,6 +42,16 @@ namespace Estados
                 exit(2);
             }
 
+            Entidade* p;
+            Listas::Lista<Entidades::Entidade>::Iterador it = jogadores.get_primeiro();
+            while(it != nullptr)
+            {
+                p = *it;
+                jogadores.remover(p);
+                it++;
+                p = nullptr;
+            }
+            
             nlohmann::json json = nlohmann::json::parse(arquivo);
 
             for (auto it = json.begin(); it != json.end(); ++it)
@@ -70,6 +77,16 @@ namespace Estados
             {
                 std::cout << "Arquivo não existe" << std::endl;   
                 exit(2);
+            }
+
+            Entidade* p;
+            Listas::Lista<Entidades::Entidade>::Iterador it = inimigos.get_primeiro();
+            while(it != nullptr)
+            {
+                p = *it;
+                inimigos.remover(p);
+                it++;
+                p = nullptr;
             }
 
             nlohmann::json json = nlohmann::json::parse(arquivo);
@@ -117,15 +134,19 @@ namespace Estados
                                 obstaculos.incluir(aux);
                             }
                             break;
-                        case '1':
+                        /*case '1':
                             //dados do arquivo json serao importante nesse caso aqui
-                            aux = static_cast<Entidades::Entidade*> (new Entidades::Personagens::Jogador(sf::Vector2f(0.f, 0.f), sf::Vector2f(0.f, 0.f)));
-                            if(aux)
+                            if(jogadores.get_primeiro() != nullptr)
                             {
-                                aux->setWindow(pGG->get_Janela());
-                                aux->setPosicao(sf::Vector2f(j * TAM, i * TAM));
-                                jogadores.incluir(aux);
+                                aux = static_cast<Entidades::Entidade*> (new Entidades::Personagens::Jogador(sf::Vector2f(0.f, 0.f), sf::Vector2f(0.f, 0.f)));
+                                if(aux)
+                                {
+                                    aux->setWindow(pGG->get_Janela());
+                                    aux->setPosicao(sf::Vector2f(j * TAM, i * TAM));
+                                    jogadores.incluir(aux);
+                                }
                             }
+                            
                             break;
                             
                         case '2':
@@ -158,7 +179,7 @@ namespace Estados
                                 inimigos.incluir(aux);
                             }
                             break;
-
+*/
                         case '5':
                             aux = static_cast<Entidade*> (new Entidades::Obstaculos::Obstaculo_Medio(Vector2f(j * TAM, i * TAM)));
                             if(aux)
@@ -187,7 +208,8 @@ namespace Estados
         void Fase::salvar()
         {
             // Salvando Jogadores:
-            std::ofstream arquivo(ARQUIVO_JOGADOR);  
+
+            std::ofstream arquivo(ARQUIVO_JOGADOR, std::ios::out | std::ios::trunc);  
             if (!arquivo)
             {
                 std::cout << "Problema em salvar o arquivo" << std::endl;

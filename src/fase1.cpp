@@ -13,7 +13,11 @@ namespace Estados
             RS.setSize(Vector2f(950.f, 950.f));
             RS.setTexture(&Textura);
             RS.setPosition(sf::Vector2f(76.f,-10.f));
+
             criar_cenario(ARQUIVO_CENARIO_1);
+
+            criar_jogadores();
+            criar_inimigos();
         }
 
         Fase1::~Fase1()

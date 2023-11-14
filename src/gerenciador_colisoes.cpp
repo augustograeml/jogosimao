@@ -35,15 +35,15 @@ namespace Gerenciadores
                     if ((*obst)->get_vida() == 55)
                     {
                         (*jog)->set_vida((*jog)->get_vida() - 1);
-                        (*jog)->colidir();
-                        (*obst)->colidir();
+                        /*(*jog)->colidir();
+                        (*obst)->colidir();*/
                     }
                     if ((*obst)->get_vida() == 40)
                     {
                         (*jog)->set_vida(5);
                         obstaculos->remover((*obst));
-                        (*jog)->colidir();
-                        (*obst)->colidir();
+                        /*(*jog)->colidir();
+                        (*obst)->colidir();*/
                     }
                 }
                 obst++;
@@ -58,8 +58,8 @@ namespace Gerenciadores
             {
                 if (colidiu(*inim, *obst))
                 {
-                    (*inim)->colidir();
-                    (*obst)->colidir();
+                    /*(*inim)->colidir();
+                    (*obst)->colidir();*/
                 }
                 obst++;
             }
@@ -75,20 +75,24 @@ namespace Gerenciadores
             {
                 int j = colidiu(*jog, *inim);
 
+
                 if (j == 4)
                 {
+                    std::cout << "entrou" << endl;
                     (*inim)->set_vida(0);
                     inimigos->remover((*inim));
                 }
                 else if (j == 2)
                 {
+                    std::cout << "entrou no segnudo" << endl;
                     (*jog)->set_vida((*jog)->get_vida() - 1);
                 }
                 else if (j)
                 {
+                    std::cout << "entrou no terceiro" << endl;
                     (*jog)->set_vida((*jog)->get_vida() - 1);
-                    (*jog)->colidir();
-                    (*inim)->colidir();
+                    /*(*jog)->colidir();
+                    (*inim)->colidir();*/
                 }
                 inim++;
             }
