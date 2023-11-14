@@ -10,9 +10,6 @@ namespace Entidades
         {
 
         protected:
-            int vida;
-            float poder;
-
             //contador pro tempo
             double tempo;
 

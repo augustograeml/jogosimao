@@ -8,7 +8,8 @@ namespace Entidades
         class Personagem : public Entidade
         {
             protected:
-                int poder;
+                int forca;
+                
             public:
                 Personagem(sf::Vector2f pos, sf::Vector2f vel);
                 ~Personagem();

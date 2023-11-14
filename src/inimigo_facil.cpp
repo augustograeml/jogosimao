@@ -5,9 +5,11 @@ namespace Entidades
 {
     namespace Personagens
     {
-        Inimigo_Facil::Inimigo_Facil(Vector2f pos, Vector2f vel) : Inimigo(pos, vel), vidas(1), forca(1)
+        Inimigo_Facil::Inimigo_Facil(Vector2f pos, Vector2f vel) : Inimigo(pos, vel)
         {
             this->setSkin("src/imagem/zumbi_bateu_morreu.png");
+            vida = 1;
+            forca = 1;
         }
 
         Inimigo_Facil::~Inimigo_Facil()

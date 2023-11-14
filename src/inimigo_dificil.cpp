@@ -5,9 +5,10 @@ namespace Entidades
     namespace Personagens
     {
         Inimigo_Dificil::Inimigo_Dificil(sf::Vector2f pos, sf::Vector2f vel):
-            Inimigo(pos, vel), forca(2)
+            Inimigo(pos, vel)
         {
             this->setSkin("src/imagem/zumbi_atirador.png");
+            forca = 2;
         }
 
         Inimigo_Dificil::~Inimigo_Dificil()

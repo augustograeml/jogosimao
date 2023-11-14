@@ -10,7 +10,6 @@ namespace Entidades
         {
 
         protected:
-            float poder;
             double tempo;
 
         public:

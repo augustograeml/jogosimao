@@ -8,8 +8,6 @@ namespace Entidades
         class Inimigo_Facil : public Inimigo
         {
             private:
-                int vidas;
-                int forca;
             public:
                 Inimigo_Facil(Vector2f pos = Vector2f(0.f, 0.f), Vector2f vel = Vector2f(0.f, 0.f));
                 ~Inimigo_Facil();
