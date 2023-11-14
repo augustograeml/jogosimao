@@ -1,8 +1,8 @@
 #pragma once
 #include "../../Entidades/entidade.hpp"
 #include "../../Entidades/Personagens/jogador.hpp"
-#include "../../Entidades/Personagens/inimigo_facil.hpp"
-#include "../../Entidades/Personagens/inimigo_dificil.hpp"
+#include "../../Entidades/Personagens/zumbi.hpp"
+#include "../../Entidades/Personagens/arqueiro.hpp"
 #include "../../Listas/listaEntidades.hpp"
 #include "../../Entidades/Obstaculos/obstaculo_facil.hpp"
 #include "../../Entidades/Obstaculos/espinho.hpp"

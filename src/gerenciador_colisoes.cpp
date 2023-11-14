@@ -78,17 +78,17 @@ namespace Gerenciadores
                 if (j == 4)
                 {
                     (*inim)->set_vida(0);
+                    //fazer como o simao quer depois : "ao inves de remover, so passar um bool dizendo que ta morto "
                     inimigos->remover((*inim));
-                }
-                else if (j == 2)
-                {
-                    (*jog)->set_vida((*jog)->get_vida() - 1);
                 }
                 else if (j)
                 {
-                    (*jog)->set_vida((*jog)->get_vida() - 1);
-                    (*jog)->colidir();
-                    (*inim)->colidir();
+                    if((*jog)->get_vida() > 0)
+                    {
+                        (*jog)->set_vida((*jog)->get_vida() - 1);
+                        (*jog)->colidir();
+                        (*inim)->colidir();
+                    }
                 }
                 inim++;
             }

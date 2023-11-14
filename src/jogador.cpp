@@ -49,6 +49,8 @@ namespace Entidades
                 corpo.setFillColor(sf::Color::Red);
                 //morreu = true;
             }
+
+            //std::cout << get_vida() << std::endl;
         }
 
         void Jogador::atacar(Entidade* jg)
@@ -91,7 +93,7 @@ namespace Entidades
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
                     velocidade.x += -0.1f;   
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && nochao)
-                    velocidade.y += -5.0f;    
+                    velocidade.y += -6.0f;    
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
                     velocidade.y += 0.1f;  
                 //if (sf::Keyboard::isKeyPressed(sf::Keyboard::RShift))

@@ -113,7 +113,7 @@ namespace Estados
 
             for (auto it = json.begin(); it != json.end(); ++it)
             {
-                inimigos.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Inimigo_Facil(
+                inimigos.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Zumbi(
                     sf::Vector2f(
                         (float) ((*it)["posicao"][0]), 
                         (float) ((*it)["posicao"][1])
@@ -180,7 +180,7 @@ namespace Estados
                             break;
                         case '3':
                         //dados do arquivo json serao importante nesse caso aqui
-                            aux = static_cast<Entidades::Entidade*> (new Entidades::Personagens::Inimigo_Facil(sf::Vector2f(0.f, 0.f), sf::Vector2f(0.f, 0.f)));
+                            aux = static_cast<Entidades::Entidade*> (new Entidades::Personagens::Zumbi(sf::Vector2f(0.f, 0.f), sf::Vector2f(0.f, 0.f)));
                             if(aux)
                             {
                                 aux->setWindow(pGG->get_Janela());
@@ -190,7 +190,7 @@ namespace Estados
                             break;
                         case '4':
                         //dados do arquivo json serao importante nesse caso aqui
-                            aux = static_cast<Entidades::Entidade*> (new Entidades::Personagens::Inimigo_Dificil(sf::Vector2f(0.f, 0.f), sf::Vector2f(0.f, 0.f)));
+                            aux = static_cast<Entidades::Entidade*> (new Entidades::Personagens::Arqueiro(sf::Vector2f(0.f, 0.f), sf::Vector2f(0.f, 0.f)));
                             if(aux)
                             {
                                 aux->setWindow(pGG->get_Janela());
