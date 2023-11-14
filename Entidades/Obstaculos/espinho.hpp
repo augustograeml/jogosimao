@@ -5,13 +5,13 @@ namespace Entidades
 {
     namespace Obstaculos
     {
-        class Obstaculo_Medio : public Obstaculo
+        class Espinho : public Obstaculo
         {
             private:
                 float dano;
             public:
-                Obstaculo_Medio(Vector2f pos = Vector2(0.f, 0.f));
-                ~Obstaculo_Medio();
+                Espinho(Vector2f pos = Vector2(0.f, 0.f));
+                ~Espinho();
                 void executar();
                 void mover();
                 void atualizar();

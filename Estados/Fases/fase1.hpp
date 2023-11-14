@@ -9,6 +9,8 @@ namespace Estados
         class Fase1 : public Fase
         {
             private:
+                sf::Texture Textura;
+                sf::RectangleShape shape;
             public:
                 Fase1();
                 ~Fase1();

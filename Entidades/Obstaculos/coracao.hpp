@@ -5,13 +5,13 @@ namespace Entidades
 {
     namespace Obstaculos
     {
-        class Obstaculo_Dificil : public Obstaculo
+        class Coracao : public Obstaculo
         {
             private:
                 int cura;
             public:
-                Obstaculo_Dificil(Vector2f pos = Vector2f(0.f, 0.f));
-                ~Obstaculo_Dificil();
+                Coracao(Vector2f pos = Vector2f(0.f, 0.f));
+                ~Coracao();
 
                 int get_cura() {return cura;}
                 

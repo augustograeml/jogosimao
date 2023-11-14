@@ -5,16 +5,16 @@ namespace Entidades
 {
     namespace Personagens
     {
-        class Inimigo_Facil : public Inimigo
+        class Arqueiro : public Inimigo
         {
             private:
             public:
-                Inimigo_Facil(Vector2f pos = Vector2f(0.f, 0.f), Vector2f vel = Vector2f(0.f, 0.f));
-                ~Inimigo_Facil();
+                Arqueiro(Vector2f pos = sf::Vector2f(0.f, 0.f), sf::Vector2f vel = sf::Vector2f(0.f, 0.f));
+                ~Arqueiro();
 
+                void executar();
                 void mover();
                 void atualizar();
-                void executar();
                 void atacar(Entidade* jg);
                 void salvar(std::ostringstream* entrada);
         };

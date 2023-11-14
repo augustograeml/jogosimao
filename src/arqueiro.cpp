@@ -1,27 +1,26 @@
-#include "../Entidades/Personagens/inimigo_dificil.hpp"
+#include "../Entidades/Personagens/arqueiro.hpp"
 
 namespace Entidades
 {
     namespace Personagens
     {
-        Inimigo_Dificil::Inimigo_Dificil(sf::Vector2f pos, sf::Vector2f vel):
-            Inimigo(pos, vel)
+        Arqueiro::Arqueiro(sf::Vector2f pos, sf::Vector2f vel):
+            Inimigo(pos, vel), forca(2)
         {
             this->setSkin("src/imagem/zumbi_atirador.png");
-            forca = 2;
         }
 
-        Inimigo_Dificil::~Inimigo_Dificil()
+        Arqueiro::~Arqueiro()
         {
             pjogador = nullptr;
         }
 
-        void Inimigo_Dificil::atualizar()
+        void Arqueiro::atualizar()
         {
             corpo.setPosition(corpo.getPosition() + velocidade);
         }
 
-        void Inimigo_Dificil::mover()
+        void Arqueiro::mover()
         {
             //velocidade += Vector2f(rand() % 10 - 5, (float) (nochao ? - (rand() % 5) : 0));
 
@@ -35,17 +34,17 @@ namespace Entidades
             atualizar();
         }
 
-        void Inimigo_Dificil::executar()
+        void Arqueiro::executar()
         {
             mover();
         }
 
-        void Inimigo_Dificil::atacar(Entidade* jg)
+        void Arqueiro::atacar(Entidade* jg)
         {
             jg->set_vida(jg->get_vida() - forca);
         }
 
-        void Inimigo_Dificil::salvar(std::ostringstream* entrada)
+        void Arqueiro::salvar(std::ostringstream* entrada)
         {
             (*entrada) << "{ \"posicao\": [" << corpo.getPosition().x<<","<<corpo.getPosition().y<<"], \"velocidade\": ["<<velocidade.x<<","<<velocidade.y<<"] }" << std::endl;
         }

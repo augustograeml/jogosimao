@@ -10,15 +10,18 @@ namespace Entidades
         {
 
         protected:
+            bool jogador2;
+            float poder;
             double tempo;
 
         public:
-            Jogador(sf::Vector2f pos, sf::Vector2f vel);
+            Jogador(sf::Vector2f pos, sf::Vector2f vel, bool jog2);
             ~Jogador();
 
             void atualizar();
             void executar();
-            void mover(); 
+            void mover();
+            void mover_jog2();
             void atacar(Entidade* jg);
             void salvar(std::ostringstream* entrada);
         };
