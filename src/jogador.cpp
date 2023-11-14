@@ -6,11 +6,10 @@ namespace Entidades
 {
     namespace Personagens
     {
-        Jogador::Jogador(sf::Vector2f pos, sf::Vector2f vel) : Personagem(pos, vel), tempo(0.0)
-        {
+        Jogador::Jogador(sf::Vector2f pos, sf::Vector2f vel) : Personagem(pos, vel), tempo(0.0), poder(1)
+        {   
             corpo.setFillColor(sf::Color::Green);
             this->setSkin("src/imagem/op1.png");
-            poder  = 1;
         }
         Jogador::~Jogador()
         {
@@ -32,12 +31,11 @@ namespace Entidades
                 }
                 mover();
             }
-        else
-        {
-            corpo.setFillColor(sf::Color::Red);
-            //morreu = true;
-        }
-
+            else
+            {
+                corpo.setFillColor(sf::Color::Red);
+                //morreu = true;
+            }
         
         }
 
@@ -67,11 +65,5 @@ namespace Entidades
 
                 atualizar();
         }
-
-        void Jogador::salvar(std::ostringstream* entrada)
-        {
-            (*entrada) << "{ \"posicao\": [" << corpo.getPosition().x<<","<<corpo.getPosition().y<<"], \"velocidade\": ["<<velocidade.x<<","<<velocidade.y<<"] }" << std::endl;
-        }
-        
     }
 }

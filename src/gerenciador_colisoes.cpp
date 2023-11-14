@@ -50,14 +50,12 @@ namespace Gerenciadores
             }
             jog++;
         }
-
         Listas::Lista<Entidades::Entidade>::Iterador inim = inimigos->get_primeiro();
         while (inim != nullptr)
         {
-            Listas::Lista<Entidades::Entidade>::Iterador obst = obstaculos->get_primeiro();
+            obst = obstaculos->get_primeiro();
             while (obst != nullptr)
             {
-
                 if (colidiu(*inim, *obst))
                 {
                     (*inim)->colidir();
@@ -65,7 +63,6 @@ namespace Gerenciadores
                 }
                 obst++;
             }
-
             inim++;
         }
 
@@ -101,7 +98,7 @@ namespace Gerenciadores
 
     int Gerenciador_Colisoes::colidiu(Entidades::Entidade *e1, Entidades::Entidade *e2)
     {
-        Vector2f pos1 = e1->getPosicao(), pos2 = e2->getPosicao(), tam1 = e1->getTamanho(), tam2 = e2->getTamanho(),
+        sf::Vector2f pos1 = e1->getPosicao(), pos2 = e2->getPosicao(), tam1 = e1->getTamanho(), tam2 = e2->getTamanho(),
                  d(fabs(pos1.x - pos2.x) - ((tam1.x + tam2.x) / 2.f),
                    fabs(pos1.y - pos2.y) - ((tam1.y + tam2.y) / 2.f));
 
@@ -111,15 +108,15 @@ namespace Gerenciadores
             {
                 if (pos1.y <= pos2.y)
                 {
-                    e1->setPosicao(Vector2f(e1->getPosicao().x, e2->getPosicao().y - (tam1.y + tam2.y) / 2));
+                    e1->setPosicao(sf::Vector2f(e1->getPosicao().x, e2->getPosicao().y - (tam1.y + tam2.y) / 2));
                     e1->set_nochao(true);
-                    e1->setVelocidade(Vector2f(e1->getVelocidade().x, -e1->getVelocidade().y * ACL));
+                    e1->setVelocidade(sf::Vector2f(e1->getVelocidade().x, -e1->getVelocidade().y * ACL));
                     return 4;
                 }
                 else
                 {
-                    e1->setPosicao(Vector2f(e1->getPosicao().x, e2->getPosicao().y + (tam1.y + tam2.y) / 2));
-                    e1->setVelocidade(Vector2f(e1->getVelocidade().x, -e1->getVelocidade().y * ACL));
+                    e1->setPosicao(sf::Vector2f(e1->getPosicao().x, e2->getPosicao().y + (tam1.y + tam2.y) / 2));
+                    e1->setVelocidade(sf::Vector2f(e1->getVelocidade().x, -e1->getVelocidade().y * ACL));
                     return 2;
                 }
             }
@@ -127,14 +124,14 @@ namespace Gerenciadores
             {
                 if (pos1.x >= pos2.x)
                 {
-                    e1->setPosicao(Vector2f(e2->getPosicao().x + (tam1.x + tam2.x) / 2, e1->getPosicao().y));
-                    e1->setVelocidade(Vector2f(-e1->getVelocidade().x * ACL, e1->getVelocidade().y));
+                    e1->setPosicao(sf::Vector2f(e2->getPosicao().x + (tam1.x + tam2.x) / 2, e1->getPosicao().y));
+                    e1->setVelocidade(sf::Vector2f(-e1->getVelocidade().x * ACL, e1->getVelocidade().y));
                     return 1;
                 }
                 else
                 {
-                    e1->setPosicao(Vector2f(e2->getPosicao().x - (tam1.x + tam2.x) / 2, e1->getPosicao().y));
-                    e1->setVelocidade(Vector2f(-e1->getVelocidade().x * ACL, e1->getVelocidade().y));
+                    e1->setPosicao(sf::Vector2f(e2->getPosicao().x - (tam1.x + tam2.x) / 2, e1->getPosicao().y));
+                    e1->setVelocidade(sf::Vector2f(-e1->getVelocidade().x * ACL, e1->getVelocidade().y));
                     return 3;
                 }
             }
