@@ -1,6 +1,5 @@
-[{ "posicao": [949.98,650], "velocidade": [-0.02,-0.02] }
-,{ "posicao": [524.998,500], "velocidade": [0.1,-0.02] }
-,{ "posicao": [616.696,500], "velocidade": [0.1,0] }
-,{ "posicao": [749.98,350], "velocidade": [-0.02,-0.02] }
-,{ "posicao": [185.399,650], "velocidade": [-0.1,-0.02] }
+[{ "posicao": [950,650], "velocidade": [-0.02,0] }
+,{ "posicao": [696.376,500], "velocidade": [0.1,-0.02] }
+,{ "posicao": [750,350], "velocidade": [-0.02,0] }
+,{ "posicao": [150,650], "velocidade": [0.02,0] }
 ]
