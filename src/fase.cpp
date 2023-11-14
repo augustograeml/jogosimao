@@ -157,6 +157,22 @@ namespace Estados
                                 inimigos.incluir(aux);
                             }
                             break;
+
+                        case '5':
+                            aux = static_cast<Entidades::Entidade*> (new Entidades::Obstaculos::Obstaculo_Medio(sf::Vector2f(j * TAM, i * TAM)));
+                            if(aux)
+                            {
+                                obstaculos.incluir(aux);
+                            }
+                            break;
+                        case '6':
+                            aux = static_cast<Entidades::Entidade*> (new Entidades::Obstaculos::Obstaculo_Dificil(sf::Vector2f(j * TAM, i * TAM)));
+                            if(aux)
+                            {
+                                obstaculos.incluir(aux);
+                            }
+                            break;
+
                         //colocar depois um case pra setar a posicao dos jogadores e um pra setar a posicao dos inimigos
                         default:
                             break;

@@ -10,7 +10,6 @@ namespace Gerenciadores
 {
     Gerenciador_Colisoes::Gerenciador_Colisoes() : jogadores(nullptr), obstaculos(nullptr), inimigos(nullptr)
     {
-        
     }
 
     Gerenciador_Colisoes::~Gerenciador_Colisoes()
@@ -24,56 +23,67 @@ namespace Gerenciadores
     {
         Listas::Lista<Entidades::Entidade>::Iterador obst;
         Listas::Lista<Entidades::Entidade>::Iterador jog = jogadores->get_primeiro();
-    
-        while(jog != nullptr)
+
+        while (jog != nullptr)
         {
             obst = obstaculos->get_primeiro();
             while (obst != nullptr)
+            {
+
+                if (colidiu(*jog, *obst))
                 {
-                    
-                    if(colidiu(*jog, *obst) )
+                    if ((*obst)->get_vida() == 55)
                     {
+                        (*jog)->set_vida((*jog)->get_vida() - 1);
                         (*jog)->colidir();
                         (*obst)->colidir();
                     }
-                    obst++;
+                    if ((*obst)->get_vida() == 40)
+                    {
+                        (*jog)->set_vida(5);
+                        obstaculos->remover((*obst));
+                        (*jog)->colidir();
+                        (*obst)->colidir();
+                    }
                 }
-                jog++;
+                obst++;
+            }
+            jog++;
         }
 
         Listas::Lista<Entidades::Entidade>::Iterador inim = inimigos->get_primeiro();
-        while(inim != nullptr)
+        while (inim != nullptr)
         {
-                Listas::Lista<Entidades::Entidade>::Iterador obst = obstaculos->get_primeiro();
-                while (obst != nullptr)
-                {
-                    
-                    if(colidiu(*inim, *obst))
-                    {
-                        (*inim)->colidir();
-                        (*obst)->colidir();
-                    }
-                    obst++;
-                }
+            Listas::Lista<Entidades::Entidade>::Iterador obst = obstaculos->get_primeiro();
+            while (obst != nullptr)
+            {
 
-            inim++;    
+                if (colidiu(*inim, *obst))
+                {
+                    (*inim)->colidir();
+                    (*obst)->colidir();
+                }
+                obst++;
+            }
+
+            inim++;
         }
 
         jog = jogadores->get_primeiro();
-    
-        while(jog != nullptr)
+
+        while (jog != nullptr)
         {
             inim = inimigos->get_primeiro();
-            while(inim != nullptr)
+            while (inim != nullptr)
             {
-                int j = colidiu(*jog,*inim);
+                int j = colidiu(*jog, *inim);
 
-                if(j == 4 )
+                if (j == 4)
                 {
-                        (*inim)->set_vida(0);
-                        inimigos->remover((*inim));
+                    (*inim)->set_vida(0);
+                    inimigos->remover((*inim));
                 }
-                else if(j  == 2)
+                else if (j == 2)
                 {
                     (*jog)->set_vida((*jog)->get_vida() - 1);
                 }
@@ -84,25 +94,22 @@ namespace Gerenciadores
                     (*inim)->colidir();
                 }
                 inim++;
-
             }
-        jog++;
+            jog++;
         }
-            
     }
 
-    int Gerenciador_Colisoes::colidiu(Entidades::Entidade* e1, Entidades::Entidade* e2)
+    int Gerenciador_Colisoes::colidiu(Entidades::Entidade *e1, Entidades::Entidade *e2)
     {
         Vector2f pos1 = e1->getPosicao(), pos2 = e2->getPosicao(), tam1 = e1->getTamanho(), tam2 = e2->getTamanho(),
-        d(  fabs(pos1.x - pos2.x) - ((tam1.x + tam2.x)/2.f),
-            fabs(pos1.y - pos2.y) - ((tam1.y + tam2.y)/2.f)
-        );
+                 d(fabs(pos1.x - pos2.x) - ((tam1.x + tam2.x) / 2.f),
+                   fabs(pos1.y - pos2.y) - ((tam1.y + tam2.y) / 2.f));
 
-        if(d.x < 0 && d.y < 0)
+        if (d.x < 0 && d.y < 0)
         {
-            if(d.x < d.y)
+            if (d.x < d.y)
             {
-                if(pos1.y <= pos2.y)
+                if (pos1.y <= pos2.y)
                 {
                     e1->setPosicao(Vector2f(e1->getPosicao().x, e2->getPosicao().y - (tam1.y + tam2.y) / 2));
                     e1->set_nochao(true);
@@ -118,7 +125,7 @@ namespace Gerenciadores
             }
             else
             {
-                if(pos1.x >= pos2.x)
+                if (pos1.x >= pos2.x)
                 {
                     e1->setPosicao(Vector2f(e2->getPosicao().x + (tam1.x + tam2.x) / 2, e1->getPosicao().y));
                     e1->setVelocidade(Vector2f(-e1->getVelocidade().x * ACL, e1->getVelocidade().y));
@@ -131,8 +138,7 @@ namespace Gerenciadores
                     return 3;
                 }
             }
-
-        }    
+        }
         return 0;
     }
 
