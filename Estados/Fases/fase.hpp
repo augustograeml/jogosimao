@@ -6,6 +6,8 @@
 #include "../../Entidades/Personagens/inimigo_dificil.hpp"
 #include "../../Listas/listaEntidades.hpp"
 #include "../../Entidades/Obstaculos/obstaculo_facil.hpp"
+#include "../../Entidades/Obstaculos/obstaculo_medio.hpp"
+#include "../../Entidades/Obstaculos/obstaculo_dificil.hpp"
 #include "../../Gerenciadores/gerenciador_colisoes.hpp"
 #include "../estado.hpp"
 

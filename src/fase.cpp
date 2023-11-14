@@ -110,6 +110,22 @@ namespace Estados
                                 inimigos.incluir(aux);
                             }
                             break;
+
+                        case '5':
+                            aux = static_cast<Entidade*> (new Entidades::Obstaculos::Obstaculo_Medio(Vector2f(j * TAM, i * TAM)));
+                            if(aux)
+                            {
+                                obstaculos.incluir(aux);
+                            }
+                            break;
+                        case '6':
+                            aux = static_cast<Entidade*> (new Entidades::Obstaculos::Obstaculo_Dificil(Vector2f(j * TAM, i * TAM)));
+                            if(aux)
+                            {
+                                obstaculos.incluir(aux);
+                            }
+                            break;
+
                         //colocar depois um case pra setar a posicao dos jogadores e um pra setar a posicao dos inimigos
                         default:
                             break;
