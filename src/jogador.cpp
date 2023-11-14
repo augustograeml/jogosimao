@@ -6,10 +6,18 @@ namespace Entidades
 {
     namespace Personagens
     {
-        Jogador::Jogador(sf::Vector2f pos, sf::Vector2f vel) : Personagem(pos, vel), tempo(0.0), poder(1)
+        Jogador::Jogador(sf::Vector2f pos, sf::Vector2f vel, bool jog2) : Personagem(pos, vel), tempo(0.0), poder(1), jogador2(jog2)
         {   
-            corpo.setFillColor(sf::Color::Green);
-            this->setSkin("src/imagem/op1.png");
+            if(!jog2)
+            {
+                corpo.setFillColor(sf::Color::Green);
+                this->setSkin("src/imagem/op1.png");
+            }
+            else
+            {
+                corpo.setFillColor(sf::Color::Green);
+                this->setSkin("src/imagem/luigiDireita.png");
+            }
         }
         Jogador::~Jogador()
         {
@@ -30,14 +38,17 @@ namespace Entidades
                 {
                     corpo.setFillColor(sf::Color::Yellow);
                 }
-                mover();
+
+                if(!jogador2)
+                    mover();
+                else
+                    mover_jog2();
             }
             else
             {
                 corpo.setFillColor(sf::Color::Red);
                 //morreu = true;
             }
-        
         }
 
         void Jogador::atacar(Entidade* jg)
@@ -61,6 +72,29 @@ namespace Entidades
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
                     velocidade.y += 0.1f;  
                 //if (sf::Keyboard::isKeyPressed(sf::Keyboard::F))
+                    //atacar();  
+                nochao = false;
+
+                atualizar();
+        }
+
+        void Jogador::mover_jog2()
+        {
+            if (!nochao)            
+                velocidade.y += 0.1f;
+
+            else
+                velocidade.y = 0.0f;
+                    
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+                    velocidade.x += 0.1f;
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+                    velocidade.x += -0.1f;   
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && nochao)
+                    velocidade.y += -5.0f;    
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+                    velocidade.y += 0.1f;  
+                //if (sf::Keyboard::isKeyPressed(sf::Keyboard::RShift))
                     //atacar();  
                 nochao = false;
 

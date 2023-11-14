@@ -33,7 +33,7 @@ namespace Estados
             gC.colisao_simples();
         }
 
-        void Fase::criar_jogadores()
+        void Fase::criar_jogadores(bool jog2)
         {
             std::ifstream arquivo(ARQUIVO_JOGADOR);
             if (!arquivo)
@@ -42,7 +42,7 @@ namespace Estados
                 exit(2);
             }
 
-            Entidade* p;
+            Entidades::Entidade* p;
             Listas::Lista<Entidades::Entidade>::Iterador it = jogadores.get_primeiro();
             while(it != nullptr)
             {
@@ -54,18 +54,38 @@ namespace Estados
             
             nlohmann::json json = nlohmann::json::parse(arquivo);
 
-            for (auto it = json.begin(); it != json.end(); ++it)
+            if(!jog2)
             {
-                jogadores.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Jogador(
-                    sf::Vector2f(
-                        (float) ((*it)["posicao"][0]), 
-                        (float) ((*it)["posicao"][1])
-                                ),
-                    sf::Vector2f(
-                        (float) ((*it)["velocidade"][0]),
-                        (float) ((*it)["velocidade"][1])
-                                )
-                    )));
+                for (auto it = json.begin(); it != json.end(); ++it)
+                {
+                    jogadores.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Jogador(
+                        sf::Vector2f(
+                            (float) ((*it)["posicao"][0]), 
+                            (float) ((*it)["posicao"][1])
+                                    ),
+                        sf::Vector2f(
+                            (float) ((*it)["velocidade"][0]),
+                            (float) ((*it)["velocidade"][1])
+                                    ), false
+                        )));
+                }
+            }
+
+            else 
+            {
+                for (auto it = json.begin(); it != json.end(); ++it)
+                {
+                    jogadores.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Jogador(
+                        sf::Vector2f(
+                            (float) ((*it)["posicao"][0]), 
+                            (float) ((*it)["posicao"][1])
+                                    ),
+                        sf::Vector2f(
+                            (float) ((*it)["velocidade"][0]),
+                            (float) ((*it)["velocidade"][1])
+                                    ), true
+                        )));
+                }
             }
             
        }
@@ -79,7 +99,7 @@ namespace Estados
                 exit(2);
             }
 
-            Entidade* p;
+            Entidades::Entidade* p;
             Listas::Lista<Entidades::Entidade>::Iterador it = inimigos.get_primeiro();
             while(it != nullptr)
             {
@@ -138,7 +158,7 @@ namespace Estados
                             //dados do arquivo json serao importante nesse caso aqui
                             if(jogadores.get_primeiro() == nullptr)
                             {
-                                aux = static_cast<Entidades::Entidade*> (new Entidades::Personagens::Jogador(sf::Vector2f(0.f, 0.f), sf::Vector2f(0.f, 0.f)));
+                                aux = static_cast<Entidades::Entidade*> (new Entidades::Personagens::Jogador(sf::Vector2f(0.f, 0.f), sf::Vector2f(0.f, 0.f), false));
                                 if(aux)
                                 {
                                     aux->setWindow(pGG->get_Janela());
@@ -146,12 +166,11 @@ namespace Estados
                                     jogadores.incluir(aux);
                                 }
                             }
-                            
                             break;
                             
                         case '2':
                         //dados do arquivo json serao importante nesse caso aqui
-                            aux = static_cast<Entidades::Entidade*> (new Entidades::Personagens::Jogador2(sf::Vector2f(0.f, 0.f), sf::Vector2f(0.f, 0.f)));
+                            aux = static_cast<Entidades::Entidade*> (new Entidades::Personagens::Jogador(sf::Vector2f(0.f, 0.f), sf::Vector2f(0.f, 0.f), true));
                             if(aux)
                             {
                                 aux->setWindow(pGG->get_Janela());
@@ -181,14 +200,14 @@ namespace Estados
                             break;
 
                         case '5':
-                            aux = static_cast<Entidade*> (new Entidades::Obstaculos::Obstaculo_Medio(Vector2f(j * TAM, i * TAM)));
+                            aux = static_cast<Entidades::Entidade*> (new Entidades::Obstaculos::Espinho(Vector2f(j * TAM, i * TAM)));
                             if(aux)
                             {
                                 obstaculos.incluir(aux);
                             }
                             break;
                         case '6':
-                            aux = static_cast<Entidade*> (new Entidades::Obstaculos::Obstaculo_Dificil(Vector2f(j * TAM, i * TAM)));
+                            aux = static_cast<Entidades::Entidade*> (new Entidades::Obstaculos::Coracao(Vector2f(j * TAM, i * TAM)));
                             if(aux)
                             {
                                 obstaculos.incluir(aux);
