@@ -25,6 +25,7 @@ namespace Entidades
         {
             if(vida != 0)
             {
+                corpo.setFillColor(sf::Color::Green);
                 if (vida < 2)
                 {
                     corpo.setFillColor(sf::Color::Yellow);
@@ -64,6 +65,11 @@ namespace Entidades
                 nochao = false;
 
                 atualizar();
+        }
+
+        void Jogador::salvar(std::ostringstream* entrada)
+        {
+            (*entrada) << "{ \"posicao\": [" << corpo.getPosition().x<<","<<corpo.getPosition().y<<"], \"velocidade\": ["<<velocidade.x<<","<<velocidade.y<<"] }" << std::endl;
         }
     }
 }

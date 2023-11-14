@@ -14,8 +14,6 @@ namespace Entidades
                 ~Obstaculo();
 
                 bool get_danoso()  {return danoso;}
-                
-                bool get_danoso()  {return danoso;}
 
                 virtual void executar() = 0;
                 virtual void mover() = 0;
