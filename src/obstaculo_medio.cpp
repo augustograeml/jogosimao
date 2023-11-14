@@ -6,7 +6,8 @@ namespace Entidades
     {
         Obstaculo_Medio::Obstaculo_Medio(sf::Vector2f pos) : Obstaculo(pos, true), dano(2.0)
         {
-
+            this->setSkin("src/imagem/espinho.png");
+            this->set_vida(55);
         }
 
         Obstaculo_Medio::~Obstaculo_Medio()
