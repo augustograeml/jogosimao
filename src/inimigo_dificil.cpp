@@ -43,5 +43,10 @@ namespace Entidades
         {
             jg->set_vida(jg->get_vida() - forca);
         }
+
+        void Inimigo_Dificil::salvar(std::ostringstream* entrada)
+        {
+            (*entrada) << "{ \"posicao\": [" << corpo.getPosition().x<<","<<corpo.getPosition().y<<"], \"velocidade\": ["<<velocidade.x<<","<<velocidade.y<<"] }" << std::endl;
+        }
     }
 }

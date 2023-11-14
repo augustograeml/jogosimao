@@ -1,9 +1,12 @@
 #pragma once
 
 #include "../ente.hpp"
+#include <sstream>
 
 #define TAM 50.f
 #define TAM_CHEFAO 100.f
+//tamanho da nossa flecha, la elwe
+#define TAM_FLECHA 10.f
 
 using namespace sf;
 
@@ -26,6 +29,8 @@ namespace Entidades
             ~Entidade();
 
             void executar();
+
+            virtual void salvar(std::ostringstream* entrada){}
 
             virtual void mover() = 0;
             virtual void atualizar() = 0;

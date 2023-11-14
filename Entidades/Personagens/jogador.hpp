@@ -20,7 +20,8 @@ namespace Entidades
             void atualizar();
             void executar();
             void mover(); 
-            void atacar(Entidade* jg); 
+            void atacar(Entidade* jg);
+            void salvar(std::ostringstream* entrada);
         };
 
     }

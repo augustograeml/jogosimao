@@ -1,6 +1,5 @@
 #pragma once
 #include "../Listas/listaEntidades.hpp"
-#include "../Listas/lista.hpp"
 #include "../Entidades/entidade.hpp"
 
 namespace Gerenciadores
