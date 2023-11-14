@@ -56,9 +56,9 @@ namespace Gerenciadores
             obst = obstaculos->get_primeiro();
             while (obst != nullptr)
             {
-                if (colidiu(*jog, *obst))
+                if (colidiu(*inim, *obst))
                 {
-                    (*jog)->colidir();
+                    (*inim)->colidir();
                     (*obst)->colidir();
                 }
                 obst++;
