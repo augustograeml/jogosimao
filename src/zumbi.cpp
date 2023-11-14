@@ -5,7 +5,7 @@ namespace Entidades
 {
     namespace Personagens
     {
-        Zumbi::Zumbi(Vector2f pos, Vector2f vel) : Inimigo(pos, vel), vidas(1), forca(1)
+        Zumbi::Zumbi(Vector2f pos, Vector2f vel) : Inimigo(pos, vel)
         {
             this->setSkin("src/imagem/zumbi_bateu_morreu.png");
         }
