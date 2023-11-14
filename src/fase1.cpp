@@ -16,8 +16,8 @@ namespace Estados
 
             criar_cenario(ARQUIVO_CENARIO_1);
 
-            criar_jogadores();
-            criar_inimigos();
+            /*criar_jogadores();
+            criar_inimigos();*/
         }
 
         Fase1::~Fase1()

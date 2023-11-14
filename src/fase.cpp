@@ -134,9 +134,9 @@ namespace Estados
                                 obstaculos.incluir(aux);
                             }
                             break;
-                        /*case '1':
+                        case '1':
                             //dados do arquivo json serao importante nesse caso aqui
-                            if(jogadores.get_primeiro() != nullptr)
+                            if(jogadores.get_primeiro() == nullptr)
                             {
                                 aux = static_cast<Entidades::Entidade*> (new Entidades::Personagens::Jogador(sf::Vector2f(0.f, 0.f), sf::Vector2f(0.f, 0.f)));
                                 if(aux)
@@ -179,7 +179,7 @@ namespace Estados
                                 inimigos.incluir(aux);
                             }
                             break;
-*/
+
                         case '5':
                             aux = static_cast<Entidade*> (new Entidades::Obstaculos::Obstaculo_Medio(Vector2f(j * TAM, i * TAM)));
                             if(aux)
@@ -209,7 +209,7 @@ namespace Estados
         {
             // Salvando Jogadores:
 
-            std::ofstream arquivo(ARQUIVO_JOGADOR, std::ios::out | std::ios::trunc);  
+            std::ofstream arquivo(ARQUIVO_JOGADOR/*, std::ios::out | std::ios::trunc*/);  
             if (!arquivo)
             {
                 std::cout << "Problema em salvar o arquivo" << std::endl;
