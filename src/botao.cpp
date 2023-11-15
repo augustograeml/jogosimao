@@ -17,7 +17,7 @@ namespace Estados
             corpo.setOutlineThickness(6);
             corpo.setOutlineColor(sf::Color::Black);
 
-            texto.setFont(*pGG->get_fonte());
+            //texto.setFont(*pGG->get_fonte());
             texto.setFillColor(sf::Color(65, 130, 190));
             texto.setCharacterSize(50);
 

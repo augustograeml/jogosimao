@@ -29,8 +29,8 @@ namespace Estados
                 ~Ranking();
                 void selecionar();
                 void desenhar();
-                void carregar();
-                void salvar(std::ostringstream* entrada);
+                //void carregar();
+                //void salvar(std::ostringstream* entrada);
                 void adicinar_novo_ranking(int points, std::string name);
         };
     }

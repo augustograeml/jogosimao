@@ -13,17 +13,17 @@ namespace Gerenciadores
         janela->setFramerateLimit(60);
         janela->setView(camera);
 
-        fonte = new sf::Font;
-        if (!fonte->loadFromFile(FONTE))
+        //fonte = new sf::Font;
+        /*if (!fonte->loadFromFile(FONTE))
         {
             std::cout<<"ERROR: Fonte nao carregada"<<std::endl;
             exit(1);
-        }
+        }*/
     }
     Gerenciador_Grafico::~Gerenciador_Grafico()
     {
         delete janela;
-        delete fonte;
+        //delete fonte;
     }
     void Gerenciador_Grafico::desenharEnte(Ente *pE)
     {
@@ -98,8 +98,8 @@ namespace Gerenciadores
         janela->setView(camera);        
     }
 
-    sf::Font* Gerenciador_Grafico::get_fonte()
+    /*sf::Font* Gerenciador_Grafico::get_fonte()
     {
         return fonte;
-    }
+    }*/
 }

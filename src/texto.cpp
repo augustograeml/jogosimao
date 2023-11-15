@@ -9,7 +9,7 @@ namespace Estados
         Texto::Texto(std::string info)
         {
             texto.setString(info);
-            texto.setFont(*pGG->get_fonte());
+            //texto.setFont(*pGG->get_fonte());
             texto.setCharacterSize(30);
             texto.setOrigin(15.f,15.f);
             texto.setPosition(sf::Vector2f(100.f, 25.f));

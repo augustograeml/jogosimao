@@ -5,8 +5,8 @@ namespace Estados
     namespace Menus
     {
         Ranking::Ranking() : Menu(2, 4, "Ranking"), primeiro("1 nome - tempo"), 
-        segundo("2 nome - tempo"), terceiro("3 nome - tempo"),  ranking(),
-        buffer()
+        segundo("2 nome - tempo"), terceiro("3 nome - tempo"),  ranking() /*,
+        buffer()*/
         {
             titulo.set_tamanho(70);
             titulo.set_posicao(sf::Vector2f(160.f, 80.f));
@@ -16,7 +16,7 @@ namespace Estados
             segundo.set_posicao(sf::Vector2f(110.f, 240.f));
             terceiro.set_posicao(sf::Vector2f(110.f, 320.f));
             
-            carregar();
+            //carregar();
             botoes[0]->set_nome("Menu");
             botoes[0]->set_posicao(sf::Vector2f(400.f, 420.f));
 
@@ -93,7 +93,7 @@ namespace Estados
             }
         }
 
-        void Ranking::salvar(std::ostringstream* entrada)
+        /*void Ranking::salvar(std::ostringstream* entrada)
         {
             //tentar fazer o ranking sakvar daora legal depois
 
@@ -123,7 +123,7 @@ namespace Estados
                 buffer << "]";
             }
             arquivo << buffer.str();
-            arquivo.close();*/
+            arquivo.close();
         }
 
         void Ranking::carregar()
@@ -154,6 +154,6 @@ namespace Estados
                     terceiro.set_nome(it->second + " - " + std::to_string(it->first));
             }
 
-        }
+        }*/
     }
 }

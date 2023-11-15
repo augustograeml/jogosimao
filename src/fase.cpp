@@ -23,9 +23,7 @@ namespace Estados
 
         Fase::~Fase()
         {
-            //aqui pelo que eu entendi vai chamar o metodo salvar pra quando for rolar aquele teste do simao da gente sair do jogo e entrar denovo quando um projetil tiver vindo em direcao da gente tlg?
             salvar();
-
         }
 
         void Fase::gerenciar_colisoes()

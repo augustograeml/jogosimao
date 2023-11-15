@@ -101,7 +101,7 @@ namespace Estados
                         break;
 
                     case 1:
-                        //fechar janela pelo ponteiro do gerenciador grafico aqui
+                        pGG->fecharJanela();
                         break;
                     
                     default:

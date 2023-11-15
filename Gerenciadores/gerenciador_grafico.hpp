@@ -17,7 +17,7 @@ namespace Gerenciadores
             //singleton
             Gerenciador_Grafico();
             static Gerenciador_Grafico* instancia;
-            sf::Font* fonte;
+            //sf::Font* fonte;
         public:
             ~Gerenciador_Grafico();
 
@@ -33,7 +33,7 @@ namespace Gerenciadores
             void resetarCamera();
             void centralizarCamera(sf::Vector2f p);
             sf::RenderWindow* get_Janela() const;
-            sf::Font* get_fonte();
+            //sf::Font* get_fonte();
     };
 
 }
