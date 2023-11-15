@@ -2,7 +2,7 @@
 
 namespace Estados
 {
-    Gerenciador_Estados* Estado::pGE(Gerenciador_Estados::get_instancia());
+    Gerenciadores::Gerenciador_Estados* Estado::pGE(Gerenciadores::Gerenciador_Estados::get_instancia());
 
     Estado::Estado(int i) :  id(i)
     {

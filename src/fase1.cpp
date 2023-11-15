@@ -10,10 +10,15 @@ namespace Estados
         Fase1::Fase1() : Fase(1)
         {
             Textura.loadFromFile("src/imagem/cenario_op1.jpg");
-            RS.setSize(Vector2f(950.f, 950.f));
-            RS.setTexture(&Textura);
-            RS.setPosition(sf::Vector2f(76.f,-10.f));
+            shape.setSize(Vector2f(950.f, 950.f));
+            shape.setTexture(&Textura);
+            shape.setPosition(sf::Vector2f(76.f,-10.f));
+
             criar_cenario(ARQUIVO_CENARIO_1);
+
+            /*criar_jogadores(1);
+            criar_jogadores(0);
+            criar_inimigos();*/
         }
 
         Fase1::~Fase1()
@@ -27,8 +32,8 @@ namespace Estados
             inimigos.executar();
             gerenciar_colisoes();
             //pGG->centralizarCamera((*(jogadores.get_primeiro()))->getPosicao() /*+ (*(jogadores.get_primeiro()++))->getPosicao())/2.f*/);
+            pGG->desenharFundo(&shape);
             obstaculos.desenhar();
-            pGG->desenharFundo(&RS);
             jogadores.desenhar();
             inimigos.desenhar();
         }

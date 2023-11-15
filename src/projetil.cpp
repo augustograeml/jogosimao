@@ -2,7 +2,7 @@
 
 namespace Entidades
 {
-    Projetil::Projetil()
+    Projetil::Projetil() //: Ente(TAM_CHEFAO, TAM_CHEFAO)
     {
 
     }

@@ -14,7 +14,7 @@ namespace Estados
     namespace Fases
     {
         Fase::Fase(int pos) : jogadores(), obstaculos(), inimigos(), Estado(pos),
-        gC()
+        gC(), buffer()
         {
             gC.set_inimigos(&inimigos);
             gC.set_jogadores(&jogadores);
@@ -33,16 +33,97 @@ namespace Estados
             gC.colisao_simples();
         }
 
-        void Fase::criar_jogadores()
+        void Fase::criar_jogadores(bool jog2)
         {
-            //vai rolar uma parada muito louca nesse arquivo aqui quando voce for implementar o json slk
-            jogadores.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Jogador(sf::Vector2f(0.f, 0.f), sf::Vector2f(0.f, 0.f))));
-        }
+            std::ifstream arquivo(ARQUIVO_JOGADOR);
+            if (!arquivo)
+            {
+                std::cout << "Arquivo não existe" << std::endl;   
+                exit(2);
+            }
+
+            Entidades::Entidade* p;
+            Listas::Lista<Entidades::Entidade>::Iterador it = jogadores.get_primeiro();
+            while(it != nullptr)
+            {
+                p = *it;
+                jogadores.remover(p);
+                it++;
+                p = nullptr;
+            }
+            
+            nlohmann::json json = nlohmann::json::parse(arquivo);
+
+            if(!jog2)
+            {
+                for (auto it = json.begin(); it != json.end(); ++it)
+                {
+                    jogadores.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Jogador(
+                        sf::Vector2f(
+                            (float) ((*it)["posicao"][0]), 
+                            (float) ((*it)["posicao"][1])
+                                    ),
+                        sf::Vector2f(
+                            (float) ((*it)["velocidade"][0]),
+                            (float) ((*it)["velocidade"][1])
+                                    ), false
+                        )));
+                }
+            }
+
+            else 
+            {
+                for (auto it = json.begin(); it != json.end(); ++it)
+                {
+                    jogadores.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Jogador(
+                        sf::Vector2f(
+                            (float) ((*it)["posicao"][0]), 
+                            (float) ((*it)["posicao"][1])
+                                    ),
+                        sf::Vector2f(
+                            (float) ((*it)["velocidade"][0]),
+                            (float) ((*it)["velocidade"][1])
+                                    ), true
+                        )));
+                }
+            }
+            
+       }
 
         void Fase::criar_inimigos()
         {   
-            //vai rolar uma parada muito louca aqui tbm
-            inimigos.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Inimigo_Facil(sf::Vector2f(0.f, 0.f), sf::Vector2f(0.f, 0.f))));
+            std::ifstream arquivo(ARQUIVO_INIMIGO);
+            if (!arquivo)
+            {
+                std::cout << "Arquivo não existe" << std::endl;   
+                exit(2);
+            }
+
+            Entidades::Entidade* p;
+            Listas::Lista<Entidades::Entidade>::Iterador it = inimigos.get_primeiro();
+            while(it != nullptr)
+            {
+                p = *it;
+                inimigos.remover(p);
+                it++;
+                p = nullptr;
+            }
+
+            nlohmann::json json = nlohmann::json::parse(arquivo);
+
+            for (auto it = json.begin(); it != json.end(); ++it)
+            {
+                inimigos.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Zumbi(
+                    sf::Vector2f(
+                        (float) ((*it)["posicao"][0]), 
+                        (float) ((*it)["posicao"][1])
+                                ),
+                    sf::Vector2f(
+                        (float) ((*it)["velocidade"][0]),
+                        (float) ((*it)["velocidade"][1])
+                                )
+                    )));
+            }            
         }
 
         void Fase::criar_cenario(string caminho)
@@ -75,18 +156,21 @@ namespace Estados
                             break;
                         case '1':
                             //dados do arquivo json serao importante nesse caso aqui
-                            aux = static_cast<Entidades::Entidade*> (new Entidades::Personagens::Jogador(sf::Vector2f(0.f, 0.f), sf::Vector2f(0.f, 0.f)));
-                            if(aux)
+                            if(jogadores.get_primeiro() == nullptr)
                             {
-                                aux->setWindow(pGG->get_Janela());
-                                aux->setPosicao(sf::Vector2f(j * TAM, i * TAM));
-                                jogadores.incluir(aux);
+                                aux = static_cast<Entidades::Entidade*> (new Entidades::Personagens::Jogador(sf::Vector2f(0.f, 0.f), sf::Vector2f(0.f, 0.f), false));
+                                if(aux)
+                                {
+                                    aux->setWindow(pGG->get_Janela());
+                                    aux->setPosicao(sf::Vector2f(j * TAM, i * TAM));
+                                    jogadores.incluir(aux);
+                                }
                             }
                             break;
                             
                         case '2':
                         //dados do arquivo json serao importante nesse caso aqui
-                            aux = static_cast<Entidades::Entidade*> (new Entidades::Personagens::Jogador2(sf::Vector2f(0.f, 0.f), sf::Vector2f(0.f, 0.f)));
+                            aux = static_cast<Entidades::Entidade*> (new Entidades::Personagens::Jogador(sf::Vector2f(0.f, 0.f), sf::Vector2f(0.f, 0.f), true));
                             if(aux)
                             {
                                 aux->setWindow(pGG->get_Janela());
@@ -96,7 +180,7 @@ namespace Estados
                             break;
                         case '3':
                         //dados do arquivo json serao importante nesse caso aqui
-                            aux = static_cast<Entidades::Entidade*> (new Entidades::Personagens::Inimigo_Facil(sf::Vector2f(0.f, 0.f), sf::Vector2f(0.f, 0.f)));
+                            aux = static_cast<Entidades::Entidade*> (new Entidades::Personagens::Zumbi(sf::Vector2f(0.f, 0.f), sf::Vector2f(0.f, 0.f)));
                             if(aux)
                             {
                                 aux->setWindow(pGG->get_Janela());
@@ -106,7 +190,7 @@ namespace Estados
                             break;
                         case '4':
                         //dados do arquivo json serao importante nesse caso aqui
-                            aux = static_cast<Entidades::Entidade*> (new Entidades::Personagens::Inimigo_Dificil(sf::Vector2f(0.f, 0.f), sf::Vector2f(0.f, 0.f)));
+                            aux = static_cast<Entidades::Entidade*> (new Entidades::Personagens::Arqueiro(sf::Vector2f(0.f, 0.f), sf::Vector2f(0.f, 0.f)));
                             if(aux)
                             {
                                 aux->setWindow(pGG->get_Janela());
@@ -114,6 +198,22 @@ namespace Estados
                                 inimigos.incluir(aux);
                             }
                             break;
+
+                        case '5':
+                            aux = static_cast<Entidades::Entidade*> (new Entidades::Obstaculos::Espinho(Vector2f(j * TAM, i * TAM)));
+                            if(aux)
+                            {
+                                obstaculos.incluir(aux);
+                            }
+                            break;
+                        case '6':
+                            aux = static_cast<Entidades::Entidade*> (new Entidades::Obstaculos::Coracao(Vector2f(j * TAM, i * TAM)));
+                            if(aux)
+                            {
+                                obstaculos.incluir(aux);
+                            }
+                            break;
+
                         //colocar depois um case pra setar a posicao dos jogadores e um pra setar a posicao dos inimigos
                         default:
                             break;
@@ -127,7 +227,8 @@ namespace Estados
         void Fase::salvar()
         {
             // Salvando Jogadores:
-            std::ofstream arquivo(ARQUIVO_JOGADOR);  
+
+            std::ofstream arquivo(ARQUIVO_JOGADOR/*, std::ios::out | std::ios::trunc*/);  
             if (!arquivo)
             {
                 std::cout << "Problema em salvar o arquivo" << std::endl;

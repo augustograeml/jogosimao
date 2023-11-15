@@ -5,6 +5,8 @@
 
 #define TAM 50.f
 #define TAM_CHEFAO 100.f
+//tamanho da nossa flecha, la elwe
+#define TAM_FLECHA 10.f
 
 using namespace sf;
 

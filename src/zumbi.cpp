@@ -1,26 +1,26 @@
-#include "../Entidades/Personagens/inimigo_facil.hpp"
+#include "../Entidades/Personagens/zumbi.hpp"
 #include "../Entidades/Personagens/inimigo.hpp"
 
 namespace Entidades
 {
     namespace Personagens
     {
-        Inimigo_Facil::Inimigo_Facil(Vector2f pos, Vector2f vel) : Inimigo(pos, vel), vidas(1), forca(1)
+        Zumbi::Zumbi(Vector2f pos, Vector2f vel) : Inimigo(pos, vel)
         {
             this->setSkin("src/imagem/zumbi_bateu_morreu.png");
         }
 
-        Inimigo_Facil::~Inimigo_Facil()
+        Zumbi::~Zumbi()
         {
             pjogador = nullptr;
         }
 
-        void Inimigo_Facil::atualizar()
+        void Zumbi::atualizar()
         {
             corpo.setPosition(corpo.getPosition() + velocidade);
         }
 
-        void Inimigo_Facil::mover()
+        void Zumbi::mover()
         {
             //velocidade += Vector2f(rand() % 10 - 5, (float) (nochao ? - (rand() % 5) : 0));
 
@@ -34,18 +34,18 @@ namespace Entidades
             atualizar();
         }
 
-        void Inimigo_Facil::executar()
+        void Zumbi::executar()
         {
             //update();
             mover();
         }
 
-        void Inimigo_Facil::atacar(Entidade* jg)
+        void Zumbi::atacar(Entidade* jg)
         {
             jg->set_vida(jg->get_vida() - forca);
         }
 
-        void Inimigo_Facil::salvar(std::ostringstream* entrada)
+        void Zumbi::salvar(std::ostringstream* entrada)
         {
             (*entrada) << "{ \"posicao\": [" << corpo.getPosition().x<<","<<corpo.getPosition().y<<"], \"velocidade\": ["<<velocidade.x<<","<<velocidade.y<<"] }" << std::endl;
         }
