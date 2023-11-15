@@ -10,6 +10,8 @@ namespace Estados
         class Menu_Principal : public Menu
         {
             private:
+                Observers::Observer_Menu* pObserverMenu;
+                
                 int estagio_atual;
                 int jogador_atual;
 

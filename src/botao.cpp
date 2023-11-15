@@ -1,8 +1,8 @@
-#include "../Estados/Menu/Botao/botao.hpp"
+#include "../Estados/Menu/botao.hpp"
 
 namespace Estados
 {
-    namespace Menu
+    namespace Menus
     {
            
         Botao::Botao(sf::Vector2f pos)

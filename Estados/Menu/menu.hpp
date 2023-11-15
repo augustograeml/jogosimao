@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 
+#include "ente.hpp"
 #include "../estado.hpp"
 #include "texto.hpp"
 #include "botao.hpp"
@@ -11,8 +12,6 @@
 #include "../../Observers/observer_menu.hpp"
 #include "botao.hpp"
 #include <list>
-
-class Ente;
 
 
 namespace Estados
