@@ -4,6 +4,7 @@ class Ente;
 
 #define LARGURA_TELA 1000.0  
 #define ALTURA_TELA 1000.0
+#define FONTE "../Design/Fonte/fonte_simas.ttf"
 
 namespace Gerenciadores
 {
@@ -15,12 +16,14 @@ namespace Gerenciadores
             //singleton
             Gerenciador_Grafico();
             static Gerenciador_Grafico* instancia;
+            sf::Font* fonte;
         public:
             ~Gerenciador_Grafico();
 
             void desenharEnte(Ente* pE);
             void desenharTextura(sf::Texture* pT);
             void desenharFundo(sf::RectangleShape* pR);
+            void desenharTexto(sf::Text* pT);
             const bool get_JanelaAberta() const;
             static Gerenciador_Grafico* get_instancia();
             void mostrar();
@@ -29,6 +32,7 @@ namespace Gerenciadores
             void resetarCamera();
             void centralizarCamera(sf::Vector2f p);
             sf::RenderWindow* get_Janela() const;
+            sf::Font* get_fonte();
     };
 
 }

@@ -1,5 +1,6 @@
 #include "../Gerenciadores/gerenciador_grafico.hpp"
 #include "../ente.hpp"
+#include <iostream>
 
 namespace Gerenciadores
 {
@@ -11,10 +12,18 @@ namespace Gerenciadores
     {
         janela->setFramerateLimit(60);
         janela->setView(camera);
+
+        fonte = new sf::Font;
+        if (!fonte->loadFromFile(FONTE))
+        {
+            std::cout<<"ERROR: FONTE N CARREGADA"<<std::endl;
+            exit(1);
+        }
     }
     Gerenciador_Grafico::~Gerenciador_Grafico()
     {
         delete janela;
+        delete fonte;
     }
     void Gerenciador_Grafico::desenharEnte(Ente *pE)
     {
@@ -30,11 +39,21 @@ namespace Gerenciadores
             janela->draw(sprite);
         }
     }
+
     void Gerenciador_Grafico::desenharFundo(sf::RectangleShape* pR)
     {
         if (pR)
         {
             janela->draw(*pR);
+        }
+
+    }
+
+    void Gerenciador_Grafico::desenharTexto(sf::Text* pT)
+    {
+        if (pT)
+        {
+            janela->draw(*pT);
         }
 
     }
@@ -77,5 +96,10 @@ namespace Gerenciadores
         //camera.setCenter(Vector2f(530.f, 500.f));
         camera.setCenter(p);
         janela->setView(camera);        
+    }
+
+    sf::Font* Gerenciador_Grafico::get_fonte()
+    {
+        return fonte;
     }
 }

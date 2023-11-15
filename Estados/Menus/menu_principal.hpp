@@ -1,7 +1,6 @@
 #pragma once
 
 #include "menu.hpp"
-#include "../../Observers/observer_tecla.hpp"
 
 namespace Estados
 {

@@ -38,11 +38,12 @@ namespace Gerenciadores
                 case sf::Event::Closed:
                     pGrafico->fecharJanela();
                     break;
+
                 case sf::Event::KeyPressed:
                     notificar(evento.key.code);
-                break;
+                    break;
+                    
                 default:
-                
                     break;   
             }
         }

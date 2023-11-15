@@ -4,7 +4,7 @@
 #include <iostream>
 #include <vector>
 
-#include "ente.hpp"
+#include "../../ente.hpp"
 #include "../estado.hpp"
 #include "texto.hpp"
 #include "botao.hpp"
@@ -18,7 +18,7 @@ namespace Estados
 {
     namespace Menus
     {
-        class Menu : public Estado
+        class Menu : public Ente, public Estado
         {
             protected:
                 int MAX_BOTOES;

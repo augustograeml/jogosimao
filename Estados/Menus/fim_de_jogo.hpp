@@ -7,11 +7,10 @@
 
 #include "menu.hpp"
 #include "ranking.hpp"
+#include "../../Observers/observer_fim_de_jogo.hpp"
+#include "ranking.hpp"
 
-//#include "../Observers/"
-/*#include "../observers/GameOverObserver.h"
-#include "../menus/Ranking.h"
-#include "../entities/Hud.h"*/
+//#include "../entities/Hud.h"
 
 namespace Estados
 {
@@ -25,7 +24,9 @@ namespace Estados
 
                 Texto nome;
                 Texto instrucoes;
-                //observer aqui
+
+                Observers::Observer_Fim_Jogo* pFJObserver;
+
                 bool botoes_ativos;
                 bool nomes_ativo;
                 bool nome_final;

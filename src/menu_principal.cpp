@@ -1,4 +1,4 @@
-#include "../Estados/Menu/menu_principal.hpp"
+#include "../Estados/Menus/menu_principal.hpp"
 
 
 namespace Estados
@@ -13,8 +13,11 @@ namespace Estados
             titulo.set_posicao(sf::Vector2f(50.f, 25.f));
             titulo.set_cor(0);
 
-            estagio1.set_posicao(sf::Vector2f(100.f, 125.f));
-            estagio2.set_posicao(sf::Vector2f(100.f, 125.f));
+            estagio1.set_posicao(sf::Vector2f(100.f, 80.f));
+            estagio2.set_posicao(sf::Vector2f(100.f, 80.f));
+
+            jogador1.set_posicao(sf::Vector2f(100.f, 125.f));
+            jogador2.set_posicao(sf::Vector2f(100.f, 125.f));
 
             botoes[0]->set_nome("Continuar");
             botoes[1]->set_nome("Novo Jogo");
@@ -28,8 +31,8 @@ namespace Estados
         Menu_Principal::~Menu_Principal()
         {
             if (pObserverMenu)
-            delete pObserverMenu;
-        
+                delete pObserverMenu;
+            
             pObserverMenu = nullptr;
         }
 

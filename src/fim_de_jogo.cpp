@@ -14,18 +14,24 @@ namespace Estados
             instrucoes.set_posicao(sf::Vector2f(100.f, 180.f));
             titulo.set_tamanho(65);
             titulo.set_posicao(sf::Vector2f(120.f, 80.f));
+            titulo.set_cor(0);
             nome_string = "";
-            //mexer no observer
+
+            pFJObserver = new Observers::Observer_Fim_Jogo;
+            pFJObserver->set_menu(this);
         }
 
         Fim_de_Jogo::~Fim_de_Jogo()
         {
-            //mexer com o gerenciador de observer do menu
+            if (pFJObserver)
+                delete pFJObserver;
+            
+            pFJObserver = nullptr;
         }
 
         void Fim_de_Jogo::desenhar()
         {
-            //pGG->
+            
         }
 
         void Fim_de_Jogo::adicionar_nome(std::string n)

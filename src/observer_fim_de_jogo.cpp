@@ -1,5 +1,5 @@
 #include "../Observers/observer_fim_de_jogo.hpp"
-#include "../Estados/Menu/fim_de_jogo.hpp"
+#include "../Estados/Menus/fim_de_jogo.hpp"
 
 namespace Observers
 {
@@ -38,12 +38,14 @@ namespace Observers
 
     Observer_Fim_Jogo::~Observer_Fim_Jogo()
     {
-        pGer_Eventos = nullptr;
+        pFJ = nullptr;
     }
 
     void Observer_Fim_Jogo::atualizar(sf::Keyboard::Key k)
     {
         //se nao for fim do jogo ele tem que sair da funcao
+        if(pGer_Estados->get_estado_atual() != 3)
+            return;
         if(!pFJ)
             return;
 
@@ -51,17 +53,23 @@ namespace Observers
         {
             pFJ->mover_pra_cima();
         }
-        /*if(k == sf::Keyboard::Down)
+        if(k == sf::Keyboard::Down)
         {
-            //pFJ->mover_pra_baixo();
-        }*/
-
+            pFJ->mover_pra_baixo();
+        }
         if(k == sf::Keyboard::Enter)
         {
             pFJ->set_nome_final();
             pFJ->selecionar();
         }
+        if (k == sf::Keyboard::Tab)
+        {
+            pFJ->nome_ativo();
+        }
 
-
+        std::map <sf::Keyboard::Key,std::string> :: iterator it = chaves.find(k);
+        if (it == chaves.end())
+            return; 
+        pFJ->adicionar_nome(it->second);
     }
 }
