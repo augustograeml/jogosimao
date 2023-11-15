@@ -8,6 +8,9 @@
 #include "../../Entidades/Obstaculos/espinho.hpp"
 #include "../../Entidades/Obstaculos/coracao.hpp"
 #include "../../Gerenciadores/gerenciador_colisoes.hpp"
+#include "../../Gerenciadores/gerenciador_estados.hpp"
+#include "../../Gerenciadores/gerenciador_eventos.hpp"
+#include "../../Gerenciadores/gerenciador_grafico.hpp"
 #include "../estado.hpp"
 
 #include <iostream>
@@ -35,6 +38,7 @@ namespace Estados
                 virtual void executar() = 0;
 
                 void gerenciar_colisoes();
+                
                 void criar_jogadores(bool jog2);
                 void criar_inimigos();
                 void criar_cenario(std::string caminho);
