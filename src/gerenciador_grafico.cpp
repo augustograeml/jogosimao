@@ -16,7 +16,7 @@ namespace Gerenciadores
         fonte = new sf::Font;
         if (!fonte->loadFromFile(FONTE))
         {
-            std::cout<<"ERROR: FONTE N CARREGADA"<<std::endl;
+            std::cout<<"ERROR: Fonte nao carregada"<<std::endl;
             exit(1);
         }
     }

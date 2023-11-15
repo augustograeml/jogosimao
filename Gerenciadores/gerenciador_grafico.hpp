@@ -4,6 +4,7 @@ class Ente;
 
 #define LARGURA_TELA 1000.0  
 #define ALTURA_TELA 1000.0
+
 #define FONTE "../Design/Fonte/fonte_simas.ttf"
 
 namespace Gerenciadores

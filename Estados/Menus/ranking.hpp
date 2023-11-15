@@ -5,9 +5,9 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <fstream>
+
 #include "../../Observers/observer_ranking.hpp"
 #include "../../Entidades/entidade.hpp"
-
 #include "menu.hpp"
 
 namespace Estados

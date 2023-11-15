@@ -1,4 +1,4 @@
-#include "../Estados/Menu/fim_de_jogo.hpp"
+#include "../Estados/Menus/fim_de_jogo.hpp"
 
 namespace Estados
 {

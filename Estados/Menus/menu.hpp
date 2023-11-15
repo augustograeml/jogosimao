@@ -10,9 +10,6 @@
 #include "botao.hpp"
 #include "../../Gerenciadores/gerenciador_eventos.hpp"
 #include "../../Observers/observer_menu.hpp"
-#include "botao.hpp"
-#include <list>
-
 
 namespace Estados
 {

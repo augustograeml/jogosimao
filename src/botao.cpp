@@ -1,4 +1,4 @@
-#include "../Estados/Menu/botao.hpp"
+#include "../Estados/Menus/botao.hpp"
 
 #define TAM 50.f
 
@@ -6,7 +6,8 @@ namespace Estados
 {
     namespace Menus
     {
-           
+        Gerenciadores::Gerenciador_Grafico* Botao::pGG(Gerenciadores::Gerenciador_Grafico::get_instancia());
+
         Botao::Botao(sf::Vector2f pos) : corpo(sf::Vector2f(TAM, TAM)), texto()
         {
             corpo.setOrigin(sf::Vector2f(TAM / 2.f, TAM / 2.f));
@@ -16,7 +17,7 @@ namespace Estados
             corpo.setOutlineThickness(6);
             corpo.setOutlineColor(sf::Color::Black);
 
-            //texto.setFont(*pGG->get_fonte());
+            texto.setFont(*pGG->get_fonte());
             texto.setFillColor(sf::Color(65, 130, 190));
             texto.setCharacterSize(50);
 

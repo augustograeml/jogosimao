@@ -23,7 +23,6 @@ namespace Estados
             botoes[1]->set_nome("Quit");
             botoes[1]->set_posicao(sf::Vector2f(400.f, 520.f));
 
-
             botoes_ativos = false;
             pRObserver = new Observers::Observer_Ranking();
             pRObserver->set_menu(this);

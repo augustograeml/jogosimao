@@ -3,6 +3,14 @@
 #include "observer.hpp"
 #include <iostream>
 
+namespace Estados
+{
+    namespace Menus
+    {
+        class Ranking;
+    }
+}
+
 namespace Observers
 {
     class Observer_Ranking: public Observer
