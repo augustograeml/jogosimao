@@ -84,5 +84,47 @@ namespace Estados
                     break;
             }
         }
+
+        void Menu_Principal::mover_horizontalmente(int i)
+        {
+            if(i == 1)
+            {
+                if (estagio_atual == 1)
+                {
+                    estagio_atual = 2;
+                    //aqui ele seta as texturas
+                    /*textura = pGM->load_textures("../assets/menu2.png");
+                    body.setTexture(texture);*/
+                }
+                else
+                {
+                    estagio_atual = 1;
+                    //ele seta as texturas aqui tambem
+                    /*texture = pGM->load_textures("../assets/menu1.png");
+                    body.setTexture(texture);*/
+                }
+            }
+            else if (i == 2)
+            estagio_atual = !jogador_atual;
+        }
+
+        void Menu_Principal::desenhar()
+        {
+            //gerenciador grafico eh bastante utilizado aqui
+            //pGM->draw(&(this->body));
+            titulo.desenhar();
+            if (!jogador_atual)
+                jogador1.desenhar();
+            else 
+                jogador2.desenhar();
+            if (estagio_atual == 1)
+                estagio1.desenhar();
+            else 
+                estagio2.desenhar();
+            for (int i = 0; i < MAX_BOTOES; i++)
+            {
+                botoes[i]->desenhar();
+            }
+        }
     }
 }
