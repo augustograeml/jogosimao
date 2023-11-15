@@ -1,35 +1,41 @@
 #pragma once
+
+#include <SFML/Graphics.hpp>
+#include <iostream>
+#include <vector>
+
 #include "../estado.hpp"
-#include "Botao/botao.hpp"
+#include "texto.hpp"
+#include "botao.hpp"
+#include "../../Gerenciadores/gerenciador_eventos.hpp"
+#include "../../Observers/observer_menu.hpp"
+#include "botao.hpp"
 #include <list>
+
+class Ente;
 
 
 namespace Estados
 {
-    namespace Menu
+    namespace Menus
     {
         class Menu : public Estado
         {
             protected:
-                list<Botao::Botao*> lista_botao;
-                list<Botao::Botao*>::iterator it;
-                sf::Vector2f tamanho_botao;
-                sf::Vector2f tamanho_janela;
-                sf::Vector2f posicao_fundo;
-                sf::Text titulo;
-                bool mouse_selecionado;
-
+                int MAX_BOTOES;
+                std::vector<Botao*> botoes;
+                int indice;
+                sf::RectangleShape corpo;
+                Texto titulo;
             public:
-                Menu(sf::Vector2f tam_bot, std::string nome_jogo, int tam_fonte);
-                virtual ~Menu();
-                void atualizar_posicao_fundo();
-                void adicionar_botao(std::string nome, sf::Vector2f posicao, sf::Color cor_selecionada);
-                void desenhar();
-                void selecionar_de_cima();
-                void selecionar_de_baixo();
-                void evento_mouse(sf::Vector2f pos_mouse);
-                bool get_mouse_selecionado();
-                virtual void executar();
+                Menu(int n_bot = 0, int id = -1, std::string t = "0");
+                ~Menu();
+                virtual void desenhar();
+                void mover_pra_cima();
+                void mover_pra_baixo();
+                virtual void selecionar() = 0;
+                void executar();
+                void mudar_nome(std::string n);
         };
     }
 }

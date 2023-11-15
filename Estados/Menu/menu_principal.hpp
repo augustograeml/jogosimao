@@ -5,23 +5,26 @@
 
 namespace Estados
 {
-    namespace Menu
+    namespace Menus
     {
         class Menu_Principal : public Menu
         {
             private:
-                //fundo
-                bool sair;
-                Observers::Observer_Tecla observer_menu_principal;
+                int estagio_atual;
+                int jogador_atual;
+
+                Texto estagio1;
+                Texto estagio2;
+
+                Texto jogador1;
+                Texto jogador2;
+
             public:
                 Menu_Principal();
                 ~Menu_Principal();
-                void criar_fundo();
-                void criar_botoes();
-                void set_sair(bool sair);
-                bool get_sair();
-                void mudar_estado_observador();
-                void executar();
+                void selecionar();
+                void mover_horizontalmente(int i);
+                void desenhar();
         };
     }
 }
