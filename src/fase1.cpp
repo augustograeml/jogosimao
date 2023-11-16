@@ -30,7 +30,6 @@ namespace Estados
 
             if(gC.get_sem_inimigos())
             {
-                //fim_de_jogo();
                 Textura.loadFromFile("src/imagem/fim_de_jogo1.jpeg");
                 shape.setSize(Vector2f(950.f, 950.f));
                 shape.setTexture(&Textura);
