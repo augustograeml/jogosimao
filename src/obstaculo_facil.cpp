@@ -6,7 +6,7 @@ namespace Entidades
     {
         Obstaculo_Facil::Obstaculo_Facil(Vector2f pos): Obstaculo(pos, false)
         {
-            this->setSkin("src/imagem/plataforma.png");
+            this->setSkin("Design/imagens/plataforma.png");
             this->set_vida(1);
         }
 

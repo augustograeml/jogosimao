@@ -7,7 +7,7 @@ namespace Entidades
     {
         Zumbi::Zumbi(Vector2f pos, Vector2f vel) : Inimigo(pos, vel)
         {
-            this->setSkin("src/imagem/zumbi_bateu_morreu.png");
+            this->setSkin("Design/imagens/zumbi_bateu_morreu.png");
         }
 
         Zumbi::~Zumbi()

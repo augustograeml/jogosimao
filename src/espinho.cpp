@@ -6,7 +6,7 @@ namespace Entidades
     {
         Espinho::Espinho(sf::Vector2f pos) : Obstaculo(pos, true), dano(2.0)
         {
-            this->setSkin("src/imagem/espinho.png");
+            this->setSkin("Design/imagens/espinho.png");
             this->set_vida(55);
         }
 

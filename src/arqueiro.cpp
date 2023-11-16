@@ -7,7 +7,7 @@ namespace Entidades
         Arqueiro::Arqueiro(sf::Vector2f pos, sf::Vector2f vel):
             Inimigo(pos, vel)
         {
-            this->setSkin("src/imagem/zumbi_atirador.png");
+            this->setSkin("Design/imagens/zumbi_atirador.png");
         }
 
         Arqueiro::~Arqueiro()
