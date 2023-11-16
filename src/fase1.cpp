@@ -35,6 +35,7 @@ namespace Estados
                 shape.setSize(Vector2f(950.f, 950.f));
                 shape.setTexture(&Textura);
                 shape.setPosition(sf::Vector2f(76.f, -10.f));
+                pGG->desenharFundo(&shape);
                 return;
             }
 
