@@ -12,7 +12,7 @@ namespace Estados
             Textura.loadFromFile("src/imagem/cenario_op1.jpg");
             shape.setSize(Vector2f(950.f, 950.f));
             shape.setTexture(&Textura);
-            shape.setPosition(sf::Vector2f(76.f,-10.f));
+            shape.setPosition(sf::Vector2f(76.f, -10.f));
 
             criar_cenario(ARQUIVO_CENARIO_1);
 
@@ -23,34 +23,37 @@ namespace Estados
 
         Fase1::~Fase1()
         {
-
-        } 
+        }
 
         void Fase1::executar()
         {
-            if(!gC.get_sem_inimigos())
+
+            if(gC.get_sem_inimigos())
             {
-                jogadores.executar();
-                inimigos.executar();
-                gerenciar_colisoes();
-                //pGG->centralizarCamera((*(jogadores.get_primeiro()))->getPosicao() /*+ (*(jogadores.get_primeiro()++))->getPosicao())/2.f*/);
-                pGG->desenharFundo(&shape);
-                obstaculos.desenhar();
-                jogadores.desenhar();
-                inimigos.desenhar();
+                //fim_de_jogo();
+                Textura.loadFromFile("src/imagem/fim_de_jogo1.jpeg");
+                shape.setSize(Vector2f(950.f, 950.f));
+                shape.setTexture(&Textura);
+                shape.setPosition(sf::Vector2f(76.f, -10.f));
+                return;
             }
-            else
-                fim_de_jogo();
+
+            jogadores.executar();
+            inimigos.executar();
+            gerenciar_colisoes();
+            // pGG->centralizarCamera((*(jogadores.get_primeiro()))->getPosicao() /*+ (*(jogadores.get_primeiro()++))->getPosicao())/2.f*/);
+            pGG->desenharFundo(&shape);
+            obstaculos.desenhar();
+            jogadores.desenhar();
+            inimigos.desenhar();
         }
 
         void Fase1::mover()
         {
-        
         }
 
         void Fase1::atualizar()
         {
-            
         }
     }
 }
