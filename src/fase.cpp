@@ -224,14 +224,7 @@ namespace Estados
 
         void Fase::fim_de_jogo()
         {
-            pGG->limpar();
-            sf::Texture textura;
-            sf::RectangleShape* pF;
-
-            textura.loadFromFile("src/imagem/fim_de_jogo1.jpeg");
-            pF->setTexture(&textura);
-            pGG->desenharFundo(pF);
-            pGG->limpar();
+            
         }
 
         void Fase::salvar()

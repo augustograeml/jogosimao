@@ -14,6 +14,8 @@ namespace Estados
             public:
                 Fase1();
                 ~Fase1();
+
+                void fim_de_jogo();
                 
                 void executar();
                 void mover();

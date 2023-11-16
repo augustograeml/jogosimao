@@ -25,23 +25,28 @@ namespace Estados
         {
         }
 
+        void Fase1::fim_de_jogo()
+        {
+            Textura.loadFromFile("src/imagem/fim_de_jogo1.jpeg");
+            shape.setSize(Vector2f(950.f, 950.f));
+            shape.setTexture(&Textura);
+            shape.setPosition(sf::Vector2f(76.f, -10.f));
+            pGG->desenharFundo(&shape);
+        }
+
         void Fase1::executar()
         {
 
-            if(gC.get_sem_inimigos())
+            if (gC.get_sem_inimigos())
             {
-                Textura.loadFromFile("src/imagem/fim_de_jogo1.jpeg");
-                shape.setSize(Vector2f(950.f, 950.f));
-                shape.setTexture(&Textura);
-                shape.setPosition(sf::Vector2f(76.f, -10.f));
-                pGG->desenharFundo(&shape);
+                fim_de_jogo();
                 return;
             }
 
             jogadores.executar();
             inimigos.executar();
             gerenciar_colisoes();
-            // pGG->centralizarCamera((*(jogadores.get_primeiro()))->getPosicao() /*+ (*(jogadores.get_primeiro()++))->getPosicao())/2.f*/);
+            //pGG->centralizarCamera((*(jogadores.get_primeiro()))->getPosicao() /*+ (*(jogadores.get_primeiro()++))->getPosicao())/2.f*/);
             pGG->desenharFundo(&shape);
             obstaculos.desenhar();
             jogadores.desenhar();
