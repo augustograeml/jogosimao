@@ -143,4 +143,9 @@ namespace Gerenciadores
         return 0;
     }
 
+    bool Gerenciador_Colisoes::get_sem_inimigos()
+    {
+        return sem_inimigos;
+    }
+
 }

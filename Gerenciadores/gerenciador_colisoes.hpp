@@ -20,7 +20,8 @@ namespace Gerenciadores
             void set_inimigos(Listas::ListaEntidade* ini) {if(ini) inimigos = ini;}
 
             void colisao_simples();
-
             int colidiu(Entidades::Entidade* e1, Entidades::Entidade* e2);
+
+            bool get_sem_inimigos();
     };
 }

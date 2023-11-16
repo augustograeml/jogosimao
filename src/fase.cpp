@@ -23,9 +23,7 @@ namespace Estados
 
         Fase::~Fase()
         {
-            //aqui pelo que eu entendi vai chamar o metodo salvar pra quando for rolar aquele teste do simao da gente sair do jogo e entrar denovo quando um projetil tiver vindo em direcao da gente tlg?
             salvar();
-
         }
 
         void Fase::gerenciar_colisoes()
@@ -222,6 +220,18 @@ namespace Estados
                 }
             }
             arquivo.close();
+        }
+
+        void Fase::fim_de_jogo()
+        {
+            sf::Texture textura;
+            sf::RectangleShape* pF;
+
+            textura.loadFromFile("src/imagem_fim_de_jogo1.jpeg");
+            pF->setTexture(&textura);
+            pGG->desenharFundo(pF);
+            pGG->limpar();
+
         }
 
         void Fase::salvar()

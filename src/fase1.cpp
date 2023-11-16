@@ -28,14 +28,19 @@ namespace Estados
 
         void Fase1::executar()
         {
-            jogadores.executar();
-            inimigos.executar();
-            gerenciar_colisoes();
-            //pGG->centralizarCamera((*(jogadores.get_primeiro()))->getPosicao() /*+ (*(jogadores.get_primeiro()++))->getPosicao())/2.f*/);
-            pGG->desenharFundo(&shape);
-            obstaculos.desenhar();
-            jogadores.desenhar();
-            inimigos.desenhar();
+            if(!gC.get_sem_inimigos())
+            {
+                jogadores.executar();
+                inimigos.executar();
+                gerenciar_colisoes();
+                //pGG->centralizarCamera((*(jogadores.get_primeiro()))->getPosicao() /*+ (*(jogadores.get_primeiro()++))->getPosicao())/2.f*/);
+                pGG->desenharFundo(&shape);
+                obstaculos.desenhar();
+                jogadores.desenhar();
+                inimigos.desenhar();
+            }
+            else
+                fim_de_jogo();
         }
 
         void Fase1::mover()

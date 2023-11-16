@@ -39,6 +39,8 @@ namespace Estados
                 void criar_inimigos();
                 void criar_cenario(std::string caminho);
 
+                void fim_de_jogo();
+
                 void salvar();
         };
     }
