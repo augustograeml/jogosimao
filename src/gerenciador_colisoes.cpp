@@ -8,7 +8,8 @@ using namespace std;
 
 namespace Gerenciadores
 {
-    Gerenciador_Colisoes::Gerenciador_Colisoes() : jogadores(nullptr), obstaculos(nullptr), inimigos(nullptr)
+    Gerenciador_Colisoes::Gerenciador_Colisoes() : jogadores(nullptr), obstaculos(nullptr), inimigos(nullptr),
+    sem_inimigos(false)
     {
     }
 
@@ -94,6 +95,9 @@ namespace Gerenciadores
             }
             jog++;
         }
+
+        if(inim == nullptr)
+            sem_inimigos = true;
     }
 
     int Gerenciador_Colisoes::colidiu(Entidades::Entidade *e1, Entidades::Entidade *e2)

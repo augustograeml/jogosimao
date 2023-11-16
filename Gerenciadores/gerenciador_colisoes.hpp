@@ -10,6 +10,7 @@ namespace Gerenciadores
             Listas::ListaEntidade* obstaculos;
             Listas::ListaEntidade* jogadores;
             Listas::ListaEntidade* inimigos;
+            bool sem_inimigos;
         public:
             Gerenciador_Colisoes();
             ~Gerenciador_Colisoes();
