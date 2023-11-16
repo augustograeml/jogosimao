@@ -98,9 +98,6 @@ namespace Gerenciadores
 
         if(!inimigos->get_tamanho())
             sem_inimigos = true;
-
-        cout << "numero de inimigos: " << inimigos->get_tamanho() << endl;
-        cout << "numero de jogadores: " << jogadores->get_tamanho() << endl << endl;
     }
 
     int Gerenciador_Colisoes::colidiu(Entidades::Entidade *e1, Entidades::Entidade *e2)
