@@ -39,7 +39,7 @@ namespace Estados
 
             if (gC.get_sem_inimigos())
             {
-                
+                fim_de_jogo();
                 return;
             }
 
