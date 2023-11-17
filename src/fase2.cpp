@@ -10,10 +10,12 @@ namespace Estados
             if(i == 3)
                 musgos = true;
 
-            Textura.loadFromFile("Design/imagens/cenario_op1.jpg");
+            Textura.loadFromFile("Design/imagens/cenario_fase2.jpeg");
             shape.setSize(Vector2f(950.f, 950.f));
             shape.setTexture(&Textura);
             shape.setPosition(sf::Vector2f(76.f, -10.f));
+
+
 
             criar_cenario(ARQUIVO_CENARIO_2);
         }
@@ -34,7 +36,22 @@ namespace Estados
 
         void Fase2::executar()
         {
+            //cout << "palmeiras tem mundial sim" << endl;
 
+            /*if (gC.get_sem_inimigos())
+            {
+                fim_de_jogo();
+                return;
+            }*/
+
+            jogadores.executar();
+            inimigos.executar();
+            gerenciar_colisoes();
+            //pGG->centralizarCamera((*(jogadores.get_primeiro()))->getPosicao() /*+ (*(jogadores.get_primeiro()++))->getPosicao())/2.f*/);
+            pGG->desenharFundo(&shape);
+            obstaculos.desenhar();
+            jogadores.desenhar();
+            inimigos.desenhar();
         }
 
         void Fase2::mover()

@@ -4,7 +4,8 @@
 #include "../../Entidades/Personagens/zumbi.hpp"
 #include "../../Entidades/Personagens/arqueiro.hpp"
 #include "../../Listas/listaEntidades.hpp"
-#include "../../Entidades/Obstaculos/obstaculo_facil.hpp"
+#include "../../Entidades/Obstaculos/neve.hpp"
+#include "../../Entidades/Obstaculos/musgo.hpp"
 #include "../../Entidades/Obstaculos/espinho.hpp"
 #include "../../Entidades/Obstaculos/coracao.hpp"
 #include "../../Gerenciadores/gerenciador_colisoes.hpp"
@@ -16,7 +17,7 @@
 #include "json.hpp"
 
 #define ARQUIVO_CENARIO_1 "Design/Fase1/Cenario/cenario1.txt"
-#define ARQUIVO_CENARIO_2 "Design/Fase1/Cenario/cenario2.txt"
+#define ARQUIVO_CENARIO_2 "Design/Fase2/Cenario/cenario2.txt"
 
 namespace Estados
 {
