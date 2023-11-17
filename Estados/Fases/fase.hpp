@@ -49,6 +49,8 @@ namespace Estados
                 virtual void fim_de_jogo() = 0;
                 virtual void mover() = 0;
                 virtual void atualizar() = 0;
+                virtual void pausar() = 0;
+                virtual void menu() = 0;
 
                 void salvar();
         };

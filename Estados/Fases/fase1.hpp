@@ -19,6 +19,8 @@ namespace Estados
                 void executar();
                 void mover();
                 void atualizar();
+                void pausar();
+                void menu();
         };
     }
 }

@@ -9,10 +9,10 @@ namespace Estados
     {
         Fase1::Fase1() : Fase(1), neve(false)
         {
-            if(get_neve())
-            {
+            int i = rand()%10;
 
-            }
+            if(i == 1)
+                neve = true;
             
             Textura.loadFromFile("Design/imagens/cenario_op1.jpg");
             shape.setSize(Vector2f(950.f, 950.f));
@@ -28,6 +28,7 @@ namespace Estados
 
         Fase1::~Fase1()
         {
+            salvar();
         }
 
         void Fase1::fim_de_jogo()
@@ -67,6 +68,14 @@ namespace Estados
         }
 
         void Fase1::atualizar()
+        {
+        }
+
+        void Fase1::pausar()
+        {
+        }
+
+        void Fase1::menu()
         {
         }
     }
