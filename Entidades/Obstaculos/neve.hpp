@@ -5,13 +5,15 @@ namespace Entidades
 {
     namespace Obstaculos
     {
-        class Obstaculo_Facil : public Obstaculo
+        class Neve : public Obstaculo
         {
             private:
-                
+                bool escorrega;
             public:
-                Obstaculo_Facil(Vector2f pos = Vector2f(0.f, 0.f));
-                ~Obstaculo_Facil();
+                Neve(Vector2f pos = Vector2f(0.f, 0.f));
+                ~Neve();
+
+                bool get_escorrega();
 
                 void executar();
                 void mover();

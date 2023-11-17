@@ -146,7 +146,7 @@ namespace Estados
                     switch(tipo)
                     {
                         case '0':
-                            aux = static_cast<Entidades::Entidade*> (new Entidades::Obstaculos::Obstaculo_Facil(sf::Vector2f(j * TAM, i * TAM)));
+                            aux = static_cast<Entidades::Entidade*> (new Entidades::Obstaculos::Neve(sf::Vector2f(j * TAM, i * TAM)));
                             if(aux)
                             {
                                 obstaculos.incluir(aux);
@@ -206,6 +206,14 @@ namespace Estados
                             break;
                         case '6':
                             aux = static_cast<Entidades::Entidade*> (new Entidades::Obstaculos::Coracao(Vector2f(j * TAM, i * TAM)));
+                            if(aux)
+                            {
+                                obstaculos.incluir(aux);
+                            }
+                            break;
+
+                        case '7':
+                            aux = static_cast<Entidades::Entidade*> (new Entidades::Obstaculos::Musgo(Vector2f(j * TAM, i * TAM)));
                             if(aux)
                             {
                                 obstaculos.incluir(aux);
@@ -286,5 +294,6 @@ namespace Estados
 
             arquivo_inimigo.close();
         }
+
     }
 }

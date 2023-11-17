@@ -1,22 +1,21 @@
-#pragma once
+#pragma once 
 #include "fase.hpp"
 
 namespace Estados
 {
     namespace Fases
     {
-        class Fase1 : public Fase
+        class Fase2 : public Fase
         {
             private:
-                bool neve;
+                bool musgos;
             public:
-                Fase1();
-                ~Fase1();
-                
-                bool get_neve();
+                Fase2();
+                ~Fase2();
+                bool get_musgos();
 
-                void fim_de_jogo();
                 void executar();
+                void fim_de_jogo();
                 void mover();
                 void atualizar();
         };
