@@ -15,8 +15,6 @@ namespace Estados
             shape.setTexture(&Textura);
             shape.setPosition(sf::Vector2f(76.f, -10.f));
 
-
-
             criar_cenario(ARQUIVO_CENARIO_2);
         }
 
@@ -27,7 +25,7 @@ namespace Estados
 
         void Fase2::fim_de_jogo()
         {
-            Textura.loadFromFile("Design/imagens/fim_de_jogo1.jpeg");
+            Textura.loadFromFile("Design/imagens/fim_de_jogo3.jpeg");
             shape.setSize(Vector2f(950.f, 950.f));
             shape.setTexture(&Textura);
             shape.setPosition(sf::Vector2f(76.f, -10.f));
@@ -38,11 +36,11 @@ namespace Estados
         {
             //cout << "palmeiras tem mundial sim" << endl;
 
-            /*if (gC.get_sem_inimigos())
+            if (gC.get_sem_inimigos())
             {
                 fim_de_jogo();
                 return;
-            }*/
+            }
 
             jogadores.executar();
             inimigos.executar();
