@@ -286,5 +286,6 @@ namespace Estados
 
             arquivo_inimigo.close();
         }
+
     }
 }

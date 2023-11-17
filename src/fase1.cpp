@@ -7,8 +7,13 @@ namespace Estados
 {
     namespace Fases
     {
-        Fase1::Fase1() : Fase(1)
+        Fase1::Fase1() : Fase(1), neve(false)
         {
+            if(get_neve())
+            {
+
+            }
+            
             Textura.loadFromFile("Design/imagens/cenario_op1.jpg");
             shape.setSize(Vector2f(950.f, 950.f));
             shape.setTexture(&Textura);
@@ -34,9 +39,13 @@ namespace Estados
             pGG->desenharFundo(&shape);
         }
 
+        bool Fase1::get_neve()
+        {
+            return neve;
+        }
+
         void Fase1::executar()
         {
-
             if (gC.get_sem_inimigos())
             {
                 fim_de_jogo();

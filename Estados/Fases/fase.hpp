@@ -15,6 +15,9 @@
 #include <fstream>
 #include "json.hpp"
 
+#define ARQUIVO_CENARIO_1 "Design/Fase1/Cenario/cenario1.txt"
+#define ARQUIVO_CENARIO_2 "Design/Fase1/Cenario/cenario2.txt"
+
 namespace Estados
 {
     namespace Fases
@@ -22,6 +25,10 @@ namespace Estados
         class Fase : public Ente, public Estado
         {
             protected:
+                sf::Texture Textura;
+                sf::RectangleShape shape;
+                sf::Vector2f vel;
+
                 Listas::ListaEntidade jogadores;
                 Listas::ListaEntidade obstaculos;
                 Listas::ListaEntidade inimigos;
@@ -32,14 +39,15 @@ namespace Estados
                 Fase(int i = -1);
                 ~Fase();
 
-                virtual void executar() = 0;
-
                 void gerenciar_colisoes();
                 void criar_jogadores(bool jog2);
                 void criar_inimigos();
                 void criar_cenario(std::string caminho);
 
+                virtual void executar() = 0;
                 virtual void fim_de_jogo() = 0;
+                virtual void mover() = 0;
+                virtual void atualizar() = 0;
 
                 void salvar();
         };
