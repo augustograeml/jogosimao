@@ -2,6 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "Estados/Fases/fase1.hpp"
+#include "Estados/Fases/fase2.hpp"
 #include "Gerenciadores/gerenciador_grafico.hpp"
 #include "Gerenciadores/gerenciador_estados.hpp"
 #include "Gerenciadores/gerenciador_eventos.hpp"

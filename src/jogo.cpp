@@ -8,6 +8,7 @@ Jogo::Jogo():
     pEv(Gerenciadores::Gerenciador_Eventos::get_instancia()), obs1(1), obs2(2)
 {      
    Estados::Fases::Fase1* fase1 = new Estados::Fases::Fase1();
+   Estados::Fases::Fase2* fase2 = new Estados::Fases::Fase2();
    Executar();  
 }
 Jogo::~Jogo()
