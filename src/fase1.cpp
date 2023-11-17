@@ -27,7 +27,7 @@ namespace Estados
 
         void Fase1::fim_de_jogo()
         {
-            Textura.loadFromFile("Design/imagens/fim_de_jogo1.jpeg");
+            Textura.loadFromFile("Design/imagens/fim_de_jogo2.jpeg");
             shape.setSize(Vector2f(950.f, 950.f));
             shape.setTexture(&Textura);
             shape.setPosition(sf::Vector2f(76.f, -10.f));
@@ -39,7 +39,7 @@ namespace Estados
 
             if (gC.get_sem_inimigos())
             {
-                
+                fim_de_jogo();
                 return;
             }
 
