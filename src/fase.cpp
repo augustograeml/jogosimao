@@ -19,6 +19,8 @@ namespace Estados
             gC.set_inimigos(&inimigos);
             gC.set_jogadores(&jogadores);
             gC.set_obstaculos(&obstaculos);
+
+            //fonte.loadFromFile("imagem/fontezumbi.ttf");
         }
 
         Fase::~Fase()
