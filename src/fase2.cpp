@@ -42,6 +42,10 @@ namespace Estados
                 return;
             }
 
+            if(get_musgos())
+
+
+
             jogadores.executar();
             inimigos.executar();
             gerenciar_colisoes();
