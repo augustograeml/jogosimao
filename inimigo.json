@@ -1,1 +1,8 @@
-[]
+[{ "posicao": [500,750], "velocidade": [0,0] }
+,{ "posicao": [649.98,600], "velocidade": [-0.02,-0.02] }
+,{ "posicao": [849.98,550], "velocidade": [-0.02,-0.02] }
+,{ "posicao": [818.196,550], "velocidade": [0.1,-0.02] }
+,{ "posicao": [518.199,450], "velocidade": [0.1,-0.02] }
+,{ "posicao": [268.201,400], "velocidade": [0.1,-0.02] }
+,{ "posicao": [1000,200], "velocidade": [0,0] }
+]
