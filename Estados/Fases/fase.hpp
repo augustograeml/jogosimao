@@ -45,7 +45,7 @@ namespace Estados
                 void gerenciar_colisoes();
                 void criar_jogadores(bool jog2);
                 void criar_inimigos();
-                void criar_cenario(std::string caminho);
+                void criar_cenario(std::string caminho, int n1, int n2, int n3, int n4, int n5);
 
                 virtual void executar() = 0;
                 virtual void fim_de_jogo() = 0;

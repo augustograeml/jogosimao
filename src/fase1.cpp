@@ -1,5 +1,6 @@
 #include "../Estados/Fases/fase1.hpp"
 #include <iostream>
+#include <math.h>
 
 using namespace std;
 
@@ -13,18 +14,28 @@ namespace Estados
             {
 
             }
-            
-            Textura.loadFromFile("Design/imagens/cenario_op1.jpg");
-            shape.setSize(Vector2f(950.f, 950.f));
+            //geracao aleatoria de instancias de inimigos e obstaculos
+            num_zumbi = rand()%3 + 3;
+            num_arqueiro = rand()%3 + 3;
+            num_espinhos = rand()%3 + 3;
+            num_coracoes = rand()%3 + 3;
+            std::cout << "numero de zumbis: " << num_zumbi << std::endl;
+            std::cout << "numero de arqueiros: " << num_arqueiro << std::endl;
+            std::cout << "numero de espinhos: " << num_espinhos << std::endl;
+            std::cout << "numero de coracoes: " << num_coracoes << std::endl;
+
+            Textura.loadFromFile("Design/imagens/cenario_op11.png");
+            shape.setSize(Vector2f(2000.f, 1200.f));
             shape.setTexture(&Textura);
-            shape.setPosition(sf::Vector2f(76.f, -10.f));
+            shape.setPosition(sf::Vector2f(0.f, 0.f));
 
 
-            criar_cenario(ARQUIVO_CENARIO_1);
+            criar_cenario(ARQUIVO_CENARIO_1, num_zumbi, num_arqueiro, num_espinhos, num_coracoes,0);
 
             /*criar_jogadores(1);
             criar_jogadores(0);
             criar_inimigos();*/
+
         }
 
         Fase1::~Fase1()
@@ -59,7 +70,7 @@ namespace Estados
             jogadores.executar();
             inimigos.executar();
             gerenciar_colisoes();
-            //pGG->centralizarCamera((*(jogadores.get_primeiro()))->getPosicao() /*+ (*(jogadores.get_primeiro()++))->getPosicao())/2.f*/);
+            pGG->centralizarCamera(Vector2f((*(jogadores.get_primeiro()))->getPosicao() + (*(jogadores.get_primeiro()++))->getPosicao())/2.f);
             pGG->desenharFundo(&shape);
             obstaculos.desenhar();
             jogadores.desenhar();
