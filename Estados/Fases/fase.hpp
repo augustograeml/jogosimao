@@ -36,6 +36,8 @@ namespace Estados
                 Gerenciadores::Gerenciador_Colisoes gC;
                 std::ostringstream buffer;
 
+               
+
             public:
                 Fase(int i = -1);
                 ~Fase();

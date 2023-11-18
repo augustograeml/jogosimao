@@ -19,6 +19,7 @@ namespace Estados
             shape.setTexture(&Textura);
             shape.setPosition(sf::Vector2f(76.f, -10.f));
 
+
             criar_cenario(ARQUIVO_CENARIO_1);
 
             /*criar_jogadores(1);
@@ -37,6 +38,8 @@ namespace Estados
             shape.setTexture(&Textura);
             shape.setPosition(sf::Vector2f(76.f, -10.f));
             pGG->desenharFundo(&shape);
+           // escrita_tempo.setString("GAME OVER!");
+            
         }
 
         bool Fase1::get_neve()
@@ -49,6 +52,7 @@ namespace Estados
             if (gC.get_sem_inimigos())
             {
                 fim_de_jogo();
+                pGE->set_estado_atual(2);
                 return;
             }
 
