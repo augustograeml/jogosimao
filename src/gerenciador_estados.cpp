@@ -8,7 +8,7 @@ namespace Gerenciadores
     Gerenciador_Estados::Gerenciador_Estados() : estadoAtual(1)
     {
         //colocar o numero de estados que voce possui
-        estados.resize(3);
+        estados.resize(7);
     }
 
     Gerenciador_Estados::~Gerenciador_Estados()
@@ -33,7 +33,7 @@ namespace Gerenciadores
 
     void Gerenciador_Estados::adicionar_estado(Estados::Estado* pE)
     {
-        if(pE)
+        /*if(pE)
         {
             if(!estados.at(pE->getID()))
                 estados.at(pE->getID()) = pE;
@@ -42,7 +42,7 @@ namespace Gerenciadores
                 delete estados.at(pE->getID());
                 estados.at(pE->getID()) = pE;
             }
-        }
+        }*/
     }
 
     void Gerenciador_Estados::executar()

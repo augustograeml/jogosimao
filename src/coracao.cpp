@@ -6,7 +6,7 @@ namespace Entidades
     {
         Coracao::Coracao(sf::Vector2f pos): Obstaculo(pos, true), cura(5)
         {
-            this->setSkin("src/imagem/saude.png");
+            this->setSkin("Design/imagens/saude.png");
             this->set_vida(40);
         }
 

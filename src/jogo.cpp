@@ -8,6 +8,11 @@ Jogo::Jogo():
     pEv(Gerenciadores::Gerenciador_Eventos::get_instancia()), obs1(1), obs2(2)
 {      
    Estados::Fases::Fase1* fase1 = new Estados::Fases::Fase1();
+   Estados::Fases::Fase2* fase2 = new Estados::Fases::Fase2();
+
+   menu = new Estados::Menu::Menu();
+   pE->set_estado_atual(1);
+   menu->executar();
    Executar();  
 }
 Jogo::~Jogo()
@@ -15,10 +20,11 @@ Jogo::~Jogo()
     delete pG;
     delete pE;
     delete pEv;
+    delete menu;
 }
 
 void Jogo::Executar()
-{    
+{        
     while (pG->get_JanelaAberta())
     {
         pG->limpar();

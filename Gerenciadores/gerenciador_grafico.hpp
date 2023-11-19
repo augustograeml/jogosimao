@@ -2,8 +2,8 @@
 #include <SFML/Graphics.hpp>
 class Ente;
 
-#define LARGURA_TELA 1000.0  
-#define ALTURA_TELA 1000.0
+#define LARGURA_TELA 1024.0  
+#define ALTURA_TELA 1024.0
 
 #define FONTE "../Design/Fonte/fonte_simas.ttf"
 
@@ -31,7 +31,7 @@ namespace Gerenciadores
             void limpar();
             void fecharJanela();
             void resetarCamera();
-            void centralizarCamera(sf::Vector2f p);
+            void centralizarCamera(sf::Vector2f p );//Entidades:Personagens:Jogador* pJ1, Entidades:Personagens:Jogador* pJ2 );
             sf::RenderWindow* get_Janela() const;
             //sf::Font* get_fonte();
     };

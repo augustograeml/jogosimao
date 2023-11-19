@@ -11,12 +11,12 @@ namespace Entidades
             if(!jog2)
             {
                 corpo.setFillColor(sf::Color::Green);
-                this->setSkin("src/imagem/op1.png");
+                this->setSkin("Design/imagens/op1.png");
             }
             else
             {
                 corpo.setFillColor(sf::Color::Green);
-                this->setSkin("src/imagem/luigiDireita.png");
+                this->setSkin("Design/imagens/luigiDireita.png");
             }
         }
         Jogador::~Jogador()
@@ -34,7 +34,7 @@ namespace Entidades
             if(vida != 0)
             {
                 corpo.setFillColor(sf::Color::Green);
-                if (vida < 2)
+                if (vida < 3)
                 {
                     corpo.setFillColor(sf::Color::Yellow);
                 }

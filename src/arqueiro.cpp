@@ -5,9 +5,9 @@ namespace Entidades
     namespace Personagens
     {
         Arqueiro::Arqueiro(sf::Vector2f pos, sf::Vector2f vel):
-            Inimigo(pos, vel), forca(2)
+            Inimigo(pos, vel)
         {
-            this->setSkin("src/imagem/zumbi_atirador.png");
+            this->setSkin("Design/imagens/zumbi_atirador.png");
         }
 
         Arqueiro::~Arqueiro()
@@ -24,14 +24,14 @@ namespace Entidades
         {
             //velocidade += Vector2f(rand() % 10 - 5, (float) (nochao ? - (rand() % 5) : 0));
 
-            if(!nochao)
+            /*if(!nochao)
                 velocidade += Vector2f(0, 0.1);
             else
                 velocidade = Vector2f(-0.1f, 0.f);
             nochao = false;
             
 
-            atualizar();
+            atualizar();*/
         }
 
         void Arqueiro::executar()

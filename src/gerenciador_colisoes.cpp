@@ -8,7 +8,8 @@ using namespace std;
 
 namespace Gerenciadores
 {
-    Gerenciador_Colisoes::Gerenciador_Colisoes() : jogadores(nullptr), obstaculos(nullptr), inimigos(nullptr)
+    Gerenciador_Colisoes::Gerenciador_Colisoes() : jogadores(nullptr), obstaculos(nullptr), inimigos(nullptr),
+    sem_inimigos(false)
     {
     }
 
@@ -94,6 +95,9 @@ namespace Gerenciadores
             }
             jog++;
         }
+
+        if(!inimigos->get_tamanho())
+            sem_inimigos = true;
     }
 
     int Gerenciador_Colisoes::colidiu(Entidades::Entidade *e1, Entidades::Entidade *e2)
@@ -137,6 +141,11 @@ namespace Gerenciadores
             }
         }
         return 0;
+    }
+
+    bool Gerenciador_Colisoes::get_sem_inimigos()
+    {
+        return sem_inimigos;
     }
 
 }

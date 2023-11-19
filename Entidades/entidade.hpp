@@ -23,7 +23,6 @@ namespace Entidades
             sf::Vector2f velocidade;
             int vida;
             bool nochao;
-
         public:
             Entidade(sf::Vector2f pos = sf::Vector2f(0.f,0.f));
             ~Entidade();
@@ -35,7 +34,6 @@ namespace Entidades
             virtual void mover() = 0;
             virtual void atualizar() = 0;
             virtual void colidir();
-
 
             const sf::Vector2f getPosicao() {return corpo.getPosition();}
             void setPosicao(sf::Vector2f p);

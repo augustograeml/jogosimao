@@ -19,6 +19,7 @@ namespace Estados
             gC.set_inimigos(&inimigos);
             gC.set_jogadores(&jogadores);
             gC.set_obstaculos(&obstaculos);
+
         }
 
         Fase::~Fase()
@@ -124,8 +125,14 @@ namespace Estados
             }            
         }
 
-        void Fase::criar_cenario(string caminho)
+        void Fase::criar_cenario(string caminho, int n1, int n2, int n3, int n4, int n5)
         {
+            int count1 = 0;
+            int count2 = 0;
+            int count3 = 0;
+            int count4 = 0;
+            int count5 = 0;
+
             ifstream arquivo(caminho);
             if(!arquivo)
             {
@@ -146,7 +153,7 @@ namespace Estados
                     switch(tipo)
                     {
                         case '0':
-                            aux = static_cast<Entidades::Entidade*> (new Entidades::Obstaculos::Obstaculo_Facil(sf::Vector2f(j * TAM, i * TAM)));
+                            aux = static_cast<Entidades::Entidade*> (new Entidades::Obstaculos::Neve(sf::Vector2f(j * TAM, i * TAM)));
                             if(aux)
                             {
                                 obstaculos.incluir(aux);
@@ -178,16 +185,22 @@ namespace Estados
                             break;
                         case '3':
                         //dados do arquivo json serao importante nesse caso aqui
+                        if(count1 < n1)
+                        {
                             aux = static_cast<Entidades::Entidade*> (new Entidades::Personagens::Zumbi(sf::Vector2f(0.f, 0.f), sf::Vector2f(0.f, 0.f)));
                             if(aux)
                             {
-                                aux->setWindow(pGG->get_Janela());
-                                aux->setPosicao(sf::Vector2f(j * TAM, i * TAM));
-                                inimigos.incluir(aux);
+                                    aux->setWindow(pGG->get_Janela());
+                                    aux->setPosicao(sf::Vector2f(j * TAM, i * TAM));
+                                    inimigos.incluir(aux);
                             }
+                            count1++;
+                        }
                             break;
                         case '4':
                         //dados do arquivo json serao importante nesse caso aqui
+                        if(count2 < n2)
+                        {
                             aux = static_cast<Entidades::Entidade*> (new Entidades::Personagens::Arqueiro(sf::Vector2f(0.f, 0.f), sf::Vector2f(0.f, 0.f)));
                             if(aux)
                             {
@@ -195,17 +208,35 @@ namespace Estados
                                 aux->setPosicao(sf::Vector2f(j * TAM, i * TAM));
                                 inimigos.incluir(aux);
                             }
+                            count2++;
+                        }
                             break;
 
                         case '5':
+                        if(count3 < n3)
+                        {
                             aux = static_cast<Entidades::Entidade*> (new Entidades::Obstaculos::Espinho(Vector2f(j * TAM, i * TAM)));
                             if(aux)
                             {
                                 obstaculos.incluir(aux);
                             }
-                            break;
+                        count3++;
+                        }
+                        break;
                         case '6':
+                        if(count4 < n4)
+                        {
                             aux = static_cast<Entidades::Entidade*> (new Entidades::Obstaculos::Coracao(Vector2f(j * TAM, i * TAM)));
+                            if(aux)
+                            {
+                                obstaculos.incluir(aux);
+                            }
+                        count4++;
+                        }    
+                        break;
+
+                        case '7':
+                            aux = static_cast<Entidades::Entidade*> (new Entidades::Obstaculos::Musgo(Vector2f(j * TAM, i * TAM)));
                             if(aux)
                             {
                                 obstaculos.incluir(aux);
@@ -220,6 +251,11 @@ namespace Estados
                 }
             }
             arquivo.close();
+        }
+
+        void Fase::fim_de_jogo()
+        {
+            
         }
 
         void Fase::salvar()
@@ -281,5 +317,6 @@ namespace Estados
 
             arquivo_inimigo.close();
         }
+
     }
 }

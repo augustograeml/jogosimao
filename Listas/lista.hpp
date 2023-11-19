@@ -62,7 +62,7 @@ namespace Listas
             {
                 return tamanho;
             }
-            void incluir(TL* elem)
+           void incluir(TL* elem)
             {
                 if (!elem)
                     return;
@@ -75,7 +75,8 @@ namespace Listas
                     tamanho++;
                 }
             }
-            void remover(TL *elem)
+            
+            /*void remover(TL *elem)
             {
                 Elemento<TL>* aux = pPrimeiro;
                 Elemento<TL>* anterior = nullptr;
@@ -99,7 +100,27 @@ namespace Listas
                     aux = aux->get_pProx();
                 }
                 
-            }
+            }*/
+            void remover(TL *elem) 
+            {
+                    Elemento<TL>* aux = pPrimeiro;
+                    Elemento<TL>* anterior = nullptr;
+
+                    while (aux != nullptr) {
+                        if (aux->get_pinfo() == elem) {
+                            if (elem == pPrimeiro->get_pinfo()) {
+                                pPrimeiro = aux->get_pProx();
+                                aux->set_pProx(nullptr);
+                            } else {
+                                anterior->set_pProx(aux->get_pProx());
+                            }
+                            
+                            tamanho--;
+                        }
+                        anterior = aux;
+                        aux = aux->get_pProx();
+                    }
+                }
             // Classe aninhada pública:
             class Iterador
             {

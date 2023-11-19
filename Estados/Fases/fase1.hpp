@@ -1,6 +1,5 @@
 #pragma once
 #include "fase.hpp"
-#define ARQUIVO_CENARIO_1 "Design/Fase1/Cenario/cenario1.txt"
 
 namespace Estados
 {
@@ -9,15 +8,23 @@ namespace Estados
         class Fase1 : public Fase
         {
             private:
-                sf::Texture Textura;
-                sf::RectangleShape shape;
+                bool neve;
+                int num_espinhos;
+                int num_coracoes;
+                int num_zumbi;
+                int num_arqueiro;
             public:
                 Fase1();
                 ~Fase1();
                 
+                bool get_neve();
+
+                void fim_de_jogo();
+                //colocar como parametro um bool pro jogador2, lembrar de mexer na clase virtual pura de fase.hpp
                 void executar();
-                void mover();
                 void atualizar();
+                void pausar();
+                void menu();
         };
     }
 }
