@@ -68,5 +68,13 @@ namespace Estados
         {
             return musgos;
         }
+
+        void Fase2::pausar()
+        {
+        }
+        
+        void Fase2::menu()
+        {
+        }
     }
 }

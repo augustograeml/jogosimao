@@ -60,7 +60,8 @@ namespace Estados
             return neve;
         }
 
-        void Fase1::executar(bool jogador2)
+        //colocar bool pra executar direitin quando tiver dois jogadores
+        void Fase1::executar()
         {
             if (gC.get_sem_inimigos())
             {
@@ -86,6 +87,14 @@ namespace Estados
         }
 
         void Fase1::atualizar()
+        {
+        }
+
+        void Fase1::pausar()
+        {
+        }
+        
+        void Fase1::menu()
         {
         }
     }
