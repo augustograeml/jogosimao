@@ -49,6 +49,9 @@ namespace Estados
                 textos[i].setPosition(coordenadas[i]);
             }
 
+            textos[0].setFillColor(sf::Color::White);
+            textos[0].setOutlineThickness(20);
+
             
             textos[1].setOutlineThickness(4);
             pos = 1;
