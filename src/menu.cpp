@@ -1,11 +1,11 @@
 #include "../Estados/Menu/menu.hpp"
+#include <iostream>
 
 namespace Estados
 {
     namespace Menu
     {
-        Menu::Menu() : pGG(Gerenciadores::Gerenciador_Grafico::get_instancia()),
-        pEv(Gerenciadores::Gerenciador_Eventos::get_instancia())
+        Menu::Menu() : pGG(Gerenciadores::Gerenciador_Grafico::get_instancia())
         {
             botao = new sf::RectangleShape();
             fonte = new sf::Font();
@@ -117,7 +117,7 @@ namespace Estados
                     if(pos == 4)
                         pGG->fecharJanela();
                     else if(pos == 1)
-                        pos;//executar de jogo
+                        std::cout << std::endl <<  "O COXA NAO TRANSA, FAZ AMOR" ;//executar de jogo
                 }
                 
                 if(sf::Mouse::isButtonPressed(sf::Mouse::Left))

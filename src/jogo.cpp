@@ -12,6 +12,7 @@ Jogo::Jogo():
 
    menu = new Estados::Menu::Menu();
    pE->set_estado_atual(1);
+   //menu->executar();
    Executar();  
 }
 Jogo::~Jogo()
@@ -23,9 +24,7 @@ Jogo::~Jogo()
 }
 
 void Jogo::Executar()
-{    
-    menu->executar();
-    
+{        
     while (pG->get_JanelaAberta())
     {
         pG->limpar();

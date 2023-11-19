@@ -42,6 +42,7 @@ namespace Estados
 
         Fase1::~Fase1()
         {
+            salvar();
         }
 
         void Fase1::fim_de_jogo()
@@ -51,7 +52,7 @@ namespace Estados
             shape.setTexture(&Textura);
             shape.setPosition(sf::Vector2f(76.f, -10.f));
             pGG->desenharFundo(&shape);
-           // escrita_tempo.setString("GAME OVER!");
+           //escrita_tempo.setString("GAME OVER!");
             
         }
 

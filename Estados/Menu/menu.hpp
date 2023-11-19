@@ -1,7 +1,6 @@
 #pragma once
 #include "../estado.hpp"
 #include "../../Gerenciadores/gerenciador_grafico.hpp"
-#include "../../Gerenciadores/gerenciador_eventos.hpp"
 #include <SFML/Graphics.hpp>
 
 namespace Estados
@@ -12,7 +11,6 @@ namespace Estados
         {
             protected:
                 Gerenciadores::Gerenciador_Grafico* pGG;
-                Gerenciadores::Gerenciador_Eventos* pEv;
                 int pos;
                 //o deselecionar é necessario porque como o loop pra rodar o jogo eh rapido pode acontecer de uma opcao ser selecionada duplicada no menu
                 bool selecionado, deselecionado;

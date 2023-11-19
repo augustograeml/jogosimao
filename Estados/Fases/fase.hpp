@@ -35,9 +35,6 @@ namespace Estados
                 Listas::ListaEntidade inimigos;
                 Gerenciadores::Gerenciador_Colisoes gC;
                 std::ostringstream buffer;
-
-               
-
             public:
                 Fase(int i = -1);
                 ~Fase();
@@ -49,7 +46,6 @@ namespace Estados
 
                 virtual void executar() = 0;
                 virtual void fim_de_jogo() = 0;
-                virtual void mover() = 0;
                 virtual void atualizar() = 0;
                 virtual void pausar() = 0;
                 virtual void menu() = 0;
