@@ -31,11 +31,6 @@ namespace Gerenciadores
         estadoAtual = eA;
     }
 
-    int Gerenciador_Estados::get_estado_atual()
-    {
-        return estadoAtual;
-    }
-
     void Gerenciador_Estados::adicionar_estado(Estados::Estado* pE)
     {
         if(pE)
