@@ -93,7 +93,7 @@ namespace Estados
         void Fase1::pausar()
         {
         }
-        
+
         void Fase1::menu()
         {
         }
