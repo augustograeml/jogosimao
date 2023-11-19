@@ -34,9 +34,9 @@ namespace Estados
             posicao_mouse = {0, 0};
             coordenadas_mouse = {0, 0};
 
-            opcoes = {"Zombies++", "Novo Jogo", "Resume", "Sobre", "Sair"};
+            opcoes = {"Zombies++", "Novo Jogo", "Resume", "Ranking", "Sair"};
             textos.resize(5);
-            coordenadas = {{130, 40}, {445, 700}, {464, 762}, {470, 823}, {480, 886}};
+            coordenadas = {{130, 40}, {445, 700}, {464, 762}, {460, 823}, {480, 886}};
             tamanhos = {200, 22, 22, 22, 22}; 
 
             for(std::size_t i{}; i < textos.size(); ++i)
@@ -44,7 +44,7 @@ namespace Estados
                 textos[i].setFont(*fonte);
                 textos[i].setString(opcoes[i]);
                 textos[i].setCharacterSize(tamanhos[i]);
-                textos[i].setFillColor(sf::Color::Red);
+                textos[i].setFillColor(sf::Color::White);
                 textos[i].setOutlineColor(sf::Color::Black);
                 textos[i].setPosition(coordenadas[i]);
             }

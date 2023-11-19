@@ -34,7 +34,7 @@ namespace Entidades
             if(vida != 0)
             {
                 corpo.setFillColor(sf::Color::Green);
-                if (vida < 2)
+                if (vida < 3)
                 {
                     corpo.setFillColor(sf::Color::Yellow);
                 }
