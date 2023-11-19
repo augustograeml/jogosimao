@@ -5,12 +5,13 @@ namespace Entidades
 {
     namespace Personagens
     {
-        class Arqueiro : public Inimigo
+        class Gigante : public Inimigo
         {
             private:
+                bool maldade, ja_inc;
             public:
-                Arqueiro(sf::Vector2f pos = sf::Vector2f(0.f, 0.f), sf::Vector2f vel = sf::Vector2f(0.f, 0.f));
-                ~Arqueiro();
+                Gigante(sf::Vector2f pos = sf::Vector2f(0.f, 0.f), sf::Vector2f vel = sf::Vector2f(0.f, 0.f));
+                ~Gigante();
 
                 void executar();
                 void mover();

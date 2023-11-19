@@ -8,6 +8,8 @@ namespace Entidades
             Inimigo(pos, vel)
         {
             this->setSkin("Design/imagens/zumbi_atirador.png");
+
+            //depois mexer com o setvida desse molecote aqui
         }
 
         Arqueiro::~Arqueiro()

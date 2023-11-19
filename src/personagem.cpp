@@ -14,5 +14,15 @@ namespace Entidades
         {
             //vida = 0;
         }
+
+        void Personagem::set_forca(int forc)
+        {
+            forca = forc;
+        }
+
+        int Personagem::get_forca()
+        {
+            return forca;
+        }
     }
 }

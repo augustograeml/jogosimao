@@ -3,10 +3,12 @@
 #include "../../Entidades/Personagens/jogador.hpp"
 #include "../../Entidades/Personagens/zumbi.hpp"
 #include "../../Entidades/Personagens/arqueiro.hpp"
+#include "../../Entidades/Personagens/gigante.hpp"
 #include "../../Listas/listaEntidades.hpp"
 #include "../../Entidades/Obstaculos/neve.hpp"
 #include "../../Entidades/Obstaculos/musgo.hpp"
 #include "../../Entidades/Obstaculos/espinho.hpp"
+#include "../../Entidades/Obstaculos/caixa.hpp"
 #include "../../Entidades/Obstaculos/coracao.hpp"
 #include "../../Gerenciadores/gerenciador_colisoes.hpp"
 #include "../../Gerenciadores/gerenciador_estados.hpp"
@@ -29,6 +31,8 @@ namespace Estados
         class Fase : public Ente, public Estado
         {
             protected:
+                bool ja_criado;
+
                 sf::Texture Textura;
                 sf::RectangleShape shape;
                 sf::Vector2f vel;
@@ -46,7 +50,9 @@ namespace Estados
                 
                 void criar_jogadores(bool jog2);
                 void criar_inimigos();
-                void criar_cenario(std::string caminho, int n1, int n2, int n3, int n4, int n5);
+                void criar_cenario(std::string caminho, int n1, int n2, int n3, int n4, int n5, int n6, bool ja_criado);
+
+                bool get_jaCriado();
 
                 virtual void executar() = 0;
                 virtual void fim_de_jogo() = 0;

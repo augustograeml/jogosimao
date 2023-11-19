@@ -9,10 +9,7 @@ namespace Estados
         {
             private:
                 bool neve;
-                int num_espinhos;
-                int num_coracoes;
-                int num_zumbi;
-                int num_arqueiro;
+                int num_entidades[6];
             public:
                 Fase1();
                 ~Fase1();
