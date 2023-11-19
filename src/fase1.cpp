@@ -24,6 +24,8 @@ namespace Estados
             std::cout << "numero de espinhos: " << num_espinhos << std::endl;
             std::cout << "numero de coracoes: " << num_coracoes << std::endl;
 
+            //if(get_jogador) jogador2 = true
+
             Textura.loadFromFile("Design/imagens/cenario_op11.png");
             shape.setSize(Vector2f(2000.f, 1200.f));
             shape.setTexture(&Textura);
@@ -58,7 +60,7 @@ namespace Estados
             return neve;
         }
 
-        void Fase1::executar()
+        void Fase1::executar(bool jogador2)
         {
             if (gC.get_sem_inimigos())
             {
@@ -70,7 +72,9 @@ namespace Estados
             jogadores.executar();
             inimigos.executar();
             gerenciar_colisoes();
+            //if(jogador2)
             pGG->centralizarCamera(Vector2f((*(jogadores.get_primeiro()))->getPosicao() + (*(jogadores.get_primeiro()++))->getPosicao())/2.f);
+            //else - fica sem nada
             pGG->desenharFundo(&shape);
             obstaculos.desenhar();
             jogadores.desenhar();

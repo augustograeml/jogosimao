@@ -20,7 +20,7 @@ namespace Estados
                 bool get_neve();
 
                 void fim_de_jogo();
-                void executar();
+                void executar(bool jogador2);
                 void mover();
                 void atualizar();
         };
