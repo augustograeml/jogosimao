@@ -1,4 +1,5 @@
 #include "../Estados/Menu/menu.hpp"
+#include "../jogo.hpp"
 #include <iostream>
 
 namespace Estados
@@ -10,6 +11,8 @@ namespace Estados
             botao = new sf::RectangleShape();
             fonte = new sf::Font();
             imagem = new sf::Texture();
+            //jogo = new Jogo();
+
             inicializa_valores();
         }
 
@@ -18,13 +21,14 @@ namespace Estados
             delete botao;
             delete fonte;
             delete imagem;
+            //delete jogo;
         }
 
         void Menu::inicializa_valores()
         {
             pos = 0;
             selecionado = deselecionado = false;
-            imagem->loadFromFile("Design/imagens/menu_zombies++.jpeg");
+            imagem->loadFromFile("Design/imagens/menu_zombies++.jpg");
             fonte->loadFromFile("Design/fonte/sangue_escorrendo.ttf");
 
             posicao_mouse = {0, 0};
@@ -40,6 +44,7 @@ namespace Estados
                 textos[i].setFont(*fonte);
                 textos[i].setString(opcoes[i]);
                 textos[i].setCharacterSize(tamanhos[i]);
+                textos[i].setFillColor(sf::Color::Red);
                 textos[i].setOutlineColor(sf::Color::Black);
                 textos[i].setPosition(coordenadas[i]);
             }
@@ -117,14 +122,14 @@ namespace Estados
                     if(pos == 4)
                         pGG->fecharJanela();
                     else if(pos == 1)
-                        std::cout << std::endl <<  "O COXA NAO TRANSA, FAZ AMOR" ;//executar de jogo
+                        pos;//jogo->Executar();
                 }
                 
                 if(sf::Mouse::isButtonPressed(sf::Mouse::Left))
                 {
                     if(botao->getGlobalBounds().contains(coordenadas_mouse))
                     {
-                        //executar de jogo
+                        //jogo->Executar();
                     }
                 }
             }
