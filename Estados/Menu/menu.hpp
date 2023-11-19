@@ -18,12 +18,10 @@ namespace Estados
                 bool selecionado, deselecionado;
 
                 sf::RectangleShape* botao;
-                sf::RenderWindow* janela;
                 sf::Font* fonte;
                 sf::Texture* imagem;
-                sf::Sprite* bg;
 
-                sf::Vector2f posicao_mouse;
+                sf::Vector2i posicao_mouse;
                 sf::Vector2f coordenadas_mouse;
                 
                 vector<string> opcoes;
@@ -34,9 +32,11 @@ namespace Estados
             public:
                 Menu();
                 ~Menu();
+
+
                 void inicializa_valores();
+                void loop_evento();
                 void mostrar_menu();
-                void eventos();
                 void executar();
         };
     }

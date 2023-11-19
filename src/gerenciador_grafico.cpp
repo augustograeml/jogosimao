@@ -8,7 +8,7 @@ namespace Gerenciadores
 
     Gerenciador_Grafico::Gerenciador_Grafico():
     janela(new sf::RenderWindow(sf::VideoMode(LARGURA_TELA, ALTURA_TELA), "zombies++")),
-    camera(sf::Vector2f((LARGURA_TELA / 2.f)+ 50.f, (ALTURA_TELA / 2.f)), sf::Vector2f(LARGURA_TELA - 50.f, ALTURA_TELA)) // posição e tamanho
+    camera(sf::Vector2f((LARGURA_TELA / 2.f)/*+ 50.f*/, (ALTURA_TELA / 2.f)), sf::Vector2f(LARGURA_TELA /*- 50.f*/, ALTURA_TELA)) // posição e tamanho
     {
         janela->setFramerateLimit(60);
         janela->setView(camera);

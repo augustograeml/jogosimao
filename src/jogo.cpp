@@ -24,9 +24,10 @@ Jogo::~Jogo()
 
 void Jogo::Executar()
 {    
+    menu->executar();
+    
     while (pG->get_JanelaAberta())
     {
-        menu->executar();
         pG->limpar();
         pEv->executar();
         pE->executar();     //desenha a fase e o jogador 

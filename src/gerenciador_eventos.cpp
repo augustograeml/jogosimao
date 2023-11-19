@@ -40,9 +40,8 @@ namespace Gerenciadores
                     break;
                 case sf::Event::KeyPressed:
                     notificar(evento.key.code);
-                break;
+                    break;
                 default:
-                
                     break;   
             }
         }
