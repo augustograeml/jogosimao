@@ -16,6 +16,7 @@ Estados:
 3 - Fase 2, um jogador
 4 - Fase 2, dois jogadores
 5 - ranking
+6 - Sair
 */
 
 namespace Gerenciadores
