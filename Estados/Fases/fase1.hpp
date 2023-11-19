@@ -9,6 +9,10 @@ namespace Estados
         {
             private:
                 bool neve;
+                int num_espinhos;
+                int num_coracoes;
+                int num_zumbi;
+                int num_arqueiro;
             public:
                 Fase1();
                 ~Fase1();
@@ -16,7 +20,7 @@ namespace Estados
                 bool get_neve();
 
                 void fim_de_jogo();
-                void executar();
+                void executar(bool jogador2);
                 void mover();
                 void atualizar();
                 void pausar();

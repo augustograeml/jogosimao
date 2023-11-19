@@ -27,7 +27,7 @@ namespace Gerenciadores
             void limpar();
             void fecharJanela();
             void resetarCamera();
-            void centralizarCamera(sf::Vector2f p);
+            void centralizarCamera(sf::Vector2f p );//Entidades:Personagens:Jogador* pJ1, Entidades:Personagens:Jogador* pJ2 );
             sf::RenderWindow* get_Janela() const;
     };
 
