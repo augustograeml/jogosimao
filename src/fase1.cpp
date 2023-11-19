@@ -83,10 +83,6 @@ namespace Estados
             inimigos.desenhar();
         }
 
-        void Fase1::mover()
-        {
-        }
-
         void Fase1::atualizar()
         {
         }

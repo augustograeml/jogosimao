@@ -56,10 +56,6 @@ namespace Estados
             inimigos.desenhar();
         }
 
-        void Fase2::mover()
-        {
-        }
-
         void Fase2::atualizar()
         {
         }
