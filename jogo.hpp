@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include "Estados/Menu/menu.hpp"
 #include "Estados/Fases/fase1.hpp"
 #include "Estados/Fases/fase2.hpp"
 #include "Gerenciadores/gerenciador_grafico.hpp"
@@ -11,6 +12,8 @@
 class Jogo
 {
     private:
+
+        Estados::Menu::Menu* menu;
         Gerenciadores::Gerenciador_Grafico* pG;
         Gerenciadores::Gerenciador_Estados* pE;
         Gerenciadores::Gerenciador_Eventos* pEv;

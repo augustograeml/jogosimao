@@ -9,6 +9,8 @@ Jogo::Jogo():
 {      
    Estados::Fases::Fase1* fase1 = new Estados::Fases::Fase1();
    Estados::Fases::Fase2* fase2 = new Estados::Fases::Fase2();
+
+   menu = new Estados::Menu::Menu();
    pE->set_estado_atual(1);
    Executar();  
 }
@@ -17,12 +19,14 @@ Jogo::~Jogo()
     delete pG;
     delete pE;
     delete pEv;
+    delete menu;
 }
 
 void Jogo::Executar()
 {    
     while (pG->get_JanelaAberta())
     {
+        menu->executar();
         pG->limpar();
         pEv->executar();
         pE->executar();     //desenha a fase e o jogador 

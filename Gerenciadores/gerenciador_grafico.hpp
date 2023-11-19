@@ -2,8 +2,8 @@
 #include <SFML/Graphics.hpp>
 class Ente;
 
-#define LARGURA_TELA 1000.0  
-#define ALTURA_TELA 1000.0
+#define LARGURA_TELA 1024.0  
+#define ALTURA_TELA 1024.0
 
 namespace Gerenciadores
 {

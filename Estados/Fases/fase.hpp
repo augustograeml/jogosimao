@@ -16,8 +16,8 @@
 #include <fstream>
 #include "json.hpp"
 
-#define ARQUIVO_CENARIO_1 "Design/Fase1/Cenario/cenario1.txt"
-#define ARQUIVO_CENARIO_2 "Design/Fase2/Cenario/cenario2.txt"
+#define ARQUIVO_CENARIO_1 "Design/cenario/cenario_fase1.txt"
+#define ARQUIVO_CENARIO_2 "Design/cenario/cenario_fase2.txt"
 
 namespace Estados
 {
