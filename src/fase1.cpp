@@ -15,14 +15,26 @@ namespace Estados
 
             }
             //geracao aleatoria de instancias de inimigos e obstaculos
-            num_zumbi = rand()%3 + 3;
-            num_arqueiro = rand()%3 + 3;
-            num_espinhos = rand()%3 + 3;
-            num_coracoes = rand()%3 + 3;
-            std::cout << "numero de zumbis: " << num_zumbi << std::endl;
-            std::cout << "numero de arqueiros: " << num_arqueiro << std::endl;
-            std::cout << "numero de espinhos: " << num_espinhos << std::endl;
-            std::cout << "numero de coracoes: " << num_coracoes << std::endl;
+            for(int i = 0; i < 5; i++)
+                num_entidades[i] = rand()%3 + 3;
+                
+            num_entidades[5] = rand()%3 + 1;
+
+            /*
+                0 - zumbi
+                1 - arqueiro
+                2 - espinhos
+                3 - coracoes
+                4 - caixas
+                5 - gigante
+            */
+
+            std::cout << "numero de zumbis: " << num_entidades[0] << std::endl;
+            std::cout << "numero de arqueiros: " << num_entidades[1] << std::endl;
+            std::cout << "numero de espinhos: " << num_entidades[2] << std::endl;
+            std::cout << "numero de coracoes: " << num_entidades[3] << std::endl;
+            std::cout << "numero de caixas: " << num_entidades[4] << std::endl;
+            std::cout << "numero de gigantes: " << num_entidades[5] << std::endl;
 
             //if(get_jogador) jogador2 = true
 
