@@ -1,5 +1,6 @@
 #pragma once
 #include "obstaculo.hpp"
+#include "../Personagens/jogador.hpp"
 
 namespace Entidades
 {
@@ -15,6 +16,7 @@ namespace Entidades
 
                 int get_cura() {return cura;}
                 
+                void curar(Entidades::Personagens::Jogador* pJ);
                 void executar();
                 void mover();
                 void atualizar();

@@ -1,5 +1,6 @@
 #pragma once
 #include "obstaculo.hpp"
+#include "../Personagens/jogador.hpp"
 
 namespace Entidades
 {
@@ -13,7 +14,8 @@ namespace Entidades
                 Musgo(sf::Vector2f pos);
                 ~Musgo();
 
-                bool get_gosmento();
+                bool get_gosmento() {return gosmento;}
+                void gosmar(Entidades::Personagens::Jogador* pJ);
 
                 void executar();
                 void mover();

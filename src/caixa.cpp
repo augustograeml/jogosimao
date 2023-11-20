@@ -4,7 +4,7 @@ namespace Entidades
 {
     namespace Obstaculos
     {
-        Caixa::Caixa(sf::Vector2f pos) : Obstaculo(pos, false), atrapalha(false)
+        Caixa::Caixa(sf::Vector2f pos) : Obstaculo(pos, false,false,true, false, false), atrapalha(false)
         {
             int i = rand()%10;
             if(i == 2)
