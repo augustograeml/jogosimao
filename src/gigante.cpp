@@ -15,6 +15,8 @@ namespace Entidades
                 set_forca(10);
             else
                 set_forca(4);
+
+            this->setSkin("Design/imagens/zumbi_gigante.png");
         }
 
         Gigante::~Gigante()
