@@ -11,6 +11,9 @@ Jogo::Jogo():
    Estados::Fases::Fase2* fase2 = new Estados::Fases::Fase2();
 
    menu = new Estados::Menu::Menu(1);
+
+   //se descomentar vai ficar com epilepsia so nos botoes, acho que ta rodando a msm coisa so q sem salvar em um dos loops, 
+   //ent em um loop ta rodando suave e no outro ta ficando somente o padrao q eh automatico da primeira opcao
    //pE->set_estado_atual(1);
    //menu->executar();
    Executar();  

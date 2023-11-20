@@ -8,7 +8,7 @@ namespace Entidades
         class Caixa : public Obstaculo
         {
             private:
-                bool atrapalha;
+                bool fragil;
             public:
                 Caixa(Vector2f pos = Vector2f(0.f, 0.f));
                 ~Caixa();

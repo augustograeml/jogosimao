@@ -74,7 +74,6 @@ namespace Estados
 
         void Menu::executar()
         {
-            
             mostrar_menu();
             loop_evento();
         }
