@@ -79,12 +79,12 @@ namespace Gerenciadores
         //camera.setCenter(Vector2f(530.f, 500.f));
        // sf::Vector2f p (pJ1->get_posicao()+ pJ2->get_posicao());
         
-        if(p.x < 500 && p.y < 500)
-            camera.setCenter(500.f,500.f);
+        if(p.x < 600 && p.y < 500)
+            camera.setCenter(600.f,500.f);
         else if(p.x > 1150 && p.y < 500)
             camera.setCenter(1150.f,500.f);
-        else if(p.x < 500 && p.y > 800)
-            camera.setCenter(500.f,800.f);
+        else if(p.x < 600 && p.y > 800)
+            camera.setCenter(600.f,800.f);
         else if(p.x > 1150 && p.y > 800)
             camera.setCenter(1150.f,800.f);
         else if(p.y > 800)
