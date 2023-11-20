@@ -1,5 +1,5 @@
 #include "../Estados/Menu/menu.hpp"
-#include "../jogo.hpp"
+//#include "../jogo.hpp"
 #include <iostream>
 
 namespace Estados
@@ -11,7 +11,6 @@ namespace Estados
             botao = new sf::RectangleShape();
             fonte = new sf::Font();
             imagem = new sf::Texture();
-            //jogo = new Jogo();
 
             inicializa_valores();
         }
@@ -21,13 +20,12 @@ namespace Estados
             delete botao;
             delete fonte;
             delete imagem;
-            //delete jogo;
         }
 
         void Menu::inicializa_valores()
         {
             pos = 0;
-            selecionado = deselecionado = false;
+            selecionado =  deselecionado = false;
             imagem->loadFromFile("Design/imagens/menu_zombies++.jpg");
             fonte->loadFromFile("Design/fonte/sangue_escorrendo.ttf");
 
@@ -74,9 +72,13 @@ namespace Estados
 
         void Menu::executar()
         {
-            
             mostrar_menu();
             loop_evento();
+        }
+
+        void Menu::selecionar_modo()
+        {
+
         }
 
         void Menu::loop_evento()
@@ -84,7 +86,6 @@ namespace Estados
             sf::Event evento;
             while(pGG->get_Janela()->pollEvent(evento))
             {
-                //mostrar_menu();
                 if(evento.type == sf::Event::Closed)
                     pGG->fecharJanela();
 
@@ -102,7 +103,6 @@ namespace Estados
                         textos[pos].setOutlineThickness(4);
                         textos[pos - 1].setOutlineThickness(0);
                         selecionado = false;
-                        deselecionado = false;
                     }
                 }
 
@@ -115,19 +115,18 @@ namespace Estados
                         textos[pos].setOutlineThickness(4);
                         textos[pos + 1].setOutlineThickness(0);
                         selecionado = false;
-                        deselecionado = false;
                     }
                 }
 
-                if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && !deselecionado)
+                if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) )
                 {
-                    deselecionado = true;
                     if(pos == 4)
                         pGG->fecharJanela();
                     else if(pos == 1)
                     {
                         pGE->set_estado_atual(2);
-                        std::cout << std::endl <<  "O COXA NAO CAI" ;//executar de jogo
+
+                        //executar fase    1
                         return;
                     }
                        

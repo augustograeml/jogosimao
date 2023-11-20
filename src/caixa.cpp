@@ -4,11 +4,13 @@ namespace Entidades
 {
     namespace Obstaculos
     {
-        Caixa::Caixa(sf::Vector2f pos) : Obstaculo(pos, false,false,true, false, false), atrapalha(false)
+        Caixa::Caixa(sf::Vector2f pos) : Obstaculo(pos, false, false, true, false, false), atrapalha(false)
         {
             int i = rand()%10;
             if(i == 2)
                 atrapalha = true;
+
+            //se o jogador pular em cima da caixa e ela for fragil ela quebra
 
             this->setSkin("Design/imagens/caixa.png");
             this->set_vida(20);
