@@ -80,10 +80,19 @@ namespace Gerenciadores
             obst = obstaculos->get_primeiro();
             while (obst != nullptr)
             {
-                if (colidiu(*inim, *obst))
+                int a = colidiu(*inim, *obst);
+                if (a == 1 || a == 3)
                 {
+                    Entidades::Personagens::Inimigo* inimigo = static_cast<Entidades::Personagens::Inimigo*> (*(inim));
+                    inimigo->mudar_direcao();
                     (*inim)->colidir();
                     (*obst)->colidir();
+                }
+                else
+                {
+                     (*inim)->colidir();
+                    (*obst)->colidir();
+                    
                 }
                 obst++;
             }
