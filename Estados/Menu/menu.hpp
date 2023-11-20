@@ -35,6 +35,8 @@ namespace Estados
                 Menu(int id);
                 ~Menu();
 
+                //vai ser chamado pra quando for escolher um ou dois jogadores no menu
+                void selecionar_modo();
 
                 void inicializa_valores();
                 void loop_evento();
