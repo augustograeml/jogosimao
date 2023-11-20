@@ -10,14 +10,9 @@ namespace Estados
     {
         Fase1::Fase1() : Fase(2), neve(false)
         {
-            if(get_neve())
-            {
-
-            }
             //geracao aleatoria de instancias de inimigos e obstaculos
             for(int i = 0; i < 5; i++)
                 num_entidades[i] = rand()%3 + 3;
-                
             num_entidades[5] = rand()%3 + 1;
 
             /*
@@ -45,8 +40,6 @@ namespace Estados
             shape.setPosition(sf::Vector2f(0.f, 0.f));
 
 
-            criar_cenario(ARQUIVO_CENARIO_1, num_zumbi, num_arqueiro, num_espinhos, num_coracoes,0);
-
             /*criar_jogadores(1);
             criar_jogadores(0);
             criar_inimigos();*/
@@ -64,9 +57,6 @@ namespace Estados
             shape.setSize(Vector2f(950.f, 950.f));
             shape.setTexture(&Textura);
             shape.setPosition(sf::Vector2f(76.f, -10.f));
-            pGG->desenharFundo(&shape);
-           //escrita_tempo.setString("GAME OVER!");
-            
         }
 
         bool Fase1::get_neve()

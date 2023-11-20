@@ -9,7 +9,6 @@ namespace Entidades
         {
             protected:
                 int forca;
-                
             public:
                 Personagem(sf::Vector2f pos, sf::Vector2f vel);
                 ~Personagem();
