@@ -38,6 +38,7 @@ namespace Estados
 
                 //vai ser chamado pra quando for escolher um ou dois jogadores no menu
                 void selecionar_modo();
+                void selecionar_jogadores();
 
                 void inicializa_valores();
                 void loop_evento();
