@@ -126,9 +126,9 @@ namespace Estados
                         pGG->fecharJanela();
                     else if(pos == 1)
                     {
-                         pGE->set_estado_atual(2);
-                          std::cout << std::endl <<  "O COXA NAO CAI" ;//executar de jogo
-                         return;
+                        pGE->set_estado_atual(2);
+                        std::cout << std::endl <<  "O COXA NAO CAI" ;//executar de jogo
+                        return;
                     }
                        
                 }
