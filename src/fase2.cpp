@@ -4,18 +4,24 @@ namespace Estados
 {
     namespace Fases
     {
-        Fase2::Fase2() : Fase(2), musgos(false)
+        Fase2::Fase2() : Fase(3), musgos(false)
         {
             int i = rand() % 10;
             if (i == 3)
                 musgos = true;
 
-            Textura.loadFromFile("Design/imagens/cenario_fase2.jpeg");
-            shape.setSize(Vector2f(950.f, 950.f));
-            shape.setTexture(&Textura);
-            shape.setPosition(sf::Vector2f(76.f, -10.f));
+            num_zumbi = rand()%3 + 3;
+            num_arqueiro = rand()%3 + 3;
+            num_espinhos = rand()%3 + 3;
+            num_coracoes = rand()%3 + 3;
+            set_num_jogadores(2);
 
-            criar_cenario(ARQUIVO_CENARIO_2,0,0,0,0,0);
+            Textura.loadFromFile("Design/imagens/cenario_op22.png");
+            shape.setSize(Vector2f(2000.f, 1200.f));
+            shape.setTexture(&Textura);
+            shape.setPosition(sf::Vector2f(0.f, 0.f));
+
+            criar_cenario(ARQUIVO_CENARIO_2,2,2,2,2,2);
         }
 
         Fase2::~Fase2()
@@ -38,18 +44,22 @@ namespace Estados
 
             if (gC.get_sem_inimigos())
             {
+                pGG->resetarCamera();
                 fim_de_jogo();
                 return;
             }
 
-            if(get_musgos())
+            if(get_musgos());
 
 
 
             jogadores.executar();
             inimigos.executar();
             gerenciar_colisoes();
-            // pGG->centralizarCamera((*(jogadores.get_primeiro()))->getPosicao() /*+ (*(jogadores.get_primeiro()++))->getPosicao())/2.f*/);
+            if(num_jogadores == 2)
+                 pGG->centralizarCamera((*(jogadores.get_primeiro()))->getPosicao() /*+ (*(jogadores.get_primeiro()++))->getPosicao())/2.f*/);
+            else
+                pGG->centralizarCamera((*(jogadores.get_primeiro()))->getPosicao());
             pGG->desenharFundo(&shape);
             obstaculos.desenhar();
             jogadores.desenhar();

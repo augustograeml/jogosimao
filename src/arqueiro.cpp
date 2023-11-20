@@ -24,14 +24,14 @@ namespace Entidades
         {
             //velocidade += Vector2f(rand() % 10 - 5, (float) (nochao ? - (rand() % 5) : 0));
 
-            /*if(!nochao)
+            if(!nochao)
                 velocidade += Vector2f(0, 0.1);
             else
                 velocidade = Vector2f(-0.1f, 0.f);
             nochao = false;
             
 
-            atualizar();*/
+            atualizar();
         }
 
         void Arqueiro::executar()

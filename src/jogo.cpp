@@ -10,9 +10,9 @@ Jogo::Jogo():
    Estados::Fases::Fase1* fase1 = new Estados::Fases::Fase1();
    Estados::Fases::Fase2* fase2 = new Estados::Fases::Fase2();
 
-   menu = new Estados::Menu::Menu();
-   pE->set_estado_atual(1);
-   menu->executar();
+   menu = new Estados::Menu::Menu(1);
+   //pE->set_estado_atual(1);
+   //menu->executar();
    Executar();  
 }
 Jogo::~Jogo()

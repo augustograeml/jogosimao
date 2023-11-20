@@ -35,11 +35,14 @@ namespace Estados
                 Listas::ListaEntidade inimigos;
                 Gerenciadores::Gerenciador_Colisoes gC;
                 std::ostringstream buffer;
+
+                int num_jogadores;
             public:
                 Fase(int i = -1);
                 ~Fase();
 
                 void gerenciar_colisoes();
+                void set_num_jogadores(int i) {num_jogadores = i;}
                 void criar_jogadores(bool jog2);
                 void criar_inimigos();
                 void criar_cenario(std::string caminho, int n1, int n2, int n3, int n4, int n5);

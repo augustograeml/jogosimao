@@ -8,7 +8,7 @@ namespace Estados
 {
     namespace Fases
     {
-        Fase1::Fase1() : Fase(1), neve(false)
+        Fase1::Fase1() : Fase(2), neve(false)
         {
             if(get_neve())
             {
@@ -26,6 +26,7 @@ namespace Estados
 
             //if(get_jogador) jogador2 = true
 
+            set_num_jogadores(2);
             Textura.loadFromFile("Design/imagens/cenario_op11.png");
             shape.setSize(Vector2f(2000.f, 1200.f));
             shape.setTexture(&Textura);
@@ -64,10 +65,12 @@ namespace Estados
         //colocar bool pra executar direitin quando tiver dois jogadores
         void Fase1::executar()
         {
+            //std::cout<<" Executadno fase 1";
             if (gC.get_sem_inimigos())
             {
-                fim_de_jogo();
-                pGE->set_estado_atual(2);
+                //fim_de_jogo();
+                pGG->resetarCamera();
+                pGE->set_estado_atual(3);
                 return;
             }
 
@@ -75,8 +78,11 @@ namespace Estados
             inimigos.executar();
             gerenciar_colisoes();
             //if(jogador2)
-            pGG->centralizarCamera(Vector2f((*(jogadores.get_primeiro()))->getPosicao() + (*(jogadores.get_primeiro()++))->getPosicao())/2.f);
-            //else - fica sem nada
+            if(num_jogadores == 2)
+                pGG->centralizarCamera(Vector2f((*(jogadores.get_primeiro()))->getPosicao() + (*(jogadores.get_primeiro()++))->getPosicao())/2.f);
+            else 
+                pGG->centralizarCamera((*(jogadores.get_primeiro()))->getPosicao());
+            
             pGG->desenharFundo(&shape);
             obstaculos.desenhar();
             jogadores.desenhar();

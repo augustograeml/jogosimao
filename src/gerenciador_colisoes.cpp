@@ -96,7 +96,7 @@ namespace Gerenciadores
             jog++;
         }
 
-        if(!inimigos->get_tamanho())
+        if(inimigos->get_tamanho() == 1)
             sem_inimigos = true;
     }
 
