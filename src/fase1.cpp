@@ -13,6 +13,7 @@ namespace Estados
             //geracao aleatoria de instancias de inimigos e obstaculos
             for(int i = 0; i < 5; i++)
                 num_entidades[i] = rand()%3 + 3;
+                
             num_entidades[5] = rand()%3 + 1;
 
             /*
