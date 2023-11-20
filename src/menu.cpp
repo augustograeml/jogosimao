@@ -1,4 +1,5 @@
 #include "../Estados/Menu/menu.hpp"
+#include "../jogo.hpp"
 #include <iostream>
 
 namespace Estados
@@ -10,6 +11,8 @@ namespace Estados
             botao = new sf::RectangleShape();
             fonte = new sf::Font();
             imagem = new sf::Texture();
+            //jogo = new Jogo();
+
             inicializa_valores();
         }
 
@@ -18,21 +21,22 @@ namespace Estados
             delete botao;
             delete fonte;
             delete imagem;
+            //delete jogo;
         }
 
         void Menu::inicializa_valores()
         {
             pos = 0;
             selecionado = deselecionado = false;
-            imagem->loadFromFile("Design/imagens/menu_zombies++(2).jpg");
+            imagem->loadFromFile("Design/imagens/menu_zombies++.jpg");
             fonte->loadFromFile("Design/fonte/sangue_escorrendo.ttf");
 
             posicao_mouse = {0, 0};
             coordenadas_mouse = {0, 0};
 
-            opcoes = {"Zombies++", "Novo Jogo", "Resume", "Sobre", "Sair"};
+            opcoes = {"Zombies++", "Novo Jogo", "Resume", "Ranking", "Sair"};
             textos.resize(5);
-            coordenadas = {{130, 40}, {445, 700}, {464, 762}, {470, 823}, {480, 886}};
+            coordenadas = {{130, 40}, {445, 700}, {464, 762}, {460, 823}, {480, 886}};
             tamanhos = {200, 22, 22, 22, 22}; 
 
             for(std::size_t i{}; i < textos.size(); ++i)
@@ -40,10 +44,15 @@ namespace Estados
                 textos[i].setFont(*fonte);
                 textos[i].setString(opcoes[i]);
                 textos[i].setCharacterSize(tamanhos[i]);
+                textos[i].setFillColor(sf::Color::White);
                 textos[i].setOutlineColor(sf::Color::Black);
                 textos[i].setPosition(coordenadas[i]);
             }
 
+            textos[0].setFillColor(sf::Color::White);
+            textos[0].setOutlineThickness(20);
+
+            
             textos[1].setOutlineThickness(4);
             pos = 1;
 
@@ -128,7 +137,7 @@ namespace Estados
                 {
                     if(botao->getGlobalBounds().contains(coordenadas_mouse))
                     {
-                        //executar de jogo
+                        //jogo->Executar();
                     }
                 }
                 

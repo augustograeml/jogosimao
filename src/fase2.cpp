@@ -21,7 +21,7 @@ namespace Estados
             shape.setTexture(&Textura);
             shape.setPosition(sf::Vector2f(0.f, 0.f));
 
-            criar_cenario(ARQUIVO_CENARIO_2,2,2,2,2,2);
+            criar_cenario(ARQUIVO_CENARIO_2,0,0,0,0,0,0, false);
         }
 
         Fase2::~Fase2()
