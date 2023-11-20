@@ -9,10 +9,12 @@ namespace Entidades
         {
             protected:
                 int forca;
-                
             public:
                 Personagem(sf::Vector2f pos, sf::Vector2f vel);
                 ~Personagem();
+
+                void set_forca(int forc);
+                int get_forca();
                 
                 virtual void mover() = 0;
                 virtual void atualizar() = 0;

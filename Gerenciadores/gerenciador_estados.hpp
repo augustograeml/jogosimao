@@ -11,8 +11,12 @@ namespace Estados
 /*
 Estados:
 0 - Menu
-1 - Fase 1
-2 - Fase 2
+1 - Fase 1, um jogador
+2 - Fase 1, dois jogadores
+3 - Fase 2, um jogador
+4 - Fase 2, dois jogadores
+5 - ranking
+6 - Sair
 */
 
 namespace Gerenciadores
@@ -29,6 +33,7 @@ namespace Gerenciadores
 
             static Gerenciador_Estados* get_instancia();
             void set_estado_atual(int eA);
+            int get_estado_atual();
             void adicionar_estado(Estados::Estado* pE);
             void executar();
 

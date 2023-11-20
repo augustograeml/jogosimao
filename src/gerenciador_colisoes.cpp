@@ -1,4 +1,12 @@
 #include "../Gerenciadores/gerenciador_colisoes.hpp"
+#include "../Entidades/Personagens/jogador.hpp"
+#include "../Entidades/Personagens/inimigo.hpp"
+#include "../Entidades/Obstaculos/obstaculo.hpp"
+#include "../Entidades/Obstaculos/espinho.hpp"
+#include "../Entidades/Obstaculos/coracao.hpp"
+#include "../Entidades/Obstaculos/caixa.hpp"
+#include "../Entidades/Obstaculos/neve.hpp"
+#include "../Entidades/Obstaculos/musgo.hpp"
 #include <math.h>
 #include <iostream>
 
@@ -33,18 +41,33 @@ namespace Gerenciadores
 
                 if (colidiu(*jog, *obst))
                 {
-                    if ((*obst)->get_vida() == 55)
+                    Entidades::Personagens::Jogador* jogador = static_cast<Entidades::Personagens::Jogador*> (*(jog));
+                    Entidades::Obstaculos::Obstaculo* obstaculo = static_cast<Entidades::Obstaculos::Obstaculo*> (*(obst));
+                    if (obstaculo->get_danoso())
                     {
-                        (*jog)->set_vida((*jog)->get_vida() - 1);
-                        (*jog)->colidir();
-                        (*obst)->colidir();
+                        Entidades::Obstaculos::Espinho* espinho = static_cast<Entidades::Obstaculos::Espinho*> (obstaculo);
+                        espinho->espinhar(jogador);
                     }
-                    if ((*obst)->get_vida() == 40)
+                    if (obstaculo->get_curoso())
                     {
-                        (*jog)->set_vida(5);
+                        Entidades::Obstaculos::Coracao* coracao = static_cast<Entidades::Obstaculos::Coracao*> (obstaculo);
+                        coracao->curar(jogador);
                         obstaculos->remover((*obst));
-                        (*jog)->colidir();
-                        (*obst)->colidir();
+                    }
+                    if(obstaculo->get_atrapalhante())
+                    {
+                        Entidades::Obstaculos::Caixa* caixa = static_cast<Entidades::Obstaculos::Caixa*> (obstaculo);
+                        //implementar atrapalhar aqui
+                    }
+                    if(obstaculo->get_escorregadio())
+                    {
+                        Entidades::Obstaculos::Neve* neve = static_cast<Entidades::Obstaculos::Neve*> (obstaculo);
+                        neve->escorregar(jogador);
+                    }
+                    if(obstaculo->get_gosmento())
+                    {
+                        Entidades::Obstaculos::Musgo* musgo = static_cast<Entidades::Obstaculos::Musgo*> (obstaculo);
+                        musgo->gosmar(jogador);
                     }
                 }
                 obst++;
@@ -76,17 +99,22 @@ namespace Gerenciadores
             {
                 int j = colidiu(*jog, *inim);
 
+                Entidades::Personagens::Jogador* aux = static_cast<Entidades::Personagens::Jogador*> (*(jog));
+                Entidades::Personagens::Inimigo* aux2 = static_cast<Entidades::Personagens::Inimigo*> (*(inim));
+
+
                 if (j == 4)
                 {
-                    (*inim)->set_vida(0);
+                    aux2->set_vida(aux2->get_vida() - aux->get_forca());
                     //fazer como o simao quer depois : "ao inves de remover, so passar um bool dizendo que ta morto "
+                    aux2->set_vivo(0);
                     inimigos->remover((*inim));
                 }
                 else if (j)
                 {
-                    if((*jog)->get_vida() > 0)
+                    if(aux->get_vida() > 0)
                     {
-                        (*jog)->set_vida((*jog)->get_vida() - 1);
+                        aux->set_vida(aux->get_vida() - aux2->get_forca());
                         (*jog)->colidir();
                         (*inim)->colidir();
                     }
@@ -96,7 +124,7 @@ namespace Gerenciadores
             jog++;
         }
 
-        if(!inimigos->get_tamanho())
+        if(inimigos->get_tamanho() == 1)
             sem_inimigos = true;
     }
 

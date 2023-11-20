@@ -4,10 +4,10 @@ namespace Entidades
 {
     namespace Obstaculos
     {
-        Coracao::Coracao(sf::Vector2f pos): Obstaculo(pos, true), cura(5)
+        Coracao::Coracao(sf::Vector2f pos): Obstaculo(pos,false, true, false,false,false), cura(5)
         {
             this->setSkin("Design/imagens/saude.png");
-            this->set_vida(40);
+            //this->set_vida(40);
         }
 
         Coracao::~Coracao()
@@ -28,6 +28,10 @@ namespace Entidades
         void Coracao::atualizar()
         {
             
+        }
+        void Coracao::curar(Entidades::Personagens::Jogador* pJ)
+        {
+            pJ->set_vida(cura);
         }
     }
 }

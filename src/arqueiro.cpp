@@ -8,6 +8,8 @@ namespace Entidades
             Inimigo(pos, vel)
         {
             this->setSkin("Design/imagens/zumbi_atirador.png");
+
+            //depois mexer com o setvida desse molecote aqui
         }
 
         Arqueiro::~Arqueiro()
@@ -24,14 +26,14 @@ namespace Entidades
         {
             //velocidade += Vector2f(rand() % 10 - 5, (float) (nochao ? - (rand() % 5) : 0));
 
-            /*if(!nochao)
+            if(!nochao)
                 velocidade += Vector2f(0, 0.1);
             else
                 velocidade = Vector2f(-0.1f, 0.f);
             nochao = false;
             
 
-            atualizar();*/
+            atualizar();
         }
 
         void Arqueiro::executar()

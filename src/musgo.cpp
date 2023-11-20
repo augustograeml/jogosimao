@@ -4,7 +4,7 @@ namespace Entidades
 {
     namespace Obstaculos
     {
-        Musgo::Musgo(sf::Vector2f pos) : Obstaculo(pos, false), gosmento(false)
+        Musgo::Musgo(sf::Vector2f pos) : Obstaculo(pos, false,false,false,false,true), gosmento(true)
         {
             this->setSkin("Design/imagens/bloco_musgo.jpeg");
             this->set_vida(1);
@@ -28,6 +28,13 @@ namespace Entidades
         void Musgo::atualizar()
         {
 
-        }        
+        } 
+        void Musgo::gosmar(Entidades::Personagens::Jogador* pJ)
+        {
+            if(get_gosmento())
+            {
+                pJ->setVelocidade(Vector2f(pJ->getVelocidade().x / 1.5f , pJ->getVelocidade().y));
+            }
+        }
     }
 }

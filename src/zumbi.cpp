@@ -25,7 +25,7 @@ namespace Entidades
             //velocidade += Vector2f(rand() % 10 - 5, (float) (nochao ? - (rand() % 5) : 0));
 
             if(!nochao)
-                velocidade += Vector2f(0, 0.1);
+                velocidade += Vector2f(0, 0.1f);
             else
                 velocidade = Vector2f(0.1f, 0.f);
             nochao = false;
