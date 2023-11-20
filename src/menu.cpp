@@ -11,7 +11,6 @@ namespace Estados
             botao = new sf::RectangleShape();
             fonte = new sf::Font();
             imagem = new sf::Texture();
-            //jogo = new Jogo();
 
             inicializa_valores();
         }
@@ -21,7 +20,6 @@ namespace Estados
             delete botao;
             delete fonte;
             delete imagem;
-            //delete jogo;
         }
 
         void Menu::inicializa_valores()
@@ -125,8 +123,8 @@ namespace Estados
                     deselecionado = true;
                     if(pos == 4)
                         pGG->fecharJanela();
-                    else if(pos == 1)
-                        pos;//jogo->Executar();
+                    if(pos == 1)
+                        pGE->set_estado_atual(2);
                 }
                 
                 if(sf::Mouse::isButtonPressed(sf::Mouse::Left))
