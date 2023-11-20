@@ -1,5 +1,6 @@
 #pragma once
 #include "obstaculo.hpp"
+#include "../Personagens/jogador.hpp"
 
 namespace Entidades
 {
@@ -8,11 +9,14 @@ namespace Entidades
         class Espinho : public Obstaculo
         {
             private:
-                float dano;
+                int dano;
             public:
                 Espinho(Vector2f pos = Vector2(0.f, 0.f));
                 ~Espinho();
+
+                void espinhar(Entidades::Personagens::Jogador* pJ);
                 void executar();
+                int get_dano() {return dano;}
                 void mover();
                 void atualizar();
         };

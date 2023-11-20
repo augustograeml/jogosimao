@@ -9,9 +9,9 @@ namespace Entidades
         class Inimigo : public Personagem
         {
             protected:
-                sf::Vector2f posicao;
                 Jogador* pjogador;
                 bool maldade;
+                bool direcao;
                     
             public:
                 Inimigo(sf::Vector2f pos, sf::Vector2f vel);
@@ -19,6 +19,7 @@ namespace Entidades
                 sf::Vector2f getPosicao();
                 void setPosicao(sf::Vector2f& p);
                 void update(sf::Vector2f& posicao_jogador);
+                void mudar_direcao();
 
                 virtual void atualizar() = 0;
                 virtual void mover() = 0;
