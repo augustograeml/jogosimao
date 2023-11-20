@@ -32,7 +32,7 @@ namespace Estados
                 //tamanhos para fonte pq cada palavra tem um tamanho de fonte diferente
                 vector<size_t> tamanhos;
             public:
-                Menu();
+                Menu(int id);
                 ~Menu();
 
 

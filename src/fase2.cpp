@@ -4,18 +4,32 @@ namespace Estados
 {
     namespace Fases
     {
-        Fase2::Fase2() : Fase(2), musgos(false)
+        Fase2::Fase2() : Fase(3), musgos(false)
         {
             int i = rand() % 10;
             if (i == 3)
                 musgos = true;
 
-            Textura.loadFromFile("Design/imagens/cenario_fase2.jpeg");
-            shape.setSize(Vector2f(950.f, 950.f));
-            shape.setTexture(&Textura);
-            shape.setPosition(sf::Vector2f(76.f, -10.f));
+            for(int i = 0; i < 5; i++)
+                num_entidades[i] = rand()%3 + 3;
+            num_entidades[5] = rand()%3 + 1;
 
-            criar_cenario(ARQUIVO_CENARIO_2,0,0,0,0,0,0, false);
+            /*
+                0 - zumbi
+                1 - arqueiro
+                2 - espinhos
+                3 - coracoes
+                4 - caixas
+                5 - gigante
+            */
+            set_num_jogadores(2);
+
+            Textura.loadFromFile("Design/imagens/cenario_op22.png");
+            shape.setSize(Vector2f(2000.f, 1200.f));
+            shape.setTexture(&Textura);
+            shape.setPosition(sf::Vector2f(0.f, 0.f));
+
+            criar_cenario(ARQUIVO_CENARIO_2,num_entidades[0],num_entidades[1],num_entidades[2],num_entidades[3],num_entidades[4],num_entidades[5], get_jaCriado());
         }
 
         Fase2::~Fase2()
@@ -38,18 +52,21 @@ namespace Estados
 
             if (gC.get_sem_inimigos())
             {
+                pGG->resetarCamera();
                 fim_de_jogo();
                 return;
             }
 
-            if(get_musgos())
+            if(get_musgos());
 
 
 
             jogadores.executar();
             inimigos.executar();
             gerenciar_colisoes();
-            // pGG->centralizarCamera((*(jogadores.get_primeiro()))->getPosicao() /*+ (*(jogadores.get_primeiro()++))->getPosicao())/2.f*/);
+
+            atualizar();
+           
             pGG->desenharFundo(&shape);
             obstaculos.desenhar();
             jogadores.desenhar();
@@ -58,6 +75,16 @@ namespace Estados
 
         void Fase2::atualizar()
         {
+            Entidades::Personagens::Jogador* aux = static_cast<Entidades::Personagens::Jogador*> (*(jogadores.get_primeiro()));
+            Entidades::Personagens::Jogador* aux1 = static_cast<Entidades::Personagens::Jogador*> (*(jogadores.get_primeiro()++));
+            //if(jogador2)
+            if(num_jogadores == 2 && aux->get_vida() && aux1->get_vida())
+                pGG->centralizarCamera(Vector2f((*(jogadores.get_primeiro()))->getPosicao() + (*(jogadores.get_primeiro()++))->getPosicao())/2.f);
+            if(aux->get_vida() && !aux1->get_vida())
+                pGG->centralizarCamera((*(jogadores.get_primeiro()))->getPosicao());
+            if(!aux->get_vida() && aux1->get_vida())
+                pGG->centralizarCamera((*(jogadores.get_primeiro()++))->getPosicao());
+
         }
 
         bool Fase2::get_musgos()

@@ -33,7 +33,7 @@ namespace Gerenciadores
 
     void Gerenciador_Estados::adicionar_estado(Estados::Estado* pE)
     {
-        /*if(pE)
+        if(pE)
         {
             if(!estados.at(pE->getID()))
                 estados.at(pE->getID()) = pE;
@@ -42,7 +42,7 @@ namespace Gerenciadores
                 delete estados.at(pE->getID());
                 estados.at(pE->getID()) = pE;
             }
-        }*/
+        }
     }
 
     void Gerenciador_Estados::executar()

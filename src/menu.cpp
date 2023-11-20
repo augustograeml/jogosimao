@@ -6,11 +6,12 @@ namespace Estados
 {
     namespace Menu
     {
-        Menu::Menu() : pGG(Gerenciadores::Gerenciador_Grafico::get_instancia())
+        Menu::Menu(int id) : pGG(Gerenciadores::Gerenciador_Grafico::get_instancia()), Estado(id)
         {
             botao = new sf::RectangleShape();
             fonte = new sf::Font();
             imagem = new sf::Texture();
+            //jogo = new Jogo();
 
             inicializa_valores();
         }
@@ -20,6 +21,7 @@ namespace Estados
             delete botao;
             delete fonte;
             delete imagem;
+            //delete jogo;
         }
 
         void Menu::inicializa_valores()
@@ -72,11 +74,9 @@ namespace Estados
 
         void Menu::executar()
         {
-            while(pGG->get_JanelaAberta())
-            {
-                loop_evento();
-                mostrar_menu();
-            }
+            
+            mostrar_menu();
+            loop_evento();
         }
 
         void Menu::loop_evento()
@@ -84,6 +84,7 @@ namespace Estados
             sf::Event evento;
             while(pGG->get_Janela()->pollEvent(evento))
             {
+                //mostrar_menu();
                 if(evento.type == sf::Event::Closed)
                     pGG->fecharJanela();
 
@@ -123,8 +124,13 @@ namespace Estados
                     deselecionado = true;
                     if(pos == 4)
                         pGG->fecharJanela();
-                    if(pos == 1)
+                    else if(pos == 1)
+                    {
                         pGE->set_estado_atual(2);
+                        std::cout << std::endl <<  "O COXA NAO CAI" ;//executar de jogo
+                        return;
+                    }
+                       
                 }
                 
                 if(sf::Mouse::isButtonPressed(sf::Mouse::Left))
@@ -134,6 +140,7 @@ namespace Estados
                         //jogo->Executar();
                     }
                 }
+                
             }
         }
     }

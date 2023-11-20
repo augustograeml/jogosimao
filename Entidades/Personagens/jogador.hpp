@@ -12,6 +12,7 @@ namespace Entidades
         protected:
             bool jogador2;
             float poder;
+            std::string nome;
             double tempo;
 
         public:

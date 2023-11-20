@@ -1,4 +1,5 @@
 #include "../Estados/Fases/fase1.hpp"
+#include "../Entidades/Personagens/jogador.hpp"
 #include <iostream>
 #include <math.h>
 
@@ -8,12 +9,11 @@ namespace Estados
 {
     namespace Fases
     {
-        Fase1::Fase1() : Fase(1), neve(false)
+        Fase1::Fase1() : Fase(2), neve(false)
         {
             //geracao aleatoria de instancias de inimigos e obstaculos
             for(int i = 0; i < 5; i++)
                 num_entidades[i] = rand()%3 + 3;
-                
             num_entidades[5] = rand()%3 + 1;
 
             /*
@@ -34,6 +34,7 @@ namespace Estados
 
             //if(get_jogador) jogador2 = true
 
+            set_num_jogadores(2);
             Textura.loadFromFile("Design/imagens/cenario_op11.png");
             shape.setSize(Vector2f(2000.f, 1200.f));
             shape.setTexture(&Textura);
@@ -69,19 +70,21 @@ namespace Estados
         //colocar bool pra executar direitin quando tiver dois jogadores
         void Fase1::executar()
         {
+            //std::cout<<" Executadno fase 1";
             if (gC.get_sem_inimigos())
             {
-                fim_de_jogo();
-                pGE->set_estado_atual(2);
+                //fim_de_jogo();
+                pGG->resetarCamera();
+                pGE->set_estado_atual(3);
                 return;
             }
 
             jogadores.executar();
             inimigos.executar();
             gerenciar_colisoes();
-            //if(jogador2)
-            pGG->centralizarCamera(Vector2f((*(jogadores.get_primeiro()))->getPosicao() + (*(jogadores.get_primeiro()++))->getPosicao())/2.f);
-            //else - fica sem nada
+            
+            atualizar();
+
             pGG->desenharFundo(&shape);
             obstaculos.desenhar();
             jogadores.desenhar();
@@ -90,6 +93,15 @@ namespace Estados
 
         void Fase1::atualizar()
         {
+            Entidades::Personagens::Jogador* aux = static_cast<Entidades::Personagens::Jogador*> (*(jogadores.get_primeiro()));
+            Entidades::Personagens::Jogador* aux1 = static_cast<Entidades::Personagens::Jogador*> (*(jogadores.get_primeiro()++));
+            //if(jogador2)
+            if(num_jogadores == 2 && aux->get_vida() && aux1->get_vida())
+                pGG->centralizarCamera(Vector2f((*(jogadores.get_primeiro()))->getPosicao() + (*(jogadores.get_primeiro()++))->getPosicao())/2.f);
+            if(aux->get_vida() && !aux1->get_vida())
+                pGG->centralizarCamera((*(jogadores.get_primeiro()))->getPosicao());
+            if(!aux->get_vida() && aux1->get_vida())
+                pGG->centralizarCamera((*(jogadores.get_primeiro()++))->getPosicao());
         }
 
         void Fase1::pausar()

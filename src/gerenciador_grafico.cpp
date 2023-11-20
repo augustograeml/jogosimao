@@ -1,6 +1,6 @@
 #include "../Gerenciadores/gerenciador_grafico.hpp"
 #include "../ente.hpp"
-//#include <iostream>
+#include <iostream>
 
 namespace Gerenciadores
 {
@@ -81,19 +81,19 @@ namespace Gerenciadores
         
         if(p.x < 500 && p.y < 500)
             camera.setCenter(500.f,500.f);
-        if(p.x > 1150 && p.y < 500)
+        else if(p.x > 1150 && p.y < 500)
             camera.setCenter(1150.f,500.f);
-        if(p.x < 500 && p.y > 800)
+        else if(p.x < 500 && p.y > 800)
             camera.setCenter(500.f,800.f);
-        if(p.x > 1150 && p.y > 800)
+        else if(p.x > 1150 && p.y > 800)
             camera.setCenter(1150.f,800.f);
-        if(p.y > 800)
+        else if(p.y > 800)
             camera.setCenter(p.x,800);
-        if(p.y < 500)
+        else if(p.y < 500)
             camera.setCenter(p.x,500);
-        if(p.x > 1150)
+        else if(p.x > 1150)
             camera.setCenter(1150.f,p.y);
-        if(p.x < 500)
+        else if(p.x < 500)
             camera.setCenter(500.f,p.y);
         else
             camera.setCenter(p);
