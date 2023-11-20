@@ -18,6 +18,7 @@ class Jogo
         Gerenciadores::Gerenciador_Grafico* pG;
         Gerenciadores::Gerenciador_Estados* pE;
         Gerenciadores::Gerenciador_Eventos* pEv;
+        
         Observers::Observer_Tecla obs1;
         Observers::Observer_Tecla obs2;
     public:

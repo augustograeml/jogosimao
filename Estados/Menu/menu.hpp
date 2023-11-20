@@ -3,6 +3,8 @@
 #include "../../Gerenciadores/gerenciador_grafico.hpp"
 #include <SFML/Graphics.hpp>
 
+
+
 namespace Estados
 {
     namespace Menu
@@ -18,6 +20,8 @@ namespace Estados
                 sf::RectangleShape* botao;
                 sf::Font* fonte;
                 sf::Texture* imagem;
+
+                //Jogo* jogo;
 
                 sf::Vector2i posicao_mouse;
                 sf::Vector2f coordenadas_mouse;

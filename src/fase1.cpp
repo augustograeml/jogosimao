@@ -39,6 +39,7 @@ namespace Estados
             shape.setTexture(&Textura);
             shape.setPosition(sf::Vector2f(0.f, 0.f));
 
+            criar_cenario(ARQUIVO_CENARIO_1, num_entidades[0], num_entidades[1], num_entidades[2], num_entidades[3],num_entidades[4], num_entidades[5], get_jaCriado());
 
             /*criar_jogadores(1);
             criar_jogadores(0);
@@ -57,6 +58,7 @@ namespace Estados
             shape.setSize(Vector2f(950.f, 950.f));
             shape.setTexture(&Textura);
             shape.setPosition(sf::Vector2f(76.f, -10.f));
+            pGG->desenharFundo(&shape);           
         }
 
         bool Fase1::get_neve()
