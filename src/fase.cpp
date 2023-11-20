@@ -179,12 +179,15 @@ namespace Estados
                                 
                             case '2':
                             //dados do arquivo json serao importante nesse caso aqui
-                                aux = static_cast<Entidades::Entidade*> (new Entidades::Personagens::Jogador(sf::Vector2f(0.f, 0.f), sf::Vector2f(0.f, 0.f), true));
-                                if(aux)
+                                if(num_jogadores == 2)
                                 {
-                                    aux->setWindow(pGG->get_Janela());
-                                    aux->setPosicao(sf::Vector2f(j * TAM, i * TAM));
-                                    jogadores.incluir(aux);
+                                    aux = static_cast<Entidades::Entidade*> (new Entidades::Personagens::Jogador(sf::Vector2f(0.f, 0.f), sf::Vector2f(0.f, 0.f), true));
+                                    if(aux)
+                                    {
+                                        aux->setWindow(pGG->get_Janela());
+                                        aux->setPosicao(sf::Vector2f(j * TAM, i * TAM));
+                                        jogadores.incluir(aux);
+                                    }
                                 }
                                 break;
                             case '3':

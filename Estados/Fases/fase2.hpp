@@ -9,11 +9,6 @@ namespace Estados
         {
             private:
                 bool musgos;
-                int num_espinhos;
-                int num_coracoes;
-                int num_zumbi;
-                int num_arqueiro;
-                int num_obstaculo_novo;
             public:
                 Fase2();
                 ~Fase2();

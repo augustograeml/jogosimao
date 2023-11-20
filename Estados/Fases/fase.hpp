@@ -42,7 +42,7 @@ namespace Estados
                 Listas::ListaEntidade inimigos;
                 Gerenciadores::Gerenciador_Colisoes gC;
                 std::ostringstream buffer;
-
+                int num_entidades[6];
                 int num_jogadores;
             public:
                 Fase(int i = -1);

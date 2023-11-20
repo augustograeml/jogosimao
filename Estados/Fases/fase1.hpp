@@ -9,7 +9,7 @@ namespace Estados
         {
             private:
                 bool neve;
-                int num_entidades[6];
+                
             public:
                 Fase1();
                 ~Fase1();
