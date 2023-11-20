@@ -25,7 +25,7 @@ namespace Estados
         void Menu::inicializa_valores()
         {
             pos = 0;
-            selecionado = deselecionado = false;
+            selecionado =  deselecionado = false;
             imagem->loadFromFile("Design/imagens/menu_zombies++.jpg");
             fonte->loadFromFile("Design/fonte/sangue_escorrendo.ttf");
 
