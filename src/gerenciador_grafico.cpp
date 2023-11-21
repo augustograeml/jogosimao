@@ -75,7 +75,7 @@ namespace Gerenciadores
     }
     void Gerenciador_Grafico::centralizarCamera(sf::Vector2f p)//Entidades:Personagens:Jogador* pJ1, Entidades:Personagens:Jogador* pJ2)
     {
-        std::cout << p.x << " -- " << p.y << std::endl;
+        //std::cout << p.x << " -- " << p.y << std::endl;
         //camera.setCenter(Vector2f(530.f, 500.f));
        // sf::Vector2f p (pJ1->get_posicao()+ pJ2->get_posicao());
         
