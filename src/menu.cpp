@@ -6,7 +6,7 @@ namespace Estados
 {
     namespace Menu
     {
-        Menu::Menu(int id) : pGG(Gerenciadores::Gerenciador_Grafico::get_instancia()), Estado(id)
+        Menu::Menu(int id) : pGG(Gerenciadores::Gerenciador_Grafico::get_instancia()), Estado(id), inicio(true)
         {
             botao = new sf::RectangleShape();
             fonte = new sf::Font();
@@ -32,12 +32,12 @@ namespace Estados
             posicao_mouse = {0, 0};
             coordenadas_mouse = {0, 0};
 
-            opcoes = {"Zombies++", "Novo Jogo", "Resume", "Ranking", "Sair"};
-            textos.resize(5);
-            coordenadas = {{130, 40}, {445, 700}, {464, 762}, {460, 823}, {480, 886}};
-            tamanhos = {200, 22, 22, 22, 22}; 
+            opcoes = {"Zombies++", "Novo Jogo", "Resume", "Ranking", "Sair", "Um Jogador", "Dois Jogadores", "Fase 1", "Fase 2"};
+            textos.resize(9);
+            coordenadas = {{130, 40}, {445, 700}, {464, 762}, {460, 823}, {480, 886}, {520, 670}, {515, 695}, {560, 630}, {560, 650}};
+            tamanhos = {200, 22, 22, 22, 22, 22, 22, 22, 22}; 
 
-            for(std::size_t i{}; i < textos.size(); ++i)
+            for(std::size_t i{}; i < textos.size(); i++)
             {
                 textos[i].setFont(*fonte);
                 textos[i].setString(opcoes[i]);
@@ -54,6 +54,24 @@ namespace Estados
             textos[1].setOutlineThickness(4);
             pos = 1;
 
+            copia.resize(5);
+            for(std::size_t i{}; i < copia.size(); i++)
+            {
+                copia[i].setFont(*fonte);
+                copia[i].setString(opcoes[i]);
+                copia[i].setCharacterSize(tamanhos[i]);
+                copia[i].setFillColor(sf::Color::White);
+                copia[i].setOutlineColor(sf::Color::Black);
+                copia[i].setPosition(coordenadas[i]);
+            }
+
+            copia[0].setFillColor(sf::Color::White);
+            copia[0].setOutlineThickness(20);
+
+            
+            copia[1].setOutlineThickness(4);
+            pos = 1;
+
             //botao pro mouse pra entrar no jogo
             botao->setSize(sf::Vector2f(151, 35));
             botao->setPosition(445, 700);
@@ -65,8 +83,21 @@ namespace Estados
             pGG->limpar();
             pGG->desenharTextura(imagem);
             //laco diferentao ne mano pprt
-            for(auto t : textos)
-                pGG->get_Janela()->draw(t);
+            for(auto t : copia)
+                    pGG->get_Janela()->draw(t);
+            
+            /*if(inicio)
+            {
+                for(auto t : copia)
+                    pGG->get_Janela()->draw(t);
+
+                inicio = false;
+            }
+            else
+            {
+                for(auto t : textos)
+                    pGG->get_Janela()->draw(t);
+            }*/
             pGG->mostrar();
         }
 
@@ -77,6 +108,42 @@ namespace Estados
         }
 
         void Menu::selecionar_modo()
+        {
+            int escolher = 5;
+
+            sf::Event evento1;
+            while(pGG->get_Janela()->pollEvent(evento1))
+            {
+                if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && !selecionado)
+                {
+                    if(escolher < 5)
+                    {
+                        pos++;
+                        selecionado = true;
+                        textos[escolher].setOutlineThickness(4);
+                        textos[escolher - 1].setOutlineThickness(0);
+                        selecionado = false;
+                    }
+                }
+
+                if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && !selecionado)
+                {
+                    if(escolher > 4)
+                    {
+                        pos--;
+                        selecionado = true;
+                        textos[escolher].setOutlineThickness(4);
+                        textos[escolher + 1].setOutlineThickness(0);
+                        selecionado = false;
+                    }
+                }
+
+                if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && !selecionado)
+                    selecionar_fase();
+            }
+        }
+
+        void Menu::selecionar_fase()
         {
 
         }
@@ -100,8 +167,8 @@ namespace Estados
                     {
                         pos++;
                         selecionado = true;
-                        textos[pos].setOutlineThickness(4);
-                        textos[pos - 1].setOutlineThickness(0);
+                        copia[pos].setOutlineThickness(4);
+                        copia[pos - 1].setOutlineThickness(0);
                         selecionado = false;
                     }
                 }
@@ -112,8 +179,8 @@ namespace Estados
                     {
                         pos--;
                         selecionado = true;
-                        textos[pos].setOutlineThickness(4);
-                        textos[pos + 1].setOutlineThickness(0);
+                        copia[pos].setOutlineThickness(4);
+                        copia[pos + 1].setOutlineThickness(0);
                         selecionado = false;
                     }
                 }
@@ -124,10 +191,49 @@ namespace Estados
                         pGG->fecharJanela();
                     else if(pos == 1)
                     {
-                        pGE->set_estado_atual(2);
+                        //pelo fato de eu ta so desenhando as copias pode ser q esteja dando errado ai, pq as copias nao tem a msm coisa q o original
+                        int escolher = 5;
 
-                        //executar fase    1
-                        return;
+                        for(auto p : textos)
+                            pGG->get_Janela()->draw(p);
+
+                        /*sf::Event evento1;
+                        while(pGG->get_Janela()->pollEvent(evento1))
+                        {
+                            */if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && !selecionado)
+                            {
+                                if(escolher < 5)
+                                {
+                                    escolher++;
+                                    selecionado = true;
+                                    textos[escolher].setOutlineThickness(4);
+                                    textos[escolher - 1].setOutlineThickness(0);
+                                    selecionado = false;
+                                }
+                            }
+
+                            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && !selecionado)
+                            {
+                                if(escolher > 4)
+                                {
+                                    escolher--;
+                                    selecionado = true;
+                                    textos[escolher].setOutlineThickness(4);
+                                    textos[escolher + 1].setOutlineThickness(0);
+                                    selecionado = false;
+                                }
+                            }
+
+                            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && !selecionado)
+                            {
+                                if(escolher == 5)
+                                {
+
+                                }
+                            }
+                        //}*/
+
+                        //pGE->set_estado_atual(2);
                     }
                        
                 }
