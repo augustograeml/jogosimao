@@ -10,7 +10,7 @@ namespace Estados
             private:
                 bool musgos;
             public:
-                Fase2();
+                Fase2(int id);
                 ~Fase2();
                 bool get_musgos();
 

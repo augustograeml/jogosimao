@@ -1,11 +1,24 @@
 #include "../Estados/Fases/fase2.hpp"
+#include "../Entidades/Personagens/jogador.hpp"
+
+namespace Entidades
+{
+    namespace Personagens
+    {
+        class Jogador;
+    }
+}
 
 namespace Estados
 {
     namespace Fases
     {
-        Fase2::Fase2() : Fase(3), musgos(true)
+        Fase2::Fase2(int id) : Fase(id), musgos(false)
         {
+
+            if(id == 7)
+                set_num_jogadores(2);
+
 
             for(int i = 0; i < 5; i++)
                 num_entidades[i] = rand()%3 + 3;
@@ -19,7 +32,7 @@ namespace Estados
                 4 - caixas
                 5 - gigante
             */
-            set_num_jogadores(2);
+            //set_num_jogadores(2);
 
             Textura.loadFromFile("Design/imagens/cenario_op22.png");
             shape.setSize(Vector2f(2000.f, 1200.f));
@@ -45,18 +58,12 @@ namespace Estados
 
         void Fase2::executar()
         {
-            // cout << "palmeiras tem mundial sim" << endl;
-
             if (gC.get_sem_inimigos())
             {
                 pGG->resetarCamera();
                 fim_de_jogo();
                 return;
             }
-
-            if(get_musgos());
-
-
 
             jogadores.executar();
             inimigos.executar();
@@ -81,7 +88,6 @@ namespace Estados
                 pGG->centralizarCamera((*(jogadores.get_primeiro()))->getPosicao());
             if(!aux->get_vida() && aux1->get_vida())
                 pGG->centralizarCamera((*(jogadores.get_primeiro()++))->getPosicao());
-
         }
 
         bool Fase2::get_musgos()
