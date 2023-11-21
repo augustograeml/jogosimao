@@ -4,11 +4,8 @@ namespace Estados
 {
     namespace Fases
     {
-        Fase2::Fase2() : Fase(3), musgos(false)
+        Fase2::Fase2() : Fase(3), musgos(true)
         {
-            int i = rand() % 10;
-            if (i == 3)
-                musgos = true;
 
             for(int i = 0; i < 5; i++)
                 num_entidades[i] = rand()%3 + 3;

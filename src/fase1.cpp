@@ -9,7 +9,7 @@ namespace Estados
 {
     namespace Fases
     {
-        Fase1::Fase1() : Fase(2), neve(false)
+        Fase1::Fase1() : Fase(2), neve(true)
         {
             //geracao aleatoria de instancias de inimigos e obstaculos
             for(int i = 0; i < 5; i++)

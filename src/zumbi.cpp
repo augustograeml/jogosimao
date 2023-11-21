@@ -9,6 +9,7 @@ namespace Entidades
         {
             this->setSkin("Design/imagens/zumbi_bateu_morreu.png");
             direcao = 1;
+            pulo = rand()%10;
         }
 
         Zumbi::~Zumbi()
@@ -23,7 +24,7 @@ namespace Entidades
 
         void Zumbi::mover()
         {
-            int pulo = rand()%10;
+            
             
             if(direcao)
             {
@@ -34,6 +35,8 @@ namespace Entidades
                     velocidade = Vector2f(0.1f, 0.f);
                     if(pulo == 2)
                     velocidade = Vector2f(0.3f,-2.0f);
+                    else
+                    pulo = rand()%10;
                 }
                     
                 nochao = false;
@@ -47,6 +50,8 @@ namespace Entidades
                     velocidade = Vector2f(-0.1f, 0.f);
                     if(pulo == 2)
                     velocidade = Vector2f(-0.3f,-2.0f);
+                    else
+                        pulo = rand()%10;
                 }
                     
                 nochao = false;
