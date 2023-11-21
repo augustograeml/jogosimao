@@ -8,6 +8,8 @@ namespace Entidades
             Inimigo(pos, vel)
         {
             this->setSkin("Design/imagens/zumbi_atirador.png");
+            atirando = false;
+            direcao = 0;
 
             //depois mexer com o setvida desse molecote aqui
         }
@@ -24,12 +26,22 @@ namespace Entidades
 
         void Arqueiro::mover()
         {
-            //velocidade += Vector2f(rand() % 10 - 5, (float) (nochao ? - (rand() % 5) : 0));
-
+            int aux = rand()%3;
+            if(aux)
+            {
+                atirando = true;
+            }
+            
             if(!nochao)
                 velocidade += Vector2f(0, 0.1);
             else
+            {
+                if(direcao)
                 velocidade = Vector2f(-0.1f, 0.f);
+                else
+                velocidade = Vector2f(0.1f, 0.f);
+            }
+                
             nochao = false;
             
 
@@ -39,11 +51,29 @@ namespace Entidades
         void Arqueiro::executar()
         {
             mover();
+            atirar();
         }
 
         void Arqueiro::atacar(Entidade* jg)
         {
             jg->set_vida(jg->get_vida() - forca);
+        }
+        void Arqueiro::atirar()
+        {
+            sf::Vector2f z = this->getTamanho() / 2.f;
+
+            if(recarregar == 0)
+            {
+                novo.setPosicao(this->getPosicao() + (z));
+                atirando = false;
+                novo.executar();
+                recarregar = TEMPO_RECARGA;
+            }
+            else
+            {
+                recarregar--;
+                novo.executar();
+            }
         }
 
         void Arqueiro::salvar(std::ostringstream* entrada)

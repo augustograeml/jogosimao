@@ -14,9 +14,11 @@ namespace Entidades
 
         void salvar(std::ostringstream* entrada){}
 
+        int get_dano(){return dano;}
         void mover(){}
+        void atirar();
         void atualizar(){}
-        void colidir(){}
+        void colidir();
 
         void executar();
     };

@@ -8,6 +8,8 @@ namespace Entidades
         Zumbi::Zumbi(Vector2f pos, Vector2f vel) : Inimigo(pos, vel)
         {
             this->setSkin("Design/imagens/zumbi_bateu_morreu.png");
+            direcao = 1;
+            pulo = rand()%10;
         }
 
         Zumbi::~Zumbi()
@@ -22,16 +24,41 @@ namespace Entidades
 
         void Zumbi::mover()
         {
-            //velocidade += Vector2f(rand() % 10 - 5, (float) (nochao ? - (rand() % 5) : 0));
-
-            if(!nochao)
-                velocidade += Vector2f(0, 0.1f);
-            else
-                velocidade = Vector2f(0.1f, 0.f);
-            nochao = false;
             
+            
+            if(direcao)
+            {
+                if(!nochao)
+                    velocidade += Vector2f(0, 0.1);
+                else
+                {
+                    velocidade = Vector2f(0.1f, 0.f);
+                    if(pulo == 2)
+                    velocidade = Vector2f(0.3f,-2.0f);
+                    else
+                    pulo = rand()%10;
+                }
+                    
+                nochao = false;
+            }
+            else
+            {
+                if(!nochao)
+                    velocidade += Vector2f(0, 0.1);
+                else
+                {
+                    velocidade = Vector2f(-0.1f, 0.f);
+                    if(pulo == 2)
+                    velocidade = Vector2f(-0.3f,-2.0f);
+                    else
+                        pulo = rand()%10;
+                }
+                    
+                nochao = false;
+            }
+                
 
-            atualizar();
+                atualizar();
         }
 
         void Zumbi::executar()

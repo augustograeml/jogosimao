@@ -16,6 +16,7 @@ namespace Entidades
                 void set_forca(int forc);
                 int get_forca();
                 
+                virtual void executar() = 0;
                 virtual void mover() = 0;
                 virtual void atualizar() = 0;
                 virtual void atacar(Entidade* jg) = 0;
