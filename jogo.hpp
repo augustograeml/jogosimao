@@ -14,7 +14,7 @@ class Jogo
 {
     private:
 
-        Estados::Menu::Menu* menu;
+        Estados::Menus::Menu* menu;
         Gerenciadores::Gerenciador_Grafico* pG;
         Gerenciadores::Gerenciador_Estados* pE;
         Gerenciadores::Gerenciador_Eventos* pEv;

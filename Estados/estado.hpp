@@ -9,7 +9,7 @@ namespace Estados
             int id;
             static Gerenciadores::Gerenciador_Estados* pGE;
         public:
-            Estado(int pos = -1);
+            Estado(int id = -1);
             virtual ~Estado();
             int getID();
 

@@ -1,10 +1,9 @@
 #include "../Estados/Menu/menu.hpp"
-//#include "../jogo.hpp"
 #include <iostream>
 
 namespace Estados
 {
-    namespace Menu
+    namespace Menus
     {
         Menu::Menu(int id) : pGG(Gerenciadores::Gerenciador_Grafico::get_instancia()), Estado(id), inicio(true)
         {
@@ -25,7 +24,7 @@ namespace Estados
         void Menu::inicializa_valores()
         {
             pos = 0;
-            selecionado =  deselecionado = false;
+            selecionado = deselecionado = false;
             imagem->loadFromFile("Design/imagens/menu_zombies++.jpg");
             fonte->loadFromFile("Design/fonte/sangue_escorrendo.ttf");
 
@@ -35,9 +34,9 @@ namespace Estados
             opcoes = {"Zombies++", "Novo Jogo", "Resume", "Ranking", "Sair", "Um Jogador", "Dois Jogadores", "Fase 1", "Fase 2"};
             textos.resize(9);
             coordenadas = {{130, 40}, {445, 700}, {464, 762}, {460, 823}, {480, 886}, {520, 670}, {515, 695}, {560, 630}, {560, 650}};
-            tamanhos = {200, 22, 22, 22, 22, 22, 22, 22, 22}; 
+            tamanhos = {200, 22, 22, 22, 22, 22, 22, 22, 22};
 
-            for(std::size_t i{}; i < textos.size(); i++)
+            for (std::size_t i{}; i < textos.size(); i++)
             {
                 textos[i].setFont(*fonte);
                 textos[i].setString(opcoes[i]);
@@ -50,12 +49,11 @@ namespace Estados
             textos[0].setFillColor(sf::Color::White);
             textos[0].setOutlineThickness(20);
 
-            
             textos[1].setOutlineThickness(4);
             pos = 1;
 
             copia.resize(5);
-            for(std::size_t i{}; i < copia.size(); i++)
+            for (std::size_t i{}; i < copia.size(); i++)
             {
                 copia[i].setFont(*fonte);
                 copia[i].setString(opcoes[i]);
@@ -68,36 +66,24 @@ namespace Estados
             copia[0].setFillColor(sf::Color::White);
             copia[0].setOutlineThickness(20);
 
-            
             copia[1].setOutlineThickness(4);
             pos = 1;
 
-            //botao pro mouse pra entrar no jogo
+            textos[5].setOutlineThickness(4);
+
+            // botao pro mouse pra entrar no jogo
             botao->setSize(sf::Vector2f(151, 35));
             botao->setPosition(445, 700);
             botao->setFillColor(sf::Color::Red);
         }
 
         void Menu::mostrar_menu()
-        {            
+        {
             pGG->limpar();
             pGG->desenharTextura(imagem);
-            //laco diferentao ne mano pprt
-            for(auto t : copia)
-                    pGG->get_Janela()->draw(t);
-            
-            /*if(inicio)
-            {
-                for(auto t : copia)
-                    pGG->get_Janela()->draw(t);
-
-                inicio = false;
-            }
-            else
-            {
-                for(auto t : textos)
-                    pGG->get_Janela()->draw(t);
-            }*/
+            // laco diferentao ne mano pprt
+            for (auto t : copia)
+                pGG->get_Janela()->draw(t);
             pGG->mostrar();
         }
 
@@ -107,53 +93,12 @@ namespace Estados
             loop_evento();
         }
 
-        void Menu::selecionar_modo()
-        {
-            int escolher = 5;
-
-            sf::Event evento1;
-            while(pGG->get_Janela()->pollEvent(evento1))
-            {
-                if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && !selecionado)
-                {
-                    if(escolher < 5)
-                    {
-                        pos++;
-                        selecionado = true;
-                        textos[escolher].setOutlineThickness(4);
-                        textos[escolher - 1].setOutlineThickness(0);
-                        selecionado = false;
-                    }
-                }
-
-                if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && !selecionado)
-                {
-                    if(escolher > 4)
-                    {
-                        pos--;
-                        selecionado = true;
-                        textos[escolher].setOutlineThickness(4);
-                        textos[escolher + 1].setOutlineThickness(0);
-                        selecionado = false;
-                    }
-                }
-
-                if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && !selecionado)
-                    selecionar_fase();
-            }
-        }
-
-        void Menu::selecionar_fase()
-        {
-
-        }
-
         void Menu::loop_evento()
         {
             sf::Event evento;
-            while(pGG->get_Janela()->pollEvent(evento))
+            while (pGG->get_Janela()->pollEvent(evento))
             {
-                if(evento.type == sf::Event::Closed)
+                if (evento.type == sf::Event::Closed)
                     pGG->fecharJanela();
 
                 /*se der ruim colocar a posicao do mouse na janela
@@ -161,9 +106,9 @@ namespace Estados
                 posicao_mouse = sf::Mouse::getPosition();
                 coordenadas_mouse = pGG->get_Janela()->mapPixelToCoords(posicao_mouse);
 
-                if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && !selecionado)
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && !selecionado)
                 {
-                    if(pos < 4)
+                    if (pos < 4)
                     {
                         pos++;
                         selecionado = true;
@@ -173,9 +118,9 @@ namespace Estados
                     }
                 }
 
-                if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && !selecionado)
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && !selecionado)
                 {
-                    if(pos > 1)
+                    if (pos > 1)
                     {
                         pos--;
                         selecionado = true;
@@ -185,67 +130,23 @@ namespace Estados
                     }
                 }
 
-                if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) )
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
                 {
-                    if(pos == 4)
+                    if (pos == 4)
                         pGG->fecharJanela();
-                    else if(pos == 1)
+                    else if (pos == 1)
                     {
-                        //pelo fato de eu ta so desenhando as copias pode ser q esteja dando errado ai, pq as copias nao tem a msm coisa q o original
-                        int escolher = 5;
-
-                        for(auto p : textos)
-                            pGG->get_Janela()->draw(p);
-
-                        /*sf::Event evento1;
-                        while(pGG->get_Janela()->pollEvent(evento1))
-                        {
-                            */if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && !selecionado)
-                            {
-                                if(escolher < 5)
-                                {
-                                    escolher++;
-                                    selecionado = true;
-                                    textos[escolher].setOutlineThickness(4);
-                                    textos[escolher - 1].setOutlineThickness(0);
-                                    selecionado = false;
-                                }
-                            }
-
-                            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && !selecionado)
-                            {
-                                if(escolher > 4)
-                                {
-                                    escolher--;
-                                    selecionado = true;
-                                    textos[escolher].setOutlineThickness(4);
-                                    textos[escolher + 1].setOutlineThickness(0);
-                                    selecionado = false;
-                                }
-                            }
-
-                            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && !selecionado)
-                            {
-                                if(escolher == 5)
-                                {
-
-                                }
-                            }
-                        //}*/
-
-                        //pGE->set_estado_atual(2);
+                        pGE->set_estado_atual(2);
                     }
-                       
                 }
-                
-                if(sf::Mouse::isButtonPressed(sf::Mouse::Left))
+
+                if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
                 {
-                    if(botao->getGlobalBounds().contains(coordenadas_mouse))
+                    if (botao->getGlobalBounds().contains(coordenadas_mouse))
                     {
-                        //jogo->Executar();
+                        // jogo->Executar();
                     }
                 }
-                
             }
         }
     }
