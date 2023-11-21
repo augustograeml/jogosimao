@@ -4,7 +4,7 @@ namespace Entidades
 {
     namespace Personagens
     {
-        Gigante::Gigante(sf::Vector2f pos, sf::Vector2f vel) : Inimigo(pos, vel), maldade(false), 
+        Gigante::Gigante(sf::Vector2f pos, sf::Vector2f vel) : Inimigo(pos, vel), 
         ja_inc(false)
         {
             int i = rand()%10;
