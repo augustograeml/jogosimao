@@ -136,7 +136,7 @@ namespace Estados
                         pGG->fecharJanela();
                     else if (pos == 1)
                     {
-                        pGE->set_estado_atual(2);
+                        pGE->set_estado_atual(4);
                     }
                 }
 
@@ -144,7 +144,6 @@ namespace Estados
                 {
                     if (botao->getGlobalBounds().contains(coordenadas_mouse))
                     {
-                        // jogo->Executar();
                     }
                 }
             }

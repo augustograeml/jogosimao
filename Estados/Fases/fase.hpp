@@ -54,7 +54,8 @@ namespace Estados
                 void criar_inimigos();
                 void criar_cenario(std::string caminho, int n1, int n2, int n3, int n4, int n5, int n6, bool ja_criado);
 
-                bool get_jaCriado();
+                const bool get_jaCriado();
+                const bool get_jogador2();
 
                 virtual void executar() = 0;
                 virtual void fim_de_jogo() = 0;

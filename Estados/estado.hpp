@@ -11,6 +11,8 @@ namespace Estados
         public:
             Estado(int id = -1);
             virtual ~Estado();
+
+            void setID(int num);
             int getID();
 
             virtual void executar() = 0;

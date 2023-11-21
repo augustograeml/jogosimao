@@ -11,7 +11,7 @@ namespace Estados
                 bool neve;
                 
             public:
-                Fase1();
+                Fase1(int id);
                 ~Fase1();
                 
                 bool get_neve();
