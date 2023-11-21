@@ -37,6 +37,7 @@ namespace Estados
             Textura.loadFromFile("Design/imagens/cenario_op22.png");
             shape.setSize(Vector2f(2000.f, 1200.f));
             shape.setTexture(&Textura);
+            shape.setScale(Vector2f(1.2f,1.0f));
             shape.setPosition(sf::Vector2f(0.f, 0.f));
 
             criar_cenario(ARQUIVO_CENARIO_2,num_entidades[0],num_entidades[1],num_entidades[2],num_entidades[3],num_entidades[4],num_entidades[5], get_jaCriado());
@@ -60,6 +61,7 @@ namespace Estados
         {
             if (gC.get_sem_inimigos())
             {
+                pGG->limpar();
                 pGG->resetarCamera();
                 fim_de_jogo();
                 return;
@@ -79,6 +81,8 @@ namespace Estados
 
         void Fase2::atualizar()
         {
+            if(num_jogadores == 2)
+            {
             Entidades::Personagens::Jogador* aux = static_cast<Entidades::Personagens::Jogador*> (*(jogadores.get_primeiro()));
             Entidades::Personagens::Jogador* aux1 = static_cast<Entidades::Personagens::Jogador*> (*(jogadores.get_primeiro()++));
             //if(jogador2)
@@ -88,6 +92,11 @@ namespace Estados
                 pGG->centralizarCamera((*(jogadores.get_primeiro()))->getPosicao());
             if(!aux->get_vida() && aux1->get_vida())
                 pGG->centralizarCamera((*(jogadores.get_primeiro()++))->getPosicao());
+            }
+            else
+            {
+                pGG->centralizarCamera((*(jogadores.get_primeiro()))->getPosicao());
+            }
         }
 
         bool Fase2::get_musgos()

@@ -77,7 +77,7 @@ namespace Estados
             {
                 //fim_de_jogo();
                 pGG->resetarCamera();
-                pGE->set_estado_atual(6);
+                pGE->set_estado_atual(7);
                 return;
             }
 
