@@ -1,8 +1,11 @@
-[{ "posicao": [539.294,700], "velocidade": [0.1,0] }
-,{ "posicao": [625.385,479.6], "velocidade": [-0.3,-0.4] }
-,{ "posicao": [674.283,450], "velocidade": [-0.3,-0.42] }
-,{ "posicao": [616.396,483], "velocidade": [0.3,5.5] }
-,{ "posicao": [371.995,279], "velocidade": [0.3,-0.0999997] }
-,{ "posicao": [1042.39,100], "velocidade": [0.1,-0.02] }
-,{ "posicao": [8150,-18.9], "velocidade": [-9.6e-05,-0.7] }
+[{ "posicao": [1150,800], "velocidade": [0,0] }
+,{ "posicao": [400,800], "velocidade": [0,0] }
+,{ "posicao": [1400,600], "velocidade": [0,0] }
+,{ "posicao": [1250,600], "velocidade": [0,0] }
+,{ "posicao": [550,600], "velocidade": [0,0] }
+,{ "posicao": [1200,450], "velocidade": [0,0] }
+,{ "posicao": [700,450], "velocidade": [0,0] }
+,{ "posicao": [1400,400], "velocidade": [0,0] }
+,{ "posicao": [1650,250], "velocidade": [0,0] }
+,{ "posicao": [7350,0], "velocidade": [0,0] }
 ]

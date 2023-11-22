@@ -28,7 +28,7 @@ namespace Estados
         void Menu_Jogadores::inicializa_valores()
         {
             selecionado = deselecionado = jogador2 = false;
-            imagem->loadFromFile("Design/imagens/menu2jogadores.png");
+            imagem->loadFromFile("Design/imagens/menu2jogadoers(2).png");
             fonte->loadFromFile("Design/fonte/sangue_escorrendo.ttf");
 
             opcoes = {"Um jogador", "Dois Jogadores", "Sair"};

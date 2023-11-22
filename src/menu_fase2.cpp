@@ -23,13 +23,13 @@ namespace Estados
         void Menu_Fase2::inicializa_valores()
         {
             selecionado = deselecionado = false;
-            imagem->loadFromFile("Design/imagens/menu2jogadores.png");
+            imagem->loadFromFile("Design/imagens/menu2fases.png");
             fonte->loadFromFile("Design/fonte/sangue_escorrendo.ttf");
 
-            opcoes = {"Fase 1", "Fase 2", "Sair"};
-            textos.resize(3);
-            coordenadas = { {360, 604}, {600, 604}, {493, 650}};
-            tamanhos = {20, 20, 20};
+            opcoes = {"Fases","Fase 1", "Fase 2", "Sair"};
+            textos.resize(4);
+            coordenadas = { {270,40},{360, 604}, {600, 604}, {493, 650}};
+            tamanhos = {200,20, 20, 20};
 
             for (std::size_t i{}; i < textos.size(); i++)
             {
@@ -44,7 +44,7 @@ namespace Estados
             textos[0].setFillColor(sf::Color::White);
             textos[0].setOutlineThickness(4);
 
-            pos = 0;
+            pos = 1;
         }
 
         void Menu_Fase2::mostrar_menu()
@@ -73,7 +73,7 @@ namespace Estados
 
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && !selecionado)
                 {
-                    if (pos < 2)
+                    if (pos < 3)
                     {
                         pos++;
                         selecionado = true;
@@ -85,7 +85,7 @@ namespace Estados
 
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && !selecionado)
                 {
-                    if (pos > 0)
+                    if (pos > 1)
                     {
                         pos--;
                         selecionado = true;
@@ -97,7 +97,7 @@ namespace Estados
 
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && !selecionado)
                 {
-                    if (pos > 0)
+                    if (pos > 1)
                     {
                         pos--;
                         selecionado = true;
@@ -109,7 +109,7 @@ namespace Estados
 
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && !selecionado)
                 {
-                    if (pos < 2)
+                    if (pos < 3)
                     {
                         pos++;
                         selecionado = true;
@@ -121,11 +121,11 @@ namespace Estados
 
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
                 {
-                    if (pos == 2)
+                    if (pos == 3)
                         pGE->set_estado_atual(2);
-                    else if (pos == 0)
-                        pGE->set_estado_atual(6);
                     else if (pos == 1)
+                        pGE->set_estado_atual(6);
+                    else if (pos == 2)
                         pGE->set_estado_atual(8);
                         //certo eh 7
                 }
