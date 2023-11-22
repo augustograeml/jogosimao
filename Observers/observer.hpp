@@ -1,3 +1,5 @@
+//codigo reaproveitado do Peteco
+
 #pragma once
 
 #include "SFML/Graphics.hpp"

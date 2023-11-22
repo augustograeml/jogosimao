@@ -1,3 +1,5 @@
+//codigo reaproveitado do Peteco
+
 #include "../Gerenciadores/gerenciador_eventos.hpp"
 #include "../Observers/observer.hpp"
 

@@ -1,3 +1,5 @@
+//codigo reaproveitado do peteco
+
 #pragma once
 #include <vector>
 

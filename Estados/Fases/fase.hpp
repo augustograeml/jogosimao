@@ -1,3 +1,5 @@
+//codigo reaproveitado do Peteco6
+
 #pragma once
 #include "../../Entidades/entidade.hpp"
 #include "../../Entidades/Personagens/jogador.hpp"

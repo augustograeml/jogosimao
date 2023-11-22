@@ -1,3 +1,5 @@
+//codigo reaproveitado do Canal Terminal Root
+
 #pragma once
 #include "../estado.hpp"
 #include "../../Gerenciadores/gerenciador_grafico.hpp"
