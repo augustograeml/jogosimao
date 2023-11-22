@@ -44,9 +44,10 @@ namespace Entidades
             else
                 velocidade = Vector2f(0.1f, 0.f);
             nochao = false;
-            
 
-            atualizar();
+            //if(pjogador->get_pause() == false)
+                atualizar();
+            //atualizar();
         }
 
         void Gigante::executar()

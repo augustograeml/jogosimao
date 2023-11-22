@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "personagem.hpp"
+#include "../../Gerenciadores/gerenciador_estados.hpp"
 
 namespace Entidades
 {
@@ -8,12 +9,13 @@ namespace Entidades
     {
         class Jogador : public Personagem
         {
-
         protected:
+            static Gerenciadores::Gerenciador_Estados* PGEstados;
             bool jogador2;
             float poder;
             std::string nome;
             double tempo;
+
 
         public:
             Jogador(sf::Vector2f pos, sf::Vector2f vel, bool jog2);
@@ -21,6 +23,9 @@ namespace Entidades
 
             void atualizar();
             void executar();
+
+            void tela_pause();
+
             void mover();
             void mover_jog2();
             void atacar(Entidade* jg);

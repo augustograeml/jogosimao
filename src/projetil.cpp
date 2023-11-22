@@ -20,7 +20,6 @@ namespace Entidades
     {
         this->desenhar();
         this->atirar();
-        
     }
     void Projetil::atirar()
     {

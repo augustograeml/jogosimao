@@ -42,7 +42,10 @@ namespace Estados
             }
 
             textos[0].setFillColor(sf::Color::White);
-            textos[0].setOutlineThickness(4);
+            textos[0].setOutlineThickness(20);
+
+            textos[1].setFillColor(sf::Color::White);
+            textos[1].setOutlineThickness(4);
 
             pos = 1;
         }
@@ -127,7 +130,6 @@ namespace Estados
                         pGE->set_estado_atual(6);
                     else if (pos == 2)
                         pGE->set_estado_atual(8);
-                        //certo eh 7
                 }
 
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))

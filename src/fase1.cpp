@@ -70,6 +70,11 @@ namespace Estados
         //colocar bool pra executar direitin quando tiver dois jogadores
         void Fase1::executar()
         {
+            pGG->desenharFundo(&shape);
+            obstaculos.desenhar();
+            jogadores.desenhar();
+            inimigos.desenhar();
+            
             //std::cout<<" Executadno fase 1";
             if (gC.get_sem_inimigos())
             {
@@ -79,16 +84,20 @@ namespace Estados
                 return;
             }
 
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+            {
+                jogadores.get_primeiro().operator*()->set_pausado(false);
+            }
+            if(jogadores.get_primeiro().operator*()->get_pause())
+                return;
+                
+
             jogadores.executar();
             inimigos.executar();
             gerenciar_colisoes();
             
             atualizar();
 
-            pGG->desenharFundo(&shape);
-            obstaculos.desenhar();
-            jogadores.desenhar();
-            inimigos.desenhar();
         }
 
         void Fase1::atualizar()

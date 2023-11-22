@@ -42,7 +42,10 @@ namespace Estados
             }
 
             textos[0].setFillColor(sf::Color::White);
-            textos[0].setOutlineThickness(4);
+            textos[0].setOutlineThickness(20);
+
+            textos[1].setFillColor(sf::Color::White);
+            textos[1].setOutlineThickness(4);
 
             pos = 1;
         }
@@ -73,7 +76,7 @@ namespace Estados
 
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && !selecionado)
                 {
-                    if (pos < 2)
+                    if (pos < 3)
                     {
                         pos++;
                         selecionado = true;

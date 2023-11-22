@@ -6,7 +6,8 @@ using namespace std;
 namespace Entidades
 {
     Entidade::Entidade(sf::Vector2f pos):
-        Ente(sf::Vector2f(TAM, TAM)), posicao(pos), nochao(false), velocidade(0.f, 0.f), vida(5)
+        Ente(sf::Vector2f(TAM, TAM)), posicao(pos), nochao(false), velocidade(0.f, 0.f), vida(20),
+        pausado(false)
     {
         corpo.setPosition(posicao);
     }

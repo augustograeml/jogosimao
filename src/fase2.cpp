@@ -57,7 +57,7 @@ namespace Estados
         }
 
         void Fase2::executar()
-        {
+        {            
             if (gC.get_sem_inimigos())
             {
                 pGG->limpar();
@@ -66,12 +66,15 @@ namespace Estados
                 return;
             }
 
+            /*if(jogadores.get_primeiro().operator*()->get_pause())
+                return;*/
+
             jogadores.executar();
             inimigos.executar();
             gerenciar_colisoes();
 
             atualizar();
-           
+
             pGG->desenharFundo(&shape);
             obstaculos.desenhar();
             jogadores.desenhar();

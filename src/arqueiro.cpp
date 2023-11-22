@@ -41,11 +41,12 @@ namespace Entidades
                 else
                 velocidade = Vector2f(0.1f, 0.f);
             }
+
+            //if(pjogador->get_pause() == false)
+                atualizar();
+            //atualizar();
                 
             nochao = false;
-            
-
-            atualizar();
         }
 
         void Arqueiro::executar()

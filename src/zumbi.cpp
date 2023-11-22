@@ -56,9 +56,11 @@ namespace Entidades
                     
                 nochao = false;
             }
-                
 
+            //if(pjogador->get_pause() == false)
                 atualizar();
+                
+            //atualizar();
         }
 
         void Zumbi::executar()

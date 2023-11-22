@@ -14,7 +14,9 @@ namespace Entidades
 {
     class Entidade : public Ente
     {
-        protected:  
+        protected:
+            bool pausado;
+
             sf::Texture Textura;
             sf::RectangleShape RS;
             sf::RenderWindow *window;
@@ -39,11 +41,18 @@ namespace Entidades
             const sf::Vector2f getPosicao() {return corpo.getPosition();}
             void setPosicao(sf::Vector2f p);
             const sf::Vector2f getTamanho()   {return corpo.getSize();}
+
+            const bool get_pause() {return pausado;}
+            void set_pausado(bool p) {pausado = p;}
+
             void set_vida(int v) {vida = v;}
             int get_vida() const {return vida;}
+
             bool get_vivo() {return vivo;}
             void set_vivo(bool a ){vivo = a;}
+
             void set_nochao(bool n) {nochao = n;}
+            
             Vector2f getVelocidade() {return velocidade;}
             void setVelocidade(sf::Vector2f v) {velocidade = v;}
 
