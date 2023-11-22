@@ -12,9 +12,8 @@ namespace Estados
         Fase1::Fase1(int id) : Fase(id), neve(false)
         {
             //geracao aleatoria de instancias de inimigos e obstaculos
-            for(int i = 0; i < 5; i++)
+            for(int i = 0; i < 6; i++)
                 num_entidades[i] = rand()%3 + 3;
-            num_entidades[5] = rand()%3 + 1;
 
             //if(id == 5)
                 set_num_jogadores(1);
