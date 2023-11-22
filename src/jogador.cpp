@@ -96,8 +96,8 @@ namespace Entidades
                     velocidade.y += -6.0f;    
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
                     velocidade.y += 0.1f;  
-                //if (sf::Keyboard::isKeyPressed(sf::Keyboard::RShift))
-                    //atacar();  
+                //if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+                    //pausa();  
                 nochao = false;
 
                 atualizar();
