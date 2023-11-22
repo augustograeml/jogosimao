@@ -126,7 +126,7 @@ namespace Estados
                     else if (pos == 0)
                         pGE->set_estado_atual(6);
                     else if (pos == 1)
-                        pGE->set_estado_atual(7);
+                        pGE->set_estado_atual(8);
                         //certo eh 7
                 }
 

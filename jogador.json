@@ -1,2 +1,3 @@
-[{ "posicao": [300,50], "velocidade": [0,0] }
+[{ "posicao": [350,50], "velocidade": [0,-0.02] }
+,{ "posicao": [300,50], "velocidade": [0,-0.02] }
 ]

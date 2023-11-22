@@ -15,8 +15,8 @@ namespace Estados
             for(int i = 0; i < 6; i++)
                 num_entidades[i] = rand()%3 + 3;
 
-            //if(id == 5)
-                set_num_jogadores(1);
+            if(id == 6)
+                set_num_jogadores(2);
 
             /*
                 0 - zumbi
@@ -34,7 +34,6 @@ namespace Estados
             std::cout << "numero de caixas: " << num_entidades[4] << std::endl;
             std::cout << "numero de gigantes: " << num_entidades[5] << std::endl;
 
-            //set_num_jogadores(2);
             Textura.loadFromFile("Design/imagens/cenario_op11.png");
             shape.setSize(Vector2f(2000.f, 1200.f));
             shape.setTexture(&Textura);

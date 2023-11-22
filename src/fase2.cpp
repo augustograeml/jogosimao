@@ -16,7 +16,7 @@ namespace Estados
         Fase2::Fase2(int id) : Fase(id), musgos(false)
         {
 
-            if(id == 7)
+            if(id == 8)
                 set_num_jogadores(2);
 
 
