@@ -20,9 +20,8 @@ namespace Estados
                 set_num_jogadores(2);
 
 
-            for(int i = 0; i < 5; i++)
+            for(int i = 0; i < 6; i++)
                 num_entidades[i] = rand()%3 + 3;
-            num_entidades[5] = rand()%3 + 1;
 
             /*
                 0 - zumbi
@@ -83,20 +82,18 @@ namespace Estados
         {
             if(num_jogadores == 2)
             {
-            Entidades::Personagens::Jogador* aux = static_cast<Entidades::Personagens::Jogador*> (*(jogadores.get_primeiro()));
-            Entidades::Personagens::Jogador* aux1 = static_cast<Entidades::Personagens::Jogador*> (*(jogadores.get_primeiro()++));
-            //if(jogador2)
-            if(num_jogadores == 2 && aux->get_vida() && aux1->get_vida())
-                pGG->centralizarCamera(Vector2f((*(jogadores.get_primeiro()))->getPosicao() + (*(jogadores.get_primeiro()++))->getPosicao())/2.f);
-            if(aux->get_vida() && !aux1->get_vida())
-                pGG->centralizarCamera((*(jogadores.get_primeiro()))->getPosicao());
-            if(!aux->get_vida() && aux1->get_vida())
-                pGG->centralizarCamera((*(jogadores.get_primeiro()++))->getPosicao());
+                Entidades::Personagens::Jogador* aux = static_cast<Entidades::Personagens::Jogador*> (*(jogadores.get_primeiro()));
+                Entidades::Personagens::Jogador* aux1 = static_cast<Entidades::Personagens::Jogador*> (*(jogadores.get_primeiro()++));
+                //if(jogador2)
+                if(num_jogadores == 2 && aux->get_vida() && aux1->get_vida())
+                    pGG->centralizarCamera(Vector2f((*(jogadores.get_primeiro()))->getPosicao() + (*(jogadores.get_primeiro()++))->getPosicao())/2.f);
+                if(aux->get_vida() && !aux1->get_vida())
+                    pGG->centralizarCamera((*(jogadores.get_primeiro()))->getPosicao());
+                if(!aux->get_vida() && aux1->get_vida())
+                    pGG->centralizarCamera((*(jogadores.get_primeiro()++))->getPosicao());
             }
             else
-            {
                 pGG->centralizarCamera((*(jogadores.get_primeiro()))->getPosicao());
-            }
         }
 
         bool Fase2::get_musgos()
