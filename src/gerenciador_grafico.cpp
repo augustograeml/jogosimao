@@ -1,3 +1,5 @@
+//codigo reaproveitado do Peteco
+
 #include "../Gerenciadores/gerenciador_grafico.hpp"
 #include "../ente.hpp"
 #include <iostream>

@@ -1,3 +1,5 @@
+//codigo reaproveitado do Peteco
+
 #include "../Gerenciadores/gerenciador_colisoes.hpp"
 #include "../Entidades/Personagens/jogador.hpp"
 #include "../Entidades/Personagens/inimigo.hpp"

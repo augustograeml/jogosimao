@@ -1,3 +1,5 @@
+//codigo reaproveitado do Peteco
+
 #pragma once
 
 #include "Gerenciadores/gerenciador_grafico.hpp"

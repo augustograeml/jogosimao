@@ -1,3 +1,5 @@
+//codigo reaproveitado do Peteco
+
 #pragma once
 
 #include "lista.hpp"

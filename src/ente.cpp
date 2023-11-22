@@ -1,3 +1,5 @@
+//codigo reaproveitado do Peteco
+
 #include "../ente.hpp"
 
 Gerenciadores::Gerenciador_Grafico* Ente::pGG(Gerenciadores::Gerenciador_Grafico::get_instancia());

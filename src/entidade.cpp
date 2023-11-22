@@ -1,3 +1,5 @@
+//codigo reaproveitado do Peteco
+
 #include "../Entidades/entidade.hpp"
 #include <iostream>
 

@@ -1,3 +1,5 @@
+//codigo reaproveitado do Peteco
+
 #include "../Gerenciadores/gerenciador_estados.hpp"
 #include "../Estados/estado.hpp"
 
