@@ -8,6 +8,7 @@ Os cenários utilizados no projeto:
 Os códigos utilizados como inpiração para o projeto:
   - Peteco: https://github.com/Nixxye/peteco-tegprog
   - Monitor: https://github.com/Giovanenero/JogoPlataforma2D-Jungle
+  - Nolan: https://github.com/nlohmann/json
 
 As sprites utilizadas no projeto foram retiradas dos seguintes sites: 
   - Freepik: https://br.freepik.com/
