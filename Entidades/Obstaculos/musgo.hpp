@@ -20,6 +20,7 @@ namespace Entidades
                 void executar();
                 void mover();
                 void atualizar();
+                void colidir(Entidade* pE);
         };
     }
 }

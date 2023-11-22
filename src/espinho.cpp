@@ -33,5 +33,9 @@ namespace Entidades
         {
             pJ->set_vida(pJ->get_vida() - get_dano());
         }
+        void Espinho::colidir(Entidade* pE)
+        {
+            
+        }
     }
 }

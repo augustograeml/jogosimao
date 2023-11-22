@@ -85,13 +85,13 @@ namespace Gerenciadores
                 {
                     Entidades::Personagens::Inimigo* inimigo = static_cast<Entidades::Personagens::Inimigo*> (*(inim));
                     inimigo->mudar_direcao();
-                    (*inim)->colidir();
-                    (*obst)->colidir();
+                    /*(*inim)->colidir();
+                    (*obst)->colidir();*/
                 }
                 else
                 {
-                     (*inim)->colidir();
-                    (*obst)->colidir();
+                    /*(*inim)->colidir();
+                    (*obst)->colidir();*/
                     
                 }
                 obst++;
@@ -124,8 +124,8 @@ namespace Gerenciadores
                     if(aux->get_vida() > 0)
                     {
                         aux->set_vida(aux->get_vida() - aux2->get_forca());
-                        (*jog)->colidir();
-                        (*inim)->colidir();
+                       /* (*jog)->colidir();
+                        (*inim)->colidir();*/
                     }
                 }
                 inim++;

@@ -36,5 +36,9 @@ namespace Entidades
                 pJ->setVelocidade(Vector2f(pJ->getVelocidade().x / 1.5f , pJ->getVelocidade().y));
             }
         }
+        void Musgo::colidir(Entidade* pE)
+        {
+            
+        }
     }
 }

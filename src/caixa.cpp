@@ -35,5 +35,9 @@ namespace Entidades
         {
             
         }
+        void Caixa::colidir(Entidade* pE)
+        {
+            
+        }
     }
 }

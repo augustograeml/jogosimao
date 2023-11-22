@@ -9,9 +9,9 @@ namespace Entidades
     {
         Gerenciadores::Gerenciador_Estados *Jogador::PGEstados(Gerenciadores::Gerenciador_Estados::get_instancia());
 
-        Jogador::Jogador(sf::Vector2f pos, sf::Vector2f vel, bool jog2) : Personagem(pos, vel),
-                                                                          tempo(0.0), poder(1), jogador2(jog2)
+        Jogador::Jogador(sf::Vector2f pos, sf::Vector2f vel, bool jog2) : Personagem(pos, vel), tempo(0.0), poder(1), jogador2(jog2)
         {
+            this->set_vida(20);
             if (!jog2)
             {
                 corpo.setFillColor(sf::Color::Green);
@@ -62,6 +62,10 @@ namespace Entidades
 
         void Jogador::atacar(Entidade *jg)
         {
+        }
+        void Jogador::colidir(Entidade* pE)
+        {
+            
         }
 
         void Jogador::mover()

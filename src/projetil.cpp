@@ -22,10 +22,10 @@ namespace Entidades
         this->atirar();
     }
     void Projetil::atirar()
-    {
+    {   corpo.move(Vector2f(0,0.1f));
         corpo.move(velocidade);
     }
-    void Projetil::colidir()
+    void Projetil::colidir(Entidade* pE)
     {
         setVelocidade(Vector2f(0,0));
     }

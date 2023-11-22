@@ -55,6 +55,10 @@ namespace Entidades
             //update();
             mover();
         }
+        void Gigante::colidir(Entidade* pE)
+        {
+            
+        }
 
         void Gigante::atacar(Entidade* jg)
         {

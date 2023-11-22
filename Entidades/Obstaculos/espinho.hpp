@@ -19,6 +19,7 @@ namespace Entidades
                 int get_dano() {return dano;}
                 void mover();
                 void atualizar();
+                void colidir(Entidade* pE);
         };
     }
 }

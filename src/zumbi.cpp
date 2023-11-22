@@ -73,6 +73,10 @@ namespace Entidades
         {
             jg->set_vida(jg->get_vida() - forca);
         }
+        void Zumbi::colidir(Entidade* pE)
+        {
+            
+        }
 
         void Zumbi::salvar(std::ostringstream* entrada)
         {

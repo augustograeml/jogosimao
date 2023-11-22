@@ -23,6 +23,7 @@ namespace Entidades
 
             void atualizar();
             void executar();
+            void colidir(Entidade* pE);
 
             void tela_pause();
 

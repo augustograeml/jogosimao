@@ -27,6 +27,7 @@ namespace Entidades
                 virtual void executar() = 0;
                 virtual void mover() = 0;
                 virtual void atualizar() = 0;
+                virtual void colidir(Entidade* pE) = 0;
         };
     }
 }

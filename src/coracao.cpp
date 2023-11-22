@@ -33,5 +33,9 @@ namespace Entidades
         {
             pJ->set_vida(cura);
         }
+        void Coracao::colidir(Entidade* pE)
+        {
+            
+        }
     }
 }

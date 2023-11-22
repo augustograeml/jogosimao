@@ -16,11 +16,7 @@ namespace Entidades
     {
 
     }
-
-    void Entidade::colidir()
-    {
-    }
-
+    
     void Entidade::executar()
     {
         this->mover();

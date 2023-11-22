@@ -10,6 +10,7 @@ namespace Entidades
             this->setSkin("Design/imagens/zumbi_atirador.png");
             atirando = false;
             direcao = 0;
+            recarregar = 0;
 
             //depois mexer com o setvida desse molecote aqui
         }
@@ -58,6 +59,10 @@ namespace Entidades
         void Arqueiro::atacar(Entidade* jg)
         {
             jg->set_vida(jg->get_vida() - forca);
+        }
+        void Arqueiro::colidir(Entidade* pE)
+        {
+            
         }
         void Arqueiro::atirar()
         {
