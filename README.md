@@ -2,6 +2,9 @@
 Este projeto é um trabalho para a disciplina de Técnicas de programação realizado pelos alunos Antonio e Augusto (Turma S73).
 
 # Créditos
+Os cenários utilizados no projeto:
+  - IA do bing: https://www.bing.com/images/create?FORM=IRPGEN
+
 Os códigos utilizados como inpiração para o projeto:
   - Peteco: https://github.com/Nixxye/peteco-tegprog
   - Monitor: https://github.com/Giovanenero/JogoPlataforma2D-Jungle
