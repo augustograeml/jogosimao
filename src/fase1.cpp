@@ -9,12 +9,14 @@ namespace Estados
 {
     namespace Fases
     {
-        Fase1::Fase1() : Fase(2), neve(true)
+        Fase1::Fase1(int id) : Fase(id), neve(false)
         {
             //geracao aleatoria de instancias de inimigos e obstaculos
-            for(int i = 0; i < 5; i++)
+            for(int i = 0; i < 6; i++)
                 num_entidades[i] = rand()%3 + 3;
-            num_entidades[5] = rand()%3 + 1;
+
+            if(id == 6)
+                set_num_jogadores(2);
 
             /*
                 0 - zumbi
@@ -32,9 +34,6 @@ namespace Estados
             std::cout << "numero de caixas: " << num_entidades[4] << std::endl;
             std::cout << "numero de gigantes: " << num_entidades[5] << std::endl;
 
-            //if(get_jogador) jogador2 = true
-
-            set_num_jogadores(2);
             Textura.loadFromFile("Design/imagens/cenario_op11.png");
             shape.setSize(Vector2f(2000.f, 1200.f));
             shape.setTexture(&Textura);
@@ -42,6 +41,7 @@ namespace Estados
 
             criar_cenario(ARQUIVO_CENARIO_1, num_entidades[0], num_entidades[1], num_entidades[2], num_entidades[3],num_entidades[4], num_entidades[5], get_jaCriado());
 
+            //a gente na teoria salva aqui
             /*criar_jogadores(1);
             criar_jogadores(0);
             criar_inimigos();*/
@@ -75,7 +75,7 @@ namespace Estados
             {
                 //fim_de_jogo();
                 pGG->resetarCamera();
-                pGE->set_estado_atual(3);
+                pGE->set_estado_atual(7);
                 return;
             }
 
@@ -93,15 +93,20 @@ namespace Estados
 
         void Fase1::atualizar()
         {
-            Entidades::Personagens::Jogador* aux = static_cast<Entidades::Personagens::Jogador*> (*(jogadores.get_primeiro()));
-            Entidades::Personagens::Jogador* aux1 = static_cast<Entidades::Personagens::Jogador*> (*(jogadores.get_primeiro()++));
-            //if(jogador2)
-            if(num_jogadores == 2 && aux->get_vida() && aux1->get_vida())
-                pGG->centralizarCamera(Vector2f((*(jogadores.get_primeiro()))->getPosicao() + (*(jogadores.get_primeiro()++))->getPosicao())/2.f);
-            if(aux->get_vida() && !aux1->get_vida())
-                pGG->centralizarCamera((*(jogadores.get_primeiro()))->getPosicao());
-            if(!aux->get_vida() && aux1->get_vida())
-                pGG->centralizarCamera((*(jogadores.get_primeiro()++))->getPosicao());
+            if(num_jogadores == 2)
+            {
+                Entidades::Personagens::Jogador* aux = static_cast<Entidades::Personagens::Jogador*> (*(jogadores.get_primeiro()));
+                Entidades::Personagens::Jogador* aux1 = static_cast<Entidades::Personagens::Jogador*> (*(jogadores.get_primeiro()++));
+                //if(jogador2)
+                if(num_jogadores == 2 && aux->get_vida() && aux1->get_vida())
+                    pGG->centralizarCamera(Vector2f((*(jogadores.get_primeiro()))->getPosicao() + (*(jogadores.get_primeiro()++))->getPosicao())/2.f);
+                if(aux->get_vida() && !aux1->get_vida())
+                    pGG->centralizarCamera((*(jogadores.get_primeiro()))->getPosicao());
+                if(!aux->get_vida() && aux1->get_vida())
+                    pGG->centralizarCamera((*(jogadores.get_primeiro()++))->getPosicao());
+            }
+            else
+                pGG->centralizarCamera((*(jogadores.get_primeiro()))->getPosicao());  
         }
 
         void Fase1::pausar()

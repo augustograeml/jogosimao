@@ -14,6 +14,11 @@ namespace Estados
 
     }
 
+    void Estado::setID(int num)
+    {
+        id = num;
+    }
+
     int Estado::getID()
     {
         return id;

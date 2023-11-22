@@ -14,7 +14,7 @@ namespace Estados
     namespace Fases
     {
         Fase::Fase(int id) : jogadores(), obstaculos(), inimigos(), Estado(id),
-        gC(), buffer(), ja_criado(false)
+        gC(), buffer(), ja_criado(false), num_jogadores(1)
         {
             gC.set_inimigos(&inimigos);
             gC.set_jogadores(&jogadores);
@@ -26,7 +26,7 @@ namespace Estados
             salvar();
         }
 
-        bool Fase::get_jaCriado()
+        const bool Fase::get_jaCriado()
         {
             return ja_criado;
         }
@@ -345,6 +345,14 @@ namespace Estados
             arquivo_inimigo << buffer.str();
 
             arquivo_inimigo.close();
+        }
+
+        const bool Fase::get_jogador2()
+        {
+            if(num_jogadores > 1)
+                return true;
+            else
+                return false;
         }
 
     }

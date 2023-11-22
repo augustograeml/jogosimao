@@ -8,7 +8,7 @@ namespace Gerenciadores
     Gerenciador_Estados::Gerenciador_Estados() : estadoAtual(1)
     {
         //colocar o numero de estados que voce possui
-        estados.resize(7);
+        estados.resize(9);
     }
 
     Gerenciador_Estados::~Gerenciador_Estados()
