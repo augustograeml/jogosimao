@@ -31,10 +31,10 @@ namespace Estados
             imagem->loadFromFile("Design/imagens/menu2jogadoers(2).png");
             fonte->loadFromFile("Design/fonte/sangue_escorrendo.ttf");
 
-            opcoes = {"Um jogador", "Dois Jogadores", "Sair"};
-            textos.resize(3);
-            coordenadas = { {335, 604}, {564, 604}, {493, 650}};
-            tamanhos = {20, 20, 20};
+            opcoes = {"Players","Um jogador", "Dois Jogadores", "Sair"};
+            textos.resize(4);
+            coordenadas = {{250,40}, {335, 604}, {564, 604}, {493, 650}};
+            tamanhos = {150,20, 20, 20};
 
             for (std::size_t i{}; i < textos.size(); i++)
             {
@@ -78,7 +78,7 @@ namespace Estados
 
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && !selecionado)
                 {
-                    if (pos < 2)
+                    if (pos < 3)
                     {
                         pos++;
                         selecionado = true;
@@ -90,7 +90,7 @@ namespace Estados
 
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && !selecionado)
                 {
-                    if (pos > 0)
+                    if (pos > 1)
                     {
                         pos--;
                         selecionado = true;
@@ -102,7 +102,7 @@ namespace Estados
 
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && !selecionado)
                 {
-                    if (pos > 0)
+                    if (pos > 1)
                     {
                         pos--;
                         selecionado = true;
@@ -114,7 +114,7 @@ namespace Estados
 
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && !selecionado)
                 {
-                    if (pos < 2)
+                    if (pos < 3)
                     {
                         pos++;
                         selecionado = true;
@@ -126,11 +126,11 @@ namespace Estados
 
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
                 {
-                    if (pos == 2)
+                    if (pos == 3)
                         pGE->set_estado_atual(1);
-                    else if (pos == 0)
-                        pGE->set_estado_atual(3);
                     else if (pos == 1)
+                        pGE->set_estado_atual(3);
+                    else if (pos == 2)
                         pGE->set_estado_atual(4);
                 }
 
