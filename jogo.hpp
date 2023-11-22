@@ -1,10 +1,10 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include "Estados/Menu/menu.hpp"
-#include "Estados/Menu/menu_fase.hpp"
-#include "Estados/Menu/menu_fase2.hpp"
-#include "Estados/Menu/menu_jogadores.hpp"
+#include "Estados/Menus/menu.hpp"
+#include "Estados/Menus/menu_fase.hpp"
+#include "Estados/Menus/menu_fase2.hpp"
+#include "Estados/Menus/menu_jogadores.hpp"
 #include "Estados/Fases/fase1.hpp"
 #include "Estados/Fases/fase2.hpp"
 #include "Gerenciadores/gerenciador_grafico.hpp"

@@ -1,4 +1,4 @@
-#include "../Estados/Menu/menu.hpp"
+#include "../Estados/Menus/menu.hpp"
 #include <iostream>
 
 namespace Estados
@@ -122,10 +122,11 @@ namespace Estados
                     if (pos == 4)
                         pGG->fecharJanela();
                     else if (pos == 1)
-                    {
                         pGE->set_estado_atual(2);
-                    }
                 }
+
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+                    pGG->fecharJanela();
 
             }
         }
