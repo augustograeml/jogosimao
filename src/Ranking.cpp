@@ -26,28 +26,26 @@ namespace Estados
             imagem->loadFromFile("Design/imagens/rankingzombies++.png");
             fonte->loadFromFile("Design/fonte/sangue_escorrendo.ttf");
 
-            opcoes = {"Sair"};
-            textos.resize(1);
-            coordenadas = {  {493, 650}};
+            opcoes = {"Ranking", "1 -", "2 -", "3 -", "4 -", "Sair"};
+            textos.resize(6);
+            tamanhos = {170, 40, 40, 40, 40, 35};
+            coordenadas = { {215, 40}, {65, 358}, {65, 440}, {65, 527}, {65, 613}, {278, 730}};
             
 
             for (std::size_t i{}; i < textos.size(); i++)
             {
                 textos[i].setFont(*fonte);
                 textos[i].setString(opcoes[i]);
-                textos[i].setCharacterSize(20);
+                textos[i].setCharacterSize(tamanhos[i]);
                 textos[i].setFillColor(sf::Color::White);
                 textos[i].setOutlineColor(sf::Color::Black);
                 textos[i].setPosition(coordenadas[i]);
             }
 
-            textos[0].setFillColor(sf::Color::White);
-            textos[0].setOutlineThickness(20);
+            textos[0].setOutlineThickness(15);
+            textos[5].setOutlineThickness(4);
 
-            textos[1].setFillColor(sf::Color::White);
-            textos[1].setOutlineThickness(4);
-
-            pos = 1;
+            pos = 5;
         }
 
         void Ranking::mostrar_menu()
@@ -66,6 +64,11 @@ namespace Estados
             loop_evento();
         }
 
+        void Ranking::adiciona_pontuacao(std::string s, double time)
+        {
+
+        }
+
         void Ranking::loop_evento()
         {
             sf::Event evento;
@@ -74,17 +77,11 @@ namespace Estados
                 if (evento.type == sf::Event::Closed)
                     pGG->fecharJanela();
 
-                
-
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
-                {
-                    if (pos == 0)
-                        pGE->set_estado_atual(2);
-                    
-                }
+                        pGE->set_estado_atual(1);   
 
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-                    pGE->set_estado_atual(2);
+                    pGE->set_estado_atual(1);
 
             }
         }

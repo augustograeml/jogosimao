@@ -22,13 +22,14 @@ namespace Estados
                 vector<string> opcoes;
                 vector<sf::Vector2f> coordenadas;
                 vector<sf::Text> textos;
+                vector<size_t> tamanhos;
                 
             public:
                 Ranking(int id);
                 ~Ranking();
 
                 void inicializa_valores();
-                void adiciona_pontuacao(std::string s, double time){}
+                void adiciona_pontuacao(std::string s, double time);
                 void loop_evento();
                 void mostrar_menu();
                 void executar();

@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "Estados/Menus/menu.hpp"
+#include "Estados/Menus/ranking.hpp"
 #include "Estados/Menus/pause.hpp"
 #include "Estados/Menus/menu_fase.hpp"
 #include "Estados/Menus/menu_fase2.hpp"
@@ -21,10 +22,12 @@ class Jogo
     private:
 
         Estados::Menus::Pause* pause;
+        Estados::Menus::Ranking* ranking;
         Estados::Menus::Menu* menu;
         Estados::Menus::Menu_Jogadores* menu_jogadores;
         Estados::Menus::Menu_Fase* menu_fase;
         Estados::Menus::Menu_Fase2* menu_fase2;
+
         Gerenciadores::Gerenciador_Grafico* pG;
         Gerenciadores::Gerenciador_Estados* pE;
         Gerenciadores::Gerenciador_Eventos* pEv;

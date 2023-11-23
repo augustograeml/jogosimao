@@ -99,6 +99,7 @@ namespace Estados
         void Pause::mostrar_menu()
         {
             pGG->limpar();
+            pGG->resetarCamera();
             pGG->desenharTextura(imagem);
             // laco diferentao ne mano pprt
             for (auto t : textos)
