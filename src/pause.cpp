@@ -28,7 +28,7 @@ namespace Estados
 
             opcoes = {"Pause", "Voltar", "Sair"};
             textos.resize(3);
-            coordenadas = {{360, 185}, {450, 480}, {485, 615}};
+            coordenadas = {{340, 185}, {440, 462}, {470, 605}};
             tamanhos = {150, 50, 50};
 
             for (std::size_t i{}; i < textos.size(); i++)
@@ -85,11 +85,9 @@ namespace Estados
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
                 {
                     if (pos == 2)
-                    {
                         pGE->set_estado_atual(1);
-                    }
-                    //else if (pos == 1)
-                        //pGE->set_estado_atual(5);
+                    else if (pos == 1)
+                        pGE->set_estado_atual(5);
                     
                 }
 

@@ -90,15 +90,7 @@ namespace Estados
                 pGG->resetarCamera();
                 pGE->set_estado_atual(7);
                 return;
-            }
-
-            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-            {
-                jogadores.get_primeiro().operator*()->set_pausado(false);
-            }
-            if(jogadores.get_primeiro().operator*()->get_pause())
-                return;
-                
+            }                
 
             jogadores.executar();
             inimigos.executar();

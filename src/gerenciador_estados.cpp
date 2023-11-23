@@ -38,6 +38,14 @@ namespace Gerenciadores
         return estadoAtual;
     }
 
+    int Gerenciador_Estados::get_fase()
+    {
+        if(fase < estadoAtual)
+            fase = estadoAtual;
+
+        return fase;
+    }
+
     void Gerenciador_Estados::adicionar_estado(Estados::Estado* pE)
     {
         if(pE)

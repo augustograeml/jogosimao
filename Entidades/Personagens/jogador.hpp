@@ -11,7 +11,7 @@ namespace Entidades
         {
         protected:
             static Gerenciadores::Gerenciador_Estados* PGEstados;
-            bool jogador2;
+            bool jogador2, leu_fase;
             float poder;
             std::string nome;
             double tempo;

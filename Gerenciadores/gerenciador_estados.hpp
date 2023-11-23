@@ -26,7 +26,7 @@ namespace Gerenciadores
     class Gerenciador_Estados
     {
         private:
-            int estadoAtual;
+            int estadoAtual, fase;
             vector<Estados::Estado*> estados;
             static Gerenciador_Estados* instancia;
             Gerenciador_Estados();
@@ -36,6 +36,7 @@ namespace Gerenciadores
             static Gerenciador_Estados* get_instancia();
             void set_estado_atual(int eA);
             int get_estado_atual();
+            int get_fase();
             void adicionar_estado(Estados::Estado* pE);
             void executar();
 

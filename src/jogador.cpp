@@ -9,7 +9,8 @@ namespace Entidades
     {
         Gerenciadores::Gerenciador_Estados *Jogador::PGEstados(Gerenciadores::Gerenciador_Estados::get_instancia());
 
-        Jogador::Jogador(sf::Vector2f pos, sf::Vector2f vel, bool jog2) : Personagem(pos, vel), tempo(0.0), poder(1), jogador2(jog2)
+        Jogador::Jogador(sf::Vector2f pos, sf::Vector2f vel, bool jog2) : Personagem(pos, vel),
+         tempo(0.0), poder(1), jogador2(jog2), leu_fase(false)
         {
             this->set_vida(20);
             if (!jog2)
@@ -92,6 +93,12 @@ namespace Entidades
 
         void Jogador::mover()
         {
+            if(!leu_fase)
+            {
+                PGEstados->get_fase();
+                leu_fase = true;
+            }
+            
             if (!nochao)
                 velocidade.y += 0.1f;
 
@@ -106,15 +113,13 @@ namespace Entidades
                 velocidade.y += -6.0f;
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
                 velocidade.y += 0.1f;
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) && !pausado)
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
             {
+                //a tela de pause ta seguindo o jogador?
                 pausado = !pausado;
                 pGG->limpar();
+                pGG->resetarCamera();
                 PGEstados->set_estado_atual(0);
-            }
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::P) && pausado)
-            {
-                pausado = !pausado;
             }
 
             nochao = false;
