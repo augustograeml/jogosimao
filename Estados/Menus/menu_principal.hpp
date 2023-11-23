@@ -1,0 +1,20 @@
+#pragma once
+
+#include "menu.hpp"
+
+namespace Estados
+{
+    namespace Menus
+    {
+        class Menu_Principal : public Menu
+        {
+            private:
+            public:
+                Menu_Principal(int id);
+                ~Menu_Principal();
+
+                void inicializa_valores();
+                void loop_evento();
+        };
+    }
+}

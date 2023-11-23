@@ -1,30 +1,30 @@
-#include "../Estados/Menus/menu_fase.hpp"
+#include "../Estados/Menus/menu_principal.hpp"
 
 namespace Estados
 {
     namespace Menus
     {
-
-        Menu_Fase::Menu_Fase(int id) : Menu(id)
+        Menu_Principal::Menu_Principal(int id) : Menu(id)
         {
             inicializa_valores();
         }
 
-        Menu_Fase::~Menu_Fase()
+        Menu_Principal::~Menu_Principal()
         {
 
         }
 
-        void Menu_Fase::inicializa_valores()
+        void Menu_Principal::inicializa_valores()
         {
+            pos = 0;
             selecionado = deselecionado = false;
-            imagem->loadFromFile("Design/imagens/menu2fases.png");
+            imagem->loadFromFile("Design/imagens/menu_zombies++.jpg");
             fonte->loadFromFile("Design/fonte/sangue_escorrendo.ttf");
 
-            opcoes = {"Fases", "Fase 1", "Fase 2", "Sair"};
-            textos.resize(4);
-            coordenadas = { {270,40},{360, 604}, {600, 604}, {493, 650}};
-            tamanhos = {200,20, 20, 20};
+            opcoes = {"Zombies++", "Novo Jogo", "Resume", "Ranking", "Sair"};
+            textos.resize(5);
+            coordenadas = {{130, 40}, {445, 700}, {464, 762}, {460, 823}, {480, 886}};
+            tamanhos = {200, 22, 22, 22, 22};
 
             for (std::size_t i{}; i < textos.size(); i++)
             {
@@ -40,38 +40,24 @@ namespace Estados
             textos[0].setOutlineThickness(20);
 
             textos[1].setOutlineThickness(4);
-
             pos = 1;
         }
 
-        void Menu_Fase::loop_evento()
+        void Menu_Principal::loop_evento()
         {
-            sf::Event evento;
             while (pGG->get_Janela()->pollEvent(evento))
             {
                 if (evento.type == sf::Event::Closed)
                     pGG->fecharJanela();
 
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && !selecionado)
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && !selecionado)
                 {
-                    if (pos < 3)
+                    if (pos < 4)
                     {
                         pos++;
                         selecionado = true;
                         textos[pos].setOutlineThickness(4);
                         textos[pos - 1].setOutlineThickness(0);
-                        selecionado = false;
-                    }
-                }
-
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && !selecionado)
-                {
-                    if (pos > 1)
-                    {
-                        pos--;
-                        selecionado = true;
-                        textos[pos].setOutlineThickness(4);
-                        textos[pos + 1].setOutlineThickness(0);
                         selecionado = false;
                     }
                 }
@@ -88,30 +74,20 @@ namespace Estados
                     }
                 }
 
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && !selecionado)
-                {
-                    if (pos < 3)
-                    {
-                        pos++;
-                        selecionado = true;
-                        textos[pos].setOutlineThickness(4);
-                        textos[pos - 1].setOutlineThickness(0);
-                        selecionado = false;
-                    }
-                }
-
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
                 {
-                    if (pos == 3)
-                        pGE->set_estado_atual(1);
+                    if (pos == 4)
+                        pGG->fecharJanela();
                     else if (pos == 1)
-                        pGE->set_estado_atual(6);
-                    else if (pos == 2)
-                        pGE->set_estado_atual(8);
+                        pGE->set_estado_atual(1);
+                    /*else if (pos == 2)
+                        pGE->set_estado_atual(pGE->get_fase());*/
+                    else if(pos == 3)
+                        pGE->set_estado_atual(4);
                 }
 
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-                    pGE->set_estado_atual(1);
+                    pGG->fecharJanela();
 
             }
         }

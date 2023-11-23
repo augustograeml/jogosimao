@@ -6,7 +6,7 @@ using namespace std;
 Jogo::Jogo() : pG(Gerenciadores::Gerenciador_Grafico::get_instancia()), pE(Gerenciadores::Gerenciador_Estados::get_instancia()),
                pEv(Gerenciadores::Gerenciador_Eventos::get_instancia()), obs1(1), obs2(2)
 {
-    menu = new Estados::Menus::Menu(0);
+    menu_principal = new Estados::Menus::Menu_Principal(0);
     menu_jogadores = new Estados::Menus::Menu_Jogadores(1);
     menu_fase = new Estados::Menus::Menu_Fase(2);
     menu_fase2 = new Estados::Menus::Menu_Fase2(3);
@@ -32,7 +32,7 @@ Jogo::~Jogo()
     delete pG;
     delete pE;
     delete pEv;
-    delete menu;
+    delete menu_principal;
     delete menu_jogadores;
     delete menu_fase;
     delete menu_fase2;

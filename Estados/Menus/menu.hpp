@@ -18,15 +18,15 @@ namespace Estados
                 static Gerenciadores::Gerenciador_Grafico* pGG;
                 int pos;
                 //o deselecionar é necessario porque como o loop pra rodar o jogo eh rapido pode acontecer de uma opcao ser selecionada duplicada no menu
-                bool selecionado, deselecionado, inicio;
+                bool selecionado, deselecionado;
 
                 sf::Font* fonte;
                 sf::Texture* imagem;
+                sf::Event evento;
                 
                 vector<string> opcoes;
                 vector<sf::Vector2f> coordenadas;
                 vector<sf::Text> textos;
-                vector<sf::Text> copia;
                 //tamanhos para fonte pq cada palavra tem um tamanho de fonte diferente
                 vector<size_t> tamanhos; 
             public:
@@ -35,8 +35,8 @@ namespace Estados
 
                 //vai ser chamado pra quando for escolher um ou dois jogadores no menu
 
-                void inicializa_valores();
-                void loop_evento();
+                virtual void inicializa_valores() = 0;
+                virtual void loop_evento() = 0;
                 void mostrar_menu();
                 void executar();
         };

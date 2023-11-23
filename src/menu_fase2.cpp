@@ -4,20 +4,14 @@ namespace Estados
 {
     namespace Menus
     {
-        Gerenciadores::Gerenciador_Grafico* Menu_Fase2::pGG(Gerenciadores::Gerenciador_Grafico::get_instancia());
-
-        Menu_Fase2::Menu_Fase2(int id) : Estado(id)
+        Menu_Fase2::Menu_Fase2(int id) : Menu(id)
         {
-            fonte = new sf::Font();
-            imagem = new sf::Texture();
-
             inicializa_valores();
         }
 
         Menu_Fase2::~Menu_Fase2()
         {
-            delete fonte;
-            delete imagem;
+
         }
 
         void Menu_Fase2::inicializa_valores()
@@ -49,21 +43,6 @@ namespace Estados
             pos = 1;
         }
 
-        void Menu_Fase2::mostrar_menu()
-        {
-            pGG->limpar();
-            pGG->desenharTextura(imagem);
-            // laco diferentao ne mano pprt
-            for (auto t : textos)
-                pGG->get_Janela()->draw(t);
-            pGG->mostrar();
-        }
-
-        void Menu_Fase2::executar()
-        {
-            mostrar_menu();
-            loop_evento();
-        }
 
         void Menu_Fase2::loop_evento()
         {

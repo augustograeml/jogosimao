@@ -4,20 +4,15 @@ namespace Estados
 {
     namespace Menus
     {
-        Gerenciadores::Gerenciador_Grafico* Menu_Jogadores::pGG(Gerenciadores::Gerenciador_Grafico::get_instancia());
 
-        Menu_Jogadores::Menu_Jogadores(int id) : Estado(id)
+        Menu_Jogadores::Menu_Jogadores(int id) : Menu(id)
         {
-            fonte = new sf::Font();
-            imagem = new sf::Texture();
-
             inicializa_valores();
         }
 
         Menu_Jogadores::~Menu_Jogadores()
         {
-            delete fonte;
-            delete imagem;
+            
         }
 
         const bool Menu_Jogadores::get_jogador2()
@@ -52,22 +47,6 @@ namespace Estados
             textos[1].setOutlineThickness(4);
 
             pos = 1;
-        }
-
-        void Menu_Jogadores::mostrar_menu()
-        {
-            pGG->limpar();
-            pGG->desenharTextura(imagem);
-            // laco diferentao ne mano pprt
-            for (auto t : textos)
-                pGG->get_Janela()->draw(t);
-            pGG->mostrar();
-        }
-
-        void Menu_Jogadores::executar()
-        {
-            mostrar_menu();
-            loop_evento();
         }
 
         void Menu_Jogadores::loop_evento()
