@@ -14,7 +14,17 @@ namespace Observers
 
     }
 
-    void Observer_Tecla::atualizar(Keyboard::Key k)
+    void Observer_Tecla::atualizar(Keyboard::Key tecla)
+    {
+
+    }
+
+    void Observer_Tecla::tecla_pressionada(Keyboard::Key tecla)
+    {
+
+    }
+
+    void Observer_Tecla::tecla_solta(Keyboard::Key tecla)
     {
 
     }

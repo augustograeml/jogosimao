@@ -63,9 +63,23 @@ namespace Entidades
         void Jogador::atacar(Entidade *jg)
         {
         }
+        
         void Jogador::colidir(Entidade* pE)
         {
             
+        }
+
+        void Jogador::criar_jogadores(string arquivo, bool jogador2)
+        {
+            if(jogador2)
+            {
+
+            }
+            
+            else
+            {
+
+            }
         }
 
         void Jogador::mover()

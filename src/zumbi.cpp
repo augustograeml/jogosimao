@@ -73,9 +73,48 @@ namespace Entidades
         {
             jg->set_vida(jg->get_vida() - forca);
         }
+
         void Zumbi::colidir(Entidade* pE)
         {
             
+        }
+
+        void Zumbi::criar_zumbis(string arquivo)
+        {
+            ifstream caminho(arquivo);
+
+            if (!caminho)
+            {
+                cout << "Nao foi possivel acessar o arquivo de criacao dos arqueiros";
+                exit(1);
+            }
+
+            string linha;
+            Entidade* aux = nullptr;
+            int j, i;
+
+            for(i = 0; getline(caminho, linha); i++)
+            {
+                j = 0;
+                for(char tipo : linha)
+                {
+                    switch(tipo)
+                    {
+                        case '3':
+                            aux = static_cast<Entidade*>(new Zumbi(sf::Vector2f(0.f, 0.f), sf::Vector2f(0.f, 0.f)));
+                            if(aux)
+                            {
+                                aux->setWindow(pGG->get_Janela());
+                                aux->setPosicao(sf::Vector2f(j * TAM, i * TAM));
+                                //incluir inmigos na lista
+                            }
+                            break;
+
+                        default:
+                            break;;
+                    }
+                }
+            }
         }
 
         void Zumbi::salvar(std::ostringstream* entrada)

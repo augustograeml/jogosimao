@@ -3,7 +3,11 @@
 #pragma once
 
 #include "../ente.hpp"
+
 #include <sstream>
+#include <fstream>
+#include <string>
+#include <iostream>
 
 #define TAM 50.f
 #define TAM_CHEFAO 100.f

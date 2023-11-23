@@ -23,6 +23,8 @@ namespace Entidades
                 void atualizar();
                 void colidir(Entidade* pE);
                 void atirar();
+                void criar_arqueiros(string arquivo);
+
                 Projetil* get_projetil() {return &novo;}
                 void atacar(Entidade* jg);
                 void salvar(std::ostringstream* entrada);

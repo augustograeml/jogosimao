@@ -79,7 +79,7 @@ namespace Estados
             if (gC.get_sem_inimigos())
             {
                 //fim_de_jogo();
-                pGG->resetarCamera();
+                //pGG->resetarCamera();
                 pGE->set_estado_atual(7);
                 return;
             }

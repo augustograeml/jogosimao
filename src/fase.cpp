@@ -13,6 +13,7 @@ namespace Estados
 {
     namespace Fases
     {
+         
         Fase::Fase(int id) : jogadores(), obstaculos(), inimigos(), Estado(id),
         gC(), buffer(), ja_criado(false), num_jogadores(1)
         {
@@ -23,6 +24,7 @@ namespace Estados
 
         Fase::~Fase()
         {
+            
             salvar();
         }
 
