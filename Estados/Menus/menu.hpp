@@ -3,10 +3,7 @@
 #pragma once
 #include "../estado.hpp"
 #include "../../Gerenciadores/gerenciador_grafico.hpp"
-#include "botao.hpp"
 #include <SFML/Graphics.hpp>
-
-
 
 namespace Estados
 {

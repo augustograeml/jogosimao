@@ -1,8 +1,6 @@
 #pragma once
-#include "../estado.hpp"
+
 #include "menu.hpp"
-#include "../../Gerenciadores/gerenciador_grafico.hpp"
-#include <SFML/Graphics.hpp>
 using namespace std;
 
 namespace Estados
