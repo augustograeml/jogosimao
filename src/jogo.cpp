@@ -44,3 +44,8 @@ void Jogo::Executar()
         
     }
 }
+
+void Jogo::reseta_fase()
+{
+    //pE->
+}

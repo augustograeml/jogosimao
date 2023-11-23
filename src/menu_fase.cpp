@@ -7,17 +7,16 @@ namespace Estados
 
         Menu_Fase::Menu_Fase(int id, bool jog2) : Menu(id)
         {
-            if(jog2)
+            if (jog2)
                 set_jogador2(true);
             else
                 set_jogador2(false);
-                
+
             inicializa_valores();
         }
 
         Menu_Fase::~Menu_Fase()
         {
-
         }
 
         void Menu_Fase::inicializa_valores()
@@ -28,8 +27,8 @@ namespace Estados
 
             opcoes = {"Fases", "Fase 1", "Fase 2", "Sair"};
             textos.resize(4);
-            coordenadas = { {270,40},{360, 604}, {600, 604}, {493, 650}};
-            tamanhos = {200,20, 20, 20};
+            coordenadas = {{270, 40}, {360, 604}, {600, 604}, {493, 650}};
+            tamanhos = {200, 20, 20, 20};
 
             for (std::size_t i{}; i < textos.size(); i++)
             {
@@ -110,26 +109,37 @@ namespace Estados
                     if (pos == 3)
                         pGE->set_estado_atual(1);
 
-                    if(pos == 1)
+                    else if (pos == 1)
                     {
-                        if(get_jogador2())
+                        if (get_jogador2())
+                        {
                             pGE->set_estado_atual(7);
+                            pGE->set_fase(7);
+                        }
                         else
+                        {
                             pGE->set_estado_atual(6);
+                            pGE->set_fase(6);
+                        }
                     }
-                    
-                    else
+
+                    else if (pos == 2)
                     {
-                        if(get_jogador2())
+                        if (get_jogador2())
+                        {
                             pGE->set_estado_atual(9);
+                            pGE->set_fase(9);
+                        }
                         else
+                        {
                             pGE->set_estado_atual(8);
+                            pGE->set_fase(8);
+                        }
                     }
                 }
 
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
                     pGE->set_estado_atual(1);
-
             }
         }
     }

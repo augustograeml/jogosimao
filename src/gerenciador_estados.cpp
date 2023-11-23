@@ -32,6 +32,11 @@ namespace Gerenciadores
     {
         estadoAtual = eA;
     }
+
+    void Gerenciador_Estados::set_fase(int f)
+    {
+        fase = f;
+    }
     
     int Gerenciador_Estados::get_estado_atual()
     {
@@ -40,9 +45,6 @@ namespace Gerenciadores
 
     int Gerenciador_Estados::get_fase()
     {
-        if(fase < estadoAtual)
-            fase = estadoAtual;
-
         return fase;
     }
 

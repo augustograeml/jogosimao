@@ -37,4 +37,5 @@ class Jogo
         ~Jogo();
 
         void Executar();
+        void reseta_fase();
 };

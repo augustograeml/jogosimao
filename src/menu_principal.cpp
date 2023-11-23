@@ -80,6 +80,8 @@ namespace Estados
                         pGG->fecharJanela();
                     else if (pos == 1)
                         pGE->set_estado_atual(1);
+                    else if (pos == 2 && pGE->get_fase() > 5)
+                        pGE->set_estado_atual(pGE->get_fase());
                     /*else if (pos == 2)
                         pGE->set_estado_atual(pGE->get_fase());*/
                     else if(pos == 3)
