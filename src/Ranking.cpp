@@ -1,4 +1,7 @@
 #include "../Estados/Menus/ranking.hpp"
+#include <iostream>
+#define ARQUIVO_COLOCACAO "../Design/imagens/ranking.txt"
+
 
 namespace Estados
 {
@@ -10,8 +13,10 @@ namespace Estados
         {
             fonte = new sf::Font();
             imagem = new sf::Texture();
-
+            
+            
             inicializa_valores();
+            //CriarTextos();
         }
 
         Ranking::~Ranking()
@@ -26,7 +31,7 @@ namespace Estados
             imagem->loadFromFile("Design/imagens/rankingzombies++.png");
             fonte->loadFromFile("Design/fonte/sangue_escorrendo.ttf");
 
-            opcoes = {"Ranking", "1 -", "2 -", "3 -", "4 -", "Sair"};
+            opcoes = {"Ranking","1 -", "2 -","3 -","4 -","Sair"};
             textos.resize(6);
             tamanhos = {170, 40, 40, 40, 40, 35};
             coordenadas = { {215, 40}, {65, 358}, {65, 440}, {65, 527}, {65, 613}, {278, 730}};
@@ -40,6 +45,7 @@ namespace Estados
                 textos[i].setFillColor(sf::Color::White);
                 textos[i].setOutlineColor(sf::Color::Black);
                 textos[i].setPosition(coordenadas[i]);
+                
             }
 
             textos[0].setOutlineThickness(15);
@@ -53,8 +59,13 @@ namespace Estados
             pGG->limpar();
             pGG->desenharTextura(imagem);
             // laco diferentao ne mano pprt
+            //textos[3].setString(opcoes[3] + "   augusto");
+            CriarTextos();
             for (auto t : textos)
-                pGG->get_Janela()->draw(t);
+            {
+                 pGG->get_Janela()->draw(t);
+            }
+               
             pGG->mostrar();
         }
 
@@ -81,5 +92,28 @@ namespace Estados
                         pGE->set_estado_atual(0);   
             }
         }
+        void Ranking::CriarTextos()
+        {
+            ifstream arquivoInput(ARQUIVO_COLOCACAO);
+            std::string linha;
+            std::string espaco = "    ";
+            int i = 1;
+            if(!arquivoInput)
+            {
+                std::cout<< "error ao abrir";
+            }
+            else
+            {
+                while(getline(arquivoInput, linha)  && i < 5)
+                {
+                    textos[i].setString( opcoes[i] + espaco + linha);
+                    std::cout  << "  " << std::endl;
+                    i++;
+                }
+                arquivoInput.close();
+            }
+                
+
+        }  
     }
 }

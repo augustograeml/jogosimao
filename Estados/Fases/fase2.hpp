@@ -9,6 +9,8 @@ namespace Estados
         {
             private:
                 bool musgos;
+                clock_t tempoinicio;
+                double tempo_fase2;
             public:
                 Fase2(int id);
                 ~Fase2();

@@ -1,0 +1,3 @@
+augusto 39
+antonio 10
+caique 20
