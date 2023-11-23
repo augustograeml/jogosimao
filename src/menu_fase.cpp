@@ -1,4 +1,6 @@
 #include "../Estados/Menus/menu_fase.hpp"
+#include "../Estados/Fases/fase1.hpp"
+#include "../Estados/Fases/fase2.hpp"
 
 namespace Estados
 {
@@ -113,11 +115,13 @@ namespace Estados
                     {
                         if (get_jogador2())
                         {
+                            Estados::Fases::Fase1* fase = new Estados::Fases::Fase1(7);
                             pGE->set_estado_atual(7);
                             pGE->set_fase(7);
                         }
                         else
                         {
+                            Estados::Fases::Fase1* fase = new Estados::Fases::Fase1(6);
                             pGE->set_estado_atual(6);
                             pGE->set_fase(6);
                         }
@@ -127,11 +131,13 @@ namespace Estados
                     {
                         if (get_jogador2())
                         {
+                            Estados::Fases::Fase2* fase = new Estados::Fases::Fase2(9);
                             pGE->set_estado_atual(9);
                             pGE->set_fase(9);
                         }
                         else
                         {
+                            Estados::Fases::Fase2* fase = new Estados::Fases::Fase2(8);
                             pGE->set_estado_atual(8);
                             pGE->set_fase(8);
                         }

@@ -10,6 +10,7 @@ namespace Estados
         class Menu_Principal : public Menu
         {
             private:
+                bool jacriado;
             public:
                 Menu_Principal(int id);
                 ~Menu_Principal();

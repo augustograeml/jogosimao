@@ -33,6 +33,11 @@ namespace Gerenciadores
         estadoAtual = eA;
     }
 
+    void Gerenciador_Estados::deleta_estados(int i)
+    {
+        delete estados[i];
+    }
+
     void Gerenciador_Estados::set_fase(int f)
     {
         fase = f;

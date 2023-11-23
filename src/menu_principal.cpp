@@ -11,13 +11,12 @@ namespace Estados
 
         Menu_Principal::~Menu_Principal()
         {
-
         }
 
         void Menu_Principal::inicializa_valores()
         {
             pos = 0;
-            selecionado = deselecionado = false;
+            selecionado = deselecionado = jacriado = false;
             imagem->loadFromFile("Design/imagens/menu_zombies++.jpg");
             fonte->loadFromFile("Design/fonte/sangue_escorrendo.ttf");
 
@@ -79,18 +78,19 @@ namespace Estados
                     if (pos == 4)
                         pGG->fecharJanela();
                     else if (pos == 1)
+                    {
                         pGE->set_estado_atual(1);
+                    }
                     else if (pos == 2 && pGE->get_fase() > 5)
                         pGE->set_estado_atual(pGE->get_fase());
                     /*else if (pos == 2)
                         pGE->set_estado_atual(pGE->get_fase());*/
-                    else if(pos == 3)
+                    else if (pos == 3)
                         pGE->set_estado_atual(4);
                 }
 
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
                     pGG->fecharJanela();
-
             }
         }
     }

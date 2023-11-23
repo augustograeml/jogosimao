@@ -36,6 +36,9 @@ namespace Gerenciadores
             static Gerenciador_Estados* get_instancia();
             void set_estado_atual(int eA);
             void set_fase(int f);
+
+            void deleta_estados(int i);
+
             int get_estado_atual();
             int get_fase();
             void adicionar_estado(Estados::Estado* pE);
