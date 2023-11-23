@@ -17,7 +17,7 @@ namespace Entidades
                 set_forca(4);
 
             this->setSkin("Design/imagens/zumbi_gigante.png");
-            this->set_vida(40);
+            this->set_vida(100);
         }
 
         Gigante::~Gigante()
@@ -38,16 +38,27 @@ namespace Entidades
                 velocidade.x += 0.2;
                 ja_inc = true;
             }
-            
-            if(!nochao)
-                velocidade += Vector2f(0, 0.1);
-            else
-                velocidade = Vector2f(0.1f, 0.f);
-            nochao = false;
+            if(vida > 0)
+            {
+                if(!nochao)
+                    velocidade += Vector2f(0, 0.1);
+                else
+                {
+                    if(direcao)
+                    velocidade = Vector2f(0.1f, 0.f);
+                    else
+                    velocidade = Vector2f(-0.1f, 0.f);
+                }
+                
+             nochao = false;
 
             //if(pjogador->get_pause() == false)
                 atualizar();
             //atualizar();
+            }
+            else
+            morrer();
+            
         }
 
         void Gigante::executar()
@@ -56,9 +67,23 @@ namespace Entidades
             if(vivo)
             mover();
         }
-        void Gigante::colidir(Entidade* pE)
+        void Gigante::colidir(Entidade* pE, int a)
         {
+            if(a == 1 || a == 3)
+            {
+                atacar(pE);
+                mudar_direcao();
+            }
+            else if (a == 4)
+            {
+                this->set_vida(this->get_vida() - 10);
+            }
+            else
+            {
+                atacar(pE);
+            }
 
+           
         }
 
         void Gigante::atacar(Entidade* jg)

@@ -28,11 +28,6 @@ namespace Entidades
 
         void Arqueiro::mover()
         {
-            int aux = rand()%100;
-            if(aux == 1)
-            {
-                mudar_direcao();
-            }
             
             if(!nochao)
                 velocidade += Vector2f(0, 0.1);
@@ -65,9 +60,22 @@ namespace Entidades
         {
             jg->set_vida(jg->get_vida() - forca);
         }
-        void Arqueiro::colidir(Entidade* pE)
+        void Arqueiro::colidir(Entidade* pE, int a)
         {
-            pE->set_vida(pE->get_vida() - get_forca());
+            if(a == 1 || a == 3)
+            {
+                atacar(pE);
+                mudar_direcao();
+            }
+            else if (a == 4)
+            {
+                morrer();
+            }
+            else
+            {
+                atacar(pE);
+            }
+
         }
         void Arqueiro::atirar()
         {

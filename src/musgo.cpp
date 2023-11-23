@@ -36,7 +36,7 @@ namespace Entidades
                 pJ->setVelocidade(Vector2f(pJ->getVelocidade().x / 1.5f , pJ->getVelocidade().y));
             }
         }
-        void Musgo::colidir(Entidade* pE)
+        void Musgo::colidir(Entidade* pE,  int a)
         {
             Entidades::Personagens::Jogador* aux = static_cast<Entidades::Personagens::Jogador*> (pE);
             gosmar(aux);

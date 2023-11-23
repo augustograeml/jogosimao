@@ -23,8 +23,8 @@ namespace Entidades
 
             void atualizar();
             void executar();
-            void colidir(Entidade* pE);
-            
+            void colidir(Entidade* pE, int a);
+
             void set_tempo(double x) {tempo = x;}
             double get_tempo() {return tempo;}
 

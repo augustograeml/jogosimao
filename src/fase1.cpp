@@ -100,6 +100,13 @@ namespace Estados
 
                 return;
             }
+            if(gC.get_sem_jogadores())
+            {
+                pGG->limpar();
+                pGG->resetarCamera();
+                pGE->set_estado_atual(1);
+                return;
+            }
 
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
             {

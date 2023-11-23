@@ -30,7 +30,7 @@ namespace Entidades
     {   corpo.move(Vector2f(0,0.1f));
         corpo.move(velocidade);
     }
-    void Projetil::colidir(Entidade* pE)
+    void Projetil::colidir(Entidade* pE, int a)
     {
         setVelocidade(Vector2f(0,0));
     }
