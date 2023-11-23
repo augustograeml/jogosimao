@@ -71,7 +71,7 @@ namespace Entidades
         {
             
         }
-        void Caixa::colidir(Entidade* pE)
+        void Caixa::colidir(Entidade* pE, int a)
         {
             
         }

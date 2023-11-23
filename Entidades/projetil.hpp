@@ -18,7 +18,7 @@ namespace Entidades
         void mover(){}
         void atirar();
         void atualizar(){}
-        void colidir(Entidade* pE);
+        void colidir(Entidade* pE, int a);
 
         void executar();
     };

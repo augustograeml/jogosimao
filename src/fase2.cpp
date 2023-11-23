@@ -69,13 +69,14 @@ namespace Estados
 
             pGE->get_fase();
 
+            pGG->desenharFundo(&shape);
             jogadores.executar();
             inimigos.executar();
             gerenciar_colisoes();
 
             atualizar();
 
-            pGG->desenharFundo(&shape);
+            
             obstaculos.desenhar();
             jogadores.desenhar();
             inimigos.desenhar();

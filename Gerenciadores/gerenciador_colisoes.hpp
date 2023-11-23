@@ -13,6 +13,7 @@ namespace Gerenciadores
             Listas::ListaEntidade* jogadores;
             Listas::ListaEntidade* inimigos;
             bool sem_inimigos;
+            bool sem_jogadores;
         public:
             Gerenciador_Colisoes();
             ~Gerenciador_Colisoes();
@@ -25,5 +26,6 @@ namespace Gerenciadores
             int colidiu(Entidades::Entidade* e1, Entidades::Entidade* e2);
 
             bool get_sem_inimigos();
+            bool get_sem_jogadores() {return sem_jogadores;}
     };
 }

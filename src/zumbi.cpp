@@ -74,9 +74,21 @@ namespace Entidades
         {
             jg->set_vida(jg->get_vida() - forca);
         }
-
-        void Zumbi::colidir(Entidade* pE)
+        void Zumbi::colidir(Entidade* pE, int a)
         {
+             if(a == 1 || a == 3)
+            {
+                atacar(pE);
+                this->mudar_direcao();
+            }
+            else if (a == 4)
+            {
+                morrer();
+            }
+            else
+            {
+                atacar(pE);
+            }
 
         }
         

@@ -72,8 +72,7 @@ namespace Entidades
         void Jogador::atacar(Entidade *jg)
         {
         }
-        
-        void Jogador::colidir(Entidade* pE)
+        void Jogador::colidir(Entidade* pE, int a)
         {
             
         }

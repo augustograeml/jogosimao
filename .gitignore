@@ -1,1 +1,4 @@
-*.exe *.json .makefile
+*.exe 
+*.json 
+.makefile
+*.docx

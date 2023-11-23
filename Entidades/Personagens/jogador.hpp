@@ -23,7 +23,10 @@ namespace Entidades
 
             void atualizar();
             void executar();
-            void colidir(Entidade* pE);
+            void colidir(Entidade* pE, int a);
+
+            void set_tempo(double x) {tempo = x;}
+            double get_tempo() {return tempo;}
 
             void criar_jogadores(string arquivo, bool jogador2);
             void tela_pause();
