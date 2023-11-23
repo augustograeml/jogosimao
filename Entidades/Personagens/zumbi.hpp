@@ -19,6 +19,7 @@ namespace Entidades
                 void colidir(Entidade* pE);
                 void atacar(Entidade* jg);
                 void salvar(std::ostringstream* entrada);
+                
         };
     }
 }

@@ -11,6 +11,7 @@ namespace Entidades
             atirando = false;
             direcao = 0;
             recarregar = 0;
+            set_forca(5);
 
             //depois mexer com o setvida desse molecote aqui
         }
@@ -52,8 +53,12 @@ namespace Entidades
 
         void Arqueiro::executar()
         {
-            mover();
-            atirar();
+            if(vivo)
+            {
+                mover();
+                atirar();
+            }
+            
         }
 
         void Arqueiro::atacar(Entidade* jg)
@@ -62,7 +67,7 @@ namespace Entidades
         }
         void Arqueiro::colidir(Entidade* pE)
         {
-            
+            pE->set_vida(pE->get_vida() - get_forca());
         }
         void Arqueiro::atirar()
         {

@@ -22,6 +22,8 @@ namespace Entidades
                 corpo.setFillColor(sf::Color::Green);
                 this->setSkin("Design/imagens/luigiDireita.png");
             }
+           tempo = 0.0;
+           nome = "";
         }
         Jogador::~Jogador()
         {
@@ -34,26 +36,32 @@ namespace Entidades
 
         void Jogador::executar()
         {
-            if (vida > 0)
+            if (vivo)
             {
-                corpo.setFillColor(sf::Color::Green);
-                if (vida < 3)
+                if(vida > 0)
                 {
+                    corpo.setFillColor(sf::Color::Green);
+                    if (vida < 10)
+                    {
                     corpo.setFillColor(sf::Color::Yellow);
-                }
+                    }
 
-                if (!jogador2)
+                    if (!jogador2)
                     mover();
-                else
+                     else
                     mover_jog2();
+                }
+                else
+                {
+                    corpo.setFillColor(sf::Color::Red);
+                }
             }
-            else
+                
+             if (vida <= 0)
             {
-                corpo.setFillColor(sf::Color::Red);
-                // morreu = true;
+                set_vivo(0);
             }
 
-            // std::cout << get_vida() << std::endl;
         }
 
         void Jogador::tela_pause()

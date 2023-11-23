@@ -31,6 +31,7 @@ namespace Entidades
             void mover_jog2();
             void atacar(Entidade* jg);
             void salvar(std::ostringstream* entrada);
+           
         };
 
     }

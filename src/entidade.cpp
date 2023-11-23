@@ -12,24 +12,28 @@ namespace Entidades
         pausado(false)
     {
         corpo.setPosition(posicao);
+        vivo = true;
     }
 
     Entidade::~Entidade()
     {
 
     }
-    
+
     void Entidade::executar()
     {
-        this->mover();
-        this->atualizar();
+            this->mover();
+            this->atualizar();
     }
 
     void Entidade::setPosicao(Vector2f p)
     {
         corpo.setPosition(p);
     }
-    
+    void Entidade::morrer()
+    {
+        set_vivo(0);
+    }
     void Entidade::setSkin(const std::string filename)
     {
         Textura.loadFromFile(filename);

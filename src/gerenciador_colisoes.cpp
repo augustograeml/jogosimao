@@ -43,34 +43,9 @@ namespace Gerenciadores
 
                 if (colidiu(*jog, *obst))
                 {
-                    Entidades::Personagens::Jogador* jogador = static_cast<Entidades::Personagens::Jogador*> (*(jog));
-                    Entidades::Obstaculos::Obstaculo* obstaculo = static_cast<Entidades::Obstaculos::Obstaculo*> (*(obst));
-                    if (obstaculo->get_danoso())
-                    {
-                        Entidades::Obstaculos::Espinho* espinho = static_cast<Entidades::Obstaculos::Espinho*> (obstaculo);
-                        espinho->espinhar(jogador);
-                    }
-                    if (obstaculo->get_curoso())
-                    {
-                        Entidades::Obstaculos::Coracao* coracao = static_cast<Entidades::Obstaculos::Coracao*> (obstaculo);
-                        coracao->curar(jogador);
-                        obstaculos->remover((*obst));
-                    }
-                    if(obstaculo->get_atrapalhante())
-                    {
-                        Entidades::Obstaculos::Caixa* caixa = static_cast<Entidades::Obstaculos::Caixa*> (obstaculo);
-                        //implementar atrapalhar aqui
-                    }
-                    if(obstaculo->get_escorregadio())
-                    {
-                        Entidades::Obstaculos::Neve* neve = static_cast<Entidades::Obstaculos::Neve*> (obstaculo);
-                        neve->escorregar(jogador);
-                    }
-                    if(obstaculo->get_gosmento())
-                    {
-                        Entidades::Obstaculos::Musgo* musgo = static_cast<Entidades::Obstaculos::Musgo*> (obstaculo);
-                        musgo->gosmar(jogador);
-                    }
+                    (*obst)->colidir(*jog);
+                    (*jog)->colidir(*obst);
+                    
                 }
                 obst++;
             }
@@ -108,40 +83,46 @@ namespace Gerenciadores
             inim = inimigos->get_primeiro();
             while (inim != nullptr)
             {
-                int j = colidiu(*jog, *inim);
-
-                Entidades::Personagens::Jogador* aux = static_cast<Entidades::Personagens::Jogador*> (*(jog));
-                Entidades::Personagens::Inimigo* aux2 = static_cast<Entidades::Personagens::Inimigo*> (*(inim));
-
-
-                if (j == 4)
+                if((*inim)->get_vivo())
                 {
-                    aux2->set_vida(aux2->get_vida() - aux->get_forca());
-                    //fazer como o simao quer depois : "ao inves de remover, so passar um bool dizendo que ta morto "
-                    aux2->set_vivo(0);
-                    inimigos->remover((*inim));
-                }
-                else if (j)
-                {
-                    if(aux->get_vida() > 0)
+                    int j = colidiu(*jog, *inim);
+
+                    if (j == 4)
                     {
-                        aux->set_vida(aux->get_vida() - aux2->get_forca());
-                       /* (*jog)->colidir();
-                        (*inim)->colidir();*/
+                        (*inim)->morrer();
                     }
+                    else if (j)
+                    {
+                    (*inim)->colidir(*jog);
+                    }
+                    inim++;
                 }
+                else
                 inim++;
+                
             }
             jog++;
         }
 
-        if(inimigos->get_tamanho() == 1)
+        //vereficando se os inimigos estao todos mortos
+        int vivos = 0;
+        Listas::Lista<Entidades::Entidade>::Iterador inimg = inimigos->get_primeiro();
+        while (inimg != nullptr)
+        {
+            if((*inimg)->get_vivo())
+                vivos++;
+            inimg++;
+        }
+        
+
+        if(vivos == 0)
             sem_inimigos = true;
     }
 
     int Gerenciador_Colisoes::colidiu(Entidades::Entidade *e1, Entidades::Entidade *e2)
     {
-        sf::Vector2f pos1 = e1->getPosicao(), pos2 = e2->getPosicao(), tam1 = e1->getTamanho(), tam2 = e2->getTamanho(),
+
+            sf::Vector2f pos1 = e1->getPosicao(), pos2 = e2->getPosicao(), tam1 = e1->getTamanho(), tam2 = e2->getTamanho(),
                  d(fabs(pos1.x - pos2.x) - ((tam1.x + tam2.x) / 2.f),
                    fabs(pos1.y - pos2.y) - ((tam1.y + tam2.y) / 2.f));
 
@@ -179,6 +160,7 @@ namespace Gerenciadores
                 }
             }
         }
+        
         return 0;
     }
 

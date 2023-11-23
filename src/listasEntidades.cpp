@@ -29,6 +29,7 @@
         Lista<Entidades::Entidade>::Iterador aux = LEs.get_primeiro();
         while (aux != nullptr)
         {
+            if((*aux)->get_vivo())
             (*aux)->desenhar();
             aux++;
         }

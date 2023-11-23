@@ -35,7 +35,8 @@ namespace Entidades
         }
         void Espinho::colidir(Entidade* pE)
         {
-            
+            Entidades::Personagens::Jogador* aux = static_cast<Entidades::Personagens::Jogador*> (pE);
+            espinhar(aux);
         }
     }
 }

@@ -39,6 +39,8 @@ namespace Entidades
             virtual void mover() = 0;
             virtual void atualizar() = 0;
             virtual void colidir(Entidade* pE) = 0;
+            
+            void morrer();
 
             const sf::Vector2f getPosicao() {return corpo.getPosition();}
             void setPosicao(sf::Vector2f p);

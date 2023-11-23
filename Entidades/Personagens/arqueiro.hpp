@@ -26,6 +26,7 @@ namespace Entidades
                 Projetil* get_projetil() {return &novo;}
                 void atacar(Entidade* jg);
                 void salvar(std::ostringstream* entrada);
+               
         };
     }
 }

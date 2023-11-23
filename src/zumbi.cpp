@@ -66,6 +66,7 @@ namespace Entidades
         void Zumbi::executar()
         {
             //update();
+            if(vivo)
             mover();
         }
 
@@ -75,9 +76,9 @@ namespace Entidades
         }
         void Zumbi::colidir(Entidade* pE)
         {
-            
-        }
 
+        }
+        
         void Zumbi::salvar(std::ostringstream* entrada)
         {
             (*entrada) << "{ \"posicao\": [" << corpo.getPosition().x<<","<<corpo.getPosition().y<<"], \"velocidade\": ["<<velocidade.x<<","<<velocidade.y<<"] }" << std::endl;

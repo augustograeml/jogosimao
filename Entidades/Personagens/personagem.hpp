@@ -10,7 +10,7 @@ namespace Entidades
             protected:
                 int forca;
             public:
-                Personagem(sf::Vector2f pos, sf::Vector2f vel);
+                Personagem(sf::Vector2f pos, sf::Vector2f vel, int f = 5);
                 ~Personagem();
 
                 void set_forca(int forc);
@@ -21,6 +21,7 @@ namespace Entidades
                 virtual void mover() = 0;
                 virtual void atualizar() = 0;
                 virtual void atacar(Entidade* jg) = 0;
+                
         };
     }
 }

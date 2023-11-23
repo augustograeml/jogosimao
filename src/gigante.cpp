@@ -53,11 +53,12 @@ namespace Entidades
         void Gigante::executar()
         {
             //update();
+            if(vivo)
             mover();
         }
         void Gigante::colidir(Entidade* pE)
         {
-            
+
         }
 
         void Gigante::atacar(Entidade* jg)

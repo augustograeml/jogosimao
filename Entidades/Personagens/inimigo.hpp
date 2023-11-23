@@ -26,6 +26,7 @@ namespace Entidades
                 virtual void executar() = 0;
                 virtual void colidir(Entidade* pE) = 0;
                 virtual void atacar(Entidade* jg) = 0;
+                
                     
             };
         }
