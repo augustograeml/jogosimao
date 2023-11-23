@@ -7,7 +7,9 @@ namespace Entidades
         Coracao::Coracao(sf::Vector2f pos): Obstaculo(pos,false, true, false,false,false), cura(20)
         {
             this->setSkin("Design/imagens/saude.png");
-            //this->set_vida(40);
+            int dificil = rand()%10;
+            if(dificil == 7)
+                cura = 5;
         }
 
         Coracao::~Coracao()
@@ -68,7 +70,7 @@ namespace Entidades
 
         void Coracao::curar(Entidades::Personagens::Jogador* pJ)
         {
-            pJ->set_vida(cura);
+            pJ->set_vida(get_vida() + cura);
         }
 
         void Coracao::colidir(Entidade* pE)

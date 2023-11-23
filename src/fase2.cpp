@@ -62,12 +62,12 @@ namespace Estados
             {
                 pGG->limpar();
                 pGG->resetarCamera();
+                //ranking, acho que se pa esse fim_de_jogo é meio inutil
                 fim_de_jogo();
                 return;
             }
 
-            /*if(jogadores.get_primeiro().operator*()->get_pause())
-                return;*/
+            pGE->get_fase();
 
             jogadores.executar();
             inimigos.executar();

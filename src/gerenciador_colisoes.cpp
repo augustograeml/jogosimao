@@ -45,7 +45,6 @@ namespace Gerenciadores
                 {
                     (*obst)->colidir(*jog);
                     (*jog)->colidir(*obst);
-                    
                 }
                 obst++;
             }

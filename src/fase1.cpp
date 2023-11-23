@@ -75,6 +75,8 @@ namespace Estados
             obstaculos.desenhar();
             jogadores.desenhar();
             inimigos.desenhar();
+
+            pGE->get_fase();
             
             //std::cout<<" Executadno fase 1";
             //fase 2 pra dois jogadores

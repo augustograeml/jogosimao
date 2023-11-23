@@ -125,8 +125,8 @@ namespace Estados
                         pGG->fecharJanela();
                     else if (pos == 1)
                         pGE->set_estado_atual(2);
-                    /*else if (pos == 2)
-                        pGE->set_estado_atual(pGE->get_fase());*/
+                    else if (pos == 2)
+                        pGE->set_estado_atual(pGE->get_fase());
                 }
 
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))

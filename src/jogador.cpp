@@ -118,7 +118,6 @@ namespace Entidades
                 //a tela de pause ta seguindo o jogador?
                 pausado = !pausado;
                 pGG->limpar();
-                pGG->resetarCamera();
                 PGEstados->set_estado_atual(0);
             }
 

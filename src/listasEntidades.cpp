@@ -2,6 +2,10 @@
  
  namespace Listas
  {
+    //atribuicao pras lista estaticas
+    ListaEntidade* ListaEntidade::instancia_lista_inimigos = nullptr;
+    ListaEntidade* ListaEntidade::instancia_lista_obstaculos = nullptr;
+
     ListaEntidade::ListaEntidade():
     LEs()
     {
@@ -43,8 +47,24 @@
             aux++;
         }        
     }
+
     Lista<Entidades::Entidade>::Iterador ListaEntidade::get_primeiro()
     {
         return LEs.get_primeiro();
+    }
+
+    ListaEntidade* ListaEntidade::get_instancia_inimigos()
+    {
+        if(!instancia_lista_inimigos)
+            instancia_lista_inimigos = new ListaEntidade();
+        
+        return instancia_lista_inimigos;
+    }
+    ListaEntidade* ListaEntidade::get_instancia_obstaculos()
+    {
+        if(!instancia_lista_obstaculos)
+            instancia_lista_obstaculos = new ListaEntidade();
+        
+        return instancia_lista_obstaculos;
     }
 }
