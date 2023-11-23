@@ -57,11 +57,14 @@ namespace Estados
 
         void Fase1::fim_de_jogo()
         {
+            set_tempo_jogadores();
             Textura.loadFromFile("Design/imagens/fim_de_jogo2.jpeg");
             shape.setSize(Vector2f(950.f, 950.f));
             shape.setTexture(&Textura);
             shape.setPosition(sf::Vector2f(76.f, -10.f));
-            pGG->desenharFundo(&shape);    
+            pGG->desenharFundo(&shape); 
+             Entidades::Personagens::Jogador* jog = static_cast<Entidades::Personagens::Jogador*> (*jogadores.get_primeiro());  
+            std::cout << jog->get_tempo() << std::endl;
               
         }
 
@@ -115,6 +118,7 @@ namespace Estados
             {
                 pGG->limpar();
                 pGG->resetarCamera();
+                fim_de_jogo();
                 pGE->set_estado_atual(0);
                 return;
             }                

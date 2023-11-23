@@ -20,6 +20,7 @@ namespace Estados
             gC.set_inimigos(&inimigos);
             gC.set_jogadores(&jogadores);
             gC.set_obstaculos(&obstaculos);
+            relogio.restart();
         }
 
         Fase::~Fase()
@@ -355,6 +356,16 @@ namespace Estados
                 return true;
             else
                 return false;
+        }
+        void Fase::set_tempo_jogadores()
+        {
+            if(num_jogadores == 2)
+            {
+              Entidades::Personagens::Jogador* jogad2 = static_cast<Entidades::Personagens::Jogador*>(*jogadores.get_primeiro()++);
+              jogad2->set_tempo(relogio.getElapsedTime().asSeconds());
+            }
+            Entidades::Personagens::Jogador* jogad = static_cast<Entidades::Personagens::Jogador*>(*jogadores.get_primeiro());
+            jogad->set_tempo(relogio.getElapsedTime().asSeconds());
         }
 
     }

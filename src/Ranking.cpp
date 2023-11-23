@@ -1,6 +1,6 @@
 #include "../Estados/Menus/ranking.hpp"
 #include <iostream>
-#define ARQUIVO_COLOCACAO "../Design/imagens/ranking.txt"
+#define ARQUIVO_COLOCACAO "Design/imagens/ranking.txt"
 
 
 namespace Estados
@@ -12,6 +12,7 @@ namespace Estados
         Ranking::Ranking(int id) : Estado(id)
         {
             fonte = new sf::Font();
+            fonte_nomes = new sf::Font();
             imagem = new sf::Texture();
             
             
@@ -30,11 +31,12 @@ namespace Estados
             selecionado = deselecionado = false;
             imagem->loadFromFile("Design/imagens/rankingzombies++.png");
             fonte->loadFromFile("Design/fonte/sangue_escorrendo.ttf");
+            fonte_nomes->loadFromFile("Design/fonte/fonte_simas.ttf");
 
-            opcoes = {"Ranking","1 -", "2 -","3 -","4 -","Sair"};
+            opcoes = {"Ranking","1", "2","3","4","Sair"};
             textos.resize(6);
-            tamanhos = {170, 40, 40, 40, 40, 35};
-            coordenadas = { {215, 40}, {65, 358}, {65, 440}, {65, 527}, {65, 613}, {278, 730}};
+            tamanhos = {170, 20, 20, 20, 20, 35};
+            coordenadas = { {215, 40}, {100, 380}, {100, 462}, {100, 549}, {100, 635}, {278, 730}};
             
 
             for (std::size_t i{}; i < textos.size(); i++)
@@ -96,7 +98,7 @@ namespace Estados
         {
             ifstream arquivoInput(ARQUIVO_COLOCACAO);
             std::string linha;
-            std::string espaco = "    ";
+            std::string espaco = "  ";
             int i = 1;
             if(!arquivoInput)
             {
@@ -107,7 +109,7 @@ namespace Estados
                 while(getline(arquivoInput, linha)  && i < 5)
                 {
                     textos[i].setString( opcoes[i] + espaco + linha);
-                    std::cout  << "  " << std::endl;
+                    textos[i].setFont(*fonte_nomes);
                     i++;
                 }
                 arquivoInput.close();

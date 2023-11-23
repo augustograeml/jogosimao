@@ -18,6 +18,7 @@ namespace Estados
                 bool selecionado, deselecionado, jog2;
 
                 sf::Font* fonte;
+                sf::Font* fonte_nomes;
                 sf::Texture* imagem;
                 
                 vector<string> opcoes;
