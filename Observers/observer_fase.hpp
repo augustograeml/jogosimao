@@ -5,6 +5,14 @@
 #include "observer.hpp"
 #include "../Estados/Fases/fase.hpp"
 
+namespace Estados
+{
+    namespace Fases
+    {
+        class Fase;
+    }
+}
+
 namespace Observers
 {
     class Observer_Fase : public Observer

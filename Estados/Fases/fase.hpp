@@ -17,7 +17,7 @@
 #include "../../Gerenciadores/gerenciador_estados.hpp"
 #include "../../Gerenciadores/gerenciador_eventos.hpp"
 #include "../../Gerenciadores/gerenciador_grafico.hpp"
-#include "../Observers/observer_fase.hpp"
+#include "../../Observers/observer_fase.hpp"
 #include "../estado.hpp"
 
 #include <iostream>
