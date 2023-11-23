@@ -15,7 +15,7 @@ namespace Estados
                 static Gerenciadores::Gerenciador_Grafico* pGG;
                 int pos;
                 //o deselecionar é necessario porque como o loop pra rodar o jogo eh rapido pode acontecer de uma opcao ser selecionada duplicada no menu
-                bool selecionado, deselecionado;
+                bool selecionado, deselecionado, jogador2;
 
                 sf::Font* fonte;
                 sf::Texture* imagem;
@@ -34,6 +34,10 @@ namespace Estados
 
                 virtual void inicializa_valores() = 0;
                 virtual void loop_evento() = 0;
+
+                void set_jogador2(bool j);
+                const bool get_jogador2() const;
+
                 void mostrar_menu();
                 void executar();
         };

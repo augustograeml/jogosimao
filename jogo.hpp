@@ -6,7 +6,6 @@
 #include "Estados/Menus/ranking.hpp"
 #include "Estados/Menus/pause.hpp"
 #include "Estados/Menus/menu_fase.hpp"
-#include "Estados/Menus/menu_fase2.hpp"
 #include "Estados/Menus/menu_jogadores.hpp"
 
 #include "Estados/Fases/fase1.hpp"
@@ -26,7 +25,6 @@ class Jogo
         Estados::Menus::Menu_Principal* menu_principal;
         Estados::Menus::Menu_Jogadores* menu_jogadores;
         Estados::Menus::Menu_Fase* menu_fase;
-        Estados::Menus::Menu_Fase2* menu_fase2;
 
         Gerenciadores::Gerenciador_Grafico* pG;
         Gerenciadores::Gerenciador_Estados* pE;

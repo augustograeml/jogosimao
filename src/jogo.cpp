@@ -8,8 +8,8 @@ Jogo::Jogo() : pG(Gerenciadores::Gerenciador_Grafico::get_instancia()), pE(Geren
 {
     menu_principal = new Estados::Menus::Menu_Principal(0);
     menu_jogadores = new Estados::Menus::Menu_Jogadores(1);
-    menu_fase = new Estados::Menus::Menu_Fase(2);
-    menu_fase2 = new Estados::Menus::Menu_Fase2(3);
+    menu_fase = new Estados::Menus::Menu_Fase(2, false);
+    menu_fase = new Estados::Menus::Menu_Fase(3, true);
     ranking = new Estados::Menus::Ranking(4);
     pause = new Estados::Menus::Pause(5);
 
@@ -19,11 +19,6 @@ Jogo::Jogo() : pG(Gerenciadores::Gerenciador_Grafico::get_instancia()), pE(Geren
 
     Estados::Fases::Fase2 *fase2 = new Estados::Fases::Fase2(8);
     Estados::Fases::Fase2 *fase22 = new Estados::Fases::Fase2(9);
-
-    //talvez pare de tremer usando isso?
-    /*Estados::Estado *aux = static_cast<Estados::Estado *>(new Estados::Menus::Menu(1));
-    if (aux)
-        pE->adicionar_estado(aux);*/
 
     Executar();
 }
@@ -35,7 +30,6 @@ Jogo::~Jogo()
     delete menu_principal;
     delete menu_jogadores;
     delete menu_fase;
-    delete menu_fase2;
 }
 
 void Jogo::Executar()

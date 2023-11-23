@@ -12,7 +12,6 @@ namespace Estados
 
         Menu_Jogadores::~Menu_Jogadores()
         {
-            
         }
 
         const bool Menu_Jogadores::get_jogador2()
@@ -26,10 +25,10 @@ namespace Estados
             imagem->loadFromFile("Design/imagens/menu2jogadores.png");
             fonte->loadFromFile("Design/fonte/sangue_escorrendo.ttf");
 
-            opcoes = {"Players","Um jogador", "Dois Jogadores", "Sair"};
+            opcoes = {"Players", "Um jogador", "Dois Jogadores", "Sair"};
             textos.resize(4);
-            coordenadas = {{250,40}, {335, 604}, {564, 604}, {493, 650}};
-            tamanhos = {150,20, 20, 20};
+            coordenadas = {{250, 40}, {335, 604}, {564, 604}, {493, 650}};
+            tamanhos = {150, 20, 20, 20};
 
             for (std::size_t i{}; i < textos.size(); i++)
             {

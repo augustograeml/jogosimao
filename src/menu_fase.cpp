@@ -5,8 +5,13 @@ namespace Estados
     namespace Menus
     {
 
-        Menu_Fase::Menu_Fase(int id) : Menu(id)
+        Menu_Fase::Menu_Fase(int id, bool jog2) : Menu(id)
         {
+            if(jog2)
+                set_jogador2(true);
+            else
+                set_jogador2(false);
+                
             inicializa_valores();
         }
 
@@ -104,10 +109,22 @@ namespace Estados
                 {
                     if (pos == 3)
                         pGE->set_estado_atual(1);
-                    else if (pos == 1)
-                        pGE->set_estado_atual(6);
-                    else if (pos == 2)
-                        pGE->set_estado_atual(8);
+
+                    if(pos == 1)
+                    {
+                        if(get_jogador2())
+                            pGE->set_estado_atual(7);
+                        else
+                            pGE->set_estado_atual(6);
+                    }
+                    
+                    else
+                    {
+                        if(get_jogador2())
+                            pGE->set_estado_atual(9);
+                        else
+                            pGE->set_estado_atual(8);
+                    }
                 }
 
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))

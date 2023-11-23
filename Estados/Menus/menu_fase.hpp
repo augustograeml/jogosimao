@@ -9,10 +9,9 @@ namespace Estados
     {
         class Menu_Fase : public Menu
         {
-            protected:
-                bool jog2;
+            private:
             public:
-                Menu_Fase(int id);
+                Menu_Fase(int id, bool jog2);
                 ~Menu_Fase();
 
                 void inicializa_valores();
