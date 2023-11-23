@@ -11,6 +11,7 @@ namespace Estados
     {
         Fase1::Fase1(int id) : Fase(id), neve(false)
         {
+            identidade = id;
             //geracao aleatoria de instancias de inimigos e obstaculos
             for(int i = 0; i < 6; i++)
                 num_entidades[i] = rand()%3 + 3;
@@ -76,10 +77,17 @@ namespace Estados
             inimigos.desenhar();
             
             //std::cout<<" Executadno fase 1";
-            if (gC.get_sem_inimigos())
+            //fase 2 pra dois jogadores
+            if (gC.get_sem_inimigos() && identidade == 6)
             {
-                //fim_de_jogo();
-                //pGG->resetarCamera();
+                pGG->resetarCamera();
+                pGE->set_estado_atual(8);
+                return;
+            }
+            //fase 2 pra um jogadores
+            else if (gC.get_sem_inimigos() && identidade == 5)
+            {
+                pGG->resetarCamera();
                 pGE->set_estado_atual(7);
                 return;
             }
