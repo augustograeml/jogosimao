@@ -28,10 +28,10 @@ namespace Entidades
 
         void Arqueiro::mover()
         {
-            int aux = rand()%3;
-            if(aux)
+            int aux = rand()%100;
+            if(aux == 1)
             {
-                atirando = true;
+                mudar_direcao();
             }
             
             if(!nochao)
@@ -77,6 +77,8 @@ namespace Entidades
             {
                 novo.setPosicao(this->getPosicao() + (z));
                 atirando = false;
+                if(!direcao)
+                novo.setVelocidade(-novo.getVelocidade());
                 novo.executar();
                 recarregar = TEMPO_RECARGA;
             }

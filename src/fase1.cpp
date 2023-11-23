@@ -40,7 +40,8 @@ namespace Estados
             shape.setPosition(sf::Vector2f(0.f, 0.f));
 
             criar_cenario(ARQUIVO_CENARIO_1, num_entidades[0], num_entidades[1], num_entidades[2], num_entidades[3],num_entidades[4], num_entidades[5], get_jaCriado());
-
+            tempo_inicio = clock();
+            
             //a gente na teoria salva aqui
             /*criar_jogadores(1);
             criar_jogadores(0);
@@ -59,7 +60,8 @@ namespace Estados
             shape.setSize(Vector2f(950.f, 950.f));
             shape.setTexture(&Textura);
             shape.setPosition(sf::Vector2f(76.f, -10.f));
-            pGG->desenharFundo(&shape);           
+            pGG->desenharFundo(&shape);    
+              
         }
 
         bool Fase1::get_neve()
@@ -70,6 +72,7 @@ namespace Estados
         //colocar bool pra executar direitin quando tiver dois jogadores
         void Fase1::executar()
         {
+            
             pGG->desenharFundo(&shape);
             obstaculos.desenhar();
             jogadores.desenhar();
@@ -79,14 +82,29 @@ namespace Estados
             if (gC.get_sem_inimigos())
             {
                 //fim_de_jogo();
+                
+                clock_t tempo_final = clock();
+                
+                Entidades::Personagens::Jogador* jog = static_cast<Entidades::Personagens::Jogador*> (*jogadores.get_primeiro());
+                jog->set_tempo((tempo_final - tempo_inicio)/CLOCKS_PER_SEC);
+
+                if(num_jogadores == 2)
+                {
+                Entidades::Personagens::Jogador* jog2 = static_cast<Entidades::Personagens::Jogador*> (*jogadores.get_primeiro()++);
+                jog2->set_tempo((tempo_final - tempo_inicio)/CLOCKS_PER_SEC);
+                }
                 pGG->resetarCamera();
                 pGE->set_estado_atual(7);
+
+                std::cout << jog->get_tempo() << std::endl;
+
                 return;
             }
 
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
             {
                 jogadores.get_primeiro().operator*()->set_pausado(false);
+
             }
             if(jogadores.get_primeiro().operator*()->get_pause())
                 return;

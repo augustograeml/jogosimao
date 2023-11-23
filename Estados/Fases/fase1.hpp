@@ -9,6 +9,7 @@ namespace Estados
         {
             private:
                 bool neve;
+                clock_t tempo_inicio;
                 
             public:
                 Fase1(int id);

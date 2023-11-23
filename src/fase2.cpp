@@ -69,13 +69,14 @@ namespace Estados
             /*if(jogadores.get_primeiro().operator*()->get_pause())
                 return;*/
 
+            pGG->desenharFundo(&shape);
             jogadores.executar();
             inimigos.executar();
             gerenciar_colisoes();
 
             atualizar();
 
-            pGG->desenharFundo(&shape);
+            
             obstaculos.desenhar();
             jogadores.desenhar();
             inimigos.desenhar();

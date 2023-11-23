@@ -24,6 +24,9 @@ namespace Entidades
             void atualizar();
             void executar();
             void colidir(Entidade* pE);
+            
+            void set_tempo(double x) {tempo = x;}
+            double get_tempo() {return tempo;}
 
             void tela_pause();
 
