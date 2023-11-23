@@ -44,7 +44,6 @@ namespace Estados
             textos[0].setFillColor(sf::Color::White);
             textos[0].setOutlineThickness(20);
 
-            textos[1].setFillColor(sf::Color::White);
             textos[1].setOutlineThickness(4);
 
             pos = 1;

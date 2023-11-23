@@ -4,8 +4,7 @@ namespace Entidades
 {
     namespace Personagens
     {
-        Arqueiro::Arqueiro(sf::Vector2f pos, sf::Vector2f vel):
-            Inimigo(pos, vel)
+        Arqueiro::Arqueiro(sf::Vector2f pos, sf::Vector2f vel) : Inimigo(pos, vel)
         {
             this->setSkin("Design/imagens/zumbi_atirador.png");
             atirando = false;
@@ -13,7 +12,7 @@ namespace Entidades
             recarregar = 0;
             set_forca(5);
 
-            //depois mexer com o setvida desse molecote aqui
+            // depois mexer com o setvida desse molecote aqui
         }
 
         Arqueiro::~Arqueiro()
@@ -28,26 +27,26 @@ namespace Entidades
 
         void Arqueiro::mover()
         {
-            int aux = rand()%3;
-            if(aux)
+            int aux = rand() % 3;
+            if (aux)
             {
                 atirando = true;
             }
-            
-            if(!nochao)
+
+            if (!nochao)
                 velocidade += Vector2f(0, 0.1);
             else
             {
-                if(direcao)
-                velocidade = Vector2f(-0.1f, 0.f);
+                if (direcao)
+                    velocidade = Vector2f(-0.1f, 0.f);
                 else
-                velocidade = Vector2f(0.1f, 0.f);
+                    velocidade = Vector2f(0.1f, 0.f);
             }
 
-            //if(pjogador->get_pause() == false)
-                atualizar();
-            //atualizar();
-                
+            // if(pjogador->get_pause() == false)
+            atualizar();
+            // atualizar();
+
             nochao = false;
         }
 
@@ -61,19 +60,60 @@ namespace Entidades
             
         }
 
-        void Arqueiro::atacar(Entidade* jg)
+        void Arqueiro::atacar(Entidade *jg)
         {
             jg->set_vida(jg->get_vida() - forca);
         }
-        void Arqueiro::colidir(Entidade* pE)
+
+        void Arqueiro::colidir(Entidade *pE)
         {
             pE->set_vida(pE->get_vida() - get_forca());
         }
+
+        void Arqueiro::criar_arqueiros(string arquivo)
+        {
+            ifstream caminho(arquivo);
+
+            if (!caminho)
+            {
+                cout << "Nao foi possivel acessar o arquivo de criacao dos arqueiros";
+                exit(1);
+            }
+
+            string linha;
+            Entidade* aux = nullptr;
+            int j, i;
+
+            for(i = 0; getline(caminho, linha); i++)
+            {
+                j = 0;
+                for(char tipo : linha)
+                {
+                    switch(tipo)
+                    {
+                        case '4':
+                            aux = static_cast<Entidade*>(new Arqueiro(sf::Vector2f(0.f, 0.f), sf::Vector2f(0.f, 0.f)));
+                            if(aux)
+                            {
+                                aux->setWindow(pGG->get_Janela());
+                                aux->setPosicao(sf::Vector2f(j * TAM, i * TAM));
+                                //incluir inmigos na lista
+                            }
+                            break;
+
+                        default:
+                            break;;
+                    }
+                }
+            }
+
+        }
+
         void Arqueiro::atirar()
         {
             sf::Vector2f z = this->getTamanho() / 2.f;
 
-            if(recarregar == 0)
+            if (recarregar == 0)
             {
                 novo.setPosicao(this->getPosicao() + (z));
                 atirando = false;
@@ -87,9 +127,9 @@ namespace Entidades
             }
         }
 
-        void Arqueiro::salvar(std::ostringstream* entrada)
+        void Arqueiro::salvar(std::ostringstream *entrada)
         {
-            (*entrada) << "{ \"posicao\": [" << corpo.getPosition().x<<","<<corpo.getPosition().y<<"], \"velocidade\": ["<<velocidade.x<<","<<velocidade.y<<"] }" << std::endl;
+            (*entrada) << "{ \"posicao\": [" << corpo.getPosition().x << "," << corpo.getPosition().y << "], \"velocidade\": [" << velocidade.x << "," << velocidade.y << "] }" << std::endl;
         }
     }
 }

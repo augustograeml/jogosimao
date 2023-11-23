@@ -14,6 +14,8 @@ namespace Observers
             ~Observer_Tecla();
 
             void atualizar(sf::Keyboard::Key k);
+            void tecla_pressionada(const sf::Keyboard::Key tecla);
+            void tecla_solta(const sf::Keyboard::Key tecla);
     };
 
 }

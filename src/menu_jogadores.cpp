@@ -47,9 +47,11 @@ namespace Estados
             }
 
             textos[0].setFillColor(sf::Color::White);
-            textos[0].setOutlineThickness(4);
+            textos[0].setOutlineThickness(20);
 
-            pos = 0;
+            textos[1].setOutlineThickness(4);
+
+            pos = 1;
         }
 
         void Menu_Jogadores::mostrar_menu()

@@ -15,6 +15,8 @@ namespace Entidades
                 ~Coracao();
 
                 int get_cura() {return cura;}
+
+                void criar_coracao(string arquivo);
                 
                 void curar(Entidades::Personagens::Jogador* pJ);
                 void executar();

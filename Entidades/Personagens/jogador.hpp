@@ -25,6 +25,7 @@ namespace Entidades
             void executar();
             void colidir(Entidade* pE);
 
+            void criar_jogadores(string arquivo, bool jogador2);
             void tela_pause();
 
             void mover();
