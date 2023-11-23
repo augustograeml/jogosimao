@@ -109,6 +109,7 @@ namespace Entidades
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) && !pausado)
             {
                 pausado = !pausado;
+                pGG->limpar();
                 PGEstados->set_estado_atual(0);
             }
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::P) && pausado)
