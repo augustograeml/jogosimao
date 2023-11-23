@@ -69,7 +69,7 @@ namespace Entidades
         {
             pJ->set_vida(pJ->get_vida() - get_dano());
         }
-        void Espinho::colidir(Entidade* pE)
+        void Espinho::colidir(Entidade* pE, int a)
         {
             Entidades::Personagens::Jogador* aux = static_cast<Entidades::Personagens::Jogador*> (pE);
             espinhar(aux);

@@ -21,7 +21,7 @@ namespace Entidades
                 void executar();
                 void mover();
                 void atualizar();
-                void colidir(Entidade* pE);
+                void colidir(Entidade* pE, int a);
                 void atirar();
                 void criar_arqueiros(string arquivo);
 

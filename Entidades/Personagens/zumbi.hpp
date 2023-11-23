@@ -17,7 +17,7 @@ namespace Entidades
                 void atualizar();
                 void executar();
                 void criar_zumbis(string arquivo);
-                void colidir(Entidade* pE);
+                void colidir(Entidade* pE, int a);
                 void atacar(Entidade* jg);
                 void salvar(std::ostringstream* entrada);
                 

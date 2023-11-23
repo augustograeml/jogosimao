@@ -42,7 +42,7 @@ namespace Entidades
 
             virtual void mover() = 0;
             virtual void atualizar() = 0;
-            virtual void colidir(Entidade* pE) = 0;
+            virtual void colidir(Entidade* pE, int a) = 0;
             
             void morrer();
 

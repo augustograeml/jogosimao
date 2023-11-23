@@ -70,11 +70,11 @@ namespace Entidades
         {
             pJ->set_vida(cura);
         }
-
-        void Coracao::colidir(Entidade* pE)
+        void Coracao::colidir(Entidade* pE, int a)
         {
             Entidades::Personagens::Jogador* aux = static_cast<Entidades::Personagens::Jogador*> (pE);
             curar(aux);
+            morrer();
         }
     }
 }

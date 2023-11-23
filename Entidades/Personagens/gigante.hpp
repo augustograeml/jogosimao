@@ -18,7 +18,7 @@ namespace Entidades
                 void mover();
                 void atualizar();
                 void criar_gigante(string arquivo);
-                void colidir(Entidade* pE);
+                void colidir(Entidade* pE, int a);
                 void atacar(Entidade* jg);
                 void salvar(std::ostringstream* entrada);
               
