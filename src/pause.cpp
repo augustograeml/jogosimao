@@ -85,14 +85,14 @@ namespace Estados
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
                 {
                     if (pos == 2)
-                        pGE->set_estado_atual(1);
+                        pGE->set_estado_atual(0);
                     else if (pos == 1)
-                        pGE->set_estado_atual(5);
+                        pGE->set_estado_atual(6);
                     
                 }
 
-                //if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-                    //pGE->set_estado_atual(2);
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+                    pGE->set_estado_atual(6);
             }
         }
 

@@ -129,15 +129,15 @@ namespace Estados
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
                 {
                     if (pos == 3)
-                        pGE->set_estado_atual(1);
+                        pGE->set_estado_atual(0);
                     else if (pos == 1)
-                        pGE->set_estado_atual(3);
+                        pGE->set_estado_atual(2);
                     else if (pos == 2)
-                        pGE->set_estado_atual(4);
+                        pGE->set_estado_atual(3);
                 }
 
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-                    pGE->set_estado_atual(1);
+                    pGE->set_estado_atual(0);
             }
         }
     }

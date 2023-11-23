@@ -45,7 +45,7 @@ void Jogo::Executar()
         pG->limpar();
         pEv->executar();
         pE->executar(); // desenha a fase e o jogador
-        if(pE->get_estado_atual() > 4)
+        if(pE->get_estado_atual() > 5)
             pG->mostrar();
         
     }

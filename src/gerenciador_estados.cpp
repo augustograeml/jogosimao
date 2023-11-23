@@ -7,7 +7,7 @@ namespace Gerenciadores
 {
     Gerenciador_Estados* Gerenciador_Estados::instancia = nullptr;
 
-    Gerenciador_Estados::Gerenciador_Estados() : estadoAtual(1)
+    Gerenciador_Estados::Gerenciador_Estados() : estadoAtual(0)
     {
         //colocar o numero de estados que voce possui
         estados.resize(10);

@@ -1,4 +1,5 @@
-[{ "posicao": [300,800], "velocidade": [0,0] }
+[{ "posicao": [800,800], "velocidade": [0,0] }
+,{ "posicao": [1300,600], "velocidade": [0,0] }
 ,{ "posicao": [650,600], "velocidade": [0,0] }
 ,{ "posicao": [200,600], "velocidade": [0,0] }
 ,{ "posicao": [1200,550], "velocidade": [0,0] }

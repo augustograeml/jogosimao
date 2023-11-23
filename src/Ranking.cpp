@@ -77,12 +77,8 @@ namespace Estados
                 if (evento.type == sf::Event::Closed)
                     pGG->fecharJanela();
 
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
-                        pGE->set_estado_atual(1);   
-
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-                    pGE->set_estado_atual(1);
-
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+                        pGE->set_estado_atual(0);   
             }
         }
     }

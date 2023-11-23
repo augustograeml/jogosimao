@@ -16,7 +16,7 @@ namespace Estados
         Fase2::Fase2(int id) : Fase(id), musgos(false)
         {
 
-            if(id == 8)
+            if(id == 9)
                 set_num_jogadores(2);
 
 
@@ -75,7 +75,6 @@ namespace Estados
             gerenciar_colisoes();
 
             atualizar();
-
             
             obstaculos.desenhar();
             jogadores.desenhar();

@@ -117,7 +117,7 @@ namespace Entidades
                 //a tela de pause ta seguindo o jogador?
                 pausado = !pausado;
                 pGG->limpar();
-                PGEstados->set_estado_atual(0);
+                PGEstados->set_estado_atual(5);
             }
 
             nochao = false;
