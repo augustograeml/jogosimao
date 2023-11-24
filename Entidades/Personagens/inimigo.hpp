@@ -1,5 +1,6 @@
 #pragma once
 #include "../entidade.hpp"
+#include "../projetil.hpp"
 #include "jogador.hpp"  
 
 namespace Entidades
@@ -23,11 +24,10 @@ namespace Entidades
 
                 virtual void atualizar() = 0;
                 virtual void mover() = 0;
+                virtual std::vector<Projetil>* get_projeteis() {return nullptr;}
                 virtual void executar() = 0;
                 virtual void colidir(Entidade* pE, int a) = 0;
                 virtual void atacar(Entidade* jg) = 0;
-                
-                    
             };
         }
 }

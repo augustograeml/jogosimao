@@ -4,7 +4,7 @@
 
 namespace Entidades
 {
-    Projetil::Projetil() : Entidade(this->getPosicao())
+    Projetil::Projetil(sf::Vector2f tam) : Entidade(this->getPosicao()), dano(2)
     {
         corpo.setSize(Vector2f(TAM_BALAX,TAM_BALAY));
         corpo.setFillColor(sf::Color::Red);
@@ -22,16 +22,53 @@ namespace Entidades
         if(vivo)
         {
             this->desenhar();
-            this->atirar();
+            this->mover();
         }
+    }
+
+    void Projetil::atualizar()
+    {
+        corpo.setPosition(corpo.getPosition() + velocidade);
+    }
+
+    void Projetil::mover()
+    {   
+        if(nochao)
+        {
+            set_vida(0);
+            velocidade = {0, 0};
+            corpo.setFillColor(sf::Color::Transparent);
+        }
+        else
+        {
+            corpo.move(GRAVIDADE);
+            corpo.move(velocidade);
+        }
+
+        //atualizar();
+    }
+
+    void Projetil::atirar()
+    {   
         
     }
-    void Projetil::atirar()
-    {   corpo.move(Vector2f(0,0.1f));
-        corpo.move(velocidade);
+
+    void Projetil::danar(Entidade* pE)
+    {   
+        if(pE)
+            pE->set_vida(pE->get_vida() - dano);
     }
+
     void Projetil::colidir(Entidade* pE, int a)
     {
-        setVelocidade(Vector2f(0,0));
+        
+        //eu nao to atribuindo nenhum projetil a lista
+        if(a != 0)
+        {
+            danar(pE);
+            setVelocidade(Vector2f(0.f,0.f));
+        }
+
+        executar();
     }
 }

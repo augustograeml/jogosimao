@@ -13,6 +13,7 @@
 #define TAM_CHEFAO 100.f
 //tamanho da nossa flecha, la elwe
 #define TAM_FLECHA 10.f
+#define GRAVIDADE {0, 0.1f}
 
 using namespace sf;
 

@@ -38,6 +38,7 @@
             aux++;
         }
     }
+    
     void ListaEntidade::executar()
     {
         Lista<Entidades::Entidade>::Iterador aux = LEs.get_primeiro();

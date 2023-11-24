@@ -5,6 +5,7 @@
 #include "Estados/Menus/menu_principal.hpp"
 #include "Estados/Menus/ranking.hpp"
 #include "Estados/Menus/pause.hpp"
+#include "Estados/Menus/nome.hpp"
 #include "Estados/Menus/menu_fase.hpp"
 #include "Estados/Menus/menu_jogadores.hpp"
 
@@ -20,6 +21,7 @@ class Jogo
 {
     private:
 
+        Estados::Menus::Nome* nome;
         Estados::Menus::Pause* pause;
         Estados::Menus::Ranking* ranking;
         Estados::Menus::Menu_Principal* menu_principal;

@@ -10,7 +10,7 @@ namespace Entidades
         class Arqueiro : public Inimigo
         {
             private:
-            Projetil novo;
+            std::vector<Projetil> vetor_projeteis;
             int recarregar;
             bool atirando;
 
@@ -25,7 +25,7 @@ namespace Entidades
                 void atirar();
                 void criar_arqueiros(string arquivo);
 
-                Projetil* get_projetil() {return &novo;}
+                std::vector<Projetil>* get_projeteis() {return &vetor_projeteis;}
                 void atacar(Entidade* jg);
                 void salvar(std::ostringstream* entrada);
                

@@ -1,8 +1,9 @@
-//codigo reaproveitado do Peteco
+// codigo reaproveitado do Peteco
 
 #include "../Gerenciadores/gerenciador_colisoes.hpp"
 #include "../Entidades/Personagens/jogador.hpp"
 #include "../Entidades/Personagens/inimigo.hpp"
+#include "../Entidades/Personagens/arqueiro.hpp"
 #include "../Entidades/Obstaculos/obstaculo.hpp"
 #include "../Entidades/Obstaculos/espinho.hpp"
 #include "../Entidades/Obstaculos/coracao.hpp"
@@ -18,12 +19,12 @@ using namespace std;
 
 namespace Gerenciadores
 {
-    Gerenciador_Colisoes::Gerenciador_Colisoes() :
-    jogadores(nullptr),
-    obstaculos(nullptr),
-    inimigos(nullptr),
-    sem_inimigos(false),
-    sem_jogadores(false)
+    Gerenciador_Colisoes::Gerenciador_Colisoes() : jogadores(nullptr),
+                                                   obstaculos(nullptr),
+                                                   inimigos(nullptr),
+                                                   projeteis(nullptr),
+                                                   sem_inimigos(false),
+                                                   sem_jogadores(false)
     {
     }
 
@@ -32,9 +33,10 @@ namespace Gerenciadores
         jogadores = nullptr;
         obstaculos = nullptr;
         inimigos = nullptr;
+        projeteis = nullptr;
     }
 
-    void Gerenciador_Colisoes::colisao_simples()
+    void Gerenciador_Colisoes::colisao_jogadores_obstaculos()
     {
         Listas::Lista<Entidades::Entidade>::Iterador obst;
         Listas::Lista<Entidades::Entidade>::Iterador jog = jogadores->get_primeiro();
@@ -44,7 +46,7 @@ namespace Gerenciadores
             obst = obstaculos->get_primeiro();
             while (obst != nullptr)
             {
-                if((*obst)->get_vivo())
+                if ((*obst)->get_vivo())
                 {
                     int id_colisao = colidiu(*jog, *obst);
                     if (id_colisao)
@@ -57,80 +59,169 @@ namespace Gerenciadores
             }
             jog++;
         }
+    }
+    void Gerenciador_Colisoes::colisao_inimigos_obstaculos()
+    {
+        Listas::Lista<Entidades::Entidade>::Iterador obst;
         Listas::Lista<Entidades::Entidade>::Iterador inim = inimigos->get_primeiro();
         while (inim != nullptr)
         {
             obst = obstaculos->get_primeiro();
             while (obst != nullptr)
             {
-                if((*obst)->get_vivo())
-                {
+                if ((*obst)->get_vivo())
                     int id_colisao = colidiu(*inim, *obst);
-                    
+
                 obst++;
-                }
-                else
-                obst++;
-                
             }
             inim++;
         }
+    }
 
-        jog = jogadores->get_primeiro();
-
+    void Gerenciador_Colisoes::colisao_jogadores_inimigos()
+    {
+        Listas::Lista<Entidades::Entidade>::Iterador jog = jogadores->get_primeiro();
+        Listas::Lista<Entidades::Entidade>::Iterador inim = inimigos->get_primeiro();
         while (jog != nullptr)
         {
             inim = inimigos->get_primeiro();
             while (inim != nullptr)
             {
-                if((*inim)->get_vivo())
+                if ((*inim)->get_vivo())
                 {
                     int j = colidiu(*jog, *inim);
 
                     if (j)
-                    {
                         (*inim)->colidir(*jog, j);
-                    }
-                    inim++;
                 }
-                else
                 inim++;
-                
             }
             jog++;
         }
+    }
+    void Gerenciador_Colisoes::colisao_jogadores_projeteis()
+    {
+        Listas::Lista<Entidades::Entidade>::Iterador inim = inimigos->get_primeiro();
+        Listas::Lista<Entidades::Entidade>::Iterador jog = jogadores->get_primeiro();
+        while (inim != nullptr)
+        {
+            Entidades::Personagens::Inimigo *arqueiro_atira = static_cast<Entidades::Personagens::Inimigo *>(*inim);
+            std::vector<Entidades::Projetil> *pVetor = arqueiro_atira->get_projeteis();
 
-        //vereficando se os inimigos estao todos mortos
+            if (pVetor != nullptr)
+            {
+                jog = jogadores->get_primeiro();
+                while (jog != nullptr)
+                {
+                    if (pVetor->size() > 0)
+                    {
+                        for (int i = 0; i < pVetor->size(); i++)
+                        {
+                            Entidades::Entidade *proj = static_cast<Entidades::Entidade *>(&pVetor->at(i));
+                            if (proj->get_vivo())
+                            {
+                                int j = colidiu(*jog, proj);
+                                if (j)
+                                {
+                                    proj->colidir(*jog, j);
+                                    proj->set_vivo(false);
+                                }
+                            }
+                        }
+                    }
+                    jog++;
+                }
+            }
+            inim++;
+        }
+    }
+    void Gerenciador_Colisoes::colisao_obstaculos_projeteis()
+    {
+        Listas::Lista<Entidades::Entidade>::Iterador obst = obstaculos->get_primeiro();
+        Listas::Lista<Entidades::Entidade>::Iterador inim = inimigos->get_primeiro();
+        while (inim != nullptr)
+        {
+            Entidades::Personagens::Inimigo *arqueiro_atira = static_cast<Entidades::Personagens::Inimigo *>(*inim);
+            std::vector<Entidades::Projetil> *pVetor = arqueiro_atira->get_projeteis();
+
+            if (pVetor != nullptr)
+            {
+                obst = obstaculos->get_primeiro();
+                while (obst != nullptr)
+                {
+                    if (pVetor->size() > 0)
+                    {
+                        for (int i = 0; i < pVetor->size(); i++)
+                        {
+                            Entidades::Entidade *proj = static_cast<Entidades::Entidade *>(&pVetor->at(i));
+                            if (proj->get_vivo())
+                            {
+                                int j = colidiu(*obst, proj);
+                                if (j)
+                                {
+                                    proj->colidir(*obst, j);
+                                    proj->set_vivo(false);
+                                }
+                            }
+                        }
+                    }
+                    obst++;
+                }
+            }
+
+            inim++;
+        }
+    }
+
+    const bool Gerenciador_Colisoes::get_inimigos_vivos()
+    {
         int ini_vivos = 0;
         Listas::Lista<Entidades::Entidade>::Iterador inimg = inimigos->get_primeiro();
         while (inimg != nullptr)
         {
-            if((*inimg)->get_vivo())
+            if ((*inimg)->get_vivo())
                 ini_vivos++;
             inimg++;
         }
-        if(ini_vivos == 0)
+        if (ini_vivos == 0)
             sem_inimigos = true;
 
+        return sem_inimigos;
+    }
 
+    const bool Gerenciador_Colisoes::get_jogadores_vivos()
+    {
         int jog_vivos = 0;
         Listas::Lista<Entidades::Entidade>::Iterador joga = jogadores->get_primeiro();
         while (joga != nullptr)
         {
-            if((*joga)->get_vivo())
+            if ((*joga)->get_vivo())
                 jog_vivos++;
             joga++;
         }
-        if(jog_vivos == 0)
+        if (jog_vivos == 0)
             sem_jogadores = true;
+
+        return sem_jogadores;
+    }
+
+    void Gerenciador_Colisoes::gerenciar_colisoes()
+    {
+        colisao_jogadores_obstaculos();
+        colisao_jogadores_inimigos();
+        colisao_inimigos_obstaculos();
+        colisao_jogadores_projeteis();
+        colisao_obstaculos_projeteis();
+        get_inimigos_vivos();
+        get_jogadores_vivos();
     }
 
     int Gerenciador_Colisoes::colidiu(Entidades::Entidade *e1, Entidades::Entidade *e2)
     {
 
-            sf::Vector2f pos1 = e1->getPosicao(), pos2 = e2->getPosicao(), tam1 = e1->getTamanho(), tam2 = e2->getTamanho(),
-                 d(fabs(pos1.x - pos2.x) - ((tam1.x + tam2.x) / 2.f),
-                   fabs(pos1.y - pos2.y) - ((tam1.y + tam2.y) / 2.f));
+        sf::Vector2f pos1 = e1->getPosicao(), pos2 = e2->getPosicao(), tam1 = e1->getTamanho(), tam2 = e2->getTamanho(),
+                     d(fabs(pos1.x - pos2.x) - ((tam1.x + tam2.x) / 2.f),
+                       fabs(pos1.y - pos2.y) - ((tam1.y + tam2.y) / 2.f));
 
         if (d.x < 0 && d.y < 0)
         {
@@ -166,13 +257,7 @@ namespace Gerenciadores
                 }
             }
         }
-        
+
         return 0;
     }
-
-    bool Gerenciador_Colisoes::get_sem_inimigos()
-    {
-        return sem_inimigos;
-    }
-
 }

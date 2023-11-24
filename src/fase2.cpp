@@ -15,7 +15,6 @@ namespace Estados
     {
         Fase2::Fase2(int id) : Fase(id), musgos(false)
         {
-
             if(id == 9)
                 set_num_jogadores(2);
 
@@ -58,7 +57,7 @@ namespace Estados
 
         void Fase2::executar()
         {            
-            if (gC.get_sem_inimigos())
+            if (gC.get_inimigos_vivos())
             {
                 pGG->limpar();
                 pGG->resetarCamera();

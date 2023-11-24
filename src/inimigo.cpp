@@ -36,7 +36,7 @@ namespace Entidades
         }
         void Inimigo::mudar_direcao()
         {
-            direcao =  !direcao;
+            direcao = !direcao;
         }
     }
 }

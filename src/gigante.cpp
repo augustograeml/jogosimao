@@ -4,14 +4,14 @@ namespace Entidades
 {
     namespace Personagens
     {
-        Gigante::Gigante(sf::Vector2f pos, sf::Vector2f vel) : Inimigo(pos, vel), 
-        ja_inc(false)
+        Gigante::Gigante(sf::Vector2f pos, sf::Vector2f vel) : Inimigo(pos, vel),
+                                                               ja_inc(false)
         {
-            int i = rand()%10;
-            if(i == 2)
+            int i = rand() % 10;
+            if (i == 2)
                 maldade = true;
 
-            if(maldade)
+            if (maldade)
                 set_forca(10);
             else
                 set_forca(4);
@@ -22,7 +22,6 @@ namespace Entidades
 
         Gigante::~Gigante()
         {
-
         }
 
         void Gigante::atualizar()
@@ -32,44 +31,39 @@ namespace Entidades
 
         void Gigante::mover()
         {
-            //velocidade += Vector2f(rand() % 10 - 5, (float) (nochao ? - (rand() % 5) : 0));
-            if(maldade && !(ja_inc))
+            // velocidade += Vector2f(rand() % 10 - 5, (float) (nochao ? - (rand() % 5) : 0));
+            if (maldade && !(ja_inc))
             {
                 velocidade.x += 0.2;
                 ja_inc = true;
             }
-            if(vida > 0)
+            if (vida > 0)
             {
-                if(!nochao)
+                if (!nochao)
                     velocidade += Vector2f(0, 0.1);
                 else
                 {
-                    if(direcao)
-                    velocidade = Vector2f(0.1f, 0.f);
+                    if (direcao)
+                        velocidade = Vector2f(0.1f, 0.f);
                     else
-                    velocidade = Vector2f(-0.1f, 0.f);
+                        velocidade = Vector2f(-0.1f, 0.f);
                 }
-                
-             nochao = false;
 
-            //if(pjogador->get_pause() == false)
+                nochao = false;
                 atualizar();
-            //atualizar();
             }
             else
-            morrer();
-            
+                morrer();
         }
 
         void Gigante::executar()
         {
-            //update();
-            if(vivo)
-            mover();
+            if (vivo)
+                mover();
         }
-        void Gigante::colidir(Entidade* pE, int a)
+        void Gigante::colidir(Entidade *pE, int a)
         {
-            if(a == 1 || a == 3)
+            if (a == 1 || a == 3)
             {
                 atacar(pE);
                 mudar_direcao();
@@ -82,8 +76,6 @@ namespace Entidades
             {
                 atacar(pE);
             }
-
-           
         }
 
         void Gigante::criar_gigante(string arquivo)
@@ -97,41 +89,41 @@ namespace Entidades
             }
 
             string linha;
-            Entidade* aux = nullptr;
+            Entidade *aux = nullptr;
             int j, i;
 
-            for(i = 0; getline(caminho, linha); i++)
+            for (i = 0; getline(caminho, linha); i++)
             {
                 j = 0;
-                for(char tipo : linha)
+                for (char tipo : linha)
                 {
-                    switch(tipo)
+                    switch (tipo)
                     {
-                        case '9':
-                            aux = static_cast<Entidade*>(new Gigante(sf::Vector2f(0.f, 0.f), sf::Vector2f(0.f, 0.f)));
-                            if(aux)
-                            {
-                                aux->setWindow(pGG->get_Janela());
-                                aux->setPosicao(sf::Vector2f(j * TAM, i * TAM));
-                                //incluir inmigos na lista
-                            }
-                            break;
+                    case '9':
+                        aux = static_cast<Entidade *>(new Gigante(sf::Vector2f(0.f, 0.f), sf::Vector2f(0.f, 0.f)));
+                        if (aux)
+                        {
+                            aux->setWindow(pGG->get_Janela());
+                            aux->setPosicao(sf::Vector2f(j * TAM, i * TAM));
+                            // incluir inmigos na lista
+                        }
+                        break;
 
-                        default:
-                            break;
+                    default:
+                        break;
                     }
                 }
             }
         }
 
-        void Gigante::atacar(Entidade* jg)
+        void Gigante::atacar(Entidade *jg)
         {
             jg->set_vida(jg->get_vida() - forca);
         }
 
-        void Gigante::salvar(std::ostringstream* entrada)
+        void Gigante::salvar(std::ostringstream *entrada)
         {
-            (*entrada) << "{ \"posicao\": [" << corpo.getPosition().x<<","<<corpo.getPosition().y<<"], \"velocidade\": ["<<velocidade.x<<","<<velocidade.y<<"] }" << std::endl;
+            (*entrada) << "{ \"posicao\": [" << corpo.getPosition().x << "," << corpo.getPosition().y << "], \"velocidade\": [" << velocidade.x << "," << velocidade.y << "] }" << std::endl;
         }
     }
 }

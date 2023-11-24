@@ -82,28 +82,38 @@ namespace Estados
             obstaculos.desenhar();
             jogadores.desenhar();
             inimigos.desenhar();
-
-            pGE->get_fase();
+            projeteis.desenhar();
             
             //std::cout<<" Executadno fase 1";
             //fase 2 pra dois jogadores
-            if (gC.get_sem_inimigos() && identidade == 7)
+            if (gC.get_inimigos_vivos() && identidade == 7)
             {
                 pGG->resetarCamera();
                 pGE->set_estado_atual(9);
                 return;
             }
             //fase 2 pra um jogadores
-            else if (gC.get_sem_inimigos() && identidade == 6)
+            else if (gC.get_inimigos_vivos() && identidade == 6)
             {
-                fim_de_jogo();
+                //fim_de_jogo();
+                
+                clock_t tempo_final = clock();
+                
+                Entidades::Personagens::Jogador* jog = static_cast<Entidades::Personagens::Jogador*> (*jogadores.get_primeiro());
+                jog->set_tempo((tempo_final - tempo_inicio)/CLOCKS_PER_SEC);
+
+                if(num_jogadores == 2)
+                {
+                    Entidades::Personagens::Jogador* jog2 = static_cast<Entidades::Personagens::Jogador*> (*jogadores.get_primeiro()++);
+                    jog2->set_tempo((tempo_final - tempo_inicio)/CLOCKS_PER_SEC);
+                }
                 pGG->resetarCamera();
                 pGE->set_estado_atual(8);
 
 
                 return;
             }
-            if(gC.get_sem_jogadores())
+            if(gC.get_jogadores_vivos())
             {
                 pGG->limpar();
                 pGG->resetarCamera();
