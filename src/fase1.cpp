@@ -94,9 +94,7 @@ namespace Estados
             }
             //fase 2 pra um jogadores
             else if (gC.get_inimigos_vivos() && identidade == 6)
-            {
-                //fim_de_jogo();
-                
+            {                
                 clock_t tempo_final = clock();
                 
                 Entidades::Personagens::Jogador* jog = static_cast<Entidades::Personagens::Jogador*> (*jogadores.get_primeiro());
@@ -109,7 +107,6 @@ namespace Estados
                 }
                 pGG->resetarCamera();
                 pGE->set_estado_atual(8);
-
 
                 return;
             }
