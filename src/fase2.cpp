@@ -65,6 +65,14 @@ namespace Estados
                 fim_de_jogo();
                 return;
             }
+            
+            if(gC.get_jogadores_vivos())
+            {
+                pGG->limpar();
+                pGG->resetarCamera();
+                pGE->set_estado_atual(0);
+                return;
+            } 
 
             pGE->get_fase();
 
