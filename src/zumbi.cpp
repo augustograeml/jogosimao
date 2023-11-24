@@ -9,7 +9,7 @@ namespace Entidades
         {
             this->setSkin("Design/imagens/zumbi_bateu_morreu.png");
             direcao = 1;
-            pulo = rand()%10;
+            pulo = rand() % 10;
         }
 
         Zumbi::~Zumbi()
@@ -24,59 +24,55 @@ namespace Entidades
 
         void Zumbi::mover()
         {
-            
-            
-            if(direcao)
+
+            if (direcao)
             {
-                if(!nochao)
+                if (!nochao)
                     velocidade += Vector2f(0, 0.1);
                 else
                 {
                     velocidade = Vector2f(0.1f, 0.f);
-                    if(pulo == 2)
-                    velocidade = Vector2f(0.3f,-2.0f);
+                    if (pulo == 2)
+                        velocidade = Vector2f(0.3f, -2.0f);
                     else
-                    pulo = rand()%10;
+                        pulo = rand() % 10;
                 }
-                    
+
                 nochao = false;
             }
             else
             {
-                if(!nochao)
+                if (!nochao)
                     velocidade += Vector2f(0, 0.1);
                 else
                 {
                     velocidade = Vector2f(-0.1f, 0.f);
-                    if(pulo == 2)
-                    velocidade = Vector2f(-0.3f,-2.0f);
+                    if (pulo == 2)
+                        velocidade = Vector2f(-0.3f, -2.0f);
                     else
-                        pulo = rand()%10;
+                        pulo = rand() % 10;
                 }
-                    
+
                 nochao = false;
             }
 
-            //if(pjogador->get_pause() == false)
-                atualizar();
-                
-            //atualizar();
+            atualizar();
         }
 
         void Zumbi::executar()
         {
-            //update();
-            if(vivo)
-            mover();
+            if (vivo)
+                mover();
         }
 
-        void Zumbi::atacar(Entidade* jg)
+        void Zumbi::atacar(Entidade *jg)
         {
             jg->set_vida(jg->get_vida() - forca);
         }
-        void Zumbi::colidir(Entidade* pE, int a)
+
+        void Zumbi::colidir(Entidade *pE, int a)
         {
-             if(a == 1 || a == 3)
+            if (a == 1 || a == 3)
             {
                 atacar(pE);
                 this->mudar_direcao();
@@ -89,9 +85,8 @@ namespace Entidades
             {
                 atacar(pE);
             }
-
         }
-        
+
         void Zumbi::criar_zumbis(string arquivo)
         {
             ifstream caminho(arquivo);
@@ -103,36 +98,37 @@ namespace Entidades
             }
 
             string linha;
-            Entidade* aux = nullptr;
+            Entidade *aux = nullptr;
             int j, i;
 
-            for(i = 0; getline(caminho, linha); i++)
+            for (i = 0; getline(caminho, linha); i++)
             {
                 j = 0;
-                for(char tipo : linha)
+                for (char tipo : linha)
                 {
-                    switch(tipo)
+                    switch (tipo)
                     {
-                        case '3':
-                            aux = static_cast<Entidade*>(new Zumbi(sf::Vector2f(0.f, 0.f), sf::Vector2f(0.f, 0.f)));
-                            if(aux)
-                            {
-                                aux->setWindow(pGG->get_Janela());
-                                aux->setPosicao(sf::Vector2f(j * TAM, i * TAM));
-                                //incluir inmigos na lista
-                            }
-                            break;
+                    case '3':
+                        aux = static_cast<Entidade *>(new Zumbi(sf::Vector2f(0.f, 0.f), sf::Vector2f(0.f, 0.f)));
+                        if (aux)
+                        {
+                            aux->setWindow(pGG->get_Janela());
+                            aux->setPosicao(sf::Vector2f(j * TAM, i * TAM));
+                            // incluir inmigos na lista
+                        }
+                        break;
 
-                        default:
-                            break;;
+                    default:
+                        break;
+                        ;
                     }
                 }
             }
         }
 
-        void Zumbi::salvar(std::ostringstream* entrada)
+        void Zumbi::salvar(std::ostringstream *entrada)
         {
-            (*entrada) << "{ \"posicao\": [" << corpo.getPosition().x<<","<<corpo.getPosition().y<<"], \"velocidade\": ["<<velocidade.x<<","<<velocidade.y<<"] }" << std::endl;
+            (*entrada) << "{ \"posicao\": [" << corpo.getPosition().x << "," << corpo.getPosition().y << "], \"velocidade\": [" << velocidade.x << "," << velocidade.y << "] }" << std::endl;
         }
     }
 }

@@ -19,7 +19,6 @@ namespace Gerenciadores
             //singleton
             Gerenciador_Grafico();
             static Gerenciador_Grafico* instancia;
-            //sf::Font* fonte;
         public:
             ~Gerenciador_Grafico();
 

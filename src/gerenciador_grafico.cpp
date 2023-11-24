@@ -39,7 +39,13 @@ namespace Gerenciadores
         {
             janela->draw(*pR);
         }
-
+    }
+    void Gerenciador_Grafico::desenharTexto(sf::Text* pT)
+    {
+        if (pT)
+        {
+            janela->draw(*pT);
+        }
     }
     const bool Gerenciador_Grafico::get_JanelaAberta() const
     {
@@ -76,11 +82,7 @@ namespace Gerenciadores
         janela->setView(camera);
     }
     void Gerenciador_Grafico::centralizarCamera(sf::Vector2f p)//Entidades:Personagens:Jogador* pJ1, Entidades:Personagens:Jogador* pJ2)
-    {
-        //std::cout << p.x << " -- " << p.y << std::endl;
-        //camera.setCenter(Vector2f(530.f, 500.f));
-       // sf::Vector2f p (pJ1->get_posicao()+ pJ2->get_posicao());
-        
+    {        
         if(p.x < 550 && p.y < 500)
             camera.setCenter(550.f,500.f);
         else if(p.x > 1200 && p.y < 500)

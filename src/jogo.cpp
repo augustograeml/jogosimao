@@ -12,6 +12,17 @@ Jogo::Jogo() : pG(Gerenciadores::Gerenciador_Grafico::get_instancia()), pE(Geren
     menu_fase = new Estados::Menus::Menu_Fase(3, true);
     ranking = new Estados::Menus::Ranking(4);
     pause = new Estados::Menus::Pause(5);
+    //nome = new Estados::Menus::Nome(10);
+    
+    /*try
+    {
+        nome = new Estados::Menus::Nome(10);
+    }
+    catch(const std::exception& e)
+    {
+        cout << "nome deu erro" << endl; 
+    }*/
+    
 
     // setando os ids de cada fase
     Estados::Fases::Fase1 *fase1 = new Estados::Fases::Fase1(6);

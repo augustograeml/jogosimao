@@ -4,7 +4,7 @@ namespace Entidades
 {
     namespace Personagens
     {
-        Arqueiro::Arqueiro(sf::Vector2f pos, sf::Vector2f vel) : Inimigo(pos, vel)
+        Arqueiro::Arqueiro(sf::Vector2f pos, sf::Vector2f vel) : Inimigo(pos, vel), vetor_projeteis()
         {
             this->setSkin("Design/imagens/zumbi_atirador.png");
             atirando = false;
@@ -27,7 +27,7 @@ namespace Entidades
 
         void Arqueiro::mover()
         {
-            if(!nochao)
+            if (!nochao)
                 velocidade += Vector2f(0, 0.1);
             else
             {
@@ -36,31 +36,34 @@ namespace Entidades
                 else
                     velocidade = Vector2f(0.1f, 0.f);
             }
-
-            // if(pjogador->get_pause() == false)
             atualizar();
-            // atualizar();
-
             nochao = false;
+            for(int i = 0; i < vetor_projeteis.size(); i++)
+                vetor_projeteis[i].executar();
+            if(vetor_projeteis.size() > 50)
+            {
+                for(int i = 0; i < vetor_projeteis.size()/2; i++)
+                    vetor_projeteis.erase(vetor_projeteis.begin() + i);
+            }
         }
 
         void Arqueiro::executar()
         {
-            if(vivo)
+            if (vivo)
             {
                 mover();
                 atirar();
             }
-            
         }
 
         void Arqueiro::atacar(Entidade *jg)
         {
             jg->set_vida(jg->get_vida() - forca);
         }
-        void Arqueiro::colidir(Entidade* pE, int a)
+        
+        void Arqueiro::colidir(Entidade *pE, int a)
         {
-            if(a == 1 || a == 3)
+            if (a == 1 || a == 3)
             {
                 atacar(pE);
                 mudar_direcao();
@@ -73,7 +76,6 @@ namespace Entidades
             {
                 atacar(pE);
             }
-
         }
 
         void Arqueiro::criar_arqueiros(string arquivo)
@@ -87,32 +89,32 @@ namespace Entidades
             }
 
             string linha;
-            Entidade* aux = nullptr;
+            Entidade *aux = nullptr;
             int j, i;
 
-            for(i = 0; getline(caminho, linha); i++)
+            for (i = 0; getline(caminho, linha); i++)
             {
                 j = 0;
-                for(char tipo : linha)
+                for (char tipo : linha)
                 {
-                    switch(tipo)
+                    switch (tipo)
                     {
-                        case '4':
-                            aux = static_cast<Entidade*>(new Arqueiro(sf::Vector2f(0.f, 0.f), sf::Vector2f(0.f, 0.f)));
-                            if(aux)
-                            {
-                                aux->setWindow(pGG->get_Janela());
-                                aux->setPosicao(sf::Vector2f(j * TAM, i * TAM));
-                                //incluir inmigos na lista
-                            }
-                            break;
+                    case '4':
+                        aux = static_cast<Entidade *>(new Arqueiro(sf::Vector2f(0.f, 0.f), sf::Vector2f(0.f, 0.f)));
+                        if (aux)
+                        {
+                            aux->setWindow(pGG->get_Janela());
+                            aux->setPosicao(sf::Vector2f(j * TAM, i * TAM));
+                            // incluir inmigos na lista
+                        }
+                        break;
 
-                        default:
-                            break;;
+                    default:
+                        break;
+                        ;
                     }
                 }
             }
-
         }
 
         void Arqueiro::atirar()
@@ -121,17 +123,18 @@ namespace Entidades
 
             if (recarregar == 0)
             {
-                novo.setPosicao(this->getPosicao() + (z));
+                Projetil novo_projetil(sf::Vector2f(10, 5));
+                novo_projetil.setPosicao(sf::Vector2f(this->getPosicao().x + 20.f, this->getPosicao().y + 15.f));
                 atirando = false;
-                if(!direcao)
-                novo.setVelocidade(-novo.getVelocidade());
-                novo.executar();
+                if (!direcao)
+                    novo_projetil.setVelocidade(-novo_projetil.getVelocidade());
+                vetor_projeteis.push_back(novo_projetil);
+                atirando = false;
                 recarregar = TEMPO_RECARGA;
             }
             else
             {
                 recarregar--;
-                novo.executar();
             }
         }
 

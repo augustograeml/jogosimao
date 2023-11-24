@@ -19,6 +19,7 @@ namespace Entidades
                 void criar_zumbis(string arquivo);
                 void colidir(Entidade* pE, int a);
                 void atacar(Entidade* jg);
+                std::vector<Projetil>* get_projeteis() {return nullptr;}
                 void salvar(std::ostringstream* entrada);
                 
         };

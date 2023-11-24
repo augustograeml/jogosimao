@@ -78,8 +78,7 @@ namespace Estados
             obstaculos.desenhar();
             jogadores.desenhar();
             inimigos.desenhar();
-
-            pGE->get_fase();
+            projeteis.desenhar();
             
             //std::cout<<" Executadno fase 1";
             //fase 2 pra dois jogadores
@@ -101,8 +100,8 @@ namespace Estados
 
                 if(num_jogadores == 2)
                 {
-                Entidades::Personagens::Jogador* jog2 = static_cast<Entidades::Personagens::Jogador*> (*jogadores.get_primeiro()++);
-                jog2->set_tempo((tempo_final - tempo_inicio)/CLOCKS_PER_SEC);
+                    Entidades::Personagens::Jogador* jog2 = static_cast<Entidades::Personagens::Jogador*> (*jogadores.get_primeiro()++);
+                    jog2->set_tempo((tempo_final - tempo_inicio)/CLOCKS_PER_SEC);
                 }
                 pGG->resetarCamera();
                 pGE->set_estado_atual(8);

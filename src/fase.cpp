@@ -14,17 +14,19 @@ namespace Estados
     namespace Fases
     {
          
-        Fase::Fase(int id) : jogadores(), obstaculos(), inimigos(), Estado(id),
+        Fase::Fase(int id) : jogadores(), obstaculos(), inimigos(), arqueiros(), projeteis(), Estado(id),
         gC(), buffer(), ja_criado(false), num_jogadores(1)
         {
             gC.set_inimigos(&inimigos);
+            gC.set_arqueiros(&arqueiros);
+            gC.set_inimigos(&inimigos);
             gC.set_jogadores(&jogadores);
             gC.set_obstaculos(&obstaculos);
+            gC.set_projeteis(&projeteis);
         }
 
         Fase::~Fase()
-        {
-            
+        {  
             salvar();
         }
 
@@ -216,6 +218,8 @@ namespace Estados
                                         aux->setWindow(pGG->get_Janela());
                                         aux->setPosicao(sf::Vector2f(j * TAM, i * TAM));
                                         inimigos.incluir(aux);
+                                        //ele nao ta gostando desse incluir em aruqieros nao sei o porque
+                                        //arqueiros.incluir(aux);
                                     }
                                     cont[1]++;
                                 }

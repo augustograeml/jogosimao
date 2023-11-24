@@ -9,15 +9,16 @@ namespace Entidades
             int dano;
 
         public:
-         Projetil();
+         Projetil(sf::Vector2f tam);
          ~Projetil();
 
         void salvar(std::ostringstream* entrada){}
 
         int get_dano(){return dano;}
-        void mover(){}
+        void mover();
+        void danar(Entidade* pE);
         void atirar();
-        void atualizar(){}
+        void atualizar();
         void colidir(Entidade* pE, int a);
 
         void executar();
