@@ -12,7 +12,7 @@ namespace Entidades
          Projetil(sf::Vector2f tam);
          ~Projetil();
 
-        void salvar(std::ostringstream* entrada){}
+        void salvar(std::ostringstream* entrada);
 
         int get_dano(){return dano;}
         void mover();

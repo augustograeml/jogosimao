@@ -82,7 +82,7 @@ namespace Estados
             obstaculos.desenhar();
             jogadores.desenhar();
             inimigos.desenhar();
-            projeteis.desenhar();
+            //projeteis.desenhar();
             
             //std::cout<<" Executadno fase 1";
             //fase 2 pra dois jogadores

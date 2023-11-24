@@ -1,4 +1,4 @@
-#include  "../Entidades/projetil.hpp"
+#include "../Entidades/projetil.hpp"
 #define TAM_BALAX 20
 #define TAM_BALAY 5
 
@@ -6,20 +6,20 @@ namespace Entidades
 {
     Projetil::Projetil(sf::Vector2f tam) : Entidade(this->getPosicao()), dano(2)
     {
-        corpo.setSize(Vector2f(TAM_BALAX,TAM_BALAY));
+        corpo.setSize(Vector2f(TAM_BALAX, TAM_BALAY));
         corpo.setFillColor(sf::Color::Red);
-        velocidade = (Vector2f(12,0));
+        velocidade = (Vector2f(12, 0));
         set_vivo(1);
     }
 
     Projetil::~Projetil()
     {
-
+        
     }
 
     void Projetil::executar()
     {
-        if(vivo)
+        if (vivo)
         {
             this->desenhar();
             this->mover();
@@ -32,8 +32,8 @@ namespace Entidades
     }
 
     void Projetil::mover()
-    {   
-        if(nochao)
+    {
+        if (nochao)
         {
             set_vida(0);
             velocidade = {0, 0};
@@ -45,28 +45,32 @@ namespace Entidades
             corpo.move(velocidade);
         }
 
-        //atualizar();
+        // atualizar();
     }
 
     void Projetil::atirar()
-    {   
-        
+    {
     }
 
-    void Projetil::danar(Entidade* pE)
-    {   
-        if(pE)
+    void Projetil::salvar(std::ostringstream *entrada)
+    {
+        (*entrada) << "{ \"posicao\": [" << corpo.getPosition().x << "," << corpo.getPosition().y << "], \"velocidade\": [" << velocidade.x << "," << velocidade.y << "] }" << std::endl;
+    }
+
+    void Projetil::danar(Entidade *pE)
+    {
+        if (pE)
             pE->set_vida(pE->get_vida() - dano);
     }
 
-    void Projetil::colidir(Entidade* pE, int a)
+    void Projetil::colidir(Entidade *pE, int a)
     {
-        
-        //eu nao to atribuindo nenhum projetil a lista
-        if(a != 0)
+
+        // eu nao to atribuindo nenhum projetil a lista
+        if (a != 0)
         {
             danar(pE);
-            setVelocidade(Vector2f(0.f,0.f));
+            setVelocidade(Vector2f(0.f, 0.f));
         }
 
         executar();
