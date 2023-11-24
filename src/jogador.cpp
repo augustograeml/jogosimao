@@ -1,6 +1,7 @@
 #include "../Entidades/Personagens/jogador.hpp"
 #include <iostream>
 #include <SFML/Graphics.hpp>
+
 using namespace std;
 
 namespace Entidades
@@ -24,10 +25,11 @@ namespace Entidades
                 this->setSkin("Design/imagens/luigiDireita.png");
             }
            tempo = 0.0;
-           nome = "";
+           nome = "augusto";
         }
         Jogador::~Jogador()
         {
+            
         }
 
         void Jogador::atualizar()
@@ -55,6 +57,7 @@ namespace Entidades
                 else
                 {
                     corpo.setFillColor(sf::Color::Red);
+                    
                 }
             }
                 
@@ -146,6 +149,24 @@ namespace Entidades
             atualizar();
 
             nochao = false;
+        }
+        void Jogador::salvar_tempo(string caminho)
+        {
+            ofstream arquivoOutput(caminho);
+            std::string linha =  "";
+            std::string bolinhas = ".....";
+            if(!arquivoOutput)
+            {
+                std::cout  << " erro!";
+            }
+            else
+            {   
+                linha += this->get_nome() + bolinhas;
+                arquivoOutput << linha;
+                arquivoOutput << this->get_tempo();
+               
+
+            }
         }
 
         void Jogador::salvar(std::ostringstream *entrada)

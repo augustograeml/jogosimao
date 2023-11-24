@@ -50,6 +50,8 @@ namespace Estados
                 std::ostringstream buffer;
                 int num_entidades[6];
                 int num_jogadores;
+                sf::Clock relogio;
+
             public:
                 Fase(int i = -1);
                 ~Fase();
@@ -69,6 +71,7 @@ namespace Estados
                 virtual void pausar() = 0;
                 virtual void menu() = 0;
 
+                void set_tempo_jogadores();
                 void salvar();
         };
     }

@@ -26,7 +26,10 @@ namespace Entidades
             void colidir(Entidade* pE, int a);
 
             void set_tempo(double x) {tempo = x;}
-            double get_tempo() {return tempo;}
+            double get_tempo() {return (int)tempo;}
+
+            void set_nome(std::string a)  {nome = a;}
+            string get_nome(){return nome;}
 
             void criar_jogadores(string arquivo, bool jogador2);
             void tela_pause();
@@ -35,6 +38,7 @@ namespace Entidades
             void mover_jog2();
             void atacar(Entidade* jg);
             void salvar(std::ostringstream* entrada);
+            void salvar_tempo(string caminho);
            
         };
 

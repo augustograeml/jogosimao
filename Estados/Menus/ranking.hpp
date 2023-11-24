@@ -1,5 +1,6 @@
 #pragma once
 #include "../estado.hpp"
+#include <fstream>
 #include "../../Gerenciadores/gerenciador_grafico.hpp"
 #include <SFML/Graphics.hpp>
 using namespace std;
@@ -17,12 +18,14 @@ namespace Estados
                 bool selecionado, deselecionado, jog2;
 
                 sf::Font* fonte;
+                sf::Font* fonte_nomes;
                 sf::Texture* imagem;
                 
                 vector<string> opcoes;
                 vector<sf::Vector2f> coordenadas;
                 vector<sf::Text> textos;
                 vector<size_t> tamanhos;
+
                 
             public:
                 Ranking(int id);
@@ -33,6 +36,7 @@ namespace Estados
                 void loop_evento();
                 void mostrar_menu();
                 void executar();
+                void CriarTextos(string caminho);
         
         };
     }
