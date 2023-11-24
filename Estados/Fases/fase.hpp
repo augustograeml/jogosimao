@@ -46,7 +46,6 @@ namespace Estados
                 Listas::ListaEntidade jogadores;
                 Listas::ListaEntidade obstaculos;
                 Listas::ListaEntidade inimigos;
-                Listas::ListaEntidade arqueiros;
                 Listas::ListaEntidade projeteis;
 
                 Gerenciadores::Gerenciador_Colisoes gC;

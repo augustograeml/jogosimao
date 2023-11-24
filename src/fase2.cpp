@@ -57,7 +57,7 @@ namespace Estados
 
         void Fase2::executar()
         {            
-            if (gC.get_sem_inimigos())
+            if (gC.get_inimigos_vivos())
             {
                 pGG->limpar();
                 pGG->resetarCamera();

@@ -14,11 +14,10 @@ namespace Estados
     namespace Fases
     {
          
-        Fase::Fase(int id) : jogadores(), obstaculos(), inimigos(), arqueiros(), projeteis(), Estado(id),
+        Fase::Fase(int id) : jogadores(), obstaculos(), inimigos(), projeteis(), Estado(id),
         gC(), buffer(), ja_criado(false), num_jogadores(1)
         {
             gC.set_inimigos(&inimigos);
-            gC.set_arqueiros(&arqueiros);
             gC.set_inimigos(&inimigos);
             gC.set_jogadores(&jogadores);
             gC.set_obstaculos(&obstaculos);
@@ -37,7 +36,7 @@ namespace Estados
 
         void Fase::gerenciar_colisoes()
         {
-            gC.colisao_simples();
+            gC.gerenciar_colisoes();
         }
 
         void Fase::criar_jogadores(bool jog2)

@@ -82,14 +82,14 @@ namespace Estados
             
             //std::cout<<" Executadno fase 1";
             //fase 2 pra dois jogadores
-            if (gC.get_sem_inimigos() && identidade == 7)
+            if (gC.get_inimigos_vivos() && identidade == 7)
             {
                 pGG->resetarCamera();
                 pGE->set_estado_atual(9);
                 return;
             }
             //fase 2 pra um jogadores
-            else if (gC.get_sem_inimigos() && identidade == 6)
+            else if (gC.get_inimigos_vivos() && identidade == 6)
             {
                 //fim_de_jogo();
                 
@@ -110,7 +110,7 @@ namespace Estados
 
                 return;
             }
-            if(gC.get_sem_jogadores())
+            if(gC.get_jogadores_vivos())
             {
                 pGG->limpar();
                 pGG->resetarCamera();
