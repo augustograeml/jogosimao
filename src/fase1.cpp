@@ -1,5 +1,6 @@
 #include "../Estados/Fases/fase1.hpp"
 #include "../Entidades/Personagens/jogador.hpp"
+#define ARQUIVO_OUTPUT_FASE_1 "Design/imagens/rankingfase1.txt"
 #include <iostream>
 #include <math.h>
 
@@ -64,7 +65,7 @@ namespace Estados
             shape.setPosition(sf::Vector2f(76.f, -10.f));
             pGG->desenharFundo(&shape); 
              Entidades::Personagens::Jogador* jog = static_cast<Entidades::Personagens::Jogador*> (*jogadores.get_primeiro());  
-            std::cout << jog->get_tempo() << std::endl;
+            jog->salvar_tempo(ARQUIVO_OUTPUT_FASE_1);
               
         }
 
@@ -95,22 +96,10 @@ namespace Estados
             //fase 2 pra um jogadores
             else if (gC.get_sem_inimigos() && identidade == 6)
             {
-                //fim_de_jogo();
-                
-                clock_t tempo_final = clock();
-                
-                Entidades::Personagens::Jogador* jog = static_cast<Entidades::Personagens::Jogador*> (*jogadores.get_primeiro());
-                jog->set_tempo((tempo_final - tempo_inicio)/CLOCKS_PER_SEC);
-
-                if(num_jogadores == 2)
-                {
-                Entidades::Personagens::Jogador* jog2 = static_cast<Entidades::Personagens::Jogador*> (*jogadores.get_primeiro()++);
-                jog2->set_tempo((tempo_final - tempo_inicio)/CLOCKS_PER_SEC);
-                }
+                fim_de_jogo();
                 pGG->resetarCamera();
                 pGE->set_estado_atual(8);
 
-                std::cout << jog->get_tempo() << std::endl;
 
                 return;
             }
@@ -118,7 +107,6 @@ namespace Estados
             {
                 pGG->limpar();
                 pGG->resetarCamera();
-                fim_de_jogo();
                 pGE->set_estado_atual(0);
                 return;
             }                

@@ -1,6 +1,6 @@
 #include "../Estados/Menus/ranking.hpp"
 #include <iostream>
-#define ARQUIVO_COLOCACAO "Design/imagens/ranking.txt"
+#define ARQUIVO_COLOCACAO_1 "Design/imagens/rankingfase1.txt"
 
 
 namespace Estados
@@ -33,10 +33,10 @@ namespace Estados
             fonte->loadFromFile("Design/fonte/sangue_escorrendo.ttf");
             fonte_nomes->loadFromFile("Design/fonte/fonte_simas.ttf");
 
-            opcoes = {"Ranking","1", "2","3","4","Sair"};
-            textos.resize(6);
-            tamanhos = {170, 20, 20, 20, 20, 35};
-            coordenadas = { {215, 40}, {100, 380}, {100, 462}, {100, 549}, {100, 635}, {278, 730}};
+            opcoes = {"Ranking","Fase 1","1", "2","3","4","Sair"};
+            textos.resize(7);
+            tamanhos = {170,20, 20, 20, 20, 20, 35};
+            coordenadas = { {215, 40}, {215,100}, {100, 380}, {100, 462}, {100, 549}, {100, 635}, {278, 730}};
             
 
             for (std::size_t i{}; i < textos.size(); i++)
@@ -62,7 +62,7 @@ namespace Estados
             pGG->desenharTextura(imagem);
             // laco diferentao ne mano pprt
             //textos[3].setString(opcoes[3] + "   augusto");
-            CriarTextos();
+            CriarTextos(ARQUIVO_COLOCACAO_1);
             for (auto t : textos)
             {
                  pGG->get_Janela()->draw(t);
@@ -94,19 +94,19 @@ namespace Estados
                         pGE->set_estado_atual(0);   
             }
         }
-        void Ranking::CriarTextos()
+        void Ranking::CriarTextos(string caminho)
         {
-            ifstream arquivoInput(ARQUIVO_COLOCACAO);
+            ifstream arquivoInput(caminho);
             std::string linha;
             std::string espaco = "  ";
-            int i = 1;
+            int i = 2;
             if(!arquivoInput)
             {
                 std::cout<< "error ao abrir";
             }
             else
             {
-                while(getline(arquivoInput, linha)  && i < 5)
+                while(getline(arquivoInput, linha)  && i < 6)
                 {
                     textos[i].setString( opcoes[i] + espaco + linha);
                     textos[i].setFont(*fonte_nomes);

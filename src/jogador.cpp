@@ -1,7 +1,7 @@
 #include "../Entidades/Personagens/jogador.hpp"
 #include <iostream>
 #include <SFML/Graphics.hpp>
-#define ARQUIVO_OUTPUT_FASE_1 "Design/imagens/rankingfase1.txt"
+
 using namespace std;
 
 namespace Entidades
@@ -29,7 +29,7 @@ namespace Entidades
         }
         Jogador::~Jogador()
         {
-            salvar_tempo(ARQUIVO_OUTPUT_FASE_1);
+            
         }
 
         void Jogador::atualizar()
@@ -57,6 +57,7 @@ namespace Entidades
                 else
                 {
                     corpo.setFillColor(sf::Color::Red);
+                    
                 }
             }
                 
@@ -152,17 +153,18 @@ namespace Entidades
         void Jogador::salvar_tempo(string caminho)
         {
             ofstream arquivoOutput(caminho);
-            std::string linha;
-            std::string bolinhas = ".........";
+            std::string linha =  "";
+            std::string bolinhas = ".....";
             if(!arquivoOutput)
             {
                 std::cout  << " erro!";
             }
             else
             {   
-                linha = this->get_nome() + bolinhas;
+                linha += this->get_nome() + bolinhas;
                 arquivoOutput << linha;
                 arquivoOutput << this->get_tempo();
+               
 
             }
         }

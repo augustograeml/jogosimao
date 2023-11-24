@@ -36,7 +36,7 @@ namespace Estados
                 void loop_evento();
                 void mostrar_menu();
                 void executar();
-                void CriarTextos();
+                void CriarTextos(string caminho);
         
         };
     }
