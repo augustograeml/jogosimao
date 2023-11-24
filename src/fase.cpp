@@ -365,7 +365,7 @@ namespace Estados
               jogad2->set_tempo(relogio.getElapsedTime().asSeconds());
             }
             Entidades::Personagens::Jogador* jogad = static_cast<Entidades::Personagens::Jogador*>(*jogadores.get_primeiro());
-            jogad->set_tempo(relogio.getElapsedTime().asSeconds());
+            jogad->set_tempo(jogad->get_tempo() + relogio.getElapsedTime().asSeconds());
         }
 
     }

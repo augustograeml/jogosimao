@@ -82,6 +82,7 @@ namespace Entidades
 
         void Jogador::criar_jogadores(string arquivo, bool jogador2)
         {
+            //relogio.restart();
             if(jogador2)
             {
 
@@ -152,7 +153,7 @@ namespace Entidades
         }
         void Jogador::salvar_tempo(string caminho)
         {
-            ofstream arquivoOutput(caminho);
+            fstream arquivoOutput(caminho, ios::app);
             std::string linha =  "";
             std::string bolinhas = ".....";
             if(!arquivoOutput)
@@ -160,10 +161,12 @@ namespace Entidades
                 std::cout  << " erro!";
             }
             else
-            {   
+            {  
+
                 linha += this->get_nome() + bolinhas;
                 arquivoOutput << linha;
                 arquivoOutput << this->get_tempo();
+                arquivoOutput << "s" << endl;
                
 
             }

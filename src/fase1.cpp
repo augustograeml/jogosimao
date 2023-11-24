@@ -36,7 +36,7 @@ namespace Estados
             std::cout << "numero de caixas: " << num_entidades[4] << std::endl;
             std::cout << "numero de gigantes: " << num_entidades[5] << std::endl;
 
-            Textura.loadFromFile("Design/imagens/cenario_op11.png");
+            Textura.loadFromFile("Design/imagens/cemiterio.jpg");
             shape.setSize(Vector2f(2000.f, 1200.f));
             shape.setTexture(&Textura);
             shape.setPosition(sf::Vector2f(0.f, 0.f));
