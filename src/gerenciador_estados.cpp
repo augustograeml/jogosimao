@@ -21,7 +21,7 @@ namespace Gerenciadores
             estadoAtual = 0;
         }*/
         
-        estados.resize(10);
+        estados.resize(11);
     }
 
     Gerenciador_Estados::~Gerenciador_Estados()

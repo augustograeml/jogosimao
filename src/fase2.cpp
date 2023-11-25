@@ -1,5 +1,6 @@
 #include "../Estados/Fases/fase2.hpp"
 #include "../Entidades/Personagens/jogador.hpp"
+#define ARQUIVO_OUTPUT_FASE_2 "Design/imagens/rankingfase2.txt"
 
 namespace Entidades
 {
@@ -48,11 +49,19 @@ namespace Estados
 
         void Fase2::fim_de_jogo()
         {
+            set_tempo_jogadores();
             Textura.loadFromFile("Design/imagens/fim_de_jogo3.jpeg");
             shape.setSize(Vector2f(950.f, 950.f));
             shape.setTexture(&Textura);
             shape.setPosition(sf::Vector2f(76.f, -10.f));
             pGG->desenharFundo(&shape);
+             Entidades::Personagens::Jogador* jog = static_cast<Entidades::Personagens::Jogador*> (*jogadores.get_primeiro());  
+            jog->salvar_tempo(ARQUIVO_OUTPUT_FASE_2);
+            if(num_jogadores == 2)
+            {
+            Entidades::Personagens::Jogador* jogad22 = static_cast<Entidades::Personagens::Jogador*> (*jogadores.get_primeiro()++);  
+            jogad22->salvar_tempo(ARQUIVO_OUTPUT_FASE_2);
+            }
         }
 
         void Fase2::executar()

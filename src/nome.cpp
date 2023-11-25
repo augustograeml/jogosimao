@@ -17,14 +17,18 @@ namespace Estados
         void Nome::inicializa_valores()
         {
             pos = 0;
+            
             selecionado = deselecionado = false;
             imagem->loadFromFile("Design/imagens/pegar_nome.png");
             fonte->loadFromFile("Design/fonte/fonte_simas.ttf");
+            Caixa.setSelected(true);
+            Caixa.setFont(*fonte);
+            Caixa.setPosition(sf::Vector2f(150,480));
 
-            opcoes = {"Digite seu nome: "};
-            textos.resize(1);
-            coordenadas = {{130, 40}};
-            tamanhos = {40};
+            opcoes = {"Digite seu nome: "," ", "Sair"};
+            textos.resize(3);
+            coordenadas = {{130, 40},{150,480}, {493, 650}};
+            tamanhos = {40,20,20};
 
             for (std::size_t i{}; i < textos.size(); i++)
             {
@@ -46,65 +50,50 @@ namespace Estados
             {
                 if (sf::Event::Closed)
                     pGG->fecharJanela();
+                if(sf::Event::TextEntered)
+                Caixa.typedOn(evento);
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && !selecionado)
+                {
+                    if (pos > 1)
+                    {
+                        pos--;
+                        selecionado = true;
+                        Caixa.setSelected(true);
+                        textos[pos].setOutlineThickness(4);
+                        textos[pos + 1].setOutlineThickness(0);
+                        selecionado = false;
+                    }
+                }
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && !selecionado)
+                {
+                    if (pos < 3)
+                    {
+                        pos++;
+                        selecionado = true;
+                        textos[pos].setOutlineThickness(4);
+                        textos[pos + 1].setOutlineThickness(0);
+                        selecionado = false;
+                    }
+                }
 
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-                    nome_jogador += 'a';
-                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::B))
-                    nome_jogador += 'b';
-                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::C))
-                    nome_jogador += 'c';
-                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-                    nome_jogador += 'd';
-                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::E))
-                    nome_jogador += 'e';
-                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::F))
-                    nome_jogador += 'f';
-                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::G))
-                    nome_jogador += 'g';
-                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::H))
-                    nome_jogador += 'h';
-                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::I))
-                    nome_jogador += 'i';
-                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::J))
-                    nome_jogador += 'j';
-                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::K))
-                    nome_jogador += 'k';
-                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::L))
-                    nome_jogador += 'l';
-                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::M))
-                    nome_jogador += 'm';
-                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::N))
-                    nome_jogador += 'n';
-                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::O))
-                    nome_jogador += 'o';
-                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::P))
-                    nome_jogador += 'p';
-                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
-                    nome_jogador += 'q';
-                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::R))
-                    nome_jogador += 'r';
-                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-                    nome_jogador += 's';
-                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::T))
-                    nome_jogador += 't';
-                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::U))
-                    nome_jogador += 'u';
-                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::V))
-                    nome_jogador += 'v';
-                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-                    nome_jogador += 'w';
-                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::X))
-                    nome_jogador += 'x';
-                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Y))
-                    nome_jogador += 'y';
-                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
-                    nome_jogador += 'z';
-                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
-                    return;
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
+                {
+                    if (pos == 3)
+                        pGE->set_estado_atual(1);
+                    else if (pos == 1 && Caixa.getText() != "")
+                    {
+                       // Caixa.getText();
+                    }
+                }
+
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+                    pGE->set_estado_atual(1);
+
+                
             }
             pGG->limpar();
-            pGG->desenharTexto(&teste);
-            // pGG->mostrar();
+            Caixa.drawTo(*pGG->get_Janela());
+            pGG->mostrar();
         }
 
     }

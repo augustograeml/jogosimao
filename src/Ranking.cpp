@@ -36,7 +36,7 @@ namespace Estados
             opcoes = {"Ranking","Fase 1","1", "2","3","4","Sair"};
             textos.resize(7);
             tamanhos = {170,20, 20, 20, 20, 20, 35};
-            coordenadas = { {215, 40}, {215,100}, {100, 380}, {100, 462}, {100, 549}, {100, 635}, {278, 730}};
+            coordenadas = { {215, 40}, {1415,100}, {100, 380}, {100, 462}, {100, 549}, {100, 635}, {278, 730}};
             
 
             for (std::size_t i{}; i < textos.size(); i++)
@@ -106,7 +106,7 @@ namespace Estados
             }
             else
             {
-                while(getline(arquivoInput, linha)  && i < 6)
+                while(getline(arquivoInput, linha)  && i < 7)
                 {
                     textos[i].setString( opcoes[i] + espaco + linha);
                     textos[i].setFont(*fonte_nomes);
