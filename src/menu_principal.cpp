@@ -6,6 +6,9 @@ namespace Estados
     {
         Menu_Principal::Menu_Principal(int id) : Menu(id)
         {
+            pObserver = new Observers::Observer_Menu_Principal();
+            pObserver->set_menu(this);
+
             inicializa_valores();
         }
 
@@ -42,6 +45,21 @@ namespace Estados
             pos = 1;
         }
 
+        void Menu_Principal::selecionar()
+        {
+            if (!deselecionado)
+            {
+                if (pos == 4)
+                    pGG->fecharJanela();
+                else if (pos == 1)
+                    pGE->set_estado_atual(1);
+                else if (pos == 2 && pGE->get_fase() > 5)
+                    pGE->set_estado_atual(pGE->get_fase());
+                else if (pos == 3)
+                    pGE->set_estado_atual(4);
+            }
+        }
+
         void Menu_Principal::loop_evento()
         {
             while (pGG->get_Janela()->pollEvent(evento))
@@ -58,6 +76,7 @@ namespace Estados
                         textos[pos].setOutlineThickness(4);
                         textos[pos - 1].setOutlineThickness(0);
                         selecionado = false;
+                        deselecionado = false;
                     }
                 }
 
@@ -70,6 +89,7 @@ namespace Estados
                         textos[pos].setOutlineThickness(4);
                         textos[pos + 1].setOutlineThickness(0);
                         selecionado = false;
+                        deselecionado = false;
                     }
                 }
 

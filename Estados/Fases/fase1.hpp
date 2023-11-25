@@ -23,8 +23,6 @@ namespace Estados
                 //colocar como parametro um bool pro jogador2, lembrar de mexer na clase virtual pura de fase.hpp
                 void executar();
                 void atualizar();
-                void pausar();
-                void menu();
         };
     }
 }

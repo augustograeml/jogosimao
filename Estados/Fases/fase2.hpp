@@ -19,8 +19,6 @@ namespace Estados
                 void executar();
                 void fim_de_jogo();
                 void atualizar();
-                void pausar();
-                void menu();
         };
     }
 }

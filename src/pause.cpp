@@ -87,12 +87,11 @@ namespace Estados
                     if (pos == 2)
                         pGE->set_estado_atual(0);
                     else if (pos == 1)
-                        pGE->set_estado_atual(6);
-                    
+                        pGE->set_estado_atual(pGE->get_fase());
                 }
 
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-                    pGE->set_estado_atual(6);
+                    pGE->set_estado_atual(pGE->get_fase());
             }
         }
 

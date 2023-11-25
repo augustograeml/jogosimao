@@ -47,7 +47,36 @@ namespace Estados
             loop_evento();
         }
 
-        
-        
+        void Menu::baixo(int i)
+        {
+            if(!selecionado)
+            {
+                if (pos < i)
+                {
+                    pos++;
+                    selecionado = true;
+                    textos[pos].setOutlineThickness(4);
+                    textos[pos - 1].setOutlineThickness(0);
+                    selecionado = false;
+                    deselecionado = false;
+                }
+            }
+        }  
+
+        void Menu::cima()
+        {
+            if (!selecionado)
+            {
+                if (pos > 1)
+                {
+                    pos--;
+                    selecionado = true;
+                    textos[pos].setOutlineThickness(4);
+                    textos[pos + 1].setOutlineThickness(0);
+                    selecionado = false;
+                    deselecionado = false;
+                }
+            }
+        }
     }
 }

@@ -7,6 +7,9 @@ namespace Estados
 
         Menu_Jogadores::Menu_Jogadores(int id) : Menu(id)
         {
+            pObserver = new Observers::Observer_Menu_Jogadores();
+            pObserver->set_menu(this);
+
             inicializa_valores();
         }
 
@@ -46,6 +49,19 @@ namespace Estados
             textos[1].setOutlineThickness(4);
 
             pos = 1;
+        }
+
+        void Menu_Jogadores::selecionar()
+        {
+            if(!deselecionado)
+            {
+                if (pos == 3)
+                    pGE->set_estado_atual(0);
+                else if (pos == 1)
+                    pGE->set_estado_atual(2);
+                else if (pos == 2)
+                    pGE->set_estado_atual(3);
+            }
         }
 
         void Menu_Jogadores::loop_evento()

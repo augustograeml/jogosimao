@@ -16,7 +16,7 @@ namespace Estados
     {
 
         Fase::Fase(int id) : jogadores(), obstaculos(), inimigos(), Estado(id),
-                             gC(), buffer(), ja_criado(false), num_jogadores(1)
+        gC(), buffer(), ja_criado(false), num_jogadores(1)
         {
             gC.set_inimigos(&inimigos);
             gC.set_inimigos(&inimigos);

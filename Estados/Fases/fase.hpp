@@ -17,7 +17,7 @@
 #include "../../Gerenciadores/gerenciador_estados.hpp"
 #include "../../Gerenciadores/gerenciador_eventos.hpp"
 #include "../../Gerenciadores/gerenciador_grafico.hpp"
-#include "../../Observers/observer_fase.hpp"
+#include "../../Observers/observer_menu_fase.hpp"
 #include "../estado.hpp"
 
 #include <iostream>
@@ -69,8 +69,6 @@ namespace Estados
                 virtual void executar() = 0;
                 virtual void fim_de_jogo() = 0;
                 virtual void atualizar() = 0;
-                virtual void pausar() = 0;
-                virtual void menu() = 0;
 
                 void set_tempo_jogadores();
                 void salvar();
