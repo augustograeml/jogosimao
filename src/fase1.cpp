@@ -44,20 +44,16 @@ namespace Estados
 
             if(ja_criado)
             {
-                criar_jogadores(false);
                 //criar_jogadores(get_jogador2());
+                criar_jogadores(true);
                 criar_inimigos();
             }
-            else
-                criar_cenario(ARQUIVO_CENARIO_1, num_entidades[0], num_entidades[1], num_entidades[2], num_entidades[3], num_entidades[4], num_entidades[5], get_jaCriado());
-
+                
+            criar_cenario(ARQUIVO_CENARIO_1, num_entidades[0], num_entidades[1], num_entidades[2], num_entidades[3], num_entidades[4], num_entidades[5], get_jaCriado());
+            criar_jogadores(false);
+            criar_inimigos();
             
             tempo_inicio = clock();
-
-            // a gente na teoria salva aqui
-            criar_jogadores(true);
-            //criar_jogadores(false);
-            criar_inimigos();
         }
 
         Fase1::~Fase1()

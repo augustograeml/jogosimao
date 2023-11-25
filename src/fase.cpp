@@ -68,8 +68,8 @@ namespace Estados
 
             for (auto it = json.begin(); it != json.end(); ++it)
             {
-                //aquei ele roda a quantidade de jogadores que tem no json, por isso ta rolando a mitose
-                //vou criar um json especifico pro jogador2, mas acho q isso n eh o mais certo a se fazer
+                // aquei ele roda a quantidade de jogadores que tem no json, por isso ta rolando a mitose
+                // vou criar um json especifico pro jogador2, mas acho q isso n eh o mais certo a se fazer
                 jogadores.incluir(static_cast<Entidades::Entidade *>(new Entidades::Personagens::Jogador(
                     sf::Vector2f(
                         (float)((*it)["posicao"][0]),
@@ -231,21 +231,20 @@ namespace Estados
             for (int i = 0; i < 7; i++)
                 cont[i] = 0;
 
+            ifstream arquivo(caminho);
+            if (!arquivo)
+            {
+                cout << "Nao foi possivel acessar o arquivo de cenario" << endl;
+                exit(1);
+            }
+
+            std::string linha;
+
+            Entidades::Entidade *aux = nullptr;
+            int j = 0, i;
+
             if (!ja_criado)
             {
-                ifstream arquivo(caminho);
-                if (!arquivo)
-                {
-                    cout << "Nao foi possivel acessar o arquivo de cenario" << endl;
-                    exit(1);
-                }
-
-                std::string linha;
-
-                Entidades::Entidade *aux = nullptr;
-                
-
-                int j = 0, i;
                 for (i = 0; getline(arquivo, linha); i++)
                 {
                     j = 0;
@@ -378,6 +377,66 @@ namespace Estados
 
                 ja_criado = true;
             }
+
+            else
+            {
+                for (i = 0; getline(arquivo, linha); i++)
+                {
+                    j = 0;
+                    for (char tipo : linha)
+                    {
+                        switch (tipo)
+                        {
+                        case '0':
+                            aux = static_cast<Entidades::Entidade *>(new Entidades::Obstaculos::Neve(sf::Vector2f(j * TAM, i * TAM)));
+                            if (aux)
+                                obstaculos.incluir(aux);
+                            break;
+                        case '5':
+                            if (cont[2] < n3)
+                            {
+                                aux = static_cast<Entidades::Entidade *>(new Entidades::Obstaculos::Espinho(Vector2f(j * TAM, i * TAM)));
+                                if (aux)
+                                    obstaculos.incluir(aux);
+                                cont[2]++;
+                            }
+                            break;
+                        case '6':
+                            if (cont[3] < n4)
+                            {
+                                aux = static_cast<Entidades::Entidade *>(new Entidades::Obstaculos::Coracao(Vector2f(j * TAM, i * TAM)));
+                                if (aux)
+                                    obstaculos.incluir(aux);
+                                cont[3]++;
+                            }
+                            break;
+
+                        case '7':
+                            aux = static_cast<Entidades::Entidade *>(new Entidades::Obstaculos::Musgo(Vector2f(j * TAM, i * TAM)));
+                            if (aux)
+                                obstaculos.incluir(aux);
+                            break;
+
+                        case '8':
+                            // if vet < n5
+                            aux = static_cast<Entidades::Entidade *>(new Entidades::Obstaculos::Caixa(Vector2f(j * TAM, i * TAM)));
+                            if (cont[4] < n5)
+                            {
+                                if (aux)
+                                    obstaculos.incluir(aux);
+                                cont[4]++;
+                            }
+                            break;
+
+                        // colocar depois um case pra setar a posicao dos jogadores e um pra setar a posicao dos inimigos
+                        default:
+                            break;
+                        }
+                        j++;
+                    }
+                }
+                arquivo.close();
+            }
         }
 
         void Fase::fim_de_jogo()
@@ -402,7 +461,7 @@ namespace Estados
                 (*j)->salvar(&buffer);
                 j++;
             }
-            if(j != nullptr)
+            if (j != nullptr)
             {
                 buffer << ",";
                 (*j)->salvar(&buffer);
