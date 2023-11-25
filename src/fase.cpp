@@ -5,7 +5,9 @@
 #include <iostream>
 
 #define ARQUIVO_JOGADOR "jogador.json"
-#define ARQUIVO_INIMIGO "inimigo.json"
+#define ARQUIVO_ZUMBI "zumbi.json"
+#define ARQUIVO_GIGANTE "gigante.json"
+#define ARQUIVO_ATIRADOR "atirador.json"
 #define ARQUIVO_PROJETEIS "projeteis.json"
 #define ESTADO_ATUAL "estado_atual.txt"
 
@@ -17,12 +19,14 @@ namespace Estados
     {
 
         Fase::Fase(int id) : jogadores(), obstaculos(), inimigos(), Estado(id),
-        gC(), buffer(), ja_criado(false), num_jogadores(1)
+                             gC(), buffer(), ja_criado(false), num_jogadores(1)
         {
-            gC.set_inimigos(&inimigos);
             gC.set_inimigos(&inimigos);
             gC.set_jogadores(&jogadores);
             gC.set_obstaculos(&obstaculos);
+            gC.set_zumbis(&zumbis);
+            gC.set_atiradores(&atiradores);
+            gC.set_gigantes(&gigantes);
             relogio.restart();
         }
 
@@ -62,22 +66,23 @@ namespace Estados
 
             nlohmann::json json = nlohmann::json::parse(arquivo);
 
-            if (!jog2)
+            for (auto it = json.begin(); it != json.end(); ++it)
             {
-                for (auto it = json.begin(); it != json.end(); ++it)
-                {
-                    jogadores.incluir(static_cast<Entidades::Entidade *>(new Entidades::Personagens::Jogador(
-                        sf::Vector2f(
-                            (float)((*it)["posicao"][0]),
-                            (float)((*it)["posicao"][1])),
-                        sf::Vector2f(
-                            (float)((*it)["velocidade"][0]),
-                            (float)((*it)["velocidade"][1])),
-                        false)));
-                }
+                //aquei ele roda a quantidade de jogadores que tem no json, por isso ta rolando a mitose
+                //vou criar um json especifico pro jogador2, mas acho q isso n eh o mais certo a se fazer
+                jogadores.incluir(static_cast<Entidades::Entidade *>(new Entidades::Personagens::Jogador(
+                    sf::Vector2f(
+                        (float)((*it)["posicao"][0]),
+                        (float)((*it)["posicao"][1])),
+
+                    sf::Vector2f(
+                        (float)((*it)["velocidade"][0]),
+                        (float)((*it)["velocidade"][1])),
+
+                    false)));
             }
 
-            else
+            if (jog2)
             {
                 for (auto it = json.begin(); it != json.end(); ++it)
                 {
@@ -85,9 +90,11 @@ namespace Estados
                         sf::Vector2f(
                             (float)((*it)["posicao"][0]),
                             (float)((*it)["posicao"][1])),
+
                         sf::Vector2f(
                             (float)((*it)["velocidade"][0]),
                             (float)((*it)["velocidade"][1])),
+
                         true)));
                 }
             }
@@ -95,7 +102,7 @@ namespace Estados
 
         void Fase::criar_inimigos()
         {
-            std::ifstream arquivo(ARQUIVO_INIMIGO);
+            std::ifstream arquivo(ARQUIVO_ZUMBI);
             if (!arquivo)
             {
                 std::cout << "Arquivo não existe" << std::endl;
@@ -103,11 +110,11 @@ namespace Estados
             }
 
             Entidades::Entidade *p;
-            Listas::Lista<Entidades::Entidade>::Iterador it = inimigos.get_primeiro();
+            Listas::Lista<Entidades::Entidade>::Iterador it = zumbis.get_primeiro();
             while (it != nullptr)
             {
                 p = *it;
-                inimigos.remover(p);
+                zumbis.remover(p);
                 it++;
                 p = nullptr;
             }
@@ -120,6 +127,96 @@ namespace Estados
                     sf::Vector2f(
                         (float)((*it)["posicao"][0]),
                         (float)((*it)["posicao"][1])),
+
+                    sf::Vector2f(
+                        (float)((*it)["velocidade"][0]),
+                        (float)((*it)["velocidade"][1])))));
+
+                zumbis.incluir(static_cast<Entidades::Entidade *>(new Entidades::Personagens::Zumbi(
+                    sf::Vector2f(
+                        (float)((*it)["posicao"][0]),
+                        (float)((*it)["posicao"][1])),
+
+                    sf::Vector2f(
+                        (float)((*it)["velocidade"][0]),
+                        (float)((*it)["velocidade"][1])))));
+            }
+
+            // verificando arquivo salvo dos atiradores
+            std::ifstream arq_atiradores(ARQUIVO_ATIRADOR);
+            if (!arq_atiradores)
+            {
+                std::cout << "Arquivo não existe" << std::endl;
+                exit(2);
+            }
+
+            it = atiradores.get_primeiro();
+            while (it != nullptr)
+            {
+                p = *it;
+                atiradores.remover(p);
+                it++;
+                p = nullptr;
+            }
+
+            json = nlohmann::json::parse(arq_atiradores);
+
+            for (auto it = json.begin(); it != json.end(); ++it)
+            {
+                inimigos.incluir(static_cast<Entidades::Entidade *>(new Entidades::Personagens::Arqueiro(
+                    sf::Vector2f(
+                        (float)((*it)["posicao"][0]),
+                        (float)((*it)["posicao"][1])),
+
+                    sf::Vector2f(
+                        (float)((*it)["velocidade"][0]),
+                        (float)((*it)["velocidade"][1])))));
+
+                atiradores.incluir(static_cast<Entidades::Entidade *>(new Entidades::Personagens::Arqueiro(
+                    sf::Vector2f(
+                        (float)((*it)["posicao"][0]),
+                        (float)((*it)["posicao"][1])),
+
+                    sf::Vector2f(
+                        (float)((*it)["velocidade"][0]),
+                        (float)((*it)["velocidade"][1])))));
+            }
+
+            // verificando arquivo salvo dos gigantes
+            std::ifstream arq_gigantes(ARQUIVO_GIGANTE);
+            if (!arq_gigantes)
+            {
+                std::cout << "Arquivo não existe" << std::endl;
+                exit(2);
+            }
+
+            it = gigantes.get_primeiro();
+            while (it != nullptr)
+            {
+                p = *it;
+                gigantes.remover(p);
+                it++;
+                p = nullptr;
+            }
+
+            json = nlohmann::json::parse(arq_gigantes);
+
+            for (auto it = json.begin(); it != json.end(); ++it)
+            {
+                inimigos.incluir(static_cast<Entidades::Entidade *>(new Entidades::Personagens::Gigante(
+                    sf::Vector2f(
+                        (float)((*it)["posicao"][0]),
+                        (float)((*it)["posicao"][1])),
+
+                    sf::Vector2f(
+                        (float)((*it)["velocidade"][0]),
+                        (float)((*it)["velocidade"][1])))));
+
+                gigantes.incluir(static_cast<Entidades::Entidade *>(new Entidades::Personagens::Gigante(
+                    sf::Vector2f(
+                        (float)((*it)["posicao"][0]),
+                        (float)((*it)["posicao"][1])),
+
                     sf::Vector2f(
                         (float)((*it)["velocidade"][0]),
                         (float)((*it)["velocidade"][1])))));
@@ -146,6 +243,7 @@ namespace Estados
                 std::string linha;
 
                 Entidades::Entidade *aux = nullptr;
+                
 
                 int j = 0, i;
                 for (i = 0; getline(arquivo, linha); i++)
@@ -197,6 +295,7 @@ namespace Estados
                                     aux->setWindow(pGG->get_Janela());
                                     aux->setPosicao(sf::Vector2f(j * TAM, i * TAM));
                                     inimigos.incluir(aux);
+                                    zumbis.incluir(aux);
                                 }
                                 cont[0]++;
                             }
@@ -211,8 +310,7 @@ namespace Estados
                                     aux->setWindow(pGG->get_Janela());
                                     aux->setPosicao(sf::Vector2f(j * TAM, i * TAM));
                                     inimigos.incluir(aux);
-                                    // ele nao ta gostando desse incluir em aruqieros nao sei o porque
-                                    // arqueiros.incluir(aux);
+                                    // atiradores.incluir(aux);
                                 }
                                 cont[1]++;
                             }
@@ -263,6 +361,7 @@ namespace Estados
                                     aux->setWindow(pGG->get_Janela());
                                     aux->setPosicao(sf::Vector2f(j * TAM, i * TAM));
                                     inimigos.incluir(aux);
+                                    gigantes.incluir(aux);
                                 }
                                 cont[5]++;
                             }
@@ -303,44 +402,98 @@ namespace Estados
                 (*j)->salvar(&buffer);
                 j++;
             }
-            while (j != nullptr)
+            if(j != nullptr)
             {
                 buffer << ",";
                 (*j)->salvar(&buffer);
-                j++;
             }
             buffer << "]";
 
             arquivo << buffer.str();
             arquivo.close();
 
-            // Salvando inimigos:
-            std::ofstream arquivo_inimigo(ARQUIVO_INIMIGO);
-            if (!arquivo_inimigo)
+            // Salvando zumbis:
+            std::ofstream arquivo_zumbis(ARQUIVO_ZUMBI);
+            if (!arquivo_zumbis)
             {
                 std::cout << "Problema em salvar o arquivo dos inimigos" << std::endl;
                 exit(1);
             }
 
-            Listas::Lista<Entidades::Entidade>::Iterador i = inimigos.get_primeiro();
+            Listas::Lista<Entidades::Entidade>::Iterador zomb = zumbis.get_primeiro();
             buffer.str("");
             buffer << "[";
-            if (i != nullptr)
+            if (zomb != nullptr)
             {
-                (*i)->salvar(&buffer);
-                i++;
+                (*zomb)->salvar(&buffer);
+                zomb++;
             }
-            while (i != nullptr)
+            while (zomb != nullptr)
             {
                 buffer << ",";
-                (*i)->salvar(&buffer);
-                i++;
+                (*zomb)->salvar(&buffer);
+                zomb++;
             }
             buffer << "]";
 
-            arquivo_inimigo << buffer.str();
-            arquivo_inimigo.close();
+            arquivo_zumbis << buffer.str();
+            arquivo_zumbis.close();
 
+            // Salvando atiradores:
+            std::ofstream arquivo_atiradores(ARQUIVO_ATIRADOR);
+            if (!arquivo_atiradores)
+            {
+                std::cout << "Problema em salvar o arquivo dos inimigos" << std::endl;
+                exit(1);
+            }
+
+            Listas::Lista<Entidades::Entidade>::Iterador atir = atiradores.get_primeiro();
+            arquivo_atiradores.clear();
+            buffer.str("");
+            buffer << "[";
+            if (atir != nullptr)
+            {
+                (*atir)->salvar(&buffer);
+                atir++;
+            }
+            while (atir != nullptr)
+            {
+                buffer << ",";
+                (*atir)->salvar(&buffer);
+                atir++;
+            }
+            buffer << "]";
+
+            arquivo_atiradores << buffer.str();
+            arquivo_atiradores.close();
+
+            // Salvando gigantes:
+            std::ofstream arquivo_gigantes(ARQUIVO_GIGANTE);
+            if (!arquivo_gigantes)
+            {
+                std::cout << "Problema em salvar o arquivo dos inimigos" << std::endl;
+                exit(1);
+            }
+
+            Listas::Lista<Entidades::Entidade>::Iterador gig = gigantes.get_primeiro();
+            arquivo_gigantes.clear();
+            buffer.str("");
+            buffer << "[";
+            if (gig != nullptr)
+            {
+                (*gig)->salvar(&buffer);
+                gig++;
+            }
+            while (gig != nullptr)
+            {
+                buffer << ",";
+                (*gig)->salvar(&buffer);
+                gig++;
+            }
+            buffer << "]";
+
+            arquivo_gigantes << buffer.str();
+            arquivo_gigantes.close();
 
             std::ofstream estado(ESTADO_ATUAL);
             if (!estado)
@@ -353,10 +506,8 @@ namespace Estados
             estado << pGE->get_fase();
             estado.close();
 
-
-
             // Salvando Projeteis
-            //se descomentar isso aqui vai dar ruim, porjeteis nao tao salvando
+            // se descomentar isso aqui vai dar ruim, porjeteis nao tao salvando
             /*std::ofstream arquivo_projeteis(ARQUIVO_PROJETEIS);
             if (!arquivo_projeteis)
             {
@@ -372,7 +523,7 @@ namespace Estados
                 buffer << "[";
                 if (pVetor->size() > 0)
                 {
-                    
+
                     Entidades::Entidade *proj = static_cast<Entidades::Entidade *>(&pVetor->at(0));
                     if(proj[0].get_vivo())
                         proj[0].salvar(&buffer);

@@ -46,6 +46,9 @@ namespace Estados
                 Listas::ListaEntidade jogadores;
                 Listas::ListaEntidade obstaculos;
                 Listas::ListaEntidade inimigos;
+                Listas::ListaEntidade zumbis;
+                Listas::ListaEntidade atiradores;
+                Listas::ListaEntidade gigantes;
 
                 Gerenciadores::Gerenciador_Colisoes gC;
                 std::ostringstream buffer;

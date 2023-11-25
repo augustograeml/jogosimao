@@ -19,6 +19,9 @@ namespace Observers
             Observer_Pause();
             ~Observer_Pause();
 
+            void atualizar(sf::Keyboard::Key k);
+            void set_menu(Estados::Menus::Pause* pM);
+
             
     };
 }

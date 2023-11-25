@@ -44,7 +44,8 @@ namespace Estados
 
             if(ja_criado)
             {
-                criar_jogadores(get_jogador2());
+                criar_jogadores(false);
+                //criar_jogadores(get_jogador2());
                 criar_inimigos();
             }
             else
@@ -54,9 +55,9 @@ namespace Estados
             tempo_inicio = clock();
 
             // a gente na teoria salva aqui
-            /*criar_jogadores(1);
-            criar_jogadores(0);
-            criar_inimigos();*/
+            criar_jogadores(true);
+            //criar_jogadores(false);
+            criar_inimigos();
         }
 
         Fase1::~Fase1()
@@ -115,6 +116,8 @@ namespace Estados
 
                 return;
             }
+            
+            //verifica se os jogadores tao vivos e se n tiverem eles entram no loop e voltam pro menu inicial
             if (gC.get_jogadores_vivos())
             {
                 pGG->limpar();
