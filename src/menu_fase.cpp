@@ -14,6 +14,9 @@ namespace Estados
             else
                 set_jogador2(false);
 
+            pObserver = new Observers::Observer_Menu_Fase();
+            pObserver->set_menu(this);
+
             inicializa_valores();
         }
 
@@ -48,6 +51,44 @@ namespace Estados
             textos[1].setOutlineThickness(4);
 
             pos = 1;
+        }
+
+        void Menu_Fase::selecionar()
+        {
+            if (pos == 3)
+                pGE->set_estado_atual(1);
+
+            else if (pos == 1)
+            {
+                if (get_jogador2())
+                {
+                    Estados::Fases::Fase1 *fase = new Estados::Fases::Fase1(7);
+                    pGE->set_estado_atual(7);
+                    pGE->set_fase(7);
+                }
+                else
+                {
+                    Estados::Fases::Fase1 *fase = new Estados::Fases::Fase1(6);
+                    pGE->set_estado_atual(6);
+                    pGE->set_fase(6);
+                }
+            }
+
+            else if (pos == 2)
+            {
+                if (get_jogador2())
+                {
+                    Estados::Fases::Fase2 *fase = new Estados::Fases::Fase2(9);
+                    pGE->set_estado_atual(9);
+                    pGE->set_fase(9);
+                }
+                else
+                {
+                    Estados::Fases::Fase2 *fase = new Estados::Fases::Fase2(8);
+                    pGE->set_estado_atual(8);
+                    pGE->set_fase(8);
+                }
+            }
         }
 
         void Menu_Fase::loop_evento()
@@ -115,13 +156,13 @@ namespace Estados
                     {
                         if (get_jogador2())
                         {
-                            Estados::Fases::Fase1* fase = new Estados::Fases::Fase1(7);
+                            Estados::Fases::Fase1 *fase = new Estados::Fases::Fase1(7);
                             pGE->set_estado_atual(7);
                             pGE->set_fase(7);
                         }
                         else
                         {
-                            Estados::Fases::Fase1* fase = new Estados::Fases::Fase1(6);
+                            Estados::Fases::Fase1 *fase = new Estados::Fases::Fase1(6);
                             pGE->set_estado_atual(6);
                             pGE->set_fase(6);
                         }
@@ -131,13 +172,13 @@ namespace Estados
                     {
                         if (get_jogador2())
                         {
-                            Estados::Fases::Fase2* fase = new Estados::Fases::Fase2(9);
+                            Estados::Fases::Fase2 *fase = new Estados::Fases::Fase2(9);
                             pGE->set_estado_atual(9);
                             pGE->set_fase(9);
                         }
                         else
                         {
-                            Estados::Fases::Fase2* fase = new Estados::Fases::Fase2(8);
+                            Estados::Fases::Fase2 *fase = new Estados::Fases::Fase2(8);
                             pGE->set_estado_atual(8);
                             pGE->set_fase(8);
                         }

@@ -2,6 +2,7 @@
 
 #include "../Gerenciadores/gerenciador_eventos.hpp"
 #include "../Observers/observer.hpp"
+#include <iostream>
 
 namespace Gerenciadores
 {
@@ -17,9 +18,7 @@ namespace Gerenciadores
     {
         pGrafico = nullptr;
         for(it = lista_observers.begin(); it != lista_observers.end(); it++)
-        {
-            delete *it;
-        }
+            delete (*it);
         lista_observers.clear();
     }
 
@@ -41,7 +40,9 @@ namespace Gerenciadores
                     pGrafico->fecharJanela();
                     break;
                 case sf::Event::KeyPressed:
+                    std::cout << "entrou" << std::endl;
                     notificar(evento.key.code);
+                    std::cout << "asd";
                     break;
                 default:
                     break;   
@@ -63,8 +64,6 @@ namespace Gerenciadores
     void Gerenciador_Eventos::notificar(sf::Keyboard::Key k)
     {
         for(it = lista_observers.begin(); it != lista_observers.end(); it++)
-        {
             (*it)->atualizar(k);
-        }
     }
 }

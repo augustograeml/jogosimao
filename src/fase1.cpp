@@ -29,12 +29,12 @@ namespace Estados
                 5 - gigante
             */
 
-            std::cout << "numero de zumbis: " << num_entidades[0] << std::endl;
+            /*std::cout << "numero de zumbis: " << num_entidades[0] << std::endl;
             std::cout << "numero de arqueiros: " << num_entidades[1] << std::endl;
             std::cout << "numero de espinhos: " << num_entidades[2] << std::endl;
             std::cout << "numero de coracoes: " << num_entidades[3] << std::endl;
             std::cout << "numero de caixas: " << num_entidades[4] << std::endl;
-            std::cout << "numero de gigantes: " << num_entidades[5] << std::endl;
+            std::cout << "numero de gigantes: " << num_entidades[5] << std::endl;*/
 
             //Textura.loadFromFile("Design/imagens/cemiterio.jpg");
             Textura.loadFromFile("Design/imagens/cenario_op11.png");
@@ -83,9 +83,7 @@ namespace Estados
             obstaculos.desenhar();
             jogadores.desenhar();
             inimigos.desenhar();
-            //projeteis.desenhar();
             
-            //std::cout<<" Executadno fase 1";
             //fase 2 pra dois jogadores
             if (gC.get_inimigos_vivos() && identidade == 7)
             {
@@ -143,14 +141,6 @@ namespace Estados
             }
             else
                 pGG->centralizarCamera((*(jogadores.get_primeiro()))->getPosicao());  
-        }
-
-        void Fase1::pausar()
-        {
-        }
-
-        void Fase1::menu()
-        {
         }
     }
 }
