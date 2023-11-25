@@ -38,7 +38,13 @@ namespace Estados
             shape.setScale(Vector2f(1.2f,1.0f));
             shape.setPosition(sf::Vector2f(0.f, 0.f));
 
-            criar_cenario(ARQUIVO_CENARIO_2,num_entidades[0],num_entidades[1],num_entidades[2],num_entidades[3],num_entidades[4],num_entidades[5], get_jaCriado());
+            if(ja_criado)
+            {
+                criar_jogadores(get_jogador2());
+                criar_inimigos();
+            }
+            else
+                criar_cenario(ARQUIVO_CENARIO_2,num_entidades[0],num_entidades[1],num_entidades[2],num_entidades[3],num_entidades[4],num_entidades[5], get_jaCriado());
         }
 
         Fase2::~Fase2()

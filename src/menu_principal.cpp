@@ -1,4 +1,6 @@
 #include "../Estados/Menus/menu_principal.hpp"
+#include "../Estados/Fases/fase1.hpp"
+#include "../Estados/Fases/fase2.hpp"
 
 namespace Estados
 {
@@ -53,8 +55,20 @@ namespace Estados
                     pGG->fecharJanela();
                 else if (pos == 1)
                     pGE->set_estado_atual(1);
-                else if (pos == 2 && pGE->get_fase() > 5)
-                    pGE->set_estado_atual(pGE->get_fase());
+                else if (pos == 2)
+                {
+                    if (pGE->get_fase() > 5)
+                        pGE->set_estado_atual(pGE->get_fase());
+                    else
+                    {
+                        // rodar a fase que ta salva no txt
+                        cout << "entrou no laco do resume";
+                        Estados::Fases::Fase1* f1 = new Estados::Fases::Fase1(6);
+                        //vai dar erro pq nao coloquei as posicoes naquele piq, pegando do json, ai calica
+                        pGE->set_estado_atual(6);
+                    }
+                }
+
                 else if (pos == 3)
                     pGE->set_estado_atual(4);
             }

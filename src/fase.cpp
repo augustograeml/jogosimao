@@ -7,6 +7,7 @@
 #define ARQUIVO_JOGADOR "jogador.json"
 #define ARQUIVO_INIMIGO "inimigo.json"
 #define ARQUIVO_PROJETEIS "projeteis.json"
+#define ESTADO_ATUAL "estado_atual.txt"
 
 using namespace std;
 
@@ -339,6 +340,20 @@ namespace Estados
 
             arquivo_inimigo << buffer.str();
             arquivo_inimigo.close();
+
+
+            std::ofstream estado(ESTADO_ATUAL);
+            if (!estado)
+            {
+                std::cout << "Problema em salvar o arquivo de estado atual" << std::endl;
+                exit(1);
+            }
+            estado.clear();
+            cout << "estado atual: " << pGE->get_fase() << endl;
+            estado << pGE->get_fase();
+            estado.close();
+
+
 
             // Salvando Projeteis
             //se descomentar isso aqui vai dar ruim, porjeteis nao tao salvando
