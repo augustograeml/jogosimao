@@ -132,7 +132,7 @@ namespace Estados
             }            
         }
 
-        void Fase::criar_cenario(string caminho, int n1, int n2, int n3, int n4, int n5, int n6, bool ja_criado)
+        void Fase::criar_cenario(string caminho, int n1, int n2, int n3, int n4, int n5, int n6)
         {
             int count5 = 0;
 
@@ -140,8 +140,7 @@ namespace Estados
             for(int i = 0; i < 7; i++)
                 cont[i] = 0;
 
-            if(!ja_criado)
-            {
+            
                 ifstream arquivo(caminho);
                 if(!arquivo)
                 {
@@ -282,9 +281,6 @@ namespace Estados
                     }
                 }
                 arquivo.close();
-
-                ja_criado = true;
-            }
         }
 
         void Fase::fim_de_jogo()
