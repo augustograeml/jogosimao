@@ -40,9 +40,7 @@ namespace Gerenciadores
                     pGrafico->fecharJanela();
                     break;
                 case sf::Event::KeyPressed:
-                    std::cout << "entrou" << std::endl;
                     notificar(evento.key.code);
-                    std::cout << "asd";
                     break;
                 default:
                     break;   

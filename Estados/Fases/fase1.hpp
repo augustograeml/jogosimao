@@ -14,7 +14,7 @@ namespace Estados
                 double tempo_fase1;
                 
             public:
-                Fase1(int id);
+                Fase1(int id, bool ja);
                 ~Fase1();
                 
                 bool get_neve();

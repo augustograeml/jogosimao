@@ -13,13 +13,16 @@ namespace Estados
 {
     namespace Fases
     {
-        Fase2::Fase2(int id) : Fase(id), musgos(false)
+        Fase2::Fase2(int id, bool ja) : Fase(id, ja), musgos(false)
         {
             if (id == 9)
+            {
                 set_num_jogadores(2);
+                jogador2 = false;
+            }
 
-            for (int i = 0; i < 6; i++)
-                num_entidades[i] = rand() % 3 + 3;
+            /*for (int i = 0; i < 3; i++)
+                num_obstaculos[i] = rand() % 3 + 3;*/
 
             /*
                 0 - zumbi
@@ -37,12 +40,13 @@ namespace Estados
             shape.setScale(Vector2f(1.2f, 1.0f));
             shape.setPosition(sf::Vector2f(0.f, 0.f));
 
-            criar_cenario(ARQUIVO_CENARIO_2, num_entidades[0], num_entidades[1], num_entidades[2], num_entidades[3], num_entidades[4], num_entidades[5]);
+            criar_cenario(ARQUIVO_CENARIO_2/*, num_obstaculos[0], num_obstaculos[1], num_obstaculos[2]*/);
+            if (!ja_criado)
+                criar_inimigos(ARQUIVO_CENARIO_2);
         }
 
         Fase2::~Fase2()
         {
-            salvar();
         }
 
         void Fase2::fim_de_jogo()
@@ -61,7 +65,7 @@ namespace Estados
                 pGG->limpar();
                 pGG->resetarCamera();
                 // ranking, acho que se pa esse fim_de_jogo é meio inutil
-                fim_de_jogo();
+                // fim_de_jogo();
                 return;
             }
 

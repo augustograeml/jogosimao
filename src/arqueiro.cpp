@@ -4,7 +4,7 @@ namespace Entidades
 {
     namespace Personagens
     {
-        Arqueiro::Arqueiro(sf::Vector2f pos, sf::Vector2f vel) : Inimigo(pos, vel), vetor_projeteis()
+        Arqueiro::Arqueiro(sf::Vector2f pos, sf::Vector2f vel) : Inimigo(pos, vel), vetor_projeteis(), numero_salvo_arqueiros(0)
         {
             this->setSkin("Design/imagens/zumbi_atirador.png");
             atirando = false;
@@ -65,17 +65,18 @@ namespace Entidades
         {
             if (a == 1 || a == 3)
             {
+                if(a == 1)
+                    direcao = 0;
+                else
+                    direcao = 1;
+
                 atacar(pE);
                 mudar_direcao();
             }
             else if (a == 4)
-            {
                 morrer();
-            }
             else
-            {
                 atacar(pE);
-            }
         }
 
         void Arqueiro::criar_arqueiros(string arquivo)
@@ -123,7 +124,7 @@ namespace Entidades
 
             if (recarregar == 0)
             {
-                Projetil novo_projetil(sf::Vector2f(10, 5));
+                Projetil novo_projetil({10, 5}, direcao);
                 novo_projetil.setPosicao(sf::Vector2f(this->getPosicao().x + 20.f, this->getPosicao().y + 15.f));
                 atirando = false;
                 if (!direcao)
@@ -140,7 +141,21 @@ namespace Entidades
 
         void Arqueiro::salvar(std::ostringstream *entrada)
         {
-            (*entrada) << "{ \"posicao\": [" << corpo.getPosition().x << "," << corpo.getPosition().y << "], \"velocidade\": [" << velocidade.x << "," << velocidade.y << "] }" << std::endl;
+            (*entrada) << "{ \"identidade\": [" << 4 << "] , \"posicao\": [" << corpo.getPosition().x << "," << corpo.getPosition().y << "], \"velocidade\": [" << velocidade.x << "," << velocidade.y << "], \"projeteis\": ["  << endl;
+
+            std::vector<Projetil>::iterator it;
+            for(it = vetor_projeteis.begin(); it != vetor_projeteis.end(); it++)
+            {
+                (*it).salvar(entrada);
+                if(it != vetor_projeteis.end() - 1 && (*it).get_vivo() == true)
+                {
+                    (*entrada << ", ");
+                }
+            }
+            (*entrada) << "]}";
+
+            numero_salvo_arqueiros++;
+            //fim do salvamento
         }
     }
 }

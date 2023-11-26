@@ -20,6 +20,7 @@ namespace Estados
                 void inicializa_valores();
                 void loop_evento();
                 void selecionar();
+                void fase_salva();
         };
     }
 }

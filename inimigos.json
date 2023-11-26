@@ -1,0 +1,11 @@
+{ "numero_zumbis": 3, "numero_atiradores": 3, "numero_gigantes": 4, "membros": [ { "identidade": [9], "posicao": [1150,800], "velocidade": [0,0] }
+,{ "identidade": [9], "posicao": [400,800], "velocidade": [0,0] }
+,{ "identidade": [5] , "posicao": [900,750], "velocidade": [0,0] }
+,{ "identidade": [9], "posicao": [1400,600], "velocidade": [0,0] }
+,{ "identidade": [4] , "posicao": [1250,600], "velocidade": [0,0], "projeteis": [
+]},{ "identidade": [5] , "posicao": [550,600], "velocidade": [0,0] }
+,{ "identidade": [4] , "posicao": [1200,450], "velocidade": [0,0], "projeteis": [
+]},{ "identidade": [5] , "posicao": [700,450], "velocidade": [0,0] }
+,{ "identidade": [4] , "posicao": [100,400], "velocidade": [0,0], "projeteis": [
+]},{ "identidade": [9], "posicao": [1650,250], "velocidade": [0,0] }
+]}

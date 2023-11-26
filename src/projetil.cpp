@@ -1,14 +1,26 @@
+//codigo inspirado no da dupla Guilherme e Caique
+
 #include "../Entidades/projetil.hpp"
+#include <iostream>
+
 #define TAM_BALAX 20
 #define TAM_BALAY 5
+#define VELOCIDADE {12, 0}
+
+using namespace std;
 
 namespace Entidades
 {
-    Projetil::Projetil(sf::Vector2f tam) : Entidade(this->getPosicao()), dano(2)
+    //caso der errado colocar a contrutora de direcao e velocidade aqui que nem a dupla deles fez
+    Projetil::Projetil(sf::Vector2f pos, bool dir) : Entidade(this->getPosicao()), dano(2)
     {
         corpo.setSize(Vector2f(TAM_BALAX, TAM_BALAY));
         corpo.setFillColor(sf::Color::Red);
-        velocidade = (Vector2f(12, 0));
+
+        direcao = dir;
+
+        velocidade = VELOCIDADE;
+
         set_vivo(1);
     }
 
@@ -44,8 +56,6 @@ namespace Entidades
             corpo.move(GRAVIDADE);
             corpo.move(velocidade);
         }
-
-        // atualizar();
     }
 
     void Projetil::atirar()
@@ -54,7 +64,8 @@ namespace Entidades
 
     void Projetil::salvar(std::ostringstream *entrada)
     {
-        (*entrada) << "{ \"posicao\": [" << corpo.getPosition().x << "," << corpo.getPosition().y << "], \"velocidade\": [" << velocidade.x << "," << velocidade.y << "] }" << std::endl;
+        if(get_vivo())
+            (*entrada) << "{ \"posicao\": [" << corpo.getPosition().x << "," << corpo.getPosition().y << "], \"velocidade\": [" << velocidade.x << "," << velocidade.y << "] \"direcao\": [" << direcao << "]}" << std::endl;
     }
 
     void Projetil::danar(Entidade *pE)

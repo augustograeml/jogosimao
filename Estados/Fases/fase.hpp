@@ -38,6 +38,7 @@ namespace Estados
                 //static Observers::Observer_Fase observador_fase;
 
                 bool ja_criado;
+                bool jogador2;
 
                 sf::Texture Textura;
                 sf::RectangleShape shape;
@@ -46,25 +47,29 @@ namespace Estados
                 Listas::ListaEntidade jogadores;
                 Listas::ListaEntidade obstaculos;
                 Listas::ListaEntidade inimigos;
-                Listas::ListaEntidade zumbis;
-                Listas::ListaEntidade atiradores;
-                Listas::ListaEntidade gigantes;
 
                 Gerenciadores::Gerenciador_Colisoes gC;
                 std::ostringstream buffer;
-                int num_entidades[6];
+                int num_obstaculos;
+                int numero_entidades_salvamento[4];
                 int num_jogadores;
+                int num_arqueiros;
+                int num_gigante;
+                int num_zumbis;
                 sf::Clock relogio;
 
             public:
-                Fase(int i = -1);
+                Fase(int i = -1, bool ja = false);
                 ~Fase();
 
                 void gerenciar_colisoes();
-                void set_num_jogadores(int i) {num_jogadores = i;}
-                void criar_jogadores(bool jog2);
-                void criar_inimigos();
-                void criar_cenario(std::string caminho, int n1, int n2, int n3, int n4, int n5, int n6);
+                void set_num_jogadores(int i) {num_jogadores = i; get_jogador2();}
+                void criar_jogadores();
+                void criar_inimigos(string cenario);
+                void criar_cenario(std::string caminho/*, int numero_espinhos, int numero_coracao, int numero_caixas*/);
+
+                void carregar_jogadores_salvos();
+                void carregar_inimigos_salvos();
 
                 const bool get_jaCriado();
                 const bool get_jogador2();

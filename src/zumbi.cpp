@@ -5,7 +5,7 @@ namespace Entidades
 {
     namespace Personagens
     {
-        Zumbi::Zumbi(Vector2f pos, Vector2f vel) : Inimigo(pos, vel)
+        Zumbi::Zumbi(Vector2f pos, Vector2f vel) : Inimigo(pos, vel), numero_zumbi_salvos(0)
         {
             this->setSkin("Design/imagens/zumbi_bateu_morreu.png");
             direcao = 1;
@@ -128,7 +128,9 @@ namespace Entidades
 
         void Zumbi::salvar(std::ostringstream *entrada)
         {
-            (*entrada) << "{ \"posicao\": [" << corpo.getPosition().x << "," << corpo.getPosition().y << "], \"velocidade\": [" << velocidade.x << "," << velocidade.y << "] }" << std::endl;
+            (*entrada) << "{ \"identidade\": [" << 5 << "] , \"posicao\": [" << corpo.getPosition().x << "," << corpo.getPosition().y << "], \"velocidade\": [" << velocidade.x << "," << velocidade.y << "] }" << std::endl;
+
+            numero_zumbi_salvos++;
         }
     }
 }

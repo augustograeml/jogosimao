@@ -34,9 +34,15 @@ namespace Entidades
             float comprimento = sqrt(direcao.x * direcao.x + direcao.y * direcao.y);
             direcao /= comprimento;
         }
+
         void Inimigo::mudar_direcao()
         {
             direcao = !direcao;
+        }
+
+        void Inimigo::salvar(std::ostringstream* entrada)
+        {
+            (*entrada) << "{ \"posicao\": [" << corpo.getPosition().x<<","<<corpo.getPosition().y<<"], \"velocidade\": ["<<velocidade.x<<","<<velocidade.y<<"] }" << std::endl;
         }
     }
 }
