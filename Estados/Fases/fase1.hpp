@@ -14,7 +14,7 @@ namespace Estados
                 double tempo_fase1;
                 
             public:
-                Fase1(int id);
+                Fase1(int id, bool ja);
                 ~Fase1();
                 
                 bool get_neve();
@@ -23,8 +23,6 @@ namespace Estados
                 //colocar como parametro um bool pro jogador2, lembrar de mexer na clase virtual pura de fase.hpp
                 void executar();
                 void atualizar();
-                void pausar();
-                void menu();
         };
     }
 }

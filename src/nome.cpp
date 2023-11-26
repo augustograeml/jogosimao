@@ -43,6 +43,11 @@ namespace Estados
             textos[0].setOutlineThickness(8);
         }
 
+        void Nome::selecionar()
+        {
+            
+        }
+
         void Nome::loop_evento()
         {
             sf::Text teste;

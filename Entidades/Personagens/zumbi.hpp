@@ -9,6 +9,7 @@ namespace Entidades
         {
             private:
                 int pulo;
+                int numero_zumbi_salvos;
             public:
                 Zumbi(Vector2f pos = Vector2f(0.f, 0.f), Vector2f vel = Vector2f(0.f, 0.f));
                 ~Zumbi();

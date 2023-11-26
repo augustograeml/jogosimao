@@ -4,6 +4,8 @@
 #include "../estado.hpp"
 #include "../../Gerenciadores/gerenciador_grafico.hpp"
 #include <SFML/Graphics.hpp>
+#include <iostream>
+using namespace std;
 
 namespace Estados
 {
@@ -37,6 +39,10 @@ namespace Estados
 
                 void set_jogador2(bool j);
                 const bool get_jogador2() const;
+
+                void cima();
+                void baixo(int i);
+                virtual void selecionar() = 0;
 
                 void mostrar_menu();
                 void executar();

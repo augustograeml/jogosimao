@@ -17,7 +17,7 @@
 #include "../../Gerenciadores/gerenciador_estados.hpp"
 #include "../../Gerenciadores/gerenciador_eventos.hpp"
 #include "../../Gerenciadores/gerenciador_grafico.hpp"
-#include "../../Observers/observer_fase.hpp"
+#include "../../Observers/observer_menu_fase.hpp"
 #include "../estado.hpp"
 
 #include <iostream>
@@ -38,6 +38,7 @@ namespace Estados
                 //static Observers::Observer_Fase observador_fase;
 
                 bool ja_criado;
+                bool jogador2;
 
                 sf::Texture Textura;
                 sf::RectangleShape shape;
@@ -46,23 +47,29 @@ namespace Estados
                 Listas::ListaEntidade jogadores;
                 Listas::ListaEntidade obstaculos;
                 Listas::ListaEntidade inimigos;
-                Listas::ListaEntidade projeteis;
 
                 Gerenciadores::Gerenciador_Colisoes gC;
                 std::ostringstream buffer;
-                int num_entidades[6];
+                int num_obstaculos;
+                int numero_entidades_salvamento[4];
                 int num_jogadores;
+                int num_arqueiros;
+                int num_gigante;
+                int num_zumbis;
                 sf::Clock relogio;
 
             public:
-                Fase(int i = -1);
+                Fase(int i = -1, bool ja = false);
                 ~Fase();
 
                 void gerenciar_colisoes();
-                void set_num_jogadores(int i) {num_jogadores = i;}
-                void criar_jogadores(bool jog2);
-                void criar_inimigos();
-                void criar_cenario(std::string caminho, int n1, int n2, int n3, int n4, int n5, int n6, bool ja_criado);
+                void set_num_jogadores(int i) {num_jogadores = i; get_jogador2();}
+                void criar_jogadores();
+                void criar_inimigos(string cenario);
+                void criar_cenario(std::string caminho/*, int numero_espinhos, int numero_coracao, int numero_caixas*/);
+
+                void carregar_jogadores_salvos();
+                void carregar_inimigos_salvos();
 
                 const bool get_jaCriado();
                 const bool get_jogador2();
@@ -70,8 +77,6 @@ namespace Estados
                 virtual void executar() = 0;
                 virtual void fim_de_jogo() = 0;
                 virtual void atualizar() = 0;
-                virtual void pausar() = 0;
-                virtual void menu() = 0;
 
                 void set_tempo_jogadores();
                 void salvar();

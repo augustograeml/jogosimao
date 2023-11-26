@@ -14,14 +14,16 @@ namespace Estados
 {
     namespace Fases
     {
-        Fase2::Fase2(int id) : Fase(id), musgos(false)
+        Fase2::Fase2(int id, bool ja) : Fase(id, ja), musgos(false)
         {
-            if(id == 9)
+            if (id == 9)
+            {
                 set_num_jogadores(2);
+                jogador2 = false;
+            }
 
-
-            for(int i = 0; i < 6; i++)
-                num_entidades[i] = rand()%3 + 3;
+            /*for (int i = 0; i < 3; i++)
+                num_obstaculos[i] = rand() % 3 + 3;*/
 
             /*
                 0 - zumbi
@@ -31,20 +33,21 @@ namespace Estados
                 4 - caixas
                 5 - gigante
             */
-            //set_num_jogadores(2);
+            // set_num_jogadores(2);
 
             Textura.loadFromFile("Design/imagens/cenario_op22.png");
             shape.setSize(Vector2f(2000.f, 1200.f));
             shape.setTexture(&Textura);
-            shape.setScale(Vector2f(1.2f,1.0f));
+            shape.setScale(Vector2f(1.2f, 1.0f));
             shape.setPosition(sf::Vector2f(0.f, 0.f));
 
-            criar_cenario(ARQUIVO_CENARIO_2,num_entidades[0],num_entidades[1],num_entidades[2],num_entidades[3],num_entidades[4],num_entidades[5], get_jaCriado());
+            criar_cenario(ARQUIVO_CENARIO_2/*, num_obstaculos[0], num_obstaculos[1], num_obstaculos[2]*/);
+            if (!ja_criado)
+                criar_inimigos(ARQUIVO_CENARIO_2);
         }
 
         Fase2::~Fase2()
         {
-            salvar();
         }
 
         void Fase2::fim_de_jogo()
@@ -65,13 +68,21 @@ namespace Estados
         }
 
         void Fase2::executar()
-        {            
+        {
             if (gC.get_inimigos_vivos())
             {
                 pGG->limpar();
                 pGG->resetarCamera();
-                //ranking, acho que se pa esse fim_de_jogo é meio inutil
-                fim_de_jogo();
+                // ranking, acho que se pa esse fim_de_jogo é meio inutil
+                // fim_de_jogo();
+                return;
+            }
+
+            if (gC.get_jogadores_vivos())
+            {
+                pGG->limpar();
+                pGG->resetarCamera();
+                pGE->set_estado_atual(0);
                 return;
             }
 
@@ -83,7 +94,7 @@ namespace Estados
             gerenciar_colisoes();
 
             atualizar();
-            
+
             obstaculos.desenhar();
             jogadores.desenhar();
             inimigos.desenhar();
@@ -91,16 +102,16 @@ namespace Estados
 
         void Fase2::atualizar()
         {
-            if(num_jogadores == 2)
+            if (num_jogadores == 2)
             {
-                Entidades::Personagens::Jogador* aux = static_cast<Entidades::Personagens::Jogador*> (*(jogadores.get_primeiro()));
-                Entidades::Personagens::Jogador* aux1 = static_cast<Entidades::Personagens::Jogador*> (*(jogadores.get_primeiro()++));
-                //if(jogador2)
-                if(num_jogadores == 2 && aux->get_vida() && aux1->get_vida())
-                    pGG->centralizarCamera(Vector2f((*(jogadores.get_primeiro()))->getPosicao() + (*(jogadores.get_primeiro()++))->getPosicao())/2.f);
-                if(aux->get_vida() && !aux1->get_vida())
+                Entidades::Personagens::Jogador *aux = static_cast<Entidades::Personagens::Jogador *>(*(jogadores.get_primeiro()));
+                Entidades::Personagens::Jogador *aux1 = static_cast<Entidades::Personagens::Jogador *>(*(jogadores.get_primeiro()++));
+                // if(jogador2)
+                if (num_jogadores == 2 && aux->get_vida() && aux1->get_vida())
+                    pGG->centralizarCamera(Vector2f((*(jogadores.get_primeiro()))->getPosicao() + (*(jogadores.get_primeiro()++))->getPosicao()) / 2.f);
+                if (aux->get_vida() && !aux1->get_vida())
                     pGG->centralizarCamera((*(jogadores.get_primeiro()))->getPosicao());
-                if(!aux->get_vida() && aux1->get_vida())
+                if (!aux->get_vida() && aux1->get_vida())
                     pGG->centralizarCamera((*(jogadores.get_primeiro()++))->getPosicao());
             }
             else
@@ -110,14 +121,6 @@ namespace Estados
         bool Fase2::get_musgos()
         {
             return musgos;
-        }
-
-        void Fase2::pausar()
-        {
-        }
-        
-        void Fase2::menu()
-        {
         }
     }
 }

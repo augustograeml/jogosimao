@@ -5,7 +5,7 @@ namespace Entidades
     namespace Personagens
     {
         Gigante::Gigante(sf::Vector2f pos, sf::Vector2f vel) : Inimigo(pos, vel),
-                                                               ja_inc(false)
+        numero_salvo_gigantes(0), ja_inc(false)
         {
             int i = rand() % 10;
             if (i == 2)
@@ -123,7 +123,9 @@ namespace Entidades
 
         void Gigante::salvar(std::ostringstream *entrada)
         {
-            (*entrada) << "{ \"posicao\": [" << corpo.getPosition().x << "," << corpo.getPosition().y << "], \"velocidade\": [" << velocidade.x << "," << velocidade.y << "] }" << std::endl;
+            (*entrada) << "{ \"identidade\": [" << 9 << "], \"posicao\": [" << corpo.getPosition().x << "," << corpo.getPosition().y << "], \"velocidade\": [" << velocidade.x << "," << velocidade.y << "] }" << std::endl;
+
+            numero_salvo_gigantes++;
         }
     }
 }

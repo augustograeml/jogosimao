@@ -14,6 +14,9 @@ namespace Gerenciadores
             Listas::ListaEntidade* obstaculos;
             Listas::ListaEntidade* jogadores;
             Listas::ListaEntidade* inimigos;
+            Listas::ListaEntidade* zumbis;
+            Listas::ListaEntidade* atiradores;
+            Listas::ListaEntidade* gigantes;
             Listas::ListaEntidade* projeteis;
 
             bool sem_inimigos;
@@ -25,6 +28,9 @@ namespace Gerenciadores
             void set_obstaculos(Listas::ListaEntidade* obs) {if(obs) obstaculos = obs;}
             void set_jogadores(Listas::ListaEntidade* jog) {if(jog) jogadores = jog;}
             void set_inimigos(Listas::ListaEntidade* ini) {if(ini) inimigos = ini;}
+            void set_zumbis(Listas::ListaEntidade* z) {if(z) zumbis = z;}
+            void set_atiradores(Listas::ListaEntidade* a) {if(a) atiradores = a;}
+            void set_gigantes(Listas::ListaEntidade* g) {if(g) gigantes = g;}
             void set_projeteis(Listas::ListaEntidade* proj) {if(proj) projeteis = proj;}
 
             void colisao_jogadores_obstaculos();
@@ -33,6 +39,7 @@ namespace Gerenciadores
             void colisao_jogadores_projeteis();
             void colisao_obstaculos_projeteis();
             void gerenciar_colisoes();
+            
             int colidiu(Entidades::Entidade* e1, Entidades::Entidade* e2);
 
             const bool get_inimigos_vivos();

@@ -13,6 +13,7 @@ namespace Entidades
             std::vector<Projetil> vetor_projeteis;
             int recarregar;
             bool atirando;
+            int numero_salvo_arqueiros;
 
             public:
                 Arqueiro(sf::Vector2f pos = sf::Vector2f(0.f, 0.f), sf::Vector2f vel = sf::Vector2f(0.f, 0.f));

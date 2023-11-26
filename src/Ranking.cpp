@@ -62,6 +62,9 @@ namespace Estados
             pGG->desenharTextura(imagem);
             // laco diferentao ne mano pprt
             //textos[3].setString(opcoes[3] + "   augusto");
+
+            //poolEvent, event.type text entered
+
             CriarTextos(ARQUIVO_COLOCACAO_1);
             for (auto t : textos)
             {

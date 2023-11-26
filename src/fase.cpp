@@ -5,7 +5,8 @@
 #include <iostream>
 
 #define ARQUIVO_JOGADOR "jogador.json"
-#define ARQUIVO_INIMIGO "inimigo.json"
+#define ARQUIVO_INIMIGOS "inimigos.json"
+#define ESTADO_ATUAL "estado_atual.txt"
 
 using namespace std;
 
@@ -13,21 +14,34 @@ namespace Estados
 {
     namespace Fases
     {
-         
-        Fase::Fase(int id) : jogadores(), obstaculos(), inimigos(), projeteis(), Estado(id),
-        gC(), buffer(), ja_criado(false), num_jogadores(1)
+
+        Fase::Fase(int id, bool ja) : jogadores(), obstaculos(), inimigos(),
+        Estado(id), ja_criado(ja),
+        gC(), buffer(), num_jogadores(1), num_arqueiros(0),
+        num_gigante(0), num_obstaculos(0), num_zumbis(0)
         {
-            gC.set_inimigos(&inimigos);
             gC.set_inimigos(&inimigos);
             gC.set_jogadores(&jogadores);
             gC.set_obstaculos(&obstaculos);
+
+            if (!ja_criado)
+                criar_jogadores();
+            else
+            {
+                carregar_jogadores_salvos();
+                carregar_inimigos_salvos();
+            }
+
             relogio.restart();
-            gC.set_projeteis(&projeteis);
+
+            for (int i = 0; i < 4; i++)
+                numero_entidades_salvamento[i] = 0;
         }
 
         Fase::~Fase()
-        {  
-            salvar();
+        {
+            if(pGE->get_estado_atual() == Estado::id)
+                salvar();
         }
 
         const bool Fase::get_jaCriado()
@@ -40,334 +54,369 @@ namespace Estados
             gC.gerenciar_colisoes();
         }
 
-        void Fase::criar_jogadores(bool jog2)
+        void Fase::criar_jogadores()
+        {
+            if (get_jogador2())
+            {
+                // bagui pode duplicar aq, cuidado
+                Entidades::Personagens::Jogador *jgd1 = new Entidades::Personagens::Jogador({80, 50}, {0, 0}, false);
+                Entidades::Personagens::Jogador *jgd2 = new Entidades::Personagens::Jogador({150, 50}, {0, 0}, true);
+                jogadores.incluir(static_cast<Entidades::Entidade *>(jgd1));
+                jogadores.incluir(static_cast<Entidades::Entidade *>(jgd2));
+            }
+            else
+            {
+                Entidades::Personagens::Jogador *jgd1 = new Entidades::Personagens::Jogador({80, 50}, {0, 0}, false);
+                jogadores.incluir(static_cast<Entidades::Entidade *>(jgd1));
+            }
+        }
+
+        void Fase::criar_inimigos(string cenario)
+        {
+            std::ifstream arquivo(cenario);
+            if (!arquivo)
+            {
+                std::cout << "Arquivo não existe" << std::endl;
+                exit(2);
+            }
+
+            int num[2], cont[2] = {0, 0};
+            for(int i = 0; i < 2; i++)
+            {
+                num[i] = (int)rand() % 3 + 3;
+            }
+
+            string linha;
+            Entidades::Entidade *aux = nullptr;
+            int j = 0, i;
+            for (i = 0; getline(arquivo, linha); i++)
+            {
+                j = 0;
+                for (char tipo : linha)
+                {
+                    switch (tipo)
+                    {
+                    case '3':
+                        // dados do arquivo json serao importante nesse caso aqui
+                        /*if (contador_inimigos[0] < numero_inimigos[0])
+                        {*/
+                            aux = static_cast<Entidades::Entidade *>(new Entidades::Personagens::Zumbi(sf::Vector2f(0.f, 0.f), sf::Vector2f(0.f, 0.f)));
+                            if (aux)
+                            {
+                                aux->setWindow(pGG->get_Janela());
+                                aux->setPosicao(sf::Vector2f(j * TAM, i * TAM));
+                                inimigos.incluir(aux);
+                            }
+                            //contador_inimigos[0]++;
+                            num_zumbis++;
+                       // }
+                        break;
+                    case '4':
+                        // dados do arquivo json serao importante nesse caso aqui
+                        /*if (contador_inimigos[1] < numero_inimigos[1])
+                        {*/
+                            aux = static_cast<Entidades::Entidade *>(new Entidades::Personagens::Arqueiro(sf::Vector2f(0.f, 0.f), sf::Vector2f(0.f, 0.f)));
+                            if (aux)
+                            {
+                                aux->setWindow(pGG->get_Janela());
+                                aux->setPosicao(sf::Vector2f(j * TAM, i * TAM));
+                                inimigos.incluir(aux);
+                            }
+                            //contador_inimigos[1]++;
+                            num_arqueiros++;
+                        //}
+                        break;
+                    case '9':
+                        // if vet < n6
+                        aux = static_cast<Entidades::Entidade *>(new Entidades::Personagens::Gigante(sf::Vector2f(sf::Vector2f(0.f, 0.f)), sf::Vector2f(0.f, 0.f)));
+                        /*if (contador_inimigos[2] < numero_inimigos[2])
+                        {*/
+                            if (aux)
+                            {
+                                aux->setWindow(pGG->get_Janela());
+                                aux->setPosicao(sf::Vector2f(j * TAM, i * TAM));
+                                inimigos.incluir(aux);
+                            }
+                            //contador_inimigos[2]++;
+                            num_gigante++;
+                        //}
+                        break;
+
+                    // colocar depois um case pra setar a posicao dos jogadores e um pra setar a posicao dos inimigos
+                    default:
+                        break;
+                    }
+                    j++;
+                }
+            }
+            arquivo.close();
+        }
+
+        void Fase::carregar_jogadores_salvos()
         {
             std::ifstream arquivo(ARQUIVO_JOGADOR);
             if (!arquivo)
             {
-                std::cout << "Arquivo não existe" << std::endl;   
+                std::cout << "Arquivo não existe" << std::endl;
                 exit(2);
             }
 
-            Entidades::Entidade* p;
-            Listas::Lista<Entidades::Entidade>::Iterador it = jogadores.get_primeiro();
-            while(it != nullptr)
-            {
-                p = *it;
-                jogadores.remover(p);
-                it++;
-                p = nullptr;
-            }
-            
             nlohmann::json json = nlohmann::json::parse(arquivo);
 
-            if(!jog2)
-            {
-                for (auto it = json.begin(); it != json.end(); ++it)
-                {
-                    jogadores.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Jogador(
-                        sf::Vector2f(
-                            (float) ((*it)["posicao"][0]), 
-                            (float) ((*it)["posicao"][1])
-                                    ),
-                        sf::Vector2f(
-                            (float) ((*it)["velocidade"][0]),
-                            (float) ((*it)["velocidade"][1])
-                                    ), false
-                        )));
-                }
-            }
+            auto jogadores_json = json["jogadores"];
 
-            else 
-            {
-                for (auto it = json.begin(); it != json.end(); ++it)
-                {
-                    jogadores.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Jogador(
-                        sf::Vector2f(
-                            (float) ((*it)["posicao"][0]), 
-                            (float) ((*it)["posicao"][1])
-                                    ),
-                        sf::Vector2f(
-                            (float) ((*it)["velocidade"][0]),
-                            (float) ((*it)["velocidade"][1])
-                                    ), true
-                        )));
-                }
-            }
-            
-       }
+            auto jogador = jogadores_json[0];
 
-        void Fase::criar_inimigos()
-        {   
-            std::ifstream arquivo(ARQUIVO_INIMIGO);
+            float posx = jogador["posicao"][0];
+            float posy = jogador["posicao"][1];
+            float velx = jogador["velocidade"][0];
+            float vely = jogador["velocidade"][1];
+
+            if (get_jogador2())
+            {
+                auto jogador = jogadores_json[1];
+
+                float posicao_x = jogador["posicao"][0];
+                float posicao_y = jogador["posicao"][1];
+                float velocidade_x = jogador["velocidade"][0];
+                float velocidade_y = jogador["velocidade"][1];
+
+                // ve se nao vai duplicar aqui
+                Entidades::Personagens::Jogador *jgd2 = new Entidades::Personagens::Jogador(sf::Vector2f(posicao_x, posicao_y),
+                                                                                            sf::Vector2f(velocidade_x, velocidade_y),
+                                                                                            true);
+
+                jogadores.incluir(static_cast<Entidades::Entidade *>(jgd2));
+            }
+        }
+
+        void Fase::carregar_inimigos_salvos()
+        {
+            std::ifstream arquivo(ARQUIVO_INIMIGOS);
             if (!arquivo)
             {
-                std::cout << "Arquivo não existe" << std::endl;   
+                std::cout << "Arquivo não existe" << std::endl;
                 exit(2);
-            }
-
-            Entidades::Entidade* p;
-            Listas::Lista<Entidades::Entidade>::Iterador it = inimigos.get_primeiro();
-            while(it != nullptr)
-            {
-                p = *it;
-                inimigos.remover(p);
-                it++;
-                p = nullptr;
             }
 
             nlohmann::json json = nlohmann::json::parse(arquivo);
 
-            for (auto it = json.begin(); it != json.end(); ++it)
+            num_arqueiros = json["numero_atiradores"];
+            num_zumbis = json["numero_zumbis"];
+            num_gigante = json["numero_gigantes"];
+
+            // zumbi = 5, atirador = 4, gigante = 9
+
+            auto membros = json["membros"];
+            for (int i = 0; i < membros.size(); i++)
             {
-                inimigos.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Zumbi(
-                    sf::Vector2f(
-                        (float) ((*it)["posicao"][0]), 
-                        (float) ((*it)["posicao"][1])
-                                ),
-                    sf::Vector2f(
-                        (float) ((*it)["velocidade"][0]),
-                        (float) ((*it)["velocidade"][1])
-                                )
-                    )));
-            }            
-        }
+                int identificador = membros[i]["identidade"];
 
-        void Fase::criar_cenario(string caminho, int n1, int n2, int n3, int n4, int n5, int n6, bool ja_criado)
-        {
-            int count5 = 0;
+                float posx = membros[i]["posicao"][0];
+                float posy = membros[i]["posicao"][1];
+                float velx = membros[i]["velocidade"][0];
+                float vely = membros[i]["velocidade"][1];
 
-            int cont[6];
-            for(int i = 0; i < 7; i++)
-                cont[i] = 0;
+                sf::Vector2f pos = sf::Vector2f(posx, posy);
+                sf::Vector2f vel = sf::Vector2f(velx, vely);
 
-            if(!ja_criado)
-            {
-                ifstream arquivo(caminho);
-                if(!arquivo)
+                if (identificador == 5)
                 {
-                    cout << "Nao foi possivel acessar o arquivo de cenario" << endl;
-                    exit(1);
+                    inimigos.incluir(static_cast<Entidades::Entidade *>(new Entidades::Personagens::Zumbi(pos, vel)));
                 }
-
-                std::string linha;
-
-                Entidades::Entidade* aux = nullptr;
-
-                int j = 0, i;
-                for(i = 0; getline(arquivo, linha); i++)
+                else if (identificador == 4)
                 {
-                    j = 0;
-                    for(char tipo : linha)
+                    Entidades::Personagens::Arqueiro *arq = new Entidades::Personagens::Arqueiro(pos, vel);
+                    std::vector<Entidades::Projetil> *pVetor_projeteis = arq->get_projeteis();
+
+                    auto projeteis = membros[i]["projeteis"];
+
+                    for (int j = 0; i < projeteis.size(); i++)
                     {
-                        switch(tipo)
-                        {
-                            case '0':
-                                aux = static_cast<Entidades::Entidade*> (new Entidades::Obstaculos::Neve(sf::Vector2f(j * TAM, i * TAM)));
-                                if(aux)
-                                    obstaculos.incluir(aux);
-                                break;
-                            case '1':
-                                //dados do arquivo json serao importante nesse caso aqui
-                                if(jogadores.get_primeiro() == nullptr)
-                                {
-                                    aux = static_cast<Entidades::Entidade*> (new Entidades::Personagens::Jogador(sf::Vector2f(0.f, 0.f), sf::Vector2f(0.f, 0.f), false));
-                                    if(aux)
-                                    {
-                                        aux->setWindow(pGG->get_Janela());
-                                        aux->setPosicao(sf::Vector2f(j * TAM, i * TAM));
-                                        jogadores.incluir(aux);
-                                    }
-                                }
-                                break;
-                                
-                            case '2':
-                            //dados do arquivo json serao importante nesse caso aqui
-                                if(num_jogadores == 2)
-                                {
-                                    aux = static_cast<Entidades::Entidade*> (new Entidades::Personagens::Jogador(sf::Vector2f(0.f, 0.f), sf::Vector2f(0.f, 0.f), true));
-                                    if(aux)
-                                    {
-                                        aux->setWindow(pGG->get_Janela());
-                                        aux->setPosicao(sf::Vector2f(j * TAM, i * TAM));
-                                        jogadores.incluir(aux);
-                                    }
-                                }
-                                break;
-                            case '3':
-                            //dados do arquivo json serao importante nesse caso aqui
-                                if(cont[0] < n1)
-                                {
-                                    aux = static_cast<Entidades::Entidade*> (new Entidades::Personagens::Zumbi(sf::Vector2f(0.f, 0.f), sf::Vector2f(0.f, 0.f)));
-                                    if(aux)
-                                    {
-                                            aux->setWindow(pGG->get_Janela());
-                                            aux->setPosicao(sf::Vector2f(j * TAM, i * TAM));
-                                            inimigos.incluir(aux);
-                                    }
-                                    cont[0]++;
-                                }
-                                break;
-                            case '4':
-                            //dados do arquivo json serao importante nesse caso aqui
-                                if(cont[1] < n2)
-                                {
-                                    aux = static_cast<Entidades::Entidade*> (new Entidades::Personagens::Arqueiro(sf::Vector2f(0.f, 0.f), sf::Vector2f(0.f, 0.f)));
-                                    if(aux)
-                                    {
-                                        aux->setWindow(pGG->get_Janela());
-                                        aux->setPosicao(sf::Vector2f(j * TAM, i * TAM));
-                                        inimigos.incluir(aux);
-                                        //ele nao ta gostando desse incluir em aruqieros nao sei o porque
-                                        //arqueiros.incluir(aux);
-                                    }
-                                    cont[1]++;
-                                }
-                                break;
+                        float posx_proj = projeteis[j]["posicao"][0];
+                        float posy_proj = projeteis[j]["posicao"][1];
+                        bool dir = projeteis[j]["direcao"];
 
-                            case '5':
-                                if(cont[2] < n3)
-                                {
-                                    aux = static_cast<Entidades::Entidade*> (new Entidades::Obstaculos::Espinho(Vector2f(j * TAM, i * TAM)));
-                                    if(aux)
-                                        obstaculos.incluir(aux);
-                                    cont[2]++;
-                                }
-                            break;
-                            case '6':
-                                if(cont[3] < n4)
-                                {
-                                    aux = static_cast<Entidades::Entidade*> (new Entidades::Obstaculos::Coracao(Vector2f(j * TAM, i * TAM)));
-                                    if(aux)
-                                        obstaculos.incluir(aux);
-                                    cont[3]++;
-                                }    
-                                break;
+                        sf::Vector2f pos_proj = sf::Vector2f(posx_proj, posy_proj);
 
-                            case '7':
-                                aux = static_cast<Entidades::Entidade*> (new Entidades::Obstaculos::Musgo(Vector2f(j * TAM, i * TAM)));
-                                if(aux)
-                                    obstaculos.incluir(aux);
-                                break;
-
-                            case '8':
-                                //if vet < n5
-                                aux = static_cast<Entidades::Entidade*> (new Entidades::Obstaculos::Caixa(Vector2f(j * TAM, i * TAM)));
-                                if(cont[4] < n5)
-                                {
-                                    if(aux)
-                                        obstaculos.incluir(aux);
-                                    cont[4]++;
-                                }
-                                break;
-                            case '9':
-                            //if vet < n6
-                                aux = static_cast<Entidades::Entidade*> (new Entidades::Personagens::Gigante(sf::Vector2f(sf::Vector2f(0.f, 0.f)), sf::Vector2f(0.f, 0.f)));
-                                if(cont[5] < n6)
-                                {
-                                    if(aux)
-                                    {
-                                        aux->setWindow(pGG->get_Janela());
-                                        aux->setPosicao(sf::Vector2f(j * TAM, i * TAM));
-                                        inimigos.incluir(aux);
-                                    }
-                                    cont[5]++;
-                                }
-                                break;
-
-                            //colocar depois um case pra setar a posicao dos jogadores e um pra setar a posicao dos inimigos
-                            default:
-                                break;
-                        }
-                        j++;
+                        Entidades::Projetil *proj = new Entidades::Projetil(pos_proj, dir);
+                        pVetor_projeteis->push_back(*proj);
                     }
+                    inimigos.incluir(static_cast<Entidades::Entidade *>(arq));
                 }
-                arquivo.close();
-
-                ja_criado = true;
+                else if (identificador == 9)
+                {
+                    Entidades::Personagens::Gigante *gig = new Entidades::Personagens::Gigante(pos, vel);
+                }
             }
         }
 
-        void Fase::fim_de_jogo()
+        void Fase::criar_cenario(string caminho/*, int numero_espinhos, int numero_coracao, int numero_caixas*/)
         {
-            
+            int cont[3];
+            for (int i = 0; i < 3; i++)
+                cont[i] = 0;
+
+            ifstream arquivo(caminho);
+            if (!arquivo)
+            {
+                cout << "Nao foi possivel acessar o arquivo de cenario" << endl;
+                exit(1);
+            }
+
+            std::string linha;
+
+            Entidades::Entidade *aux = nullptr;
+            int j = 0, i;
+            for (i = 0; getline(arquivo, linha); i++)
+            {
+                j = 0;
+                for (char tipo : linha)
+                {
+                    switch (tipo)
+                    {
+                    case '0':
+                        aux = static_cast<Entidades::Entidade *>(new Entidades::Obstaculos::Neve(sf::Vector2f(j * TAM, i * TAM)));
+                        if (aux)
+                            obstaculos.incluir(aux);
+                        break;
+
+                    case '5':
+                        //if (cont[0] < numero_espinhos)
+                        {
+                            aux = static_cast<Entidades::Entidade *>(new Entidades::Obstaculos::Espinho(Vector2f(j * TAM, i * TAM)));
+                            if (aux)
+                                obstaculos.incluir(aux);
+                           // cont[0]++;
+                        }
+                        break;
+                    case '6':
+                        //if (cont[1] < numero_coracao)
+                        {
+                            aux = static_cast<Entidades::Entidade *>(new Entidades::Obstaculos::Coracao(Vector2f(j * TAM, i * TAM)));
+                            if (aux)
+                                obstaculos.incluir(aux);
+                          //  cont[1]++;
+                        }
+                        break;
+
+                    case '7':
+                        aux = static_cast<Entidades::Entidade *>(new Entidades::Obstaculos::Musgo(Vector2f(j * TAM, i * TAM)));
+                        if (aux)
+                            obstaculos.incluir(aux);
+                        break;
+
+                    case '8':
+                        // if vet < n5
+                        aux = static_cast<Entidades::Entidade *>(new Entidades::Obstaculos::Caixa(Vector2f(j * TAM, i * TAM)));
+                        //if (cont[2] < numero_caixas)
+                        {
+                            if (aux)
+                                obstaculos.incluir(aux);
+                          //  cont[2]++;
+                        }
+                        break;
+
+                    // colocar depois um case pra setar a posicao dos jogadores e um pra setar a posicao dos inimigos
+                    default:
+                        break;
+                    }
+                    j++;
+                }
+            }
+            arquivo.close();
         }
 
         void Fase::salvar()
         {
-            // Salvando Jogadores:
-
-            std::ofstream arquivo(ARQUIVO_JOGADOR/*, std::ios::out | std::ios::trunc*/);  
+            // salvando os jogadores
+            std::ofstream arquivo(ARQUIVO_JOGADOR);
             if (!arquivo)
             {
-                std::cout << "Problema em salvar o arquivo" << std::endl;
+                std::cout << "Arquivo não existe" << std::endl;
                 exit(1);
             }
 
+            arquivo << "";
+
             Listas::Lista<Entidades::Entidade>::Iterador j = jogadores.get_primeiro();
+
             buffer.str("");
-            buffer << "[";
+            buffer << "{ \"jogo\": \"jogo\" ,\"fase\": 1, ";
+
+            if (pGE->get_estado_atual() == 6 || pGE->get_estado_atual() == 7)
+                buffer << " 1, ";
+
+            else if (pGE->get_estado_atual() == 8 || pGE->get_estado_atual() == 9)
+                buffer << " 2, ";
+
+            if (get_jogador2())
+                buffer << "\"numero_jogadores\": 1, \"jogadores\": [";
+            else
+                buffer << "\"numero_jogadores\": 2, \"jogadores\": [";
+
             if (j != nullptr)
             {
-                (*j)->salvar(&buffer);
+                ((*j))->salvar(&buffer);
                 j++;
             }
             while (j != nullptr)
             {
                 buffer << ",";
-                (*j)->salvar(&buffer);
+                ((*j))->salvar(&buffer);
                 j++;
             }
-            buffer << "]";
-
+            buffer << "]}";
             arquivo << buffer.str();
-
             arquivo.close();
-            // Salvando inimigos: 
 
-            std::ofstream arquivo_inimigo(ARQUIVO_INIMIGO);  
+            // Salvando Inimigos
+            std::ofstream arquivo_inimigo(ARQUIVO_INIMIGOS);
             if (!arquivo_inimigo)
             {
-                std::cout << "Problema em salvar o arquivo" << std::endl;
+                std::cout << "Problema em salvar o arquivo dos inimigos" << std::endl;
                 exit(1);
             }
 
-            Listas::Lista<Entidades::Entidade>::Iterador i = inimigos.get_primeiro();
+            Listas::Lista<Entidades::Entidade>::Iterador ini = inimigos.get_primeiro();
             buffer.str("");
-            buffer << "[";
-            if (i != nullptr)
+            buffer << "{ \"numero_zumbis\": " << num_zumbis << ", \"numero_atiradores\": " << num_arqueiros << ", \"numero_gigantes\": " << num_gigante << ", \"membros\": [ " << endl;
+            if (ini != nullptr)
             {
-                (*i)->salvar(&buffer);
-                i++;
+                (*ini)->salvar(&buffer);
+                ini++;
             }
-            while (i != nullptr)
+            while (ini != nullptr)
             {
                 buffer << ",";
-                (*i)->salvar(&buffer);
-                i++;
+                (*ini)->salvar(&buffer);
+                ini++;
             }
-            buffer << "]";
-
+            buffer << "]}";
             arquivo_inimigo << buffer.str();
-
             arquivo_inimigo.close();
+
+            // nas ferias fazer um json pra cada tipo de inimigo pra ficar menos "feio"
         }
 
         const bool Fase::get_jogador2()
         {
-            if(num_jogadores > 1)
-                return true;
+            if (num_jogadores > 1)
+                jogador2 = true;
             else
-                return false;
+                jogador2 = false;
+
+            return jogador2;
         }
+
         void Fase::set_tempo_jogadores()
         {
-            if(num_jogadores == 2)
+            if (num_jogadores == 2)
             {
-              Entidades::Personagens::Jogador* jogad2 = static_cast<Entidades::Personagens::Jogador*>(*jogadores.get_primeiro()++);
-              jogad2->set_tempo(relogio.getElapsedTime().asSeconds());
+                Entidades::Personagens::Jogador *jogad2 = static_cast<Entidades::Personagens::Jogador *>(*jogadores.get_primeiro()++);
+                jogad2->set_tempo(relogio.getElapsedTime().asSeconds());
             }
-            Entidades::Personagens::Jogador* jogad = static_cast<Entidades::Personagens::Jogador*>(*jogadores.get_primeiro());
+            Entidades::Personagens::Jogador *jogad = static_cast<Entidades::Personagens::Jogador *>(*jogadores.get_primeiro());
             jogad->set_tempo(jogad->get_tempo() + relogio.getElapsedTime().asSeconds());
         }
 
