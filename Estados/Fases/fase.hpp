@@ -64,7 +64,7 @@ namespace Estados
                 void set_num_jogadores(int i) {num_jogadores = i;}
                 void criar_jogadores(bool jog2);
                 void criar_inimigos();
-                void criar_cenario(std::string caminho, int n1, int n2, int n3, int n4, int n5, int n6, bool ja_criado);
+                void criar_cenario(std::string caminho, int n1, int n2, int n3, int n4, int n5, int n6);
 
                 const bool get_jaCriado();
                 const bool get_jogador2();

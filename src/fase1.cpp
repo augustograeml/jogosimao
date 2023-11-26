@@ -41,15 +41,9 @@ namespace Estados
             shape.setSize(Vector2f(2000.f, 1200.f));
             shape.setTexture(&Textura);
             shape.setPosition(sf::Vector2f(0.f, 0.f));
-
-            if(ja_criado)
-            {
-                //criar_jogadores(get_jogador2());
-                criar_jogadores(true);
-                criar_inimigos();
-            }
                 
-            criar_cenario(ARQUIVO_CENARIO_1, num_entidades[0], num_entidades[1], num_entidades[2], num_entidades[3], num_entidades[4], num_entidades[5], get_jaCriado());
+            criar_cenario(ARQUIVO_CENARIO_1, num_entidades[0], num_entidades[1], num_entidades[2], num_entidades[3], num_entidades[4], num_entidades[5]);
+            criar_jogadores(true);
             criar_jogadores(false);
             criar_inimigos();
             
