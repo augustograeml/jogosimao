@@ -44,9 +44,9 @@ namespace Estados
             tempo_inicio = clock();
 
             // a gente na teoria salva aqui
-            criar_jogadores(1);
+            /*criar_jogadores(1);
             criar_jogadores(0);
-            criar_inimigos();
+            criar_inimigos();*/
         }
 
         Fase1::~Fase1()

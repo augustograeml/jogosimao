@@ -17,7 +17,6 @@
 #include "../../Gerenciadores/gerenciador_estados.hpp"
 #include "../../Gerenciadores/gerenciador_eventos.hpp"
 #include "../../Gerenciadores/gerenciador_grafico.hpp"
-#include "../../Observers/observer_fase.hpp"
 #include "../estado.hpp"
 
 #include <iostream>
@@ -35,8 +34,6 @@ namespace Estados
         class Fase : public Ente, public Estado
         {
             protected:
-                //static Observers::Observer_Fase observador_fase;
-
                 bool ja_criado;
 
                 sf::Texture Textura;
