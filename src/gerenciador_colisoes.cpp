@@ -137,8 +137,10 @@ namespace Gerenciadores
     }
     void Gerenciador_Colisoes::colisao_obstaculos_projeteis()
     {
-        Listas::Lista<Entidades::Entidade>::Iterador obst = obstaculos->get_primeiro();
-        Listas::Lista<Entidades::Entidade>::Iterador inim = inimigos->get_primeiro();
+        Listas::Lista<Entidades::Entidade>::Iterador obst;
+        Listas::Lista<Entidades::Entidade>::Iterador inim;
+        obst.operator=(obstaculos->get_primeiro());
+        inim.operator=(inimigos->get_primeiro());
         while (inim != nullptr)
         {
             Entidades::Personagens::Inimigo *arqueiro_atira = static_cast<Entidades::Personagens::Inimigo *>(*inim);
@@ -176,7 +178,8 @@ namespace Gerenciadores
     const bool Gerenciador_Colisoes::get_inimigos_vivos()
     {
         int ini_vivos = 0;
-        Listas::Lista<Entidades::Entidade>::Iterador inimg = inimigos->get_primeiro();
+        Listas::Lista<Entidades::Entidade>::Iterador inimg;// = inimigos->get_primeiro();
+        inimg.operator=(inimigos->get_primeiro());
         while (inimg != nullptr)
         {
             if ((*inimg)->get_vivo())
@@ -192,7 +195,8 @@ namespace Gerenciadores
     const bool Gerenciador_Colisoes::get_jogadores_vivos()
     {
         int jog_vivos = 0;
-        Listas::Lista<Entidades::Entidade>::Iterador joga = jogadores->get_primeiro();
+        Listas::Lista<Entidades::Entidade>::Iterador joga;// = jogadores->get_primeiro();
+        joga.operator=(jogadores->get_primeiro());
         while (joga != nullptr)
         {
             if ((*joga)->get_vivo())
