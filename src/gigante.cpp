@@ -12,12 +12,13 @@ namespace Entidades
                 maldade = true;
 
             if (maldade)
-                set_forca(10);
+                set_forca(20);
             else
-                set_forca(4);
+                set_forca(10);
 
             this->setSkin("Design/imagens/zumbi_gigante.png");
             this->set_vida(100);
+            corpo.setFillColor(sf::Color::Red);
             set_pontos_cedidos(20);
         }
 

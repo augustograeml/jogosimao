@@ -35,6 +35,10 @@ namespace Entidades
             {
                 pJ->setVelocidade(Vector2f((pJ->getVelocidade().x * get_intensidade())/1.85f, pJ->getVelocidade().y));
             }
+            else
+            {
+                pJ->setVelocidade(Vector2f((pJ->getVelocidade().x * get_intensidade())/1.99f, pJ->getVelocidade().y));
+            }
         }
         void Neve::colidir(Entidade* pE, int a)
         {
