@@ -1,4 +1,4 @@
-//codigo reaproveitado do Peteco6
+//codigo reaproveitado do Peteco
 
 #pragma once
 
