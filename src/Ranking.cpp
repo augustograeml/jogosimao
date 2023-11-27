@@ -7,21 +7,15 @@ namespace Estados
 {
     namespace Menus
     {
-        Gerenciadores::Gerenciador_Grafico* Ranking::pGG(Gerenciadores::Gerenciador_Grafico::get_instancia());
-
-        Ranking::Ranking(int id) : Estado(id)
+        Ranking::Ranking(int id) : Menu(id)
         {
-            fonte = new sf::Font();
             fonte_nomes = new sf::Font();
-            imagem = new sf::Texture();
             
             inicializa_valores();
         }
 
         Ranking::~Ranking()
         {
-            delete fonte;
-            delete imagem;
             delete fonte_nomes;
         }
 
@@ -47,7 +41,6 @@ namespace Estados
                 textos[i].setOutlineColor(sf::Color::Black);
                 textos[i].setOutlineThickness(4);
                 textos[i].setPosition(coordenadas[i]);
-                
             }
 
             textos[0].setOutlineThickness(15);
@@ -56,7 +49,7 @@ namespace Estados
             pos = 5;
         }
 
-        void Ranking::mostrar_menu()
+        void Ranking::mostrar_menu_ranking()
         {
             pGG->limpar();
             pGG->desenharTextura(imagem);
@@ -71,7 +64,7 @@ namespace Estados
 
         void Ranking::executar()
         {
-            mostrar_menu();
+            mostrar_menu_ranking();
             loop_evento();
         }
 
