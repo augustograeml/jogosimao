@@ -17,7 +17,6 @@
 #include "../../Gerenciadores/gerenciador_estados.hpp"
 #include "../../Gerenciadores/gerenciador_eventos.hpp"
 #include "../../Gerenciadores/gerenciador_grafico.hpp"
-#include "../../Observers/observer_fase.hpp"
 #include "../estado.hpp"
 
 #include <iostream>
@@ -25,8 +24,8 @@
 #include <fstream>
 #include "json.hpp"
 
-#define ARQUIVO_CENARIO_1 "Design/cenario/cenario_fase1.txt"
-#define ARQUIVO_CENARIO_2 "Design/cenario/cenario_fase2.txt"
+#define ARQUIVO_CENARIO_1 "Design/txts/cenario_fase1.txt"
+#define ARQUIVO_CENARIO_2 "Design/txts/cenario_fase2.txt"
 
 namespace Estados
 {
@@ -35,8 +34,6 @@ namespace Estados
         class Fase : public Ente, public Estado
         {
             protected:
-                //static Observers::Observer_Fase observador_fase;
-
                 bool ja_criado;
                 static int pontos;
                 sf::Font* fonte;
@@ -56,7 +53,6 @@ namespace Estados
                 int num_entidades[6];
                 int num_jogadores;
                 std::string playerName;
-                //sf::Clock relogio;
 
             public:
                 Fase(int i = -1);
@@ -79,8 +75,6 @@ namespace Estados
                 virtual void executar() = 0;
                 virtual void fim_de_jogo() = 0;
                 virtual void atualizar() = 0;
-                virtual void pausar() = 0;
-                virtual void menu() = 0;
 
                 //void set_tempo_jogadores();
                 Listas::ListaEntidade* get_jogadores() {return &jogadores;} 

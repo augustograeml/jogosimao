@@ -1,6 +1,6 @@
 #include "../Estados/Fases/fase2.hpp"
 #include "../Entidades/Personagens/jogador.hpp"
-#define ARQUIVO_OUTPUT "Design/imagens/ranking.txt"
+#define ARQUIVO_OUTPUT "Design/txts/ranking.txt"
 
 namespace Entidades
 {
@@ -121,14 +121,6 @@ namespace Estados
         bool Fase2::get_musgos()
         {
             return musgos;
-        }
-
-        void Fase2::pausar()
-        {
-        }
-        
-        void Fase2::menu()
-        {
         }
     }
 }

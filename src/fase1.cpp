@@ -1,6 +1,6 @@
 #include "../Estados/Fases/fase1.hpp"
 #include "../Entidades/Personagens/jogador.hpp"
-#define ARQUIVO_OUTPUT "Design/imagens/ranking.txt"
+#define ARQUIVO_OUTPUT "Design/txts/ranking.txt"
 #include <iostream>
 #include <math.h>
 
@@ -29,26 +29,12 @@ namespace Estados
                 5 - gigante
             */
 
-            std::cout << "numero de zumbis: " << num_entidades[0] << std::endl;
-            std::cout << "numero de arqueiros: " << num_entidades[1] << std::endl;
-            std::cout << "numero de espinhos: " << num_entidades[2] << std::endl;
-            std::cout << "numero de coracoes: " << num_entidades[3] << std::endl;
-            std::cout << "numero de caixas: " << num_entidades[4] << std::endl;
-            std::cout << "numero de gigantes: " << num_entidades[5] << std::endl;
-
-            Textura.loadFromFile("Design/imagens/cemiterio.jpg");
+            Textura.loadFromFile("Design/imagens/cenario_op11.png");
             shape.setSize(Vector2f(2000.f, 1200.f));
             shape.setTexture(&Textura);
             shape.setPosition(sf::Vector2f(0.f, 0.f));
 
             criar_cenario(ARQUIVO_CENARIO_1, num_entidades[0], num_entidades[1], num_entidades[2], num_entidades[3],num_entidades[4], num_entidades[5], get_jaCriado());
-            //tempo_inicio = clock();
-            
-            //a gente na teoria salva aqui
-            /*criar_jogadores(1);
-            criar_jogadores(0);
-            criar_inimigos();*/
-
         }
 
         Fase1::~Fase1()
@@ -70,8 +56,6 @@ namespace Estados
             jogad22->salvar_tempo(ARQUIVO_OUTPUT);
             }
             set_pontos(0);
-
-              
         }
 
         bool Fase1::get_neve()
@@ -89,14 +73,12 @@ namespace Estados
             inimigos.desenhar();
             projeteis.desenhar();
             
-            //std::cout<<" Executadno fase 1";
             //fase 2 pra dois jogadores
             if (gC.get_inimigos_vivos() && identidade == 7)
             {
                 pGG->resetarCamera();
                 pGE->set_estado_atual(9);
                 return;
-                
             }
             //fase 2 pra um jogadores
             else if (gC.get_inimigos_vivos() && identidade == 6)
@@ -137,14 +119,6 @@ namespace Estados
             }
             else
                 pGG->centralizarCamera((*(jogadores.get_primeiro()))->getPosicao());  
-        }
-
-        void Fase1::pausar()
-        {
-        }
-
-        void Fase1::menu()
-        {
         }
     }
 }

@@ -67,10 +67,6 @@ namespace Entidades
 
         }
 
-        void Jogador::tela_pause()
-        {
-        }
-
         void Jogador::atacar(Entidade *jg)
         {
         }
@@ -78,21 +74,6 @@ namespace Entidades
         {
             
         }
-
-        void Jogador::criar_jogadores(string arquivo, bool jogador2)
-        {
-            //relogio.restart();
-            if(jogador2)
-            {
-
-            }
-            
-            else
-            {
-
-            }
-        }
-
         void Jogador::mover()
         {
             if(!leu_fase)

@@ -1,6 +1,6 @@
 #include "../Estados/Menus/ranking.hpp"
 #include <iostream>
-#define ARQUIVO_COLOCACAO "Design/imagens/ranking.txt"
+#define ARQUIVO_COLOCACAO "Design/txts/ranking.txt"
 
 
 namespace Estados
@@ -15,9 +15,7 @@ namespace Estados
             fonte_nomes = new sf::Font();
             imagem = new sf::Texture();
             
-            
             inicializa_valores();
-            //CriarTextos();
         }
 
         Ranking::~Ranking()
@@ -62,8 +60,6 @@ namespace Estados
         {
             pGG->limpar();
             pGG->desenharTextura(imagem);
-            // laco diferentao ne mano pprt
-            //textos[3].setString(opcoes[3] + "   augusto");
             CriarTextos(ARQUIVO_COLOCACAO);
             for (auto t : textos)
             {
@@ -77,11 +73,6 @@ namespace Estados
         {
             mostrar_menu();
             loop_evento();
-        }
-
-        void Ranking::adiciona_pontuacao(std::string s, double time)
-        {
-
         }
 
         void Ranking::loop_evento()

@@ -12,7 +12,7 @@ namespace Entidades
 
         Personagem::~Personagem()
         {
-            //vida = 0;
+            
         }
 
         void Personagem::set_forca(int forc)

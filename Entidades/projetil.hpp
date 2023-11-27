@@ -17,7 +17,6 @@ namespace Entidades
         int get_dano(){return dano;}
         void mover();
         void danar(Entidade* pE);
-        void atirar();
         void atualizar();
         void colidir(Entidade* pE, int a);
 

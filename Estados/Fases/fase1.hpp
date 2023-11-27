@@ -18,11 +18,8 @@ namespace Estados
                 bool get_neve();
 
                 void fim_de_jogo();
-                //colocar como parametro um bool pro jogador2, lembrar de mexer na clase virtual pura de fase.hpp
                 void executar();
                 void atualizar();
-                void pausar();
-                void menu();
         };
     }
 }

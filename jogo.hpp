@@ -5,7 +5,6 @@
 #include "Estados/Menus/menu_principal.hpp"
 #include "Estados/Menus/ranking.hpp"
 #include "Estados/Menus/pause.hpp"
-#include "Estados/Menus/nome.hpp"
 #include "Estados/Menus/menu_fase.hpp"
 #include "Estados/Menus/menu_jogadores.hpp"
 
@@ -15,13 +14,10 @@
 #include "Gerenciadores/gerenciador_grafico.hpp"
 #include "Gerenciadores/gerenciador_estados.hpp"
 #include "Gerenciadores/gerenciador_eventos.hpp"
-#include "Observers/observer_tecla.hpp"
 
 class Jogo
 {
     private:
-
-        Estados::Menus::Nome* nome;
         Estados::Menus::Pause* pause;
         Estados::Menus::Ranking* ranking;
         Estados::Menus::Menu_Principal* menu_principal;
@@ -31,13 +27,9 @@ class Jogo
         Gerenciadores::Gerenciador_Grafico* pG;
         Gerenciadores::Gerenciador_Estados* pE;
         Gerenciadores::Gerenciador_Eventos* pEv;
-        
-        Observers::Observer_Tecla obs1;
-        Observers::Observer_Tecla obs2;
     public:
         Jogo();
         ~Jogo();
 
         void Executar();
-        void reseta_fase();
 };

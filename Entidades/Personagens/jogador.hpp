@@ -35,9 +35,6 @@ namespace Entidades
             void set_nome(std::string a)  {nome = a;}
             string get_nome(){return nome;}
 
-            void criar_jogadores(string arquivo, bool jogador2);
-            void tela_pause();
-
             void mover();
             void mover_jog2();
             void atacar(Entidade* jg);

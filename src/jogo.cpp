@@ -5,7 +5,7 @@
 using namespace std;
 
 Jogo::Jogo() : pG(Gerenciadores::Gerenciador_Grafico::get_instancia()), pE(Gerenciadores::Gerenciador_Estados::get_instancia()),
-               pEv(Gerenciadores::Gerenciador_Eventos::get_instancia()), obs1(1), obs2(2)
+    pEv(Gerenciadores::Gerenciador_Eventos::get_instancia())
 {
     menu_principal = new Estados::Menus::Menu_Principal(0);
     menu_jogadores = new Estados::Menus::Menu_Jogadores(1);
@@ -19,17 +19,6 @@ Jogo::Jogo() : pG(Gerenciadores::Gerenciador_Grafico::get_instancia()), pE(Geren
 
     Estados::Fases::Fase2 *fase2 = new Estados::Fases::Fase2(8);
     Estados::Fases::Fase2 *fase22 = new Estados::Fases::Fase2(9);
-    
-    //nome = new Estados::Menus::Nome(10);
-    
-    /*try
-    {
-        nome = new Estados::Menus::Nome(10);
-    }
-    catch(const std::exception& e)
-    {
-        cout << "nome deu erro" << endl; 
-    }*/  
 
     Executar();
 }
@@ -53,9 +42,4 @@ void Jogo::Executar()
         if(pE->get_estado_atual() > 5 && pE->get_estado_atual() < 10)
             pG->mostrar();
     }
-}
-
-void Jogo::reseta_fase()
-{
-    //pE->
 }

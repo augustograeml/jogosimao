@@ -88,7 +88,6 @@ namespace Estados
                         pGE->set_estado_atual(0);
                     else if (pos == 1)
                         pGE->set_estado_atual(6);
-                    
                 }
 
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))

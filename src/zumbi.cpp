@@ -117,7 +117,6 @@ namespace Entidades
                         {
                             aux->setWindow(pGG->get_Janela());
                             aux->setPosicao(sf::Vector2f(j * TAM, i * TAM));
-                            // incluir inmigos na lista
                         }
                         break;
 

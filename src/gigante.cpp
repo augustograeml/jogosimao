@@ -66,18 +66,12 @@ namespace Entidades
         {
             if (a == 1 || a == 3)
             {
-                
                 mudar_direcao();
                 atacar(pE);
             }
             else if (a == 4)
             {
                 this->set_vida(this->get_vida() - 10);
-                /*if(!this->get_vivo())
-                {
-                   Entidades::Personagens::Jogador* aux =static_cast<Entidades::Personagens::Jogador*> (pE);
-                   aux->set_pontos(aux->get_pontos() + this->get_pontos_cedidos());
-                }*/
             }
             else
             {

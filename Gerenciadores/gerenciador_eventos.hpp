@@ -8,10 +8,6 @@
 using namespace sf;
 using namespace std;
 
-namespace Observers
-{
-    class Observer;
-}
 
 namespace Gerenciadores
 {
@@ -22,17 +18,10 @@ namespace Gerenciadores
             static Gerenciador_Eventos* instancia;
             Gerenciador_Eventos();
             Event evento;
-
-            list<Observers::Observer*> lista_observers;
-            list<Observers::Observer*>::iterator it;
         public:
             ~Gerenciador_Eventos();
             void executar();
             static Gerenciador_Eventos* get_instancia();
-
-            void anexar(Observers::Observer* obs);
-            void remover(Observers::Observer* obs);
-            void notificar(sf::Keyboard::Key k);
     };
 
 }

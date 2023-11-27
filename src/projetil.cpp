@@ -32,24 +32,18 @@ namespace Entidades
 
     void Projetil::mover()
     {
-            if (nochao)
-            {
-                set_vida(0);
-                set_vivo(0);
-                velocidade = {0, 0};
-                corpo.setFillColor(sf::Color::Transparent);
-            }
-            else
-            {
-                corpo.move(GRAVIDADE);
-                corpo.move(velocidade);
-            }
-
-        // atualizar();
-    }
-
-    void Projetil::atirar()
-    {
+        if (nochao)
+        {
+            set_vida(0);
+            set_vivo(0);
+            velocidade = {0, 0};
+            corpo.setFillColor(sf::Color::Transparent);
+        }
+        else
+        {
+            corpo.move(GRAVIDADE);
+            corpo.move(velocidade);
+        }
     }
 
     void Projetil::danar(Entidade *pE)
@@ -60,7 +54,6 @@ namespace Entidades
 
     void Projetil::colidir(Entidade *pE, int a)
     {
-
         // eu nao to atribuindo nenhum projetil a lista
         if (a != 0)
         {
