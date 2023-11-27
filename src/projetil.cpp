@@ -54,7 +54,6 @@ namespace Entidades
 
     void Projetil::colidir(Entidade *pE, int a)
     {
-        // eu nao to atribuindo nenhum projetil a lista
         if (a != 0)
         {
             danar(pE);

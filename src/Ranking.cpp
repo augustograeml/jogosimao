@@ -85,7 +85,7 @@ namespace Estados
             ifstream arquivoInput(caminho);
             std::string linha;
             std::string espaco = "  ";
-            int i = 2;
+            int i = 1;
             if(!arquivoInput)
             {
                 std::cout<< "error ao abrir";

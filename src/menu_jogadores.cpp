@@ -5,18 +5,13 @@ namespace Estados
     namespace Menus
     {
 
-        Menu_Jogadores::Menu_Jogadores(int id) : Menu(id)
+        Menu_Jogadores::Menu_Jogadores(int id) : Menu(id), jog2(false)
         {
             inicializa_valores();
         }
 
         Menu_Jogadores::~Menu_Jogadores()
         {
-        }
-
-        const bool Menu_Jogadores::get_jogador2()
-        {
-            return jogador2;
         }
 
         void Menu_Jogadores::inicializa_valores()
@@ -109,9 +104,15 @@ namespace Estados
                     if (pos == 3)
                         pGE->set_estado_atual(0);
                     else if (pos == 1)
+                    {
                         pGE->set_estado_atual(2);
+                        jog2 = false;
+                    }
                     else if (pos == 2)
+                    {
                         pGE->set_estado_atual(3);
+                        jog2 = true;
+                    }
                 }
 
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))

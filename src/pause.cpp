@@ -4,20 +4,14 @@ namespace Estados
 {
     namespace Menus
     {
-        Gerenciadores::Gerenciador_Grafico *Pause::pGG(Gerenciadores::Gerenciador_Grafico::get_instancia());
-
-        Pause::Pause(int id) : Estado(id)
+        Pause::Pause(int id) : Menu(id), pausado(true)
         {
-            fonte = new sf::Font();
-            imagem = new sf::Texture();
-
             inicializa_valores();
         }
 
         Pause::~Pause()
         {
-            delete fonte;
-            delete imagem;
+            
         }
 
         void Pause::inicializa_valores()
@@ -87,11 +81,12 @@ namespace Estados
                     if (pos == 2)
                         pGE->set_estado_atual(0);
                     else if (pos == 1)
-                        pGE->set_estado_atual(6);
+                        pGE->set_estado_atual(pGE->get_fase());
+                    pausado = false;
                 }
 
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-                    pGE->set_estado_atual(6);
+                    pGE->set_estado_atual(pGE->get_fase());
             }
         }
 
@@ -100,7 +95,6 @@ namespace Estados
             pGG->limpar();
             pGG->resetarCamera();
             pGG->desenharTextura(imagem);
-            // laco diferentao ne mano pprt
             for (auto t : textos)
                 pGG->get_Janela()->draw(t);
             pGG->mostrar();

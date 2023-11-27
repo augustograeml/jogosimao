@@ -81,8 +81,6 @@ namespace Entidades
             else if (a == 4)
             {
                 morrer();
-                /*Entidades::Personagens::Jogador* aux =static_cast<Entidades::Personagens::Jogador*> (pE);
-                aux->set_pontos(aux->get_pontos() + this->get_pontos_cedidos());*/
             }
             else
             {

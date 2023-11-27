@@ -2,6 +2,7 @@
 
 #pragma once
 #include "../estado.hpp"
+#include "../../ente.hpp"
 #include "../../Gerenciadores/gerenciador_grafico.hpp"
 #include <SFML/Graphics.hpp>
 
@@ -9,7 +10,7 @@ namespace Estados
 {
     namespace Menus
     {
-        class Menu : public Estado
+        class Menu : public Estado, public Ente
         {
             protected:
                 static Gerenciadores::Gerenciador_Grafico* pGG;

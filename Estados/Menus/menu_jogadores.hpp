@@ -9,12 +9,10 @@ namespace Estados
         class Menu_Jogadores : public Menu
         {
             private:
-                bool jogador2;
+                bool jog2;
             public:
                 Menu_Jogadores(int id);
                 ~Menu_Jogadores();
-
-                const bool get_jogador2();
 
                 void inicializa_valores();
                 void loop_evento();
