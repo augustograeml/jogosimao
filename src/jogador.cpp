@@ -146,6 +146,7 @@ namespace Entidades
                 linha += this->get_nome() + bolinhas;
                 arquivoOutput << linha;
                 arquivoOutput << this->get_pontos();
+                arquivoOutput << "\n" ;
                
             }
         }

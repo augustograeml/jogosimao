@@ -32,10 +32,10 @@ namespace Estados
             fonte->loadFromFile("Design/fonte/sangue_escorrendo.ttf");
             fonte_nomes->loadFromFile("Design/fonte/fonte_simas.ttf");
 
-            opcoes = {"Ranking","Fase 1","1", "2","3","4","Sair"};
-            textos.resize(7);
-            tamanhos = {170,20, 20, 20, 20, 20, 35};
-            coordenadas = { {215, 40}, {215,210}, {100, 380}, {100, 462}, {100, 549}, {100, 635}, {278, 730}};
+            opcoes = {"Ranking","1", "2","3","4","Sair"};
+            textos.resize(6);
+            tamanhos = {170, 20, 20, 20, 20, 35};
+            coordenadas = { {215, 40}, {100, 380}, {100, 462}, {100, 549}, {100, 635}, {278, 730}};
             
 
             for (std::size_t i{}; i < textos.size(); i++)
@@ -51,9 +51,9 @@ namespace Estados
             }
 
             textos[0].setOutlineThickness(15);
-            textos[6].setOutlineThickness(4);
+            textos[5].setOutlineThickness(4);
 
-            pos = 6;
+            pos = 5;
         }
 
         void Ranking::mostrar_menu()

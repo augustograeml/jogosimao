@@ -374,6 +374,9 @@ namespace Estados
                     sf::Text text("Insira seu nome jogador:", *fonte, 30);
                     sf::Text tex("\n" + playerName, *fonte, 30);
                     sf::Text text2("\n\nAperte Enter para continuar...", *fonte, 30);
+                    text.setOutlineThickness(4);
+                    tex.setOutlineThickness(4);
+                    text2.setOutlineThickness(4);
                     text.setPosition(Vector2f(150, 200));
                     tex.setPosition(Vector2f(250, 510));
                     text2.setPosition(Vector2f(150,800));
