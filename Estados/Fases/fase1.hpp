@@ -10,8 +10,6 @@ namespace Estados
             private:
                 bool neve;
                 int identidade;
-                clock_t tempo_inicio;
-                double tempo_fase1;
                 
             public:
                 Fase1(int id);

@@ -1,6 +1,6 @@
 #include "../Estados/Fases/fase1.hpp"
 #include "../Entidades/Personagens/jogador.hpp"
-#define ARQUIVO_OUTPUT_FASE_1 "Design/imagens/rankingfase1.txt"
+#define ARQUIVO_OUTPUT "Design/imagens/ranking.txt"
 #include <iostream>
 #include <math.h>
 
@@ -42,7 +42,7 @@ namespace Estados
             shape.setPosition(sf::Vector2f(0.f, 0.f));
 
             criar_cenario(ARQUIVO_CENARIO_1, num_entidades[0], num_entidades[1], num_entidades[2], num_entidades[3],num_entidades[4], num_entidades[5], get_jaCriado());
-            tempo_inicio = clock();
+            //tempo_inicio = clock();
             
             //a gente na teoria salva aqui
             /*criar_jogadores(1);
@@ -58,19 +58,18 @@ namespace Estados
 
         void Fase1::fim_de_jogo()
         {
-            set_tempo_jogadores();
-            Textura.loadFromFile("Design/imagens/fim_de_jogo2.jpeg");
-            shape.setSize(Vector2f(950.f, 950.f));
-            shape.setTexture(&Textura);
-            shape.setPosition(sf::Vector2f(76.f, -10.f));
-            pGG->desenharFundo(&shape); 
-             Entidades::Personagens::Jogador* jog = static_cast<Entidades::Personagens::Jogador*> (*jogadores.get_primeiro());  
-            jog->salvar_tempo(ARQUIVO_OUTPUT_FASE_1);
+            getNome();
+            pontuar();
+            Entidades::Personagens::Jogador* jog = static_cast<Entidades::Personagens::Jogador*> (*jogadores.get_primeiro());  
+            jog->set_nome(playerName);
+            jog->salvar_tempo(ARQUIVO_OUTPUT);
             if(num_jogadores == 2)
             {
-                Entidades::Personagens::Jogador* jogad22 = static_cast<Entidades::Personagens::Jogador*> (*jogadores.get_primeiro()++);  
-            jogad22->salvar_tempo(ARQUIVO_OUTPUT_FASE_1);
+            Entidades::Personagens::Jogador* jogad22 = static_cast<Entidades::Personagens::Jogador*> (*jogadores.get_primeiro()++);  
+            jogad22->set_nome(playerName + "(2)");
+            jogad22->salvar_tempo(ARQUIVO_OUTPUT);
             }
+            set_pontos(0);
 
               
         }
@@ -97,21 +96,19 @@ namespace Estados
                 pGG->resetarCamera();
                 pGE->set_estado_atual(9);
                 return;
+                
             }
             //fase 2 pra um jogadores
             else if (gC.get_inimigos_vivos() && identidade == 6)
             {
-                fim_de_jogo();
+               
                 pGG->resetarCamera();
-                pGE->set_estado_atual(10);
-
-
+                pGE->set_estado_atual(8);
                 return;
             }
             if(gC.get_jogadores_vivos())
             {
-                pGG->limpar();
-                pGG->resetarCamera();
+                fim_de_jogo();
                 pGE->set_estado_atual(0);
                 return;
             }                

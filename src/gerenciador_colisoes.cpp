@@ -156,12 +156,13 @@ namespace Gerenciadores
                             Entidades::Entidade *proj = static_cast<Entidades::Entidade *>(&pVetor->at(i));
                             if (proj->get_vivo())
                             {
-                                int j = colidiu(*obst, proj);
-                                if (j)
+                                int j = colidiu_projeteis(*obst, proj);
+                                if (j != 0)
                                 {
                                     proj->colidir(*obst, j);
                                     proj->set_vivo(false);
                                 }
+                                
                             }
                         }
                     }
@@ -214,6 +215,48 @@ namespace Gerenciadores
         colisao_obstaculos_projeteis();
         get_inimigos_vivos();
         get_jogadores_vivos();
+    }
+    int Gerenciador_Colisoes::colidiu_projeteis(Entidades::Entidade *e1, Entidades::Entidade *e2)
+    {
+        sf::Vector2f pos1 = e1->getPosicao(), pos2 = e2->getPosicao(), tam1 = e1->getTamanho(), tam2 = e2->getTamanho(),
+                     d(fabs(pos1.x - pos2.x) - ((tam1.x + tam2.x) / 2.f),
+                       fabs(pos1.y - pos2.y) - ((tam1.y + tam2.y) / 2.f));
+        if(d.x < 0 && d.y < 0)
+        {   
+            if (d.x < d.y)
+            {
+                if (pos1.y <= pos2.y)
+                {
+                    //e1->setPosicao(sf::Vector2f(e1->getPosicao().x, e2->getPosicao().y - (tam1.y + tam2.y) / 2));
+                    e1->set_nochao(true);
+                    e1->setVelocidade(sf::Vector2f(e1->getVelocidade().x, -e1->getVelocidade().y * ACL));
+                    return 4;
+                }
+                else
+                {
+                    //e1->setPosicao(sf::Vector2f(e1->getPosicao().x, e2->getPosicao().y + (tam1.y + tam2.y) / 2));
+                    e1->setVelocidade(sf::Vector2f(e1->getVelocidade().x, -e1->getVelocidade().y * ACL));
+                    return 2;
+                }
+            }
+            else
+            {
+                if (pos1.x >= pos2.x)
+                {
+                    //e1->setPosicao(sf::Vector2f(e2->getPosicao().x + (tam1.x + tam2.x) / 2, e1->getPosicao().y));
+                    e1->setVelocidade(sf::Vector2f(-e1->getVelocidade().x * ACL, e1->getVelocidade().y));
+                    return 1;
+                }
+                else
+                {
+                    //e1->setPosicao(sf::Vector2f(e2->getPosicao().x - (tam1.x + tam2.x) / 2, e1->getPosicao().y));
+                    e1->setVelocidade(sf::Vector2f(-e1->getVelocidade().x * ACL, e1->getVelocidade().y));
+                    return 3;
+                }
+            }
+        }
+        
+        return 0;
     }
 
     int Gerenciador_Colisoes::colidiu(Entidades::Entidade *e1, Entidades::Entidade *e2)

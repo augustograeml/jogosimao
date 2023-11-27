@@ -10,6 +10,7 @@ namespace Entidades
             this->setSkin("Design/imagens/zumbi_bateu_morreu.png");
             direcao = 1;
             pulo = rand() % 10;
+            set_pontos_cedidos(5);
         }
 
         Zumbi::~Zumbi()
@@ -74,12 +75,14 @@ namespace Entidades
         {
             if (a == 1 || a == 3)
             {
-                atacar(pE);
                 this->mudar_direcao();
+                atacar(pE);
             }
             else if (a == 4)
             {
                 morrer();
+                /*Entidades::Personagens::Jogador* aux =static_cast<Entidades::Personagens::Jogador*> (pE);
+                aux->set_pontos(aux->get_pontos() + this->get_pontos_cedidos());*/
             }
             else
             {

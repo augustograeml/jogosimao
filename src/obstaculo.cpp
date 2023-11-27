@@ -4,15 +4,16 @@ namespace Entidades
 {
     namespace Obstaculos
     {
-        Obstaculo::Obstaculo(sf::Vector2f pos, bool dano, bool cura, bool atrapalho, bool neve, bool musgo) :
-        Entidade(pos), danoso(dano), curoso(cura), atrapalhante(atrapalho), escorregadio(neve), gosmento(musgo)
+        Obstaculo::Obstaculo(sf::Vector2f pos) :
+        Entidade(pos),  intensidade(1)
         {
-
+            intensidade = rand()%2 + 1;
         }
 
         Obstaculo::~Obstaculo()
         {
 
         }
+        
     }
 }

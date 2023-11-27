@@ -1,6 +1,6 @@
 #include "../Estados/Menus/ranking.hpp"
 #include <iostream>
-#define ARQUIVO_COLOCACAO_1 "Design/imagens/rankingfase1.txt"
+#define ARQUIVO_COLOCACAO "Design/imagens/ranking.txt"
 
 
 namespace Estados
@@ -24,6 +24,7 @@ namespace Estados
         {
             delete fonte;
             delete imagem;
+            delete fonte_nomes;
         }
 
         void Ranking::inicializa_valores()
@@ -36,7 +37,7 @@ namespace Estados
             opcoes = {"Ranking","Fase 1","1", "2","3","4","Sair"};
             textos.resize(7);
             tamanhos = {170,20, 20, 20, 20, 20, 35};
-            coordenadas = { {215, 40}, {1415,100}, {100, 380}, {100, 462}, {100, 549}, {100, 635}, {278, 730}};
+            coordenadas = { {215, 40}, {215,210}, {100, 380}, {100, 462}, {100, 549}, {100, 635}, {278, 730}};
             
 
             for (std::size_t i{}; i < textos.size(); i++)
@@ -46,14 +47,15 @@ namespace Estados
                 textos[i].setCharacterSize(tamanhos[i]);
                 textos[i].setFillColor(sf::Color::White);
                 textos[i].setOutlineColor(sf::Color::Black);
+                textos[i].setOutlineThickness(4);
                 textos[i].setPosition(coordenadas[i]);
                 
             }
 
             textos[0].setOutlineThickness(15);
-            textos[5].setOutlineThickness(4);
+            textos[6].setOutlineThickness(4);
 
-            pos = 5;
+            pos = 6;
         }
 
         void Ranking::mostrar_menu()
@@ -62,7 +64,7 @@ namespace Estados
             pGG->desenharTextura(imagem);
             // laco diferentao ne mano pprt
             //textos[3].setString(opcoes[3] + "   augusto");
-            CriarTextos(ARQUIVO_COLOCACAO_1);
+            CriarTextos(ARQUIVO_COLOCACAO);
             for (auto t : textos)
             {
                  pGG->get_Janela()->draw(t);
@@ -106,7 +108,7 @@ namespace Estados
             }
             else
             {
-                while(getline(arquivoInput, linha)  && i < 7)
+                while(getline(arquivoInput, linha)  && i < 6)
                 {
                     textos[i].setString( opcoes[i] + espaco + linha);
                     textos[i].setFont(*fonte_nomes);

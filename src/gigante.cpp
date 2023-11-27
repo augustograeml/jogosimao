@@ -18,6 +18,7 @@ namespace Entidades
 
             this->setSkin("Design/imagens/zumbi_gigante.png");
             this->set_vida(100);
+            set_pontos_cedidos(20);
         }
 
         Gigante::~Gigante()
@@ -65,12 +66,18 @@ namespace Entidades
         {
             if (a == 1 || a == 3)
             {
-                atacar(pE);
+                
                 mudar_direcao();
+                atacar(pE);
             }
             else if (a == 4)
             {
                 this->set_vida(this->get_vida() - 10);
+                /*if(!this->get_vivo())
+                {
+                   Entidades::Personagens::Jogador* aux =static_cast<Entidades::Personagens::Jogador*> (pE);
+                   aux->set_pontos(aux->get_pontos() + this->get_pontos_cedidos());
+                }*/
             }
             else
             {

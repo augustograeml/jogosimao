@@ -4,10 +4,10 @@ namespace Entidades
 {
     namespace Obstaculos
     {
-        Musgo::Musgo(sf::Vector2f pos) : Obstaculo(pos, false,false,false,false,true), gosmento(true)
+        Musgo::Musgo(sf::Vector2f pos) : Obstaculo(pos), gosmento(true)
         {
             this->setSkin("Design/imagens/bloco_musgo.jpeg");
-            this->set_vida(1);
+            gosmento = rand()%2;
         }
 
         Musgo::~Musgo()
@@ -33,7 +33,7 @@ namespace Entidades
         {
             if(get_gosmento())
             {
-                pJ->setVelocidade(Vector2f(pJ->getVelocidade().x / 1.5f , pJ->getVelocidade().y));
+                pJ->setVelocidade(Vector2f((pJ->getVelocidade().x / get_intensidade())*1.1 , pJ->getVelocidade().y));
             }
         }
         void Musgo::colidir(Entidade* pE,  int a)

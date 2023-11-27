@@ -8,8 +8,8 @@ namespace Entidades
         class Gigante : public Inimigo
         {
             private:
+                bool maldade;
                 bool ja_inc;
-                double tempo_pulo;
             public:
                 Gigante(sf::Vector2f pos = sf::Vector2f(0.f, 0.f), sf::Vector2f vel = sf::Vector2f(0.f, 0.f));
                 ~Gigante();

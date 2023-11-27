@@ -1,7 +1,5 @@
 #include "../Estados/Menus/textbox.hpp"
-#define DELETE_TECLA 8
-#define ENTER_TECLA 13
-#define ESC_TECLA 27
+
 
 namespace Estados
 {
@@ -21,7 +19,7 @@ namespace Estados
                 textbox.setString("");
             }
         }
-        void Textbox::inputLogic(int charTyped)
+        /*void Textbox::inputLogic(int charTyped)
         {
             if (charTyped != DELETE_TECLA && charTyped != ENTER_TECLA && charTyped != ESC_TECLA)
             {
@@ -48,11 +46,11 @@ namespace Estados
             text << newT;
 
             textbox.setString(text.str());
-        }
+        }*/
         void Textbox::setLimit(bool ToF, int lim)
         {
             hasLimit = ToF;
-            limit = lim;
+            limit = lim - 1;
         }
         void Textbox::setSelected(bool sel)
         {

@@ -1,6 +1,6 @@
 #include "../Estados/Fases/fase2.hpp"
 #include "../Entidades/Personagens/jogador.hpp"
-#define ARQUIVO_OUTPUT_FASE_2 "Design/imagens/rankingfase2.txt"
+#define ARQUIVO_OUTPUT "Design/imagens/ranking.txt"
 
 namespace Entidades
 {
@@ -49,19 +49,20 @@ namespace Estados
 
         void Fase2::fim_de_jogo()
         {
-            set_tempo_jogadores();
-            Textura.loadFromFile("Design/imagens/fim_de_jogo3.jpeg");
-            shape.setSize(Vector2f(950.f, 950.f));
-            shape.setTexture(&Textura);
-            shape.setPosition(sf::Vector2f(76.f, -10.f));
-            pGG->desenharFundo(&shape);
-             Entidades::Personagens::Jogador* jog = static_cast<Entidades::Personagens::Jogador*> (*jogadores.get_primeiro());  
-            jog->salvar_tempo(ARQUIVO_OUTPUT_FASE_2);
+            //set_tempo_jogadores();
+            pontuar();
+            getNome();
+            
+            Entidades::Personagens::Jogador* jog = static_cast<Entidades::Personagens::Jogador*> (*jogadores.get_primeiro());  
+            jog->set_nome(playerName);
+            jog->salvar_tempo(ARQUIVO_OUTPUT);
             if(num_jogadores == 2)
             {
             Entidades::Personagens::Jogador* jogad22 = static_cast<Entidades::Personagens::Jogador*> (*jogadores.get_primeiro()++);  
-            jogad22->salvar_tempo(ARQUIVO_OUTPUT_FASE_2);
+            jogad22->set_nome(playerName + "(2)");
+            jogad22->salvar_tempo(ARQUIVO_OUTPUT);
             }
+            set_pontos(0);
         }
 
         void Fase2::executar()
@@ -72,6 +73,16 @@ namespace Estados
                 pGG->resetarCamera();
                 //ranking, acho que se pa esse fim_de_jogo é meio inutil
                 fim_de_jogo();
+                pGE->set_estado_atual(0);
+                return;
+            }
+            if(gC.get_jogadores_vivos())
+            {
+                pGG->limpar();
+                pGG->resetarCamera();
+                //ranking, acho que se pa esse fim_de_jogo é meio inutil
+                fim_de_jogo();
+                pGE->set_estado_atual(0);
                 return;
             }
 

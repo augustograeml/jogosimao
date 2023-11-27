@@ -4,10 +4,10 @@ namespace Entidades
 {
     namespace Obstaculos
     {
-        Neve::Neve(Vector2f pos): Obstaculo(pos, false,false,false,true,false), escorrega(true)
+        Neve::Neve(Vector2f pos): Obstaculo(pos), escorrega(true)
         {
             this->setSkin("Design/imagens/plataforma.png");
-            this->set_vida(1);
+            escorrega = rand()%2;
         }
 
         Neve::~Neve()
@@ -33,7 +33,7 @@ namespace Entidades
         {
             if(get_escorrega())
             {
-                pJ->setVelocidade(Vector2f(pJ->getVelocidade().x * 1.02f, pJ->getVelocidade().y));
+                pJ->setVelocidade(Vector2f((pJ->getVelocidade().x * get_intensidade())/1.85f, pJ->getVelocidade().y));
             }
         }
         void Neve::colidir(Entidade* pE, int a)

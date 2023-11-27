@@ -15,6 +15,7 @@ namespace Entidades
             float poder;
             std::string nome;
             double tempo;
+            int pontos;
 
 
         public:
@@ -27,6 +28,9 @@ namespace Entidades
 
             void set_tempo(double x) {tempo = x;}
             double get_tempo() {return (int)tempo;}
+
+            void set_pontos(int a) {pontos  = a;}
+            int  get_pontos() {return pontos;}
 
             void set_nome(std::string a)  {nome = a;}
             string get_nome(){return nome;}

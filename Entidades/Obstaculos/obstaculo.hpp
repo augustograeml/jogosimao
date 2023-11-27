@@ -9,20 +9,12 @@ namespace Entidades
         class Obstaculo : public Entidade
         {
             private:
-                bool danoso;
-                bool curoso;
-                bool atrapalhante;
-                bool escorregadio;
-                bool gosmento;
+                int intensidade;
             public:
-                Obstaculo(Vector2f pos = Vector2f(0.f, 0.f), bool dano = false, bool cura = false, bool atrapalho = false, bool neve = false, bool musgo = false);
+                Obstaculo(Vector2f pos = Vector2f(0.f, 0.f));
                 ~Obstaculo();
 
-                bool get_danoso()  {return danoso;}
-                bool get_curoso() {return curoso;}
-                bool get_atrapalhante() {return atrapalhante;}
-                bool get_escorregadio() {return escorregadio;}
-                bool get_gosmento() {return gosmento;}
+                int get_intensidade() {return intensidade;}
 
                 virtual void executar() = 0;
                 virtual void mover() = 0;

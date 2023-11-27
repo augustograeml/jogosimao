@@ -38,6 +38,9 @@ namespace Estados
                 //static Observers::Observer_Fase observador_fase;
 
                 bool ja_criado;
+                static int pontos;
+                sf::Font* fonte;
+                sf::Texture* textura_getNome;
 
                 sf::Texture Textura;
                 sf::RectangleShape shape;
@@ -52,7 +55,8 @@ namespace Estados
                 std::ostringstream buffer;
                 int num_entidades[6];
                 int num_jogadores;
-                sf::Clock relogio;
+                std::string playerName;
+                //sf::Clock relogio;
 
             public:
                 Fase(int i = -1);
@@ -64,6 +68,11 @@ namespace Estados
                 void criar_inimigos();
                 void criar_cenario(std::string caminho, int n1, int n2, int n3, int n4, int n5, int n6, bool ja_criado);
 
+                void getNome();
+                void pontuar();
+                //void salvar_pontuacao(std::string caminho);
+                void set_pontos(int a)  {pontos = a;}
+                int get_pontos() {return pontos;}
                 const bool get_jaCriado();
                 const bool get_jogador2();
 
@@ -73,7 +82,8 @@ namespace Estados
                 virtual void pausar() = 0;
                 virtual void menu() = 0;
 
-                void set_tempo_jogadores();
+                //void set_tempo_jogadores();
+                Listas::ListaEntidade* get_jogadores() {return &jogadores;} 
                 void salvar();
         };
     }

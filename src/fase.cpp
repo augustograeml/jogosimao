@@ -9,6 +9,7 @@
 
 using namespace std;
 
+int Estados::Fases::Fase::pontos(0);
 namespace Estados
 {
     namespace Fases
@@ -18,18 +19,25 @@ namespace Estados
         gC(), buffer(), ja_criado(false), num_jogadores(1)
         {
             gC.set_inimigos(&inimigos);
-            gC.set_inimigos(&inimigos);
             gC.set_jogadores(&jogadores);
             gC.set_obstaculos(&obstaculos);
-            relogio.restart();
+            fonte = new sf::Font();
+            textura_getNome= new sf::Texture();
+            //relogio.restart();
             gC.set_projeteis(&projeteis);
+            set_pontos(0);
+            fonte->loadFromFile("Design/fonte/fonte_simas.ttf");
+            textura_getNome->loadFromFile("Design/imagens/pegar_nome.png");
         }
 
         Fase::~Fase()
         {  
             salvar();
         }
+        void Fase::fim_de_jogo()
+        {
 
+        }
         const bool Fase::get_jaCriado()
         {
             return ja_criado;
@@ -288,9 +296,97 @@ namespace Estados
             }
         }
 
-        void Fase::fim_de_jogo()
+        void Fase::pontuar()
         {
-            
+            Listas::Lista<Entidades::Entidade>::Iterador inim = inimigos.get_primeiro();
+            Listas::Lista<Entidades::Entidade>::Iterador jgd = jogadores.get_primeiro();
+            Entidades::Personagens::Jogador* jogador = static_cast<Entidades::Personagens::Jogador*>(*jgd);
+            while (inim != nullptr)
+            {
+                Entidades::Personagens::Inimigo *inimigo = static_cast<Entidades::Personagens::Inimigo *>(*inim);
+                if (!(inimigo)->get_vivo())
+                {
+                        pontos += (inimigo)->get_pontos_cedidos();
+                        (*jogador).set_pontos(pontos);
+                }
+                inim++;
+            }
+           std::cout << (*jogador).get_pontos() <<std::endl;
+        }
+        
+        /*void Fase::salvar_pontuacao(std::string caminho)
+        {
+            std::ofstream arquivoOutput(caminho, std::ios::app);
+            std::string linha = "";
+            std::string bolinhas = ",";
+            if (!arquivoOutput)
+            {
+                std::cout << " erro!";
+            }
+            else
+            {
+                linha += playerName + bolinhas;
+                arquivoOutput << linha;
+                arquivoOutput << pontos;
+            }
+
+            arquivoOutput.close();
+        }*/
+        void Fase::getNome()
+        {
+        
+            while (!(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)))
+            {
+                sf::Event event;
+                while (pGG->get_Janela()->pollEvent(event))
+                {
+                    if (event.type == sf::Event::Closed)
+                    {
+                        pGG->get_Janela()->close();
+                    }
+                    else if (event.type == sf::Event::TextEntered)
+                    {
+                        // Handle ASCII characters only
+                        if (event.text.unicode < 128)
+                        {
+                            char typedChar = static_cast<char>(event.text.unicode);
+
+                            if (typedChar == '\b' && !playerName.empty())
+                            {
+                                // Handle backspace to erase the last character
+                                playerName.pop_back();
+                            }
+                            else if (typedChar >= 32)
+                            {
+                                // Append the character to the player name
+                                playerName += typedChar;
+                            }
+                        }
+                    }
+                }
+
+                pGG->limpar();
+                pGG->resetarCamera();
+                pGG->desenharTextura(textura_getNome);
+                // Display the entered string on the screen
+                if (1)
+                {
+                    sf::Text text("Insira seu nome jogador:", *fonte, 30);
+                    sf::Text tex("\n" + playerName, *fonte, 30);
+                    sf::Text text2("\n\nAperte Enter para continuar...", *fonte, 30);
+                    text.setPosition(Vector2f(150, 200));
+                    tex.setPosition(Vector2f(250, 510));
+                    text2.setPosition(Vector2f(150,800));
+                    pGG->desenharTexto(&text);
+                    pGG->desenharTexto(&tex);
+                    pGG->desenharTexto(&text2);
+                }
+                else
+                {
+                    std::cerr << "Error loading font file\n";
+                }
+                pGG->mostrar();
+            }
         }
 
         void Fase::salvar()
@@ -360,7 +456,7 @@ namespace Estados
             else
                 return false;
         }
-        void Fase::set_tempo_jogadores()
+        /*void Fase::set_tempo_jogadores()
         {
             if(num_jogadores == 2)
             {
@@ -369,7 +465,7 @@ namespace Estados
             }
             Entidades::Personagens::Jogador* jogad = static_cast<Entidades::Personagens::Jogador*>(*jogadores.get_primeiro());
             jogad->set_tempo(jogad->get_tempo() + relogio.getElapsedTime().asSeconds());
-        }
+        }*/
 
     }
 }

@@ -4,10 +4,10 @@ namespace Entidades
 {
     namespace Obstaculos
     {
-        Espinho::Espinho(sf::Vector2f pos) : Obstaculo(pos, true, false ,false,false,false), dano(5)
+        Espinho::Espinho(sf::Vector2f pos) : Obstaculo(pos), dano(5)
         {
             this->setSkin("Design/imagens/espinho.png");
-            this->set_vida(55);
+            dano = dano * get_intensidade();
         }
 
         Espinho::~Espinho()

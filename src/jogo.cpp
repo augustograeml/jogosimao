@@ -20,7 +20,7 @@ Jogo::Jogo() : pG(Gerenciadores::Gerenciador_Grafico::get_instancia()), pE(Geren
     Estados::Fases::Fase2 *fase2 = new Estados::Fases::Fase2(8);
     Estados::Fases::Fase2 *fase22 = new Estados::Fases::Fase2(9);
     
-    nome = new Estados::Menus::Nome(10);
+    //nome = new Estados::Menus::Nome(10);
     
     /*try
     {

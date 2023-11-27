@@ -4,12 +4,13 @@ namespace Entidades
 {
     namespace Obstaculos
     {
-        Coracao::Coracao(sf::Vector2f pos): Obstaculo(pos,false, true, false,false,false), cura(20)
+        Coracao::Coracao(sf::Vector2f pos): Obstaculo(pos), cura(10)
         {
             this->setSkin("Design/imagens/saude.png");
             int dificil = rand()%10;
             if(dificil == 7)
                 cura = 5;
+            cura =  cura * get_intensidade();
         }
 
         Coracao::~Coracao()

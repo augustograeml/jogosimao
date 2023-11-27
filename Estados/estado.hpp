@@ -1,5 +1,6 @@
 #pragma once
 #include "../Gerenciadores/gerenciador_estados.hpp"
+#include "../ente.hpp"
 
 namespace Estados
 {

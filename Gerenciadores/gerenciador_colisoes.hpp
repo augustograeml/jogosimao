@@ -33,6 +33,7 @@ namespace Gerenciadores
             void colisao_jogadores_projeteis();
             void colisao_obstaculos_projeteis();
             void gerenciar_colisoes();
+            int colidiu_projeteis(Entidades::Entidade *e1, Entidades::Entidade *e2);
             int colidiu(Entidades::Entidade* e1, Entidades::Entidade* e2);
 
             const bool get_inimigos_vivos();

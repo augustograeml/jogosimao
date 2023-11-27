@@ -3,6 +3,9 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <sstream>
+#define DELETE_TECLA 8
+#define ENTER_TECLA 13
+#define ESC_TECLA 27
 
 namespace Estados
 {
@@ -16,10 +19,35 @@ namespace Estados
             std::ostringstream text;
             bool hasLimit = false;
             int limit;
+            
+            void deleteLastChar() {
+		std::string t = text.str();
+		std::string newT = "";
+		for (int i = 0; i < t.length() - 1; i++) {
+			newT += t[i];
+		}
+		text.str("");
+		text << newT;
+		textbox.setString(text.str() + "_");
+	}
 
+	// Get user input:
+	    void inputLogic(int charTyped) {
+		// If the key pressed isn't delete, or the two selection keys, then append the text with the char:
+		if (charTyped != DELETE_TECLA && charTyped != ENTER_TECLA && charTyped != ESC_TECLA) {
+			text << static_cast<char>(charTyped);
+		}
+		// If the key is delete, then delete the char:
+		else if (charTyped == DELETE_TECLA) {
+			if (text.str().length() > 0) {
+				deleteLastChar();
+			}
+		}
+		// Set the textbox text:
+		textbox.setString(text.str() + "_");
+	}
 
-            void inputLogic(int charTyped);
-            void deleteLastChar();
+            
         public:
             Textbox(){}
             Textbox(int size, sf::Color color, bool sel);
@@ -27,7 +55,6 @@ namespace Estados
             void setFont(sf::Font &font) {textbox.setFont(font);}
             void setPosition(sf::Vector2f pos){textbox.setPosition(pos);}
             void setLimit(bool ToF, int lim); 
-            void setLimit(bool ToF) {hasLimit = ToF;}
             void setSelected(bool sel) ;
             std::string getText() {return text.str();} 
             void drawTo(sf::RenderWindow &window){window.draw(textbox);}   

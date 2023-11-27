@@ -6,11 +6,10 @@ namespace Entidades
 {
     namespace Personagens
     {
-        Inimigo::Inimigo(sf::Vector2f pos, sf::Vector2f vel) : Personagem(pos, vel), maldade(false), pjogador(nullptr)
+        Inimigo::Inimigo(sf::Vector2f pos, sf::Vector2f vel) : Personagem(pos, vel), pjogador(nullptr), pontos_cedidos(1)
         {
-            int m = rand() % 6;
-            if(m == 1)
-                maldade = true;
+
+            
         }
 
         Inimigo::~Inimigo()

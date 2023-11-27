@@ -11,7 +11,7 @@ namespace Entidades
         Gerenciadores::Gerenciador_Estados *Jogador::PGEstados(Gerenciadores::Gerenciador_Estados::get_instancia());
 
         Jogador::Jogador(sf::Vector2f pos, sf::Vector2f vel, bool jog2) : Personagem(pos, vel),
-         tempo(0.0), poder(1), jogador2(jog2), leu_fase(false)
+         tempo(0.0), poder(1), jogador2(jog2), leu_fase(false), pontos(0)
         {
             this->set_vida(20);
             if (!jog2)
@@ -24,8 +24,7 @@ namespace Entidades
                 corpo.setFillColor(sf::Color::Green);
                 this->setSkin("Design/imagens/luigiDireita.png");
             }
-           tempo = 0.0;
-           nome = "augusto";
+           nome = "";
         }
         Jogador::~Jogador()
         {
@@ -165,10 +164,8 @@ namespace Entidades
 
                 linha += this->get_nome() + bolinhas;
                 arquivoOutput << linha;
-                arquivoOutput << this->get_tempo();
-                arquivoOutput << "s" << endl;
+                arquivoOutput << this->get_pontos();
                
-
             }
         }
 
