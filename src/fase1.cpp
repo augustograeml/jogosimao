@@ -107,7 +107,6 @@ namespace Estados
             {
                 Entidades::Personagens::Jogador *aux = static_cast<Entidades::Personagens::Jogador *>(*(jogadores.get_primeiro()));
                 Entidades::Personagens::Jogador *aux1 = static_cast<Entidades::Personagens::Jogador *>(*(jogadores.get_primeiro()++));
-                // if(jogador2)
                 if (num_jogadores == 2 && aux->get_vida() && aux1->get_vida())
                     pGG->centralizarCamera(Vector2f((*(jogadores.get_primeiro()))->getPosicao() + (*(jogadores.get_primeiro()++))->getPosicao()) / 2.f);
                 if (aux->get_vida() && !aux1->get_vida())
