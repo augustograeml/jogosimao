@@ -25,7 +25,6 @@ namespace Estados
         {
             pGG->limpar();
             pGG->desenharTextura(imagem);
-            // laco diferentao ne mano pprt
             for (auto t : textos)
                 pGG->get_Janela()->draw(t);
             pGG->mostrar();
