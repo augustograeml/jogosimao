@@ -40,7 +40,6 @@ namespace Entidades
             void atacar(Entidade* jg);
             void salvar(std::ostringstream* entrada);
             void salvar_tempo(string caminho);
-           
         };
 
     }

@@ -16,7 +16,6 @@ namespace Entidades
 
                 void espinhar(Entidades::Personagens::Jogador* pJ);
                 void executar();
-                void criar_espinhos(string arquivo);
                 int get_dano() {return dano;}
                 void mover();
                 void atualizar();

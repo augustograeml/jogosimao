@@ -13,8 +13,6 @@ namespace Entidades
                 Caixa(Vector2f pos = Vector2f(0.f, 0.f));
                 ~Caixa();
 
-                void criar_caixas(string arquivo);
-
                 void executar();
                 void mover();
                 void atualizar();

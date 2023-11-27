@@ -17,7 +17,6 @@ namespace Entidades
                 void executar();
                 void mover();
                 void atualizar();
-                void criar_gigante(string arquivo);
                 void colidir(Entidade* pE, int a);
                 void atacar(Entidade* jg);
                 std::vector<Projetil>* get_projeteis() {return nullptr;}

@@ -23,7 +23,6 @@ namespace Entidades
                 void atualizar();
                 void colidir(Entidade* pE, int a);
                 void atirar();
-                void criar_arqueiros(string arquivo);
 
                 std::vector<Projetil>* get_projeteis() {return &vetor_projeteis;}
                 void atacar(Entidade* jg);

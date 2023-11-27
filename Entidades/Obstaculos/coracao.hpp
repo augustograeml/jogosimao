@@ -14,10 +14,7 @@ namespace Entidades
                 Coracao(Vector2f pos = Vector2f(0.f, 0.f));
                 ~Coracao();
 
-                int get_cura() {return cura;}
-
-                void criar_coracao(string arquivo);
-                
+                int get_cura() {return cura;}                
                 void curar(Entidades::Personagens::Jogador* pJ);
                 void executar();
                 void mover();
