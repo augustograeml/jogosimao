@@ -129,16 +129,18 @@ namespace Gerenciadores
                             }
                         }
                     }
-                    jog++;
+                    jog.operator++();
                 }
             }
-            inim++;
+            inim.operator++();
         }
     }
     void Gerenciador_Colisoes::colisao_obstaculos_projeteis()
     {
-        Listas::Lista<Entidades::Entidade>::Iterador obst = obstaculos->get_primeiro();
-        Listas::Lista<Entidades::Entidade>::Iterador inim = inimigos->get_primeiro();
+        Listas::Lista<Entidades::Entidade>::Iterador obst;
+        obst.operator=(obstaculos->get_primeiro());
+        Listas::Lista<Entidades::Entidade>::Iterador inim;
+        inim.operator=(inimigos->get_primeiro());
         while (inim != nullptr)
         {
             Entidades::Personagens::Inimigo *arqueiro_atira = static_cast<Entidades::Personagens::Inimigo *>(*inim);
