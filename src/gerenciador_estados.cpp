@@ -8,20 +8,8 @@ namespace Gerenciadores
     Gerenciador_Estados* Gerenciador_Estados::instancia = nullptr;
 
     Gerenciador_Estados::Gerenciador_Estados() : estadoAtual(0)
-    {
-        //colocar o numero de estados que voce possui
-        /*try
-        {
-            estados.resize(11);
-            estadoAtual = 10;
-        }
-        catch(const std::exception& e)
-        {
-            estados.resize(10);
-            estadoAtual = 0;
-        }*/
-        
-        estados.resize(11);
+    {        
+        estados.resize(10);
     }
 
     Gerenciador_Estados::~Gerenciador_Estados()
