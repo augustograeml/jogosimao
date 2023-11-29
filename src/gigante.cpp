@@ -73,6 +73,8 @@ namespace Entidades
             else if (a == 4)
             {
                 this->set_vida(this->get_vida() - 10);
+                pE->setVelocidade(Vector2f(1,0));
+                pE->atualizar();
             }
             else
             {

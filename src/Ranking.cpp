@@ -92,7 +92,7 @@ namespace Estados
             }
             else
             {
-                while(getline(arquivoInput, linha)  && i < 6)
+                while(getline(arquivoInput, linha)  && i < 5)
                 {
                     textos[i].setString( opcoes[i] + espaco + linha);
                     textos[i].setFont(*fonte_nomes);
