@@ -39,11 +39,12 @@ namespace Gerenciadores
     void Gerenciador_Colisoes::colisao_jogadores_obstaculos()
     {
         Listas::Lista<Entidades::Entidade>::Iterador obst;
-        Listas::Lista<Entidades::Entidade>::Iterador jog = jogadores->get_primeiro();
+        Listas::Lista<Entidades::Entidade>::Iterador jog;
+        jog.operator=(jogadores->get_primeiro());
 
         while (jog != nullptr)
         {
-            obst = obstaculos->get_primeiro();
+            obst.operator=(obstaculos->get_primeiro());
             while (obst != nullptr)
             {
                 if ((*obst)->get_vivo())
@@ -55,36 +56,39 @@ namespace Gerenciadores
                         (*jog)->colidir(*obst, id_colisao);
                     }
                 }
-                obst++;
+                obst.operator++();
             }
-            jog++;
+            jog.operator++();
         }
     }
     void Gerenciador_Colisoes::colisao_inimigos_obstaculos()
     {
         Listas::Lista<Entidades::Entidade>::Iterador obst;
-        Listas::Lista<Entidades::Entidade>::Iterador inim = inimigos->get_primeiro();
+        Listas::Lista<Entidades::Entidade>::Iterador inim;
+        inim.operator=(inimigos->get_primeiro());
         while (inim != nullptr)
         {
-            obst = obstaculos->get_primeiro();
+            obst.operator=(obstaculos->get_primeiro());
             while (obst != nullptr)
             {
                 if ((*obst)->get_vivo())
                     int id_colisao = colidiu(*inim, *obst);
 
-                obst++;
+                obst.operator++();
             }
-            inim++;
+            inim.operator++();
         }
     }
 
     void Gerenciador_Colisoes::colisao_jogadores_inimigos()
     {
-        Listas::Lista<Entidades::Entidade>::Iterador jog = jogadores->get_primeiro();
-        Listas::Lista<Entidades::Entidade>::Iterador inim = inimigos->get_primeiro();
+        Listas::Lista<Entidades::Entidade>::Iterador jog;
+        jog.operator=(jogadores->get_primeiro());
+        Listas::Lista<Entidades::Entidade>::Iterador inim;
+        inim.operator=(inimigos->get_primeiro());
         while (jog != nullptr)
         {
-            inim = inimigos->get_primeiro();
+            inim.operator=(inimigos->get_primeiro());
             while (inim != nullptr)
             {
                 if ((*inim)->get_vivo())
@@ -94,15 +98,17 @@ namespace Gerenciadores
                     if (j)
                         (*inim)->colidir(*jog, j);
                 }
-                inim++;
+                inim.operator++();
             }
-            jog++;
+            jog.operator++();
         }
     }
     void Gerenciador_Colisoes::colisao_jogadores_projeteis()
     {
-        Listas::Lista<Entidades::Entidade>::Iterador inim = inimigos->get_primeiro();
-        Listas::Lista<Entidades::Entidade>::Iterador jog = jogadores->get_primeiro();
+        Listas::Lista<Entidades::Entidade>::Iterador inim;
+        inim.operator=(inimigos->get_primeiro());
+        Listas::Lista<Entidades::Entidade>::Iterador jog;
+        jog.operator=(jogadores->get_primeiro());
         while (inim != nullptr)
         {
             Entidades::Personagens::Inimigo *arqueiro_atira = static_cast<Entidades::Personagens::Inimigo *>(*inim);
@@ -110,7 +116,7 @@ namespace Gerenciadores
 
             if (pVetor != nullptr)
             {
-                jog = jogadores->get_primeiro();
+                jog.operator=(jogadores->get_primeiro());
                 while (jog != nullptr)
                 {
                     if (pVetor->size() > 0)
@@ -148,7 +154,7 @@ namespace Gerenciadores
 
             if (pVetor != nullptr)
             {
-                obst = obstaculos->get_primeiro();
+                obst.operator=(obstaculos->get_primeiro());
                 while (obst != nullptr)
                 {
                     if (pVetor->size() > 0)
@@ -168,11 +174,11 @@ namespace Gerenciadores
                             }
                         }
                     }
-                    obst++;
+                    obst.operator++();
                 }
             }
 
-            inim++;
+            inim.operator++();
         }
     }
 
