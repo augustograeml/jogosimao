@@ -78,31 +78,6 @@ namespace Listas
                 }
             }
             
-            /*void remover(TL *elem)
-            {
-                Elemento<TL>* aux = pPrimeiro;
-                Elemento<TL>* anterior = nullptr;
-
-                while(aux != nullptr)
-                {
-                    if(aux->get_pinfo() == elem)
-                    {
-                        if(elem == pPrimeiro->get_pinfo())
-                        {
-                        pPrimeiro = aux->get_pProx();
-                        }
-                        else 
-                        {
-                            anterior->set_pProx(aux->get_pProx());
-                        }
-                        tamanho--;
-                        return;
-                    }
-                    anterior = aux;
-                    aux = aux->get_pProx();
-                }
-                
-            }*/
             void remover(TL *elem) 
             {
                     Elemento<TL>* aux = pPrimeiro;
